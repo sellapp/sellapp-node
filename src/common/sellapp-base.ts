@@ -151,7 +151,7 @@ export class SellAppBase {
     this.nextResponseObserver = undefined;
     const headers: Record<string, string> = {
       Accept: 'application/json',
-      'User-Agent': 'SellApp node/0.1.0',
+      'User-Agent': 'SellApp node/0.1.1',
       ...options.headers,
     };
     const contract = operationContracts.find(c => c.method === method && c.path.split('/').length === path.split('/').length && c.path.split('/').every((part, i) => part.startsWith('{') || part === path.split('/')[i]));

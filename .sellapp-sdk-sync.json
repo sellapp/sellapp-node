@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "language": "node",
   "repository": "sellapp/sellapp-node",
-  "sourceSha": "f84c9490995a106ba2bf0dcff1245ae18c765fc8",
+  "sourceSha": "e4051383c6618a31c201c050d55d7bdacd157f0c",
   "specSha256": "02043ebfc36589e78743f00a0f4a2f3ac9ac14914b9cf2910f04fc34ad2d0924",
   "runId": "0",
   "runAttempt": "1",
-  "treeDigest": "5b166491071c81a8a2c0ab18328ca8dc9d19387786ef668fb77d348ced5f031a",
-  "contentDigest": "d8817cd3ec69d6d3b7e444a635080ac0c6b858494498f60284a30368e74e4e00",
+  "treeDigest": "01652cf637c35e720f65793965de3c625aeee8f5ebdcdf7850d02104df805f58",
+  "contentDigest": "2d63d4d83355d5aec412eba3a6ef948a78f5b8cda2cae6f6a6f6328c4758f5d3",
   "files": [
     {
       "path": ".github/scripts/native-ci.mjs",
@@ -47,7 +47,7 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "sha256": "d884b430ae43577e7c0f127b44bfbdf6890c2e48fb1a2a471678c455297e3b2f"
+      "sha256": "864b1ec145ba2a25ff4cbd963422ae6558ebbed2ca9af7b40c211665e9146ddf"
     },
     {
       "path": "docs/methods.md",
@@ -482,12 +482,12 @@
     {
       "path": "generation-manifest.json",
       "mode": "100644",
-      "sha256": "b7d89405b71a363cb7f784a91fb7a9458f5f0eeed5fd0df95cba6df02f65aad5"
+      "sha256": "c57e0c8731514ff9ee5f70309b642094340caf6d1a22010ede43ddc231025023"
     },
     {
       "path": "package.json",
       "mode": "100644",
-      "sha256": "8e55a38fefcc3cad78fdb3cc71e8fd9433726707922096f9b8d85230fb54bb65"
+      "sha256": "545f8b3e707cf6eeff1e5fdf71853603ebb4b0433dfd9e753da9961aeb713bfc"
     },
     {
       "path": "src/account/account.ts",
@@ -6682,7 +6682,7 @@
     {
       "path": "src/common/sellapp-base.ts",
       "mode": "100644",
-      "sha256": "7d9ef9f75970196c20841eae5c254b76a2f662874e464c3e31aad57928f7e8d2"
+      "sha256": "8d045f5e83458463c4e47b111099f20141afcea3d8a93aefaadc8f798f2bfe58"
     },
     {
       "path": "src/common/utils/fetch-and-deserialize.ts",

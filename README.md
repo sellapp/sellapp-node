@@ -28,7 +28,7 @@ const { SellApp } = require('@sell.app/sdk');
 
 To build from [source](https://github.com/sellapp/sellapp-node), use
 Node.js 24.19.0, run `npm install && npm run build && npm pack` in the checkout,
-then install the resulting `sell.app-sdk-0.1.0.tgz` in your app.
+then install the resulting `sell.app-sdk-0.1.1.tgz` in your app.
 
 ## Your first request
 
@@ -122,7 +122,7 @@ Keep the request ID when reporting an API failure. Never include credentials.
 
 ## Support and releases
 
-This source candidate is not a verified registry release. Use the source installation above.
-[Report an SDK issue](https://github.com/sellapp/sellapp-node/issues) if you have repository access.
+Find available packages and installation instructions in the [SDK guide](https://sell.app/docs/api/sdks).
+[Report an SDK issue](https://github.com/sellapp/sellapp-node/issues).
 Include the SDK version, runtime version, and a redacted reproduction.
 Licensed under [MIT](https://github.com/sellapp/sellapp-node/blob/main/LICENSE.txt); see [third-party notices](https://github.com/sellapp/sellapp-node/blob/main/NOTICE.txt).

@@ -1,6 +1,6 @@
 {
   "name": "@sell.app/sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Official TypeScript and JavaScript SDK for SellApp products, orders, customers, and subscriptions.",
   "type": "module",
   "main": "./dist/index.cjs",
