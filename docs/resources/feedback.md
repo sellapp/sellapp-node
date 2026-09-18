@@ -19,7 +19,7 @@ async list(options?: FeedbackListOptions): Promise<AutoPaginatable<ListFeedbackR
 Returns: `Promise<AutoPaginatable<ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, FeedbackListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -67,7 +67,7 @@ async get(options: GetOptions): Promise<SdkGetFeedbackResponseValue200Applicatio
 Returns: `Promise<SdkGetFeedbackResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -115,7 +115,7 @@ async reply(options: ReplyOptions): Promise<SdkReplyToFeedbackResponseValue200Ap
 Returns: `Promise<SdkReplyToFeedbackResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -164,7 +164,7 @@ async search(options: SearchOptions): Promise<SdkSearchFeedbackResponseValue200A
 Returns: `Promise<SdkSearchFeedbackResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -213,7 +213,7 @@ async v2ListFeedback(options?: V2ListFeedbackOptions): Promise<AutoPaginatable<V
 Returns: `Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, V2ListFeedbackOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -266,7 +266,7 @@ async v2SearchFeedback(options: V2SearchFeedbackOptions): Promise<SdkV2SearchFee
 Returns: `Promise<SdkV2SearchFeedbackResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -320,7 +320,7 @@ async v2GetFeedback(options: V2GetFeedbackOptions): Promise<SdkV2GetFeedbackResp
 Returns: `Promise<SdkV2GetFeedbackResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -373,7 +373,7 @@ async v2ReplaceFeedback(options: V2ReplaceFeedbackOptions): Promise<SdkV2Replace
 Returns: `Promise<SdkV2ReplaceFeedbackResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -427,7 +427,7 @@ async v2ReplyToFeedback(options: V2ReplyToFeedbackOptions): Promise<SdkV2ReplyTo
 Returns: `Promise<SdkV2ReplyToFeedbackResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

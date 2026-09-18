@@ -19,7 +19,7 @@ async list(options?: ChargesListOptions): Promise<AutoPaginatable<ListChargesRes
 Returns: `Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem, ChargesListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async create(options: CreateOptions): Promise<SdkCreateChargeResponseValue201App
 Returns: `Promise<SdkCreateChargeResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -130,7 +130,7 @@ async get(options: GetOptions): Promise<SdkGetChargeResponseValue200ApplicationJ
 Returns: `Promise<SdkGetChargeResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -183,7 +183,7 @@ async markCompleted(options: MarkCompletedOptions): Promise<SdkMarkPendingCharge
 Returns: `Promise<SdkMarkPendingChargeCompletedResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -236,7 +236,7 @@ async markVoided(options: MarkVoidedOptions): Promise<SdkMarkPendingChargeVoided
 Returns: `Promise<SdkMarkPendingChargeCompletedResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

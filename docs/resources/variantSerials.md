@@ -19,7 +19,7 @@ async list(options: VariantSerialsListOptions): Promise<AutoPaginatable<ListVari
 Returns: `Promise<AutoPaginatable<ListVariantSerialInventoryResponseValue200ApplicationJsonPropertyDataItem, Omit<VariantSerialsListOptions, "product" | "variant">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -73,7 +73,7 @@ async append(options: AppendOptions): Promise<SdkAppendVariantSerialInventoryRes
 Returns: `Promise<SdkAppendVariantSerialInventoryResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -129,7 +129,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceVariantSerialInventory
 Returns: `Promise<SdkReplaceVariantSerialInventoryResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -185,7 +185,7 @@ async queue(options: QueueOptions): Promise<SdkQueueVariantSerialImportResponseV
 Returns: `Promise<SdkQueueVariantSerialImportResponseValue202ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -243,7 +243,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

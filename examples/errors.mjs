@@ -1,4 +1,4 @@
-import { SellApp, SellAppApiError, SellAppTimeoutError, SellAppTransportError } from 'sellapp';
+import { SellApp, SellAppApiError, SellAppTimeoutError, SellAppTransportError } from '@sell.app/sdk';
 
 // Explicit endpoint selection keeps examples from accidentally calling a live store.
 const baseUrl = process.env.SELLAPP_API_BASE_URL;

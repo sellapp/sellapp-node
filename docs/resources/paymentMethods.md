@@ -19,7 +19,7 @@ async list(requestOptions: RequestOptions = {}): Promise<SdkListPaymentMethodsRe
 Returns: `Promise<SdkListPaymentMethodsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async get(options: GetOptions): Promise<SdkGetPaymentMethodStatusResponseValue20
 Returns: `Promise<SdkGetPaymentMethodStatusResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -123,7 +123,7 @@ async enable(options: EnableOptions): Promise<SdkEnableOrDisablePaymentMethodRes
 Returns: `Promise<SdkEnableOrDisablePaymentMethodResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -177,7 +177,7 @@ async connect(options: ConnectOptions): Promise<SdkCreatePaymentConnectionHandof
 Returns: `Promise<SdkCreatePaymentConnectionHandoffResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -230,7 +230,7 @@ async validate(options: ValidateOptions): Promise<SdkValidateAndSavePaymentMetho
 Returns: `Promise<SdkValidateAndSavePaymentMethodConfigurationResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

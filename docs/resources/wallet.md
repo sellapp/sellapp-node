@@ -19,7 +19,7 @@ async list(options?: WalletListOptions): Promise<AutoPaginatable<ListCustomerWal
 Returns: `Promise<AutoPaginatable<ListCustomerWalletsResponseValue200ApplicationJsonPropertyDataItem, WalletListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async get(options: GetOptions): Promise<SdkGetCustomerWalletResponseValue200Appl
 Returns: `Promise<SdkGetCustomerWalletResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -125,7 +125,7 @@ async adjust(options: AdjustOptions): Promise<SdkAdjustCustomerWalletResponseVal
 Returns: `Promise<SdkAdjustCustomerWalletResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -181,7 +181,7 @@ async updateStatus(options: UpdateStatusOptions): Promise<SdkUpdateCustomerWalle
 Returns: `Promise<SdkUpdateCustomerWalletStatusResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

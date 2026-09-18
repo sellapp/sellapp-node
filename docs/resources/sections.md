@@ -19,7 +19,7 @@ async list(options?: SectionsListOptions): Promise<AutoPaginatable<ListSectionsR
 Returns: `Promise<AutoPaginatable<ListSectionsResponseValue200ApplicationJsonPropertyDataItem, SectionsListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -67,7 +67,7 @@ async create(options: CreateOptions): Promise<SdkCreateSectionResponseValue201Ap
 Returns: `Promise<SdkCreateSectionResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -116,7 +116,7 @@ async get(options: GetOptions): Promise<SdkGetSectionResponseValue200Application
 Returns: `Promise<SdkGetSectionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -164,7 +164,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceSectionResponseValue20
 Returns: `Promise<SdkReplaceSectionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -214,7 +214,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateSectionResponseValue200Ap
 Returns: `Promise<SdkUpdateSectionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -264,7 +264,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -312,7 +312,7 @@ async replaceOrder(options: ReplaceOrderOptions): Promise<SdkReplaceSectionOrder
 Returns: `Promise<SdkReplaceSectionOrderResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -360,7 +360,7 @@ async replaceProducts(options: ReplaceProductsOptions): Promise<SdkReplaceSectio
 Returns: `Promise<SdkReplaceSectionProductsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -409,7 +409,7 @@ async replaceGroups(options: ReplaceGroupsOptions): Promise<SdkReplaceSectionGro
 Returns: `Promise<SdkReplaceSectionGroupsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -458,7 +458,7 @@ async search(options: SearchOptions): Promise<SdkSearchSectionsResponseValue200A
 Returns: `Promise<SdkSearchSectionsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -507,7 +507,7 @@ async batchCreate(options: BatchCreateOptions): Promise<SdkBatchCreateSectionsRe
 Returns: `Promise<SdkBatchCreateSectionsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -555,7 +555,7 @@ async batchUpdate(options: BatchUpdateOptions): Promise<SdkBatchUpdateSectionsRe
 Returns: `Promise<SdkBatchUpdateSectionsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -603,7 +603,7 @@ async batchDelete(options: BatchDeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -651,7 +651,7 @@ async v2ListSections(options?: V2ListSectionsOptions): Promise<AutoPaginatable<V
 Returns: `Promise<AutoPaginatable<V2ListSectionsResponseValue200ApplicationJsonPropertyDataItem, V2ListSectionsOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -704,7 +704,7 @@ async v2CreateSection(options: V2CreateSectionOptions): Promise<SdkV2CreateSecti
 Returns: `Promise<SdkV2CreateSectionResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -758,7 +758,7 @@ async v2SearchSections(options: V2SearchSectionsOptions): Promise<SdkV2SearchSec
 Returns: `Promise<SdkV2SearchSectionsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -812,7 +812,7 @@ async v2GetSection(options: V2GetSectionOptions): Promise<SdkV2GetSectionRespons
 Returns: `Promise<SdkV2GetSectionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -865,7 +865,7 @@ async v2ReplaceSection(options: V2ReplaceSectionOptions): Promise<SdkV2ReplaceSe
 Returns: `Promise<SdkV2ReplaceSectionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -920,7 +920,7 @@ async v2UpdateSection(options: V2UpdateSectionOptions): Promise<SdkV2UpdateSecti
 Returns: `Promise<SdkV2UpdateSectionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -975,7 +975,7 @@ async v2DeleteSection(options: V2DeleteSectionOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -1028,7 +1028,7 @@ async v2BatchCreateSections(options: V2BatchCreateSectionsOptions): Promise<SdkV
 Returns: `Promise<SdkV2BatchCreateSectionsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -1081,7 +1081,7 @@ async v2BatchUpdateSections(options: V2BatchUpdateSectionsOptions): Promise<SdkV
 Returns: `Promise<SdkV2BatchUpdateSectionsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -1134,7 +1134,7 @@ async v2BatchDeleteSections(options: V2BatchDeleteSectionsOptions): Promise<void
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -1187,7 +1187,7 @@ async v2ReplaceSectionOrder(options: V2ReplaceSectionOrderOptions): Promise<SdkV
 Returns: `Promise<SdkV2ReplaceSectionOrderResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -1240,7 +1240,7 @@ async v2ReplaceSectionProducts(options: V2ReplaceSectionProductsOptions): Promis
 Returns: `Promise<SdkV2ReplaceSectionProductsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -1294,7 +1294,7 @@ async v2ReplaceSectionGroups(options: V2ReplaceSectionGroupsOptions): Promise<Sd
 Returns: `Promise<SdkV2ReplaceSectionGroupsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

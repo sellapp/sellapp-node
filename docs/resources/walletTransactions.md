@@ -19,7 +19,7 @@ async list(options: WalletTransactionsListOptions): Promise<AutoPaginatable<List
 Returns: `Promise<AutoPaginatable<ListWalletTransactionsResponseValue200ApplicationJsonPropertyDataItem, Omit<WalletTransactionsListOptions, "customer">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

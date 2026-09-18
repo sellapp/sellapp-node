@@ -19,7 +19,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceProductVariantPricingR
 Returns: `Promise<SdkReplaceProductVariantPricingResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -75,7 +75,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateProductVariantPricingResp
 Returns: `Promise<SdkUpdateProductVariantPricingResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

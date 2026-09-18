@@ -19,7 +19,7 @@ async list(options: LicensesInstancesListOptions): Promise<AutoPaginatable<ListL
 Returns: `Promise<AutoPaginatable<ActivateLicenseKeyResponseValue200ApplicationJsonPropertyData, Omit<LicensesInstancesListOptions, "licenseKey">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async get(options: GetOptions): Promise<SdkGetLicenseInstanceResponseValue200App
 Returns: `Promise<SdkGetLicenseInstanceResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

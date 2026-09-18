@@ -9,29 +9,26 @@ place: just a small request, a product title, and proof that everything is conne
 Already know your way around? Jump to [configuration](https://github.com/sellapp/sellapp-node/blob/main/docs/usage.md#client-configuration) or the
 [method index](https://github.com/sellapp/sellapp-node/blob/main/docs/methods.md).
 
-## Availability and installation
+## Installation
 
-**Start from source for now.** This SDK is being prepared for **0.1.0**. Its registry
-package and namespace ownership are not yet verified, so you'll need access to
-this private repository to install the version described here.
-
-The package declares Node.js **20 or newer**; validation currently runs on Node
-24.19.0. Older supported versions have not yet been separately verified.
-The source build toolchain uses Node 24.19.0. The package supports ES module
-imports and CommonJS `require()` on the server.
-
-Open a terminal in your local copy of
-[sellapp-node](https://github.com/sellapp/sellapp-node). Build the SDK,
-then pack it into a file you can install in your app:
+Install the SDK in your server-side application:
 
 ```sh
-npm install
-npm run build
-npm pack
-# In your application's directory, using the actual path to that checkout:
-npm install /path/to/sellapp-node/sellapp-0.1.0.tgz
+npm install @sell.app/sdk
 ```
 
+Use Node.js **20 or newer**. The package supports ES module imports and
+CommonJS `require()`; both include TypeScript declarations. Prefer a currently
+supported Node.js release for your application.
+
+```javascript
+// CommonJS applications:
+const { SellApp } = require('@sell.app/sdk');
+```
+
+To build from [source](https://github.com/sellapp/sellapp-node), use
+Node.js 24.19.0, run `npm install && npm run build && npm pack` in the checkout,
+then install the resulting `sell.app-sdk-0.1.0.tgz` in your app.
 
 ## Your first request
 
@@ -60,7 +57,7 @@ Save this complete example as `first-request.mjs` and run `node first-request.mj
 in your installed application. The same source is in [examples](https://github.com/sellapp/sellapp-node/blob/main/examples/README.md).
 
 ```javascript
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 // Explicit endpoint selection keeps examples from accidentally calling a live store.
 const baseUrl = process.env.SELLAPP_API_BASE_URL;

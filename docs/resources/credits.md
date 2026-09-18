@@ -19,7 +19,7 @@ async record(options: RecordOptions): Promise<SdkRecordCreditTransactionResponse
 Returns: `Promise<SdkRecordCreditTransactionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

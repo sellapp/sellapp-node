@@ -19,7 +19,7 @@ async list(options?: TicketsListOptions): Promise<AutoPaginatable<ListTicketsRes
 Returns: `Promise<AutoPaginatable<ListTicketsResponseValue200ApplicationJsonPropertyDataItem, TicketsListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -67,7 +67,7 @@ async get(options: GetOptions): Promise<SdkGetTicketResponseValue200ApplicationJ
 Returns: `Promise<SdkGetTicketResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -115,7 +115,7 @@ async search(options: SearchOptions): Promise<SdkSearchTicketsResponseValue200Ap
 Returns: `Promise<SdkSearchTicketsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -164,7 +164,7 @@ async v2ListTickets(options?: V2ListTicketsOptions): Promise<AutoPaginatable<V2L
 Returns: `Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, V2ListTicketsOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -217,7 +217,7 @@ async v2SearchTickets(options: V2SearchTicketsOptions): Promise<SdkV2SearchTicke
 Returns: `Promise<SdkV2SearchTicketsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -271,7 +271,7 @@ async v2GetTicket(options: V2GetTicketOptions): Promise<SdkV2GetTicketResponseVa
 Returns: `Promise<SdkV2GetTicketResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -324,7 +324,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateTicketResponseValue200App
 Returns: `Promise<SdkUpdateTicketResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

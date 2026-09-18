@@ -19,7 +19,7 @@ async getOAuthInstallation(requestOptions: RequestOptions = {}): Promise<SdkGetO
 Returns: `Promise<SdkGetOAuthInstallationResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -65,7 +65,7 @@ async deleteOAuthInstallation(): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

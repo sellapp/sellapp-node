@@ -19,7 +19,7 @@ async add(options: AddOptions): Promise<SdkAddProductsToGroupResponseValue200App
 Returns: `Promise<SdkAddProductsToGroupResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -73,7 +73,7 @@ async remove(options: RemoveOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -127,7 +127,7 @@ async list(options: GroupsProductsListOptions): Promise<AutoPaginatable<ListProd
 Returns: `Promise<AutoPaginatable<ListProductsWithinGroupResponseValue200ApplicationJsonPropertyDataItem, Omit<GroupsProductsListOptions, "group">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -180,7 +180,7 @@ async replace(options: ReplaceOptions): Promise<SdkSyncGroupProductsResponseValu
 Returns: `Promise<SdkSyncGroupProductsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -234,7 +234,7 @@ async get(options: GetOptions): Promise<SdkGetProductWithinGroupResponseValue200
 Returns: `Promise<SdkGetProductWithinGroupResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -288,7 +288,7 @@ async search(options: SearchOptions): Promise<SdkSearchProductsWithinGroupRespon
 Returns: `Promise<SdkSearchProductsWithinGroupResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

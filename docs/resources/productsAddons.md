@@ -19,7 +19,7 @@ async list(options: ProductsAddonsListOptions): Promise<AutoPaginatable<SdkListP
 Returns: `Promise<AutoPaginatable<SdkListProductSAddOnsResponseValue200ApplicationJson, Omit<ProductsAddonsListOptions, "product">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceProductSAddOnsResponse
 Returns: `Promise<SdkReplaceProductSAddOnsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

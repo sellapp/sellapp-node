@@ -19,7 +19,7 @@ async listWebhookEventTypes(requestOptions: RequestOptions = {}): Promise<SdkLis
 Returns: `Promise<SdkListWebhookEventTypesResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async listWebhookDeliveries(options?: ListWebhookDeliveriesOptions): Promise<Aut
 Returns: `Promise<AutoPaginatable<ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -121,7 +121,7 @@ async getWebhookDelivery(options: GetWebhookDeliveryOptions): Promise<SdkGetWebh
 Returns: `Promise<SdkGetWebhookDeliveryResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -174,7 +174,7 @@ async replayWebhookDelivery(options: ReplayWebhookDeliveryOptions): Promise<SdkR
 Returns: `Promise<SdkReplayWebhookDeliveryResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

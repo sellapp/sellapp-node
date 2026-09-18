@@ -19,7 +19,7 @@ async listExports(options?: ListExportsOptions): Promise<AutoPaginatable<ListExp
 Returns: `Promise<AutoPaginatable<ListExportsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async createExport(options: CreateExportOptions): Promise<SdkCreateExportRespons
 Returns: `Promise<SdkCreateExportResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -125,7 +125,7 @@ async getExport(options: GetExportOptions): Promise<SdkGetExportResponseValue200
 Returns: `Promise<SdkGetExportResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -178,7 +178,7 @@ async downloadExport(options: DownloadExportOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

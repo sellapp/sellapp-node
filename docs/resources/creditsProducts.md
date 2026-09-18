@@ -19,7 +19,7 @@ async list(options?: CreditsProductsListOptions): Promise<AutoPaginatable<SdkLis
 Returns: `Promise<AutoPaginatable<SdkListCreditsProductsResponseValue200ApplicationJson, CreditsProductsListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async create(options: CreateOptions): Promise<SdkCreateCreditsProductResponseVal
 Returns: `Promise<SdkCreateCreditsProductResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -128,7 +128,7 @@ async search(options: SearchOptions): Promise<SdkSearchCreditsProductsResponseVa
 Returns: `Promise<SdkSearchCreditsProductsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -181,7 +181,7 @@ async get(options: GetOptions): Promise<SdkGetCreditsProductResponseValue200Appl
 Returns: `Promise<SdkGetCreditsProductResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -234,7 +234,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceCreditsProductResponse
 Returns: `Promise<SdkReplaceCreditsProductResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -288,7 +288,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateCreditsProductResponseVal
 Returns: `Promise<SdkUpdateCreditsProductResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -342,7 +342,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

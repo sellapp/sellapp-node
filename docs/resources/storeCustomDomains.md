@@ -19,7 +19,7 @@ async list(requestOptions: RequestOptions = {}): Promise<SdkListCustomDomainsRes
 Returns: `Promise<SdkListCustomDomainsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async connect(options: ConnectOptions): Promise<SdkConnectCustomDomainResponseVa
 Returns: `Promise<SdkConnectCustomDomainResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -123,7 +123,7 @@ async get(options: GetOptions): Promise<SdkGetCustomDomainResponseValue200Applic
 Returns: `Promise<SdkGetCustomDomainResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -176,7 +176,7 @@ async disconnect(options: DisconnectOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -229,7 +229,7 @@ async refresh(options: RefreshOptions): Promise<SdkRefreshCustomDomainStatusResp
 Returns: `Promise<SdkRefreshCustomDomainStatusResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

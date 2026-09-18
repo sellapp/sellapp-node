@@ -19,7 +19,7 @@ async list(requestOptions: RequestOptions = {}): Promise<SdkListWalletBonusTiers
 Returns: `Promise<SdkListWalletBonusTiersResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async create(options: CreateOptions): Promise<SdkCreateWalletBonusTierResponseVa
 Returns: `Promise<SdkCreateWalletBonusTierResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -129,7 +129,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceWalletBonusTierRespons
 Returns: `Promise<SdkReplaceWalletBonusTierResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -189,7 +189,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateWalletBonusTierResponseVa
 Returns: `Promise<SdkUpdateWalletBonusTierResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -243,7 +243,7 @@ async archive(options: ArchiveOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -296,7 +296,7 @@ async restore(options: RestoreOptions): Promise<SdkRestoreWalletBonusTierRespons
 Returns: `Promise<SdkRestoreWalletBonusTierResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

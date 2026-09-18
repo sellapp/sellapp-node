@@ -19,7 +19,7 @@ async list(options?: OrdersListOptions): Promise<AutoPaginatable<ListOrdersRespo
 Returns: `Promise<AutoPaginatable<ListOrdersResponseValue200ApplicationJsonPropertyDataItem, OrdersListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async create(options: CreateOptions): Promise<SdkCreateOrderResponseValue201Appl
 Returns: `Promise<SdkCreateOrderResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -128,7 +128,7 @@ async search(options: SearchOptions): Promise<SdkSearchOrdersResponseValue200App
 Returns: `Promise<SdkSearchOrdersResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -183,7 +183,7 @@ async get(options: GetOptions): Promise<SdkGetOrderResponseValue200ApplicationJs
 Returns: `Promise<SdkGetOrderResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -236,7 +236,7 @@ async updateStatus(options: UpdateStatusOptions): Promise<SdkUpdateOrderStatusRe
 Returns: `Promise<SdkUpdateOrderStatusResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -292,7 +292,7 @@ async createCheckout(options: CreateCheckoutOptions): Promise<SdkCreateOrderChec
 Returns: `Promise<SdkCreateOrderCheckoutResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -346,7 +346,7 @@ async createReplacement(options: CreateReplacementOptions): Promise<SdkCreateOrd
 Returns: `Promise<SdkCreateOrderReplacementResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -401,7 +401,7 @@ async createRefund(options: CreateRefundOptions): Promise<SdkCreateOrderRefundRe
 Returns: `Promise<SdkCreateOrderRefundResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -456,7 +456,7 @@ async retryFulfillment(options: RetryFulfillmentOptions): Promise<SdkRetryOrderF
 Returns: `Promise<SdkRetryOrderFulfillmentResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -511,7 +511,7 @@ async retryDynamicDelivery(options: RetryDynamicDeliveryOptions): Promise<SdkRet
 Returns: `Promise<SdkRetryOrderDynamicDeliveryResponseValue202ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -566,7 +566,7 @@ async sendFulfillmentNotifications(options: SendFulfillmentNotificationsOptions)
 Returns: `Promise<SdkSendOrderFulfillmentNotificationsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -622,7 +622,7 @@ async listDeliverables(options: ListDeliverablesOptions): Promise<SdkListOrderDe
 Returns: `Promise<SdkListOrderDeliverablesResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -675,7 +675,7 @@ async createFromWallet(options: CreateFromWalletOptions): Promise<SdkCreateWalle
 Returns: `Promise<SdkCreateWalletOrderResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -731,7 +731,7 @@ async payFromWallet(options: PayFromWalletOptions): Promise<SdkPayOrderFromWalle
 Returns: `Promise<SdkPayOrderFromWalletResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

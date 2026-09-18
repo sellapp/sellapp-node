@@ -19,7 +19,7 @@ async list(options?: CouponsListOptions): Promise<AutoPaginatable<ListCouponsRes
 Returns: `Promise<AutoPaginatable<ListCouponsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -67,7 +67,7 @@ async create(options: CreateOptions): Promise<SdkCreateCouponResponseValue201App
 Returns: `Promise<SdkCreateCouponResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -120,7 +120,7 @@ async get(options: GetOptions): Promise<SdkGetCouponResponseValue200ApplicationJ
 Returns: `Promise<SdkGetCouponResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -168,7 +168,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceCouponResponseValue200
 Returns: `Promise<SdkReplaceCouponResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -219,7 +219,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateCouponResponseValue200App
 Returns: `Promise<SdkUpdateCouponResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -270,7 +270,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -318,7 +318,7 @@ async search(options: SearchOptions): Promise<SdkSearchCouponsResponseValue200Ap
 Returns: `Promise<SdkSearchCouponsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -367,7 +367,7 @@ async batchCreate(options: BatchCreateOptions): Promise<SdkBatchCreateCouponsRes
 Returns: `Promise<SdkBatchCreateCouponsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -415,7 +415,7 @@ async batchUpdate(options: BatchUpdateOptions): Promise<SdkBatchUpdateCouponsRes
 Returns: `Promise<SdkBatchUpdateCouponsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -463,7 +463,7 @@ async batchDelete(options: BatchDeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -511,7 +511,7 @@ async v2ListCoupons(options?: V2ListCouponsOptions): Promise<AutoPaginatable<V2L
 Returns: `Promise<AutoPaginatable<V2ListCouponsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -564,7 +564,7 @@ async v2CreateCoupon(options: V2CreateCouponOptions): Promise<SdkV2CreateCouponR
 Returns: `Promise<SdkV2CreateCouponResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -622,7 +622,7 @@ async v2SearchCoupons(options: V2SearchCouponsOptions): Promise<SdkV2SearchCoupo
 Returns: `Promise<SdkV2SearchCouponsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -676,7 +676,7 @@ async v2GetCoupon(options: V2GetCouponOptions): Promise<SdkV2GetCouponResponseVa
 Returns: `Promise<SdkV2GetCouponResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -729,7 +729,7 @@ async v2ReplaceCoupon(options: V2ReplaceCouponOptions): Promise<SdkV2ReplaceCoup
 Returns: `Promise<SdkV2ReplaceCouponResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -785,7 +785,7 @@ async v2UpdateCoupon(options: V2UpdateCouponOptions): Promise<SdkV2UpdateCouponR
 Returns: `Promise<SdkV2UpdateCouponResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -841,7 +841,7 @@ async v2DeleteCoupon(options: V2DeleteCouponOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -894,7 +894,7 @@ async v2BatchCreateCoupons(options: V2BatchCreateCouponsOptions): Promise<SdkV2B
 Returns: `Promise<SdkV2BatchCreateCouponsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -947,7 +947,7 @@ async v2BatchUpdateCoupons(options: V2BatchUpdateCouponsOptions): Promise<SdkV2B
 Returns: `Promise<SdkV2BatchUpdateCouponsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -1000,7 +1000,7 @@ async v2BatchDeleteCoupons(options: V2BatchDeleteCouponsOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

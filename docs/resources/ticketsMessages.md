@@ -19,7 +19,7 @@ async list(options: TicketsMessagesListOptions): Promise<AutoPaginatable<ListTic
 Returns: `Promise<AutoPaginatable<ListTicketMessagesResponseValue200ApplicationJsonPropertyDataItem, Omit<TicketsMessagesListOptions, "ticket">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -67,7 +67,7 @@ async reply(options: ReplyOptions): Promise<SdkReplyToTicketResponseValue201Appl
 Returns: `Promise<SdkReplyToTicketResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -116,7 +116,7 @@ async get(options: GetOptions): Promise<SdkGetTicketMessageResponseValue200Appli
 Returns: `Promise<SdkGetTicketMessageResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -165,7 +165,7 @@ async search(options: SearchOptions): Promise<SdkSearchTicketMessagesResponseVal
 Returns: `Promise<SdkSearchTicketMessagesResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -215,7 +215,7 @@ async v2ListTicketMessages(options: V2ListTicketMessagesOptions): Promise<AutoPa
 Returns: `Promise<AutoPaginatable<ListTicketMessagesResponseValue200ApplicationJsonPropertyDataItem, Omit<V2ListTicketMessagesOptions, "ticket">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -268,7 +268,7 @@ async v2ReplyToTicket(options: V2ReplyToTicketOptions): Promise<SdkV2ReplyToTick
 Returns: `Promise<SdkV2ReplyToTicketResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -322,7 +322,7 @@ async v2SearchTicketMessages(options: V2SearchTicketMessagesOptions): Promise<Sd
 Returns: `Promise<SdkV2SearchTicketMessagesResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -377,7 +377,7 @@ async v2GetTicketMessage(options: V2GetTicketMessageOptions): Promise<SdkV2GetTi
 Returns: `Promise<SdkV2GetTicketMessageResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

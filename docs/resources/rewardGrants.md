@@ -19,7 +19,7 @@ async list(options?: RewardGrantsListOptions): Promise<AutoPaginatable<SdkListRe
 Returns: `Promise<AutoPaginatable<SdkListRewardGrantsResponseValue200ApplicationJson, RewardGrantsListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async issue(options: IssueOptions): Promise<SdkIssueEligibleRewardGrantResponseV
 Returns: `Promise<SdkIssueEligibleRewardGrantResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -126,7 +126,7 @@ async search(options: SearchOptions): Promise<SdkSearchRewardGrantsResponseValue
 Returns: `Promise<SdkSearchRewardGrantsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -180,7 +180,7 @@ async get(options: GetOptions): Promise<SdkGetRewardGrantResponseValue200Applica
 Returns: `Promise<SdkGetRewardGrantResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

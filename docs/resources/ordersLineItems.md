@@ -19,7 +19,7 @@ async list(options: OrdersLineItemsListOptions): Promise<AutoPaginatable<ListOrd
 Returns: `Promise<AutoPaginatable<ListOrderSLineItemsResponseValue200ApplicationJsonPropertyDataItem, Omit<OrdersLineItemsListOptions, "order">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async search(options: SearchOptions): Promise<SdkSearchOrderSLineItemsResponseVa
 Returns: `Promise<SdkSearchOrderSLineItemsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -125,7 +125,7 @@ async get(options: GetOptions): Promise<SdkGetOrderSLineItemResponseValue200Appl
 Returns: `Promise<SdkGetOrderSLineItemResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

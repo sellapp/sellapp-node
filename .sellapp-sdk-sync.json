@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "language": "node",
   "repository": "sellapp/sellapp-node",
-  "sourceSha": "8d8876b1921e931e18baf6f31ed48f79c5282f73",
+  "sourceSha": "f84c9490995a106ba2bf0dcff1245ae18c765fc8",
   "specSha256": "02043ebfc36589e78743f00a0f4a2f3ac9ac14914b9cf2910f04fc34ad2d0924",
   "runId": "0",
   "runAttempt": "1",
-  "treeDigest": "19e10383211bb03174a4c00c3a18f15e305bed95ac2c6511af74b7a553a71b1d",
-  "contentDigest": "7abc8f5e9aee558241f3c0195b971b5e556d086d2e9deaf43aa39c8904ccb580",
+  "treeDigest": "5b166491071c81a8a2c0ab18328ca8dc9d19387786ef668fb77d348ced5f031a",
+  "contentDigest": "d8817cd3ec69d6d3b7e444a635080ac0c6b858494498f60284a30368e74e4e00",
   "files": [
     {
       "path": ".github/scripts/native-ci.mjs",
       "mode": "100644",
-      "sha256": "6d691700efa3f34e0267494b8b04905186346b25c5bc48be5db397f08043fc86"
+      "sha256": "b4f67fc8af1db331729c3fdf493bfd2e8b8ce23c935f0e73d047e1c7a7ff4d14"
     },
     {
       "path": ".github/scripts/validate-node-operation-snippets.mjs",
@@ -47,7 +47,7 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "sha256": "346795836c150df825376a66f73100d4400fc7a0c8f2ffa925f295e91c37cafb"
+      "sha256": "d884b430ae43577e7c0f127b44bfbdf6890c2e48fb1a2a471678c455297e3b2f"
     },
     {
       "path": "docs/methods.md",
@@ -62,392 +62,392 @@
     {
       "path": "docs/operation-examples.json",
       "mode": "100644",
-      "sha256": "9090efb4ab9798fb516414e76681eb8cd89e89ff43fa7d311a4c4684d75dde1c"
+      "sha256": "389b68833555a5fd2503a22c195fe0eedeab6e7edb366d2170b5efc5cb1dd6de"
     },
     {
       "path": "docs/operation-variants.json",
       "mode": "100644",
-      "sha256": "33c7c383aa5d80cfc7bfb8a3f6067c8d13da1d40c10d18b091745906f707fb40"
+      "sha256": "7764da4f300596d276cb04983f5725aa77aa95377fc3d60bc5a675ec47a8bd73"
     },
     {
       "path": "docs/resources/account.md",
       "mode": "100644",
-      "sha256": "880ec680e9e7eb84d0018850c9b941199eea73d3c7377654bc3a2ea352d45a72"
+      "sha256": "c0886687ec3945bc751e6a915f4cb58cb136055e3b9298a834192261af380448"
     },
     {
       "path": "docs/resources/addOns.md",
       "mode": "100644",
-      "sha256": "b8c78ef16db571697704c2a118c48fffc7b8c038929237201e630d14c5d8d78a"
+      "sha256": "f14b6df85fb30892c2fe9eda1a52350dc07a6ccbba03179679962277f6c85e18"
     },
     {
       "path": "docs/resources/addOnsParentProducts.md",
       "mode": "100644",
-      "sha256": "50a2d027f3eab0d9a5addbce2b58611be5602143f1cc3af965c4ac5bf8ed2f0b"
+      "sha256": "91e976086dd97bb4775791561d0cb3add7441974182886b0a15586c25e90e532"
     },
     {
       "path": "docs/resources/affiliatePayouts.md",
       "mode": "100644",
-      "sha256": "0036d231d1b9e8f054f89d06695aa446d7a5d9a09d3d49aa9db6033cf9eb18cf"
+      "sha256": "329e4067db33d421313587a91e848e96503aa0c6c399985d78f2dd4d5ce5db58"
     },
     {
       "path": "docs/resources/affiliateProgram.md",
       "mode": "100644",
-      "sha256": "b3de46a2ea238170316bc0981e883e313335fb0cd7ae68abada74ce00dc6d472"
+      "sha256": "b94bf8ae096700d12280361f3b79737142f9327e526545de991ae3ad3f957dae"
     },
     {
       "path": "docs/resources/affiliateReferralSessions.md",
       "mode": "100644",
-      "sha256": "26449b98e4f359d5d009a40e7230bf0d8ad712f52c3f003483a9eeeb039026af"
+      "sha256": "d04f31f833e481f00e02eb7d48d2f82cbba336562d861a93485da0712afa2241"
     },
     {
       "path": "docs/resources/affiliateReferrals.md",
       "mode": "100644",
-      "sha256": "8781503e9902c4424dcbd2e56052c5953201147bd4ad7e4ccad387295596fbd1"
+      "sha256": "6e2bf9dc1f44b831d490fe6f9e4bfaf3bd9b634e4b89d5cce06273cc8f2c790c"
     },
     {
       "path": "docs/resources/affiliates.md",
       "mode": "100644",
-      "sha256": "a77020cd37b9f361724bdc71c311bfdaae7e72c263b5414fe49e7d4642e1d4eb"
+      "sha256": "94287fba95125b05524669cb90347f2d0904e20c562c36d77bc3f308b40ab7fb"
     },
     {
       "path": "docs/resources/blacklists.md",
       "mode": "100644",
-      "sha256": "5be40403b99a474d0465730b68043a232d07cd45355d2dda4f681df2c46852dc"
+      "sha256": "dcfe23622fb236b414a011fb74c17718e469324d21b26203c6bb4be873f283a5"
     },
     {
       "path": "docs/resources/bookings.md",
       "mode": "100644",
-      "sha256": "349676a503dbcda7831325ab0b9f8ac3aef8636259253bf34d142853f443bdbf"
+      "sha256": "2ad5bf11a75c86c3106b0a2b6a1267780be54eb86aac4d114153bbab2b700b78"
     },
     {
       "path": "docs/resources/bookingsCalendarEvents.md",
       "mode": "100644",
-      "sha256": "7a8d117dfd900286e4c8e21c820186a3c1c69b932f5c92d755a5581363f503fb"
+      "sha256": "6a0bc6f8a02bc5f44ba94f1a598981ae63d77cc1ade0d82ed7404296429e66dd"
     },
     {
       "path": "docs/resources/bundleItems.md",
       "mode": "100644",
-      "sha256": "bb6f83748bf029d08d17f0f3c8299daabfbd1d0cd551f31ed2ef93ce24e1ec71"
+      "sha256": "5a8b1ac1dae0abd8ca71adf062c7cfb5e97a496ff2810ad7d854132925a39199"
     },
     {
       "path": "docs/resources/cashbackRules.md",
       "mode": "100644",
-      "sha256": "131d51d64964eab1e5601487d7a90d27e5abd0539b739220008baccd8374607f"
+      "sha256": "c0e145a79e7321b9e49762b1588f1804331dcad324f8ffad5849ce786a073639"
     },
     {
       "path": "docs/resources/charges.md",
       "mode": "100644",
-      "sha256": "a813f12a376f9ccf90df4c2b935514630871db7157c9c40dbe4f53485dd8b8bd"
+      "sha256": "5796cfc2999dde107274059d7bb98855b7be58f97c6940513815b3946000885a"
     },
     {
       "path": "docs/resources/communityConnections.md",
       "mode": "100644",
-      "sha256": "60153a7f4db3e180c17a79f61e809571ad91740d59bfa0449e6bbd6d156e986c"
+      "sha256": "085866abcdd6050604e4b4325055ee0fb65dbf2138abaa487442086bcfb21c77"
     },
     {
       "path": "docs/resources/coupons.md",
       "mode": "100644",
-      "sha256": "2968177e6301c49aa318ec97cb245be49e711a3f15a01e776d81134c593c11cd"
+      "sha256": "6a973125ce55e51822e6da60a93897658b6a2ff27a537b55794828718714cb99"
     },
     {
       "path": "docs/resources/courses.md",
       "mode": "100644",
-      "sha256": "1442e565cca19303eb5f35feb875cb83405e7503f22715abd4b9e627bcca54b2"
+      "sha256": "5461edce58a8c742740eb779fa307023f6f2adb981b17bc2a2fff1faec761656"
     },
     {
       "path": "docs/resources/coursesLessons.md",
       "mode": "100644",
-      "sha256": "45febc5514c2b1d167b7cafabe6bb85074b8f494787e1f2a8e2562e3780c6bde"
+      "sha256": "4371dbf7352d810c607b3b130b93dca73c1e95b220269bd0735f97efe9e1cbf2"
     },
     {
       "path": "docs/resources/coursesSections.md",
       "mode": "100644",
-      "sha256": "c10ce7f4ff9e16db36661aad38d0ca0410f03821428ba386a217b4b90a288362"
+      "sha256": "b378f37e8f8a5f3ac1559232c8c98723b5470d7a868232f73f9621b08a04d339"
     },
     {
       "path": "docs/resources/credits.md",
       "mode": "100644",
-      "sha256": "0182a8b226b573cc918e5da35d08ebf8777acdf59d68af0621e4ac4f66cfe8ee"
+      "sha256": "fd91292c72538b12faf0013ea78eea1bf62a54cafdab095399e61a0c8c88d487"
     },
     {
       "path": "docs/resources/creditsBalances.md",
       "mode": "100644",
-      "sha256": "b9008b2bf10411afd5615c66b197161e28a8b16263861f0ed43540707ad684ad"
+      "sha256": "a06c2b26a30fa452801ee3a7a51211bec2eefc0c46dc885b2653d4723756cbcb"
     },
     {
       "path": "docs/resources/creditsBalancesTransactions.md",
       "mode": "100644",
-      "sha256": "a4c634f1904a1459864f082c2a1855d07593c920adeaa743862cbf79a86cf747"
+      "sha256": "6151167c3022a9130051f68d0aa2965007128747b4f4e85ebf8918830f3d789f"
     },
     {
       "path": "docs/resources/creditsProducts.md",
       "mode": "100644",
-      "sha256": "df8e776e55e87250ade03d022e5ebbaf5b171f2d165579704d823be01cfaa37a"
+      "sha256": "671cdf1789ff842b5dd85902099afbc55738ce1d4991bbe71ffca6777854fb4e"
     },
     {
       "path": "docs/resources/customerPortal.md",
       "mode": "100644",
-      "sha256": "4667b7b6ec8fdd72c87a0d32eddc79a745e0b0a4928132e18dc425c9efebd631"
+      "sha256": "903f153b23e6c213701b16e1a66173d832c4d4cc6c3595b5c9c0ce731c9b8951"
     },
     {
       "path": "docs/resources/customerSessions.md",
       "mode": "100644",
-      "sha256": "bd6c55def102884ae5c2fc59929254f8b64ad320a0f80055ccd18521e9ab742b"
+      "sha256": "72d127c99d4f0fc27fd018fb2a735b61be976e65de6b1a4773125e8785fea28e"
     },
     {
       "path": "docs/resources/customers.md",
       "mode": "100644",
-      "sha256": "63a8e88119394e2c70e5ed9be3bd477af023256acc2bcbdcc7d27ab3d993430d"
+      "sha256": "e0adf5c74236894d9635ee7ef56c3e64b7f97ce61a2f85f26f84ed38db24ed73"
     },
     {
       "path": "docs/resources/disputes.md",
       "mode": "100644",
-      "sha256": "d1f7b28cbff82f3004c14e9ea5ff9e2498769b98bd331e722438f2520cbdc42d"
+      "sha256": "6c8341c0cdebad7698295b8c79dd446fcb133d6fb46974e42ea428105c7ee0f9"
     },
     {
       "path": "docs/resources/entitlements.md",
       "mode": "100644",
-      "sha256": "1a5bea405177a55f8139fedcd66e0732d373d463aedcc5710bede43188af9683"
+      "sha256": "4f277cca15af3a397729d521fe8a50b5aa18f6ef2a32667b3b1fdb23614ec9bc"
     },
     {
       "path": "docs/resources/events.md",
       "mode": "100644",
-      "sha256": "0605b9214bee6dbad1093f8c40f9e72173043581edf899b7d0dac6363dfd5717"
+      "sha256": "799e4f3f79fe66b0d731bdb1984a30067e531d19f953149f37b73288080205c2"
     },
     {
       "path": "docs/resources/exports.md",
       "mode": "100644",
-      "sha256": "4081c52c727e0069310b6f777b644f8d306b6125cb22dd2e5c40ab2901a2c91a"
+      "sha256": "d1fe7fc04e147e7368c48ef5d7470f88da8eee457272ecd2204961b241852850"
     },
     {
       "path": "docs/resources/feedback.md",
       "mode": "100644",
-      "sha256": "639ba4a56456f63dbbaef25d4945343bff8ac2b5e48283ebefccbdf201c6eecc"
+      "sha256": "4e8cda8e12cf5a2e407ae1bab07cb4802f2a008fe1233604d7ed7aa5887a7346"
     },
     {
       "path": "docs/resources/groups.md",
       "mode": "100644",
-      "sha256": "78ecb1eb830582112db9dc697a4aec38eee75484ffa0c089f80fe11eea185fd6"
+      "sha256": "4379dc334ec68156d61540edd0522ec265aedfbf3666808c694387c15fd7f8f3"
     },
     {
       "path": "docs/resources/groupsProducts.md",
       "mode": "100644",
-      "sha256": "4c5ee236bdf5757a7d0f891f6e50fb786160751f541e3c9f85eb4905c680474b"
+      "sha256": "e8fd119d6aa8933d6de45bd2a0d1d9fba84c60697543c0960c33eb4d8ca6ab08"
     },
     {
       "path": "docs/resources/highlights.md",
       "mode": "100644",
-      "sha256": "543804194467d7a925fb8040e28ad6f833fb706d1ee6c4bad68f7cc54e69a207"
+      "sha256": "4b2c4ef9a1d7c72f04f77f59547b4e776936cd583b2a29a2229495cfa0bb922d"
     },
     {
       "path": "docs/resources/highlightsMedia.md",
       "mode": "100644",
-      "sha256": "fbaf74d67ee34021e0629489863c750aadd3a5ce38fba49eaf67c7803a1977d0"
+      "sha256": "09ca847b11a36bfea654fc645f0094c8c18ce60559b06515bcad3b7b2ea5ac8c"
     },
     {
       "path": "docs/resources/invoices.md",
       "mode": "100644",
-      "sha256": "f165fe3014bdf59c960cfa4a1c016e9e589512af4c83b1674efd72efd2057d79"
+      "sha256": "b61519db07f7b147f124419fca51ff1dee35ad40efe30db16fd04961a1dacaf3"
     },
     {
       "path": "docs/resources/licenseInstances.md",
       "mode": "100644",
-      "sha256": "2fdc40bd5f94defd5c8c43e663194075a62ccb5a49d99f61a935aa11c7b873de"
+      "sha256": "2ec75fedd093af317b537aef4a973a6a407ffc8f1bdd3a23c15bb744ff1b4af9"
     },
     {
       "path": "docs/resources/licenses.md",
       "mode": "100644",
-      "sha256": "2a213166ef729eac2d422ea6e23bc303cc0d2223dc1e0dc263404f6da9cfba47"
+      "sha256": "21513dae29a6bb65817273ad5aca9bf72d771824524ca442f277a9f6e8d6ed4d"
     },
     {
       "path": "docs/resources/licensesInstances.md",
       "mode": "100644",
-      "sha256": "a6836a5da8457d4824fabf4b78b34bf78658a3efc685be327f18d30278b0fb7c"
+      "sha256": "8961e9d0cb8a237773324d92cdde0c3375e630a5823d3aba4a8b14a7ab1e9f4c"
     },
     {
       "path": "docs/resources/lineItems.md",
       "mode": "100644",
-      "sha256": "0e73da3a5a5179a139b993b450d5835e7d3159e9d5856e2d8d62bfdb0fcdbafa"
+      "sha256": "d0ae3beda1223b7f27b4cda9f3cfa8f3cfa3df3096867c5b7571e4c05944d141"
     },
     {
       "path": "docs/resources/oauth.md",
       "mode": "100644",
-      "sha256": "c9a7e8331c84d2b2545abcc7c95f855d620763d5a9acd455f1b4c8ba65c33bc7"
+      "sha256": "422069ae4b265691a2d65ef13846ca33026fd90871f51fa5d3a18951cbdba3d8"
     },
     {
       "path": "docs/resources/oauthManagement.md",
       "mode": "100644",
-      "sha256": "efb0b5ea370e9730b98ffa13be82d47cdb40611213cf7a6daa858b8d81a3652e"
+      "sha256": "70162c8567c8cd2b90dcbecbbbfa479d78d3023b44a1fd1c05e834837cdd884d"
     },
     {
       "path": "docs/resources/orders.md",
       "mode": "100644",
-      "sha256": "5ef892e64b6d5bf8440227271d4e817c2fc98f2ea6544b3abe7b7c2efa5cb937"
+      "sha256": "9565371689d1a9fd526f60ee6f42e9ac9c4bcc528e9a6bb634e29a62a0ee462d"
     },
     {
       "path": "docs/resources/ordersLineItems.md",
       "mode": "100644",
-      "sha256": "50ba54fc11295f93ba1fe6d5d8d2c91d5e6cd8e74e08c2b4e517771d98b199b0"
+      "sha256": "2234f7f33ea8679a67054e1e0e61870439d9db1b2c5e97d1eea928cc744a5e80"
     },
     {
       "path": "docs/resources/paymentMethods.md",
       "mode": "100644",
-      "sha256": "0fc0e9153c6d3a095234dbdbbcb2152e457cef2b43d62de65c2f3747e0292702"
+      "sha256": "0903a97d66709d17e29aae69d07546c52f04b70ae338462ca71cf287b9b34760"
     },
     {
       "path": "docs/resources/paymentMethodsCustom.md",
       "mode": "100644",
-      "sha256": "ff490658ce36b59ab3c746d7cc9644c795331ddceaab578907f69c2d267d778c"
+      "sha256": "bd164ae6f6830b8c4dec5cbc3796a6626c8f64575644f673eb0a98158cf049fe"
     },
     {
       "path": "docs/resources/productVariants.md",
       "mode": "100644",
-      "sha256": "3375c0ae4f9b1694e3f8de455f34885df785f89949b690f1edc86491498aa63b"
+      "sha256": "268b3ee14726282228c8140c1f9dfb2601a19dbd5259dff6a300dd08ebf539f6"
     },
     {
       "path": "docs/resources/productVariantsBooking.md",
       "mode": "100644",
-      "sha256": "147002d790c0a145530504eb8ce069eb65de401c89e52c285d1b22f762d7b582"
+      "sha256": "259ae3df0ae1d22853f9edcb162fd3a4b8e4d56065e7ae9842054409c0b61fdb"
     },
     {
       "path": "docs/resources/productVariantsPricing.md",
       "mode": "100644",
-      "sha256": "8d595bc48c07a710c0fc7278e45214e0bab6910939a150dc0d72dc1060050887"
+      "sha256": "2f396b38fec90210042d51b625b73470140bfbac188f9691fbad9b6cd47c03a1"
     },
     {
       "path": "docs/resources/products.md",
       "mode": "100644",
-      "sha256": "cce06aef79b453ed2ca81e5cbf12af4b0c316586e35c0c09b6095e52decb5277"
+      "sha256": "ac1c376d6665e6f99e97e7e9299f2a6278079204c831422d84b0976b553533f7"
     },
     {
       "path": "docs/resources/productsAddons.md",
       "mode": "100644",
-      "sha256": "f7bea6a2c4147bfb0696b28070ca9453c11c213c6370cb64c2af79794e5bd344"
+      "sha256": "1208452efacd8d324484cc284365727890ceab59cd17994d1afe61dc3c770891"
     },
     {
       "path": "docs/resources/promotions.md",
       "mode": "100644",
-      "sha256": "8b9d6d3a22bb3acc75b6cc6ea14a505beac760ff1c47b24ff373dbb23b79334e"
+      "sha256": "8c991ca5be4029617bdf42efbf430458f752d189b54a051b96b56030cde0cd0b"
     },
     {
       "path": "docs/resources/promotionsPhases.md",
       "mode": "100644",
-      "sha256": "5875c6ab1c603ac3f557e8bd7b511896540b5b52000bb14cab9ffb4d7423a8df"
+      "sha256": "c5641a3de4e932295edcdba2043582537d9d26cb6004a2e719dac0bdfcefee1c"
     },
     {
       "path": "docs/resources/refunds.md",
       "mode": "100644",
-      "sha256": "24ef4a8570808c2980b92cbec9d87fe63ea76c37f85e8d269c5b717451f2d1ed"
+      "sha256": "6a64249e26370a422ec1dff480be2a7616d0dd933bd9241205c1aa5f9d693321"
     },
     {
       "path": "docs/resources/rewardCouponTemplates.md",
       "mode": "100644",
-      "sha256": "7b5d3a754227d1a9a2251a6b643253aef23e59a5f62d9b6231aaede724cca5d0"
+      "sha256": "e19d9ff4715c0bfc37a72526180d98884372ebeed6cfcaf70b8776b7990e5b4f"
     },
     {
       "path": "docs/resources/rewardGrants.md",
       "mode": "100644",
-      "sha256": "bd0d1b085cd01772d0258d729e38926c0ca252368fcbf1507e916d48fc8c021e"
+      "sha256": "73c5e80d05dec39c7eebdd48f2a273505e3e1e21a01a564c2fc9ee86c83075d5"
     },
     {
       "path": "docs/resources/rewardRules.md",
       "mode": "100644",
-      "sha256": "f06e867d8df84092da3887f4d04c9f63e38bb24801b2d8648af10a4b50e50c97"
+      "sha256": "68c11ed655d91f4272643efd6a615b5b833396dec53ca5952eb6fa6057c2ad76"
     },
     {
       "path": "docs/resources/sections.md",
       "mode": "100644",
-      "sha256": "07e9ba931794a713f70e003d7dc4773457c07e46ef1eb15913b2d96b9a26d327"
+      "sha256": "31bb1c8aadb41da6f95e2235096f740361de3f1850713ec77ca3ed5c8e7aeb14"
     },
     {
       "path": "docs/resources/storeCustomDomains.md",
       "mode": "100644",
-      "sha256": "42f29e7158a928a80aec6de2f31e844a1f811fc4db6c0fd790f8fbb37c99e7cd"
+      "sha256": "2cac60f05591252f281bc01a1ab30452df84b82c42ab66727b3164eaeca30dd1"
     },
     {
       "path": "docs/resources/storeNotificationChannels.md",
       "mode": "100644",
-      "sha256": "b4c22a2af6fdcbd077bcf39d5cbc773a466580bc4929c687d751bab0c1ab38f3"
+      "sha256": "198bca4698f182ae1e59afc2031c14776f742e3ea9dadf387ec0f111d0fe245d"
     },
     {
       "path": "docs/resources/storeSettings.md",
       "mode": "100644",
-      "sha256": "63a626da4ce78fc8c06ef412d3f2be0be43e508f5dc879c2085fbe2b56a7cb66"
+      "sha256": "a874a0be507954408cbdc4c42f9a1647d6441bca5bab7eaf6b2f17377bfabc8e"
     },
     {
       "path": "docs/resources/subscriptions.md",
       "mode": "100644",
-      "sha256": "c4d908c0c6c6b6a673215c2ba19dfa70bfa1895274d20a0ab495c2a897e0a34b"
+      "sha256": "057298cdf461d9d7883fa3c0eae6e7adf4a7e3d5045ad584e7d83a12d9b9d35c"
     },
     {
       "path": "docs/resources/tickets.md",
       "mode": "100644",
-      "sha256": "da00281d686d7e61680459b799b0c1d4cb983d1fcc5dfd2bd7beda4b27dd97e5"
+      "sha256": "7d70ed4d626ca42de7665665f0b05d5f4471ba2db700ab9d87f36632506b6266"
     },
     {
       "path": "docs/resources/ticketsMessages.md",
       "mode": "100644",
-      "sha256": "09245d80857816560f8cea7f29fa48993737ba82d1ba2013afb096be7401efee"
+      "sha256": "a0f66fd04dfcd1179b9aa7d20cd445e0ea7e221f39dbd05b16d44afe5a3d05eb"
     },
     {
       "path": "docs/resources/upsellOffers.md",
       "mode": "100644",
-      "sha256": "b49435c9716be45c8f8dc6311f012af5a41df93e86ce8aa9f0ebd95ef774cd49"
+      "sha256": "edd518cf482c1782d9080322364b3176228fc8bb80685ee82b51ad3cae721f4c"
     },
     {
       "path": "docs/resources/variantDeliverableFiles.md",
       "mode": "100644",
-      "sha256": "937c1ff17b4ec7976a29f2753a792700daee10b29224f5e6813f18be8d7691fa"
+      "sha256": "363d7230cf7e7a9d92a3b4dfd66c71226a5fcdf155ab1beb308f551c78810893"
     },
     {
       "path": "docs/resources/variantDeliverableFolders.md",
       "mode": "100644",
-      "sha256": "01f4347b63dd5fb07b44cdef6c51855c61b4d54b42802b044a1c2bb1dc237bd1"
+      "sha256": "f10b1b0661249d6eda9c02f2bf26635a8e2775556251fb54503582346ba1a0fa"
     },
     {
       "path": "docs/resources/variantDeliverables.md",
       "mode": "100644",
-      "sha256": "839c60d0addb79f344b90035e38bd2169ec0950bdeb0015a0a6003323c9bc83e"
+      "sha256": "8b24280766e94ce96f2f333b9be2b5de80648e065bd86aa8078361c370007bd0"
     },
     {
       "path": "docs/resources/variantSerials.md",
       "mode": "100644",
-      "sha256": "7a93f363c9d4e0c482029bc074526effade947646e8b9cac4573bb6c0da67921"
+      "sha256": "42c432de1aecb16cf44463c47231d1ae34460714215a3512f6bf7c6efac78e69"
     },
     {
       "path": "docs/resources/wallet.md",
       "mode": "100644",
-      "sha256": "f28b606b11011df298b864301b01a18bc7b07a478e742bf04265f4b608908c96"
+      "sha256": "23b4452ee714ebc584437a6a0ff3ed1d4fcde2c422b25912a32eeaa808eea5c3"
     },
     {
       "path": "docs/resources/walletBonusTiers.md",
       "mode": "100644",
-      "sha256": "8f0b97063ef58119bcfd43640291343cb5c11d4372ba6addb44e7e266eb8f44a"
+      "sha256": "7d3f92d181cde97d572b6662bdb32b5fd527d35b7d92ee7197804b932bf31249"
     },
     {
       "path": "docs/resources/walletSettings.md",
       "mode": "100644",
-      "sha256": "42199fd2359a038ac282e95051cd3f2376fbd21b192090e6223dd3aeb973f362"
+      "sha256": "c8979309b8c9fa7335e912c3ec19389a29c1e3804293347347aa237c7e69a6d2"
     },
     {
       "path": "docs/resources/walletTopups.md",
       "mode": "100644",
-      "sha256": "e0a1a3c590f64242b76be22d59fef9593699d76e343825d45b5edfe0415bd46b"
+      "sha256": "0794602ced580fb2c247951f0411f0c87f04e85329282616aba140caa8626210"
     },
     {
       "path": "docs/resources/walletTransactions.md",
       "mode": "100644",
-      "sha256": "d1613d7331425d72046df7b453c307f19888cccec4620f99aba351d353ecbb82"
+      "sha256": "8b543d3842d369f27f4d2e9bfb68bb2653a6067982e9db30d7d940b107d0b133"
     },
     {
       "path": "docs/resources/webhookChannels.md",
       "mode": "100644",
-      "sha256": "ff3a84094efd2f3a35177241b5c65bd3c8f88eb57e30012b7ed9496e591fd560"
+      "sha256": "dcef84f9fb5fc956747dc96fad900df7cd0251b99b64cf00fb1a0128f049bd70"
     },
     {
       "path": "docs/resources/webhookPlatform.md",
       "mode": "100644",
-      "sha256": "5278b0d8c0494fbba812f0316c35201dfc0107a76d90e42cb1788239a41a9839"
+      "sha256": "45ac04531230a5d11c2e9a58b3e15e0c6470d8afffbe084eeeb254c2953406d9"
     },
     {
       "path": "docs/signatures.json",
@@ -457,37 +457,37 @@
     {
       "path": "docs/usage.md",
       "mode": "100644",
-      "sha256": "0eab6e8cccb70f92eb526fc8727803a90f89ee9614a2ae4b37c07b0d1f0c0d23"
+      "sha256": "56d72c8ac306bac6103240dc125d37aeb0c495e47a21a4c4120a49d5222ed71f"
     },
     {
       "path": "examples/README.md",
       "mode": "100644",
-      "sha256": "bfa0698996f31f0da89b325e828347f69e563e167b58eee24aebc7dd405f486b"
+      "sha256": "76e371d916412936ce0f72bc2a2ed6e99d4b1b42a85b7b1877b3e5bac53bfc3a"
     },
     {
       "path": "examples/errors.mjs",
       "mode": "100644",
-      "sha256": "8df46577bf4a014a0227ff4276a92b0dfeeeb1f0167fd3f9b01a8446bc7f233f"
+      "sha256": "e6199c9b3bf9bf70cf8f041f221bc6542a34ba0d725d44c7009bf9fb11bd3746"
     },
     {
       "path": "examples/first-request.mjs",
       "mode": "100644",
-      "sha256": "84ae5bdf18159694ada5d17eb104b80e7d963e18e3427844a1738f1f7350fba3"
+      "sha256": "d1911f4b357445d001e272b40a140bd1207f3a7a6c3aaa1017885ded2a89514b"
     },
     {
       "path": "examples/pagination.mjs",
       "mode": "100644",
-      "sha256": "c101af28f646d22cf7d6066599701ff96711fd52b5cd06f2c63a26ae5e685da3"
+      "sha256": "2af99d20235fe6b035626a807720757be85708e8e65cb3af7cb180db72979d5d"
     },
     {
       "path": "generation-manifest.json",
       "mode": "100644",
-      "sha256": "3704a7cb5eb87f0eb4741d331d19d1204b5c444d2bcc197726df1ab945c220aa"
+      "sha256": "b7d89405b71a363cb7f784a91fb7a9458f5f0eeed5fd0df95cba6df02f65aad5"
     },
     {
       "path": "package.json",
       "mode": "100644",
-      "sha256": "ea9b7792cc5606d237d872616c1f0b83de3fc4e6d584ff423cf0ed1666efa6cc"
+      "sha256": "8e55a38fefcc3cad78fdb3cc71e8fd9433726707922096f9b8d85230fb54bb65"
     },
     {
       "path": "src/account/account.ts",
@@ -27957,7 +27957,7 @@
     {
       "path": "test/documentation.test.mjs",
       "mode": "100644",
-      "sha256": "cc10a6e4bdcbac43565e4ea4ad6e663b889f5f7c6ddb81c8c1f5596fd98d7eae"
+      "sha256": "324540b2210e1bd78e7c1ef4e848831a9c0f7b95911f7fa0545ef190d084deb3"
     },
     {
       "path": "test/oauth-contract.test.mjs",

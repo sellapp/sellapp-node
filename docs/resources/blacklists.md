@@ -19,7 +19,7 @@ async list(options?: BlacklistsListOptions): Promise<AutoPaginatable<Blacklist, 
 Returns: `Promise<AutoPaginatable<Blacklist, BlacklistsListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -67,7 +67,7 @@ async create(options: CreateOptions): Promise<BlacklistResponse>
 Returns: `Promise<BlacklistResponse>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -117,7 +117,7 @@ async get(options: GetOptions): Promise<BlacklistResponse>
 Returns: `Promise<BlacklistResponse>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -165,7 +165,7 @@ async update(options: UpdateOptions): Promise<BlacklistResponse>
 Returns: `Promise<BlacklistResponse>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -213,7 +213,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -261,7 +261,7 @@ async v2ListBlacklists(options?: V2ListBlacklistsOptions): Promise<AutoPaginatab
 Returns: `Promise<AutoPaginatable<Blacklist, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -312,7 +312,7 @@ async v2CreateBlacklist(options: V2CreateBlacklistOptions): Promise<BlacklistRes
 Returns: `Promise<BlacklistResponse>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -367,7 +367,7 @@ async v2GetBlacklist(options: V2GetBlacklistOptions): Promise<BlacklistResponse>
 Returns: `Promise<BlacklistResponse>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -420,7 +420,7 @@ async v2ReplaceBlacklist(options: V2ReplaceBlacklistOptions): Promise<BlacklistR
 Returns: `Promise<BlacklistResponse>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -474,7 +474,7 @@ async v2UpdateBlacklist(options: V2UpdateBlacklistOptions): Promise<BlacklistRes
 Returns: `Promise<BlacklistResponse>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -528,7 +528,7 @@ async v2DeleteBlacklist(options: V2DeleteBlacklistOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

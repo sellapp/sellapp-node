@@ -19,7 +19,7 @@ async list(requestOptions: RequestOptions = {}): Promise<SdkListCommunityConnect
 Returns: `Promise<SdkListCommunityConnectionsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async start(options: StartOptions): Promise<SdkStartCommunityConnectionResponseV
 Returns: `Promise<SdkStartCommunityConnectionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -124,7 +124,7 @@ async poll(options: PollOptions): Promise<SdkPollCommunityConnectionResponseValu
 Returns: `Promise<SdkPollCommunityConnectionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -178,7 +178,7 @@ async complete(options: CompleteOptions): Promise<SdkCompleteCommunityConnection
 Returns: `Promise<SdkCompleteCommunityConnectionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -233,7 +233,7 @@ async verify(options: VerifyOptions): Promise<SdkVerifyCommunityConnectionRespon
 Returns: `Promise<SdkVerifyCommunityConnectionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -286,7 +286,7 @@ async disconnect(options: DisconnectOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

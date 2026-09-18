@@ -19,7 +19,7 @@ async list(options?: CustomersListOptions): Promise<AutoPaginatable<SdkListCusto
 Returns: `Promise<AutoPaginatable<SdkListCustomersResponseValue200ApplicationJson, CustomersListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async createCustomer(options: CreateCustomerOptions): Promise<SdkCreateCustomerR
 Returns: `Promise<SdkCreateCustomerResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -129,7 +129,7 @@ async search(options: SearchOptions): Promise<SdkSearchCustomersResponseValue200
 Returns: `Promise<SdkSearchCustomersResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -183,7 +183,7 @@ async get(options: GetOptions): Promise<SdkGetCustomerResponseValue200Applicatio
 Returns: `Promise<SdkGetCustomerResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -236,7 +236,7 @@ async updateCustomer(options: UpdateCustomerOptions): Promise<SdkUpdateCustomerR
 Returns: `Promise<SdkUpdateCustomerResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -290,7 +290,7 @@ async getCustomerByExternalId(options: GetCustomerByExternalIdOptions): Promise<
 Returns: `Promise<SdkGetCustomerResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -343,7 +343,7 @@ async upsertByExternalId(options: UpsertByExternalIdOptions): Promise<SdkUpsertC
 Returns: `Promise<SdkUpsertCustomerResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -398,7 +398,7 @@ async updateCustomerByExternalId(options: UpdateCustomerByExternalIdOptions): Pr
 Returns: `Promise<SdkUpdateCustomerResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

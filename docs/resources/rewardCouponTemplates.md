@@ -19,7 +19,7 @@ async list(options?: RewardCouponTemplatesListOptions): Promise<AutoPaginatable<
 Returns: `Promise<AutoPaginatable<SdkListRewardCouponTemplatesResponseValue200ApplicationJson, RewardCouponTemplatesListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async create(options: CreateOptions): Promise<SdkCreateRewardCouponTemplateRespo
 Returns: `Promise<SdkCreateRewardCouponTemplateResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -131,7 +131,7 @@ async search(options: SearchOptions): Promise<SdkSearchRewardCouponTemplatesResp
 Returns: `Promise<SdkSearchRewardCouponTemplatesResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -185,7 +185,7 @@ async get(options: GetOptions): Promise<SdkGetRewardCouponTemplateResponseValue2
 Returns: `Promise<SdkGetRewardCouponTemplateResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -238,7 +238,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceRewardCouponTemplateRe
 Returns: `Promise<SdkReplaceRewardCouponTemplateResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -292,7 +292,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateRewardCouponTemplateRespo
 Returns: `Promise<SdkUpdateRewardCouponTemplateResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

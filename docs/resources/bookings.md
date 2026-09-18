@@ -19,7 +19,7 @@ async list(options?: BookingsListOptions): Promise<AutoPaginatable<SdkListAppoin
 Returns: `Promise<AutoPaginatable<SdkListAppointmentsResponseValue200ApplicationJson, BookingsListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async search(options: SearchOptions): Promise<SdkSearchAppointmentsResponseValue
 Returns: `Promise<SdkSearchAppointmentsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -126,7 +126,7 @@ async get(options: GetOptions): Promise<SdkGetAppointmentResponseValue200Applica
 Returns: `Promise<SdkGetAppointmentResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -179,7 +179,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateAppointmentResponseValue2
 Returns: `Promise<SdkUpdateAppointmentResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -234,7 +234,7 @@ async cancel(options: CancelOptions): Promise<SdkCancelAppointmentResponseValue2
 Returns: `Promise<SdkCancelAppointmentResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

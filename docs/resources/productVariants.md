@@ -19,7 +19,7 @@ async list(options: ProductVariantsListOptions): Promise<AutoPaginatable<ListPro
 Returns: `Promise<AutoPaginatable<ListProductVariantsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async create(options: CreateOptions): Promise<SdkCreateProductVariantResponseVal
 Returns: `Promise<SdkCreateProductVariantResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -130,7 +130,7 @@ async get(options: GetOptions): Promise<SdkGetProductVariantResponseValue200Appl
 Returns: `Promise<SdkGetProductVariantResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -184,7 +184,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceProductVariantWithPutR
 Returns: `Promise<SdkReplaceProductVariantWithPutResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -240,7 +240,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateProductVariantResponseVal
 Returns: `Promise<SdkUpdateProductVariantResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -296,7 +296,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -350,7 +350,7 @@ async search(options: SearchOptions): Promise<SdkSearchProductVariantsResponseVa
 Returns: `Promise<SdkSearchProductVariantsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -405,7 +405,7 @@ async batchCreate(options: BatchCreateOptions): Promise<SdkBatchCreateProductVar
 Returns: `Promise<SdkBatchCreateProductVariantsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -459,7 +459,7 @@ async batchUpdate(options: BatchUpdateOptions): Promise<SdkBatchUpdateProductVar
 Returns: `Promise<SdkBatchUpdateProductVariantsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -513,7 +513,7 @@ async batchDelete(options: BatchDeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

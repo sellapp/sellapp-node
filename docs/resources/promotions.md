@@ -19,7 +19,7 @@ async list(options?: PromotionsListOptions): Promise<AutoPaginatable<SdkListProm
 Returns: `Promise<AutoPaginatable<SdkListPromotionsResponseValue200ApplicationJson, PromotionsListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async create(options: CreateOptions): Promise<SdkCreatePromotionResponseValue201
 Returns: `Promise<SdkCreatePromotionResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -132,7 +132,7 @@ async search(options: SearchOptions): Promise<SdkSearchPromotionsResponseValue20
 Returns: `Promise<SdkSearchPromotionsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -186,7 +186,7 @@ async get(options: GetOptions): Promise<SdkGetPromotionResponseValue200Applicati
 Returns: `Promise<SdkGetPromotionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -239,7 +239,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplacePromotionResponseValue
 Returns: `Promise<SdkReplacePromotionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -294,7 +294,7 @@ async update(options: UpdateOptions): Promise<SdkUpdatePromotionResponseValue200
 Returns: `Promise<SdkUpdatePromotionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -349,7 +349,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -402,7 +402,7 @@ async restore(options: RestoreOptions): Promise<SdkRestorePromotionResponseValue
 Returns: `Promise<SdkRestorePromotionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

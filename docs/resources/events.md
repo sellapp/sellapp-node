@@ -19,7 +19,7 @@ async listIntegrationEvents(options?: ListIntegrationEventsOptions): Promise<Aut
 Returns: `Promise<AutoPaginatable<ListIntegrationEventsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async listOrderEvents(options: ListOrderEventsOptions): Promise<AutoPaginatable<
 Returns: `Promise<AutoPaginatable<ListOrderEventsResponseValue200ApplicationJsonPropertyDataItem, Omit<ListOrderEventsOptions, "order">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

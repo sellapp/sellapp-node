@@ -19,7 +19,7 @@ async list(options: HighlightsMediaListOptions): Promise<SdkListHighlightMediaRe
 Returns: `Promise<SdkListHighlightMediaResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async add(options: AddOptions): Promise<SdkAddHighlightMediaResponseValue201Appl
 Returns: `Promise<SdkAddHighlightMediaResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -128,7 +128,7 @@ async reorder(options: ReorderOptions): Promise<SdkReorderHighlightMediaResponse
 Returns: `Promise<SdkReorderHighlightMediaResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -182,7 +182,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceHighlightMediaResponse
 Returns: `Promise<SdkReplaceHighlightMediaResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -239,7 +239,7 @@ async replaceMetadata(options: ReplaceMetadataOptions): Promise<SdkReplaceHighli
 Returns: `Promise<SdkReplaceHighlightMediaMetadataResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -295,7 +295,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateHighlightMediaResponseVal
 Returns: `Promise<SdkUpdateHighlightMediaResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -351,7 +351,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

@@ -19,7 +19,7 @@ async getOAuthAuthorizationServerMetadata(requestOptions: RequestOptions = {}): 
 Returns: `Promise<SdkGetOAuthAuthorizationServerMetadataResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -60,7 +60,7 @@ async getOAuthAuthorizationRequest(options: GetOAuthAuthorizationRequestOptions)
 Returns: `Promise<string>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -108,7 +108,7 @@ async approveOAuthAuthorization(options: ApproveOAuthAuthorizationOptions): Prom
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -158,7 +158,7 @@ async denyOAuthAuthorization(options: DenyOAuthAuthorizationOptions): Promise<vo
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -206,7 +206,7 @@ async exchangeOAuthToken(options: ExchangeOAuthTokenOptions): Promise<SdkExchang
 Returns: `Promise<SdkExchangeOAuthTokenResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -258,7 +258,7 @@ async revokeOAuthToken(options: RevokeOAuthTokenOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

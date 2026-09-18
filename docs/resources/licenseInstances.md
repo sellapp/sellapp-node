@@ -19,7 +19,7 @@ async list(options?: LicenseInstancesListOptions): Promise<AutoPaginatable<ListL
 Returns: `Promise<AutoPaginatable<ActivateLicenseKeyResponseValue200ApplicationJsonPropertyData, LicenseInstancesListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

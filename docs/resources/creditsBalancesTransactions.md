@@ -19,7 +19,7 @@ async list(options: CreditsBalancesTransactionsListOptions): Promise<AutoPaginat
 Returns: `Promise<AutoPaginatable<ListCreditBalanceTransactionsResponseValue200ApplicationJsonPropertyDataItem, Omit<CreditsBalancesTransactionsListOptions, "customer" | "creditProduct">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

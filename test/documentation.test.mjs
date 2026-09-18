@@ -41,6 +41,14 @@ test('exact documentation examples work through the packed public package', asyn
     assert.ok(!info.files.some(file => file.path.startsWith('test/') || file.path.startsWith('examples/')));
     await writeFile(path.join(dir,'package.json'), JSON.stringify({private:true,type:'module'}));
     await exec('npm',['install','--ignore-scripts','--no-audit','--no-fund',path.join(dir,info.filename)],{cwd:dir});
+    await exec(process.execPath, ['-e', "const { SellApp } = require('@sell.app/sdk'); if (typeof SellApp !== 'function') process.exit(1);"], {cwd:dir});
+    for (const extension of ['mts', 'cts']) {
+      const source = extension === 'mts'
+        ? "import { SellApp } from '@sell.app/sdk';"
+        : "import SDK = require('@sell.app/sdk'); const { SellApp } = SDK;";
+      await writeFile(path.join(dir, 'consumer.' + extension), source + '\nconst client = new SellApp({ apiKey: "dummy", store: "docs-store" });\nconst page = client.products.list({ limit: 1 });\n');
+    }
+    await exec(process.execPath, [path.resolve('node_modules/typescript/bin/tsc'), '--noEmit', '--strict', '--skipLibCheck', '--target', 'ES2022', '--module', 'NodeNext', '--moduleResolution', 'NodeNext', path.join(dir, 'consumer.mts'), path.join(dir, 'consumer.cts')], {cwd:dir});
     await cp('examples', path.join(dir,'examples'), {recursive:true});
     const env = {...process.env,SELLAPP_API_KEY:'docs-dummy',SELLAPP_STORE:'docs-store',SELLAPP_API_BASE_URL:'http://127.0.0.1:' + server.address().port};
     const run = file => exec(process.execPath,['examples/' + file + '.mjs'],{cwd:dir,env});

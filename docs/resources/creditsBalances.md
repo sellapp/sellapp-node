@@ -19,7 +19,7 @@ async list(options?: CreditsBalancesListOptions): Promise<AutoPaginatable<SdkLis
 Returns: `Promise<AutoPaginatable<SdkListCreditBalancesResponseValue200ApplicationJson, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async get(options: GetOptions): Promise<SdkGetCreditBalanceResponseValue200Appli
 Returns: `Promise<SdkGetCreditBalanceResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

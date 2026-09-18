@@ -19,7 +19,7 @@ async create(options: CreateOptions): Promise<SdkCreateWalletTopUpResponseValue2
 Returns: `Promise<SdkCreateWalletTopUpResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

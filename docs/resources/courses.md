@@ -19,7 +19,7 @@ async list(options?: CoursesListOptions): Promise<AutoPaginatable<SdkListCourses
 Returns: `Promise<AutoPaginatable<SdkListCoursesResponseValue200ApplicationJson, CoursesListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async search(options: SearchOptions): Promise<SdkSearchCoursesResponseValue200Ap
 Returns: `Promise<SdkSearchCoursesResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -126,7 +126,7 @@ async get(options: GetOptions): Promise<SdkGetCourseResponseValue200ApplicationJ
 Returns: `Promise<SdkGetCourseResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -179,7 +179,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceCourseResponseValue200
 Returns: `Promise<SdkReplaceCourseResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -234,7 +234,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateCourseResponseValue200App
 Returns: `Promise<SdkUpdateCourseResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

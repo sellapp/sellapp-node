@@ -1,4 +1,4 @@
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 // Explicit endpoint selection keeps examples from accidentally calling a live store.
 const baseUrl = process.env.SELLAPP_API_BASE_URL;

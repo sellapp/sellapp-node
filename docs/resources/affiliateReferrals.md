@@ -19,7 +19,7 @@ async list(options?: AffiliateReferralsListOptions): Promise<AutoPaginatable<Lis
 Returns: `Promise<AutoPaginatable<ListAffiliateReferralsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async get(options: GetOptions): Promise<SdkGetAffiliateReferralResponseValue200A
 Returns: `Promise<SdkGetAffiliateReferralResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -125,7 +125,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateReferralStatusResponseVal
 Returns: `Promise<SdkUpdateReferralStatusResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

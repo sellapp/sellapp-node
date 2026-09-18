@@ -1,16 +1,21 @@
 {
-  "name": "sellapp",
+  "name": "@sell.app/sdk",
   "version": "0.1.0",
-  "description": "SellApp API Node.js SDK",
+  "description": "Official TypeScript and JavaScript SDK for SellApp products, orders, customers, and subscriptions.",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.mts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "files": [
@@ -21,7 +26,21 @@
     "NOTICE.txt"
   ],
   "license": "MIT",
-  "homepage": "https://sell.app/docs/api",
+  "homepage": "https://sell.app/docs/api/sdks",
+  "bugs": {
+    "url": "https://github.com/sellapp/sellapp-node/issues"
+  },
+  "keywords": [
+    "sellapp",
+    "sdk",
+    "typescript",
+    "javascript",
+    "ecommerce"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/sellapp/sellapp-node.git"

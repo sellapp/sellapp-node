@@ -19,7 +19,7 @@ async get(options: GetOptions): Promise<SdkGetVariantDeliverableConfigurationRes
 Returns: `Promise<SdkGetVariantDeliverableConfigurationResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -73,7 +73,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceVariantDeliverableConf
 Returns: `Promise<SdkReplaceVariantDeliverableConfigurationResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

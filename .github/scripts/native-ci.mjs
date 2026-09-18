@@ -101,7 +101,7 @@ const config = {
         "args": [
           "--input-type=module",
           "-e",
-          "import('sellapp')"
+          "import('@sell.app/sdk')"
         ],
         "cwd": "$SDK_ROOT/.validation-consumer"
       }

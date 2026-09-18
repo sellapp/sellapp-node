@@ -19,7 +19,7 @@ async listRefunds(options?: ListRefundsOptions): Promise<AutoPaginatable<ListRef
 Returns: `Promise<AutoPaginatable<ListRefundsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async getRefund(options: GetRefundOptions): Promise<SdkGetRefundResponseValue200
 Returns: `Promise<SdkGetRefundResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

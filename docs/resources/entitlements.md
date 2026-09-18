@@ -19,7 +19,7 @@ async listCustomerEntitlements(options: ListCustomerEntitlementsOptions): Promis
 Returns: `Promise<SdkListCustomerEntitlementsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async listCustomerEntitlementsByExternalId(options: ListCustomerEntitlementsByEx
 Returns: `Promise<SdkListCustomerEntitlementsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

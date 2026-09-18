@@ -19,7 +19,7 @@ async list(requestOptions: RequestOptions = {}): Promise<SdkListNotificationChan
 Returns: `Promise<SdkListNotificationChannelsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async create(options: CreateOptions): Promise<SdkCreateNotificationChannelRespon
 Returns: `Promise<SdkCreateNotificationChannelResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -123,7 +123,7 @@ async get(options: GetOptions): Promise<SdkGetNotificationChannelResponseValue20
 Returns: `Promise<SdkGetNotificationChannelResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -176,7 +176,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceNotificationChannelRes
 Returns: `Promise<SdkReplaceNotificationChannelResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -230,7 +230,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateNotificationChannelRespon
 Returns: `Promise<SdkUpdateNotificationChannelResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -284,7 +284,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

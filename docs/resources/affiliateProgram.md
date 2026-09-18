@@ -19,7 +19,7 @@ async get(requestOptions: RequestOptions = {}): Promise<SdkGetAffiliateProgramCo
 Returns: `Promise<SdkGetAffiliateProgramConfigurationResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceAffiliateProgramConfig
 Returns: `Promise<SdkReplaceAffiliateProgramConfigurationResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -125,7 +125,7 @@ async list(options?: AffiliateProgramListOptions): Promise<AutoPaginatable<ListP
 Returns: `Promise<AutoPaginatable<ListPendingAffiliateInvitationsResponseValue200ApplicationJsonPropertyDataItem, AffiliateProgramListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -178,7 +178,7 @@ async invite(options: InviteOptions): Promise<SdkInviteAffiliateResponseValue201
 Returns: `Promise<SdkInviteAffiliateResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

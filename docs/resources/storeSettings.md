@@ -19,7 +19,7 @@ async get(requestOptions: RequestOptions = {}): Promise<SdkGetStoreSettingsRespo
 Returns: `Promise<SdkGetStoreSettingsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async replaceGeneral(options: ReplaceGeneralOptions): Promise<SdkReplaceGeneralS
 Returns: `Promise<SdkReplaceGeneralStoreSettingsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -126,7 +126,7 @@ async updateGeneral(options: UpdateGeneralOptions): Promise<SdkUpdateGeneralStor
 Returns: `Promise<SdkUpdateGeneralStoreSettingsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -179,7 +179,7 @@ async replaceAnalytics(options: ReplaceAnalyticsOptions): Promise<SdkReplaceAnal
 Returns: `Promise<SdkReplaceAnalyticsSettingsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -232,7 +232,7 @@ async updateAnalytics(options: UpdateAnalyticsOptions): Promise<SdkUpdateAnalyti
 Returns: `Promise<SdkUpdateAnalyticsSettingsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -285,7 +285,7 @@ async replaceMarketing(options: ReplaceMarketingOptions): Promise<SdkReplaceMark
 Returns: `Promise<SdkReplaceMarketingSettingsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -338,7 +338,7 @@ async updateMarketing(options: UpdateMarketingOptions): Promise<SdkUpdateMarketi
 Returns: `Promise<SdkUpdateMarketingSettingsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

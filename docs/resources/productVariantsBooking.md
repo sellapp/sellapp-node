@@ -19,7 +19,7 @@ async listAvailability(options: ListAvailabilityOptions): Promise<SdkListBooking
 Returns: `Promise<SdkListBookingAvailabilityResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -73,7 +73,7 @@ async createHold(options: CreateHoldOptions): Promise<SdkCreateBookingHoldRespon
 Returns: `Promise<SdkCreateBookingHoldResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -131,7 +131,7 @@ async releaseHold(options: ReleaseHoldOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -186,7 +186,7 @@ async get(options: GetOptions): Promise<SdkGetBookingConfigurationResponseValue2
 Returns: `Promise<SdkGetBookingConfigurationResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -240,7 +240,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceBookingConfigurationRe
 Returns: `Promise<SdkReplaceBookingConfigurationResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -299,7 +299,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateBookingConfigurationRespo
 Returns: `Promise<SdkUpdateBookingConfigurationResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

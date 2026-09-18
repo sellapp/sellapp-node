@@ -19,7 +19,7 @@ async create(options: CreateOptions): Promise<SdkCreateCourseLessonResponseValue
 Returns: `Promise<SdkCreateCourseLessonResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -77,7 +77,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceCourseLessonResponseVa
 Returns: `Promise<SdkReplaceCourseLessonResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -133,7 +133,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateCourseLessonResponseValue
 Returns: `Promise<SdkUpdateCourseLessonResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -189,7 +189,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -243,7 +243,7 @@ async reorder(options: ReorderOptions): Promise<SdkReorderCourseLessonsResponseV
 Returns: `Promise<SdkReorderCourseLessonsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

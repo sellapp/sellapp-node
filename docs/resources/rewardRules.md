@@ -19,7 +19,7 @@ async list(options?: RewardRulesListOptions): Promise<AutoPaginatable<SdkListRew
 Returns: `Promise<AutoPaginatable<SdkListRewardRulesResponseValue200ApplicationJson, RewardRulesListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async create(options: CreateOptions): Promise<SdkCreateRewardRuleResponseValue20
 Returns: `Promise<SdkCreateRewardRuleResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -129,7 +129,7 @@ async search(options: SearchOptions): Promise<SdkSearchRewardRulesResponseValue2
 Returns: `Promise<SdkSearchRewardRulesResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -183,7 +183,7 @@ async get(options: GetOptions): Promise<SdkGetRewardRuleResponseValue200Applicat
 Returns: `Promise<SdkGetRewardRuleResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -236,7 +236,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceRewardRuleResponseValu
 Returns: `Promise<SdkReplaceRewardRuleResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -290,7 +290,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateRewardRuleResponseValue20
 Returns: `Promise<SdkUpdateRewardRuleResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

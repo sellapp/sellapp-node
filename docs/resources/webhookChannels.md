@@ -19,7 +19,7 @@ async list(options?: WebhookChannelsListOptions): Promise<AutoPaginatable<ListWe
 Returns: `Promise<AutoPaginatable<ListWebhookChannelsResponseValue200ApplicationJsonPropertyDataItem, WebhookChannelsListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async create(options: CreateOptions): Promise<SdkCreateWebhookChannelResponseVal
 Returns: `Promise<SdkCreateWebhookChannelResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -127,7 +127,7 @@ async search(options: SearchOptions): Promise<SdkSearchWebhookChannelsResponseVa
 Returns: `Promise<SdkSearchWebhookChannelsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -181,7 +181,7 @@ async rotate(options: RotateOptions): Promise<SdkRotateWebhookSigningSecretRespo
 Returns: `Promise<SdkRotateWebhookSigningSecretResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -234,7 +234,7 @@ async get(options: GetOptions): Promise<SdkGetWebhookChannelResponseValue200Appl
 Returns: `Promise<SdkGetWebhookChannelResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -287,7 +287,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceWebhookChannelResponse
 Returns: `Promise<SdkReplaceWebhookChannelResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -343,7 +343,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateWebhookChannelResponseVal
 Returns: `Promise<SdkUpdateWebhookChannelResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -398,7 +398,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -451,7 +451,7 @@ async send(options: SendOptions): Promise<SdkSendTestWebhookResponseValue200Appl
 Returns: `Promise<SdkSendTestWebhookResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

@@ -19,7 +19,7 @@ async getCustomerPortalProfile(requestOptions: RequestOptions = {}): Promise<Sdk
 Returns: `Promise<SdkGetCustomerPortalProfileResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -64,7 +64,7 @@ async updateCustomerPortalProfile(options: UpdateCustomerPortalProfileOptions): 
 Returns: `Promise<SdkUpdateCustomerPortalProfileResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -111,7 +111,7 @@ async listCustomerPortalOrders(options?: ListCustomerPortalOrdersOptions): Promi
 Returns: `Promise<AutoPaginatable<CustomerPortalOrder, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -156,7 +156,7 @@ async getCustomerPortalOrder(options: GetCustomerPortalOrderOptions): Promise<Sd
 Returns: `Promise<SdkGetCustomerPortalOrderResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -203,7 +203,7 @@ async listCustomerPortalSubscriptions(requestOptions: RequestOptions = {}): Prom
 Returns: `Promise<SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -248,7 +248,7 @@ async getCustomerPortalSubscription(options: GetCustomerPortalSubscriptionOption
 Returns: `Promise<SdkGetCustomerPortalSubscriptionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -295,7 +295,7 @@ async getCustomerPortalSubscriptionCapabilities(options: GetCustomerPortalSubscr
 Returns: `Promise<SdkGetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -342,7 +342,7 @@ async listCustomerPortalEntitlements(requestOptions: RequestOptions = {}): Promi
 Returns: `Promise<SdkListCustomerPortalEntitlementsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -387,7 +387,7 @@ async cancelCustomerSubscriptionAtPeriodEnd(options: CancelCustomerSubscriptionA
 Returns: `Promise<SdkCancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -436,7 +436,7 @@ async cancelCustomerSubscriptionImmediately(options: CancelCustomerSubscriptionI
 Returns: `Promise<SdkCancelCustomerSubscriptionImmediatelyResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -485,7 +485,7 @@ async pauseCustomerSubscription(options: PauseCustomerSubscriptionOptions): Prom
 Returns: `Promise<SdkPauseCustomerSubscriptionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -534,7 +534,7 @@ async resumeCustomerSubscription(options: ResumeCustomerSubscriptionOptions): Pr
 Returns: `Promise<SdkResumeCustomerSubscriptionResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -583,7 +583,7 @@ async updateCustomerSubscriptionPaymentMethod(options: UpdateCustomerSubscriptio
 Returns: `Promise<SdkUpdateCustomerSubscriptionPaymentMethodResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -632,7 +632,7 @@ async previewCustomerSubscriptionPlanChange(options: PreviewCustomerSubscription
 Returns: `Promise<SdkPreviewCustomerSubscriptionPlanChangeResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -681,7 +681,7 @@ async confirmCustomerSubscriptionPlanChange(options: ConfirmCustomerSubscription
 Returns: `Promise<SdkConfirmCustomerSubscriptionPlanChangeResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -730,7 +730,7 @@ async previewCustomerSubscriptionRenewalDateChange(options: PreviewCustomerSubsc
 Returns: `Promise<SdkPreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -779,7 +779,7 @@ async confirmCustomerSubscriptionRenewalDateChange(options: ConfirmCustomerSubsc
 Returns: `Promise<SdkConfirmCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

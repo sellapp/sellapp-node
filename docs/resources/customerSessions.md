@@ -19,7 +19,7 @@ async createCustomerSession(options: CreateCustomerSessionOptions): Promise<SdkC
 Returns: `Promise<SdkCreateCustomerSessionResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async revokeCustomerSession(options: RevokeCustomerSessionOptions): Promise<void
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

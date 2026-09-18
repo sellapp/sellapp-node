@@ -19,7 +19,7 @@ async listDisputes(options?: ListDisputesOptions): Promise<AutoPaginatable<ListD
 Returns: `Promise<AutoPaginatable<ListDisputesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async getDispute(options: GetDisputeOptions): Promise<SdkGetDisputeResponseValue
 Returns: `Promise<SdkGetDisputeResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

@@ -19,7 +19,7 @@ async getAccount(requestOptions: RequestOptions = {}): Promise<SdkGetAccountResp
 Returns: `Promise<SdkGetAccountResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -69,7 +69,7 @@ async listStores(requestOptions: RequestOptions = {}): Promise<SdkListStoresResp
 Returns: `Promise<SdkListStoresResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -119,7 +119,7 @@ async createStore(options: CreateStoreOptions): Promise<SdkCreateStoreResponseVa
 Returns: `Promise<SdkCreateStoreResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -173,7 +173,7 @@ async getStore(options: GetStoreOptions): Promise<SdkGetStoreResponseValue200App
 Returns: `Promise<SdkGetStoreResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -225,7 +225,7 @@ async getStorePermissions(requestOptions: RequestOptions = {}): Promise<SdkGetSt
 Returns: `Promise<SdkGetStorePermissionsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

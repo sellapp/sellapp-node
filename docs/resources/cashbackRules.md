@@ -19,7 +19,7 @@ async list(requestOptions: RequestOptions = {}): Promise<SdkListCashbackRulesRes
 Returns: `Promise<SdkListCashbackRulesResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async create(options: CreateOptions): Promise<SdkCreateCashbackRuleResponseValue
 Returns: `Promise<SdkCreateCashbackRuleResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -126,7 +126,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceCashbackRuleResponseVa
 Returns: `Promise<SdkReplaceCashbackRuleResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -183,7 +183,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateCashbackRuleResponseValue
 Returns: `Promise<SdkUpdateCashbackRuleResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -237,7 +237,7 @@ async archive(options: ArchiveOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -290,7 +290,7 @@ async restore(options: RestoreOptions): Promise<SdkRestoreCashbackRuleResponseVa
 Returns: `Promise<SdkRestoreCashbackRuleResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

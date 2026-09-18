@@ -19,7 +19,7 @@ async list(options?: GroupsListOptions): Promise<AutoPaginatable<ListGroupsRespo
 Returns: `Promise<AutoPaginatable<ListGroupsResponseValue200ApplicationJsonPropertyDataItem, GroupsListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async create(options: CreateOptions): Promise<SdkCreateGroupResponseValue201Appl
 Returns: `Promise<SdkCreateGroupResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -126,7 +126,7 @@ async get(options: GetOptions): Promise<SdkGetGroupResponseValue200ApplicationJs
 Returns: `Promise<SdkGetGroupResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -179,7 +179,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateGroupResponseValue200Appl
 Returns: `Promise<SdkUpdateGroupResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -234,7 +234,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -287,7 +287,7 @@ async search(options: SearchOptions): Promise<SdkSearchGroupsResponseValue200App
 Returns: `Promise<SdkSearchGroupsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

@@ -19,7 +19,7 @@ async list(options: VariantDeliverableFoldersListOptions): Promise<SdkListVarian
 Returns: `Promise<SdkListVariantDeliverableFoldersResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -73,7 +73,7 @@ async create(options: CreateOptions): Promise<SdkCreateVariantDeliverableFolderR
 Returns: `Promise<SdkCreateVariantDeliverableFolderResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -129,7 +129,7 @@ async get(options: GetOptions): Promise<SdkGetVariantDeliverableFolderResponseVa
 Returns: `Promise<SdkGetVariantDeliverableFolderResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -184,7 +184,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceVariantDeliverableFold
 Returns: `Promise<SdkReplaceVariantDeliverableFolderSettingsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -240,7 +240,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateVariantDeliverableFolderR
 Returns: `Promise<SdkUpdateVariantDeliverableFolderResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -296,7 +296,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

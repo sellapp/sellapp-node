@@ -19,7 +19,7 @@ async list(options: PromotionsPhasesListOptions): Promise<SdkListPromotionPhases
 Returns: `Promise<SdkListPromotionPhasesResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -72,7 +72,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplacePromotionPhasesRespons
 Returns: `Promise<SdkReplacePromotionPhasesResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

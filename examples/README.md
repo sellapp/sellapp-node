@@ -4,7 +4,7 @@ Pick a small task: read a product, walk the catalog, or see how to handle a fail
 request. Each file is a complete program you can run and adapt.
 
 From the SDK checkout, run `npm install` and `npm run build`. The examples import
-the package by its public name (sellapp); Node resolves the checkout's
+the package by its public name (@sell.app/sdk); Node resolves the checkout's
 own package exports. Alternatively copy the files into an app with the packed SDK installed.
 
 Set the three variables in [onboarding](../README.md#your-first-request), then run:

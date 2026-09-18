@@ -64,8 +64,10 @@ The example reads your credentials from the environment. To set them in your app
 pass options to `new SellApp(options)`; explicit credentials take precedence.
 The SDK selects credentials for each operation. API-key v2 operations can omit
 `store`; legacy operations require it. OAuth store operations require it.
-Use `new SellApp({ accessToken, store })` for OAuth; this suppresses the API-key
-environment fallback. Use `customerSession` on a client or in a call's
+OAuth interfaces are retained for official CLI infrastructure compatibility;
+SellApp does not support customer OAuth applications for REST integrations.
+Those interfaces accept `accessToken` and suppress the API-key environment
+fallback. Use API keys for your SDK integration. Use `customerSession` on a client or in a call's
 `requestOptions` for customer-portal operations. Anonymous operations send no
 credentials. Customer-session and OAuth protocol requests are never replayed
 automatically.

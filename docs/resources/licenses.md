@@ -19,7 +19,7 @@ async activate(options: ActivateOptions): Promise<SdkActivateLicenseKeyResponseV
 Returns: `Promise<SdkActivateLicenseKeyResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -73,7 +73,7 @@ async validate(options: ValidateOptions): Promise<SdkValidateLicenseKeyResponseV
 Returns: `Promise<SdkValidateLicenseKeyResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -126,7 +126,7 @@ async list(options?: LicensesListOptions): Promise<AutoPaginatable<SdkListLicens
 Returns: `Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson, LicensesListOptions>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -179,7 +179,7 @@ async get(options: GetOptions): Promise<SdkGetLicenseKeyResponseValue200Applicat
 Returns: `Promise<SdkGetLicenseKeyResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -232,7 +232,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateLicenseKeyResponseValue20
 Returns: `Promise<SdkUpdateLicenseKeyResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -287,7 +287,7 @@ async deactivateLicense(options: DeactivateLicenseOptions): Promise<SdkDeactivat
 Returns: `Promise<SdkDeactivateLicenseResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

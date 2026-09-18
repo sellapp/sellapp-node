@@ -19,7 +19,7 @@ async get(options: GetOptions): Promise<SdkGetBundleItemResponseValue200Applicat
 Returns: `Promise<SdkGetBundleItemResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -73,7 +73,7 @@ async list(options: BundleItemsListOptions): Promise<AutoPaginatable<ListBundleI
 Returns: `Promise<AutoPaginatable<ListBundleItemsResponseValue200ApplicationJsonPropertyDataItem, Omit<BundleItemsListOptions, "bundle">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -126,7 +126,7 @@ async attach(options: AttachOptions): Promise<SdkAttachBundleItemsResponseValue2
 Returns: `Promise<SdkAddProductsToGroupResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -180,7 +180,7 @@ async detach(options: DetachOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

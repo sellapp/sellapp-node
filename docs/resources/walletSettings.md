@@ -19,7 +19,7 @@ async get(requestOptions: RequestOptions = {}): Promise<SdkGetWalletSettingsResp
 Returns: `Promise<SdkGetWalletSettingsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -70,7 +70,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceWalletSettingsResponse
 Returns: `Promise<SdkReplaceWalletSettingsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,

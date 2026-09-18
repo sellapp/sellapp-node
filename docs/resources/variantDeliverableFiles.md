@@ -19,7 +19,7 @@ async list(options: VariantDeliverableFilesListOptions): Promise<AutoPaginatable
 Returns: `Promise<AutoPaginatable<ListVariantDeliverableFilesResponseValue200ApplicationJsonPropertyDataItem, Omit<VariantDeliverableFilesListOptions, "product" | "variant">>>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -73,7 +73,7 @@ async upload(options: UploadOptions): Promise<SdkUploadVariantDeliverableFileRes
 Returns: `Promise<SdkUploadVariantDeliverableFileResponseValue201ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -128,7 +128,7 @@ async get(options: GetOptions): Promise<SdkGetVariantDeliverableFileResponseValu
 Returns: `Promise<SdkGetVariantDeliverableFileResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -183,7 +183,7 @@ async replace(options: ReplaceOptions): Promise<SdkReplaceVariantDeliverableFile
 Returns: `Promise<SdkReplaceVariantDeliverableFileSettingsResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -239,7 +239,7 @@ async update(options: UpdateOptions): Promise<SdkUpdateVariantDeliverableFileRes
 Returns: `Promise<SdkUpdateVariantDeliverableFileResponseValue200ApplicationJson>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
@@ -295,7 +295,7 @@ async delete(options: DeleteOptions): Promise<void>
 Returns: `Promise<void>`.
 
 ```ts
-import { SellApp } from 'sellapp';
+import { SellApp } from '@sell.app/sdk';
 
 const client = new SellApp({
   baseUrl: process.env.SELLAPP_API_BASE_URL!,
