@@ -21,8 +21,13 @@ export interface ReplaceOptions {
   minimumPurchaseQuantity?: number;
   maximumPurchaseQuantity?: number | null;
   bulkDiscount?: ReplaceProductVariantWithPutRequestApplicationJsonPropertyBulkDiscountItem[];
+  /** Complete gateway selection for this variant. Selecting CUSTOM_PAYMENT_METHOD also requires at least one custom_payment_method_ids entry. */
   paymentMethods?: (SdkReplaceProductVariantWithPutRequestApplicationJsonPaymentMethods | (string & Record<never, never>))[];
+  /** Enabled, usable custom payment method ULIDs belonging to the selected store. Supply at least one when payment_methods includes CUSTOM_PAYMENT_METHOD. Include CUSTOM_PAYMENT_METHOD in payment_methods whenever sending nonempty IDs. On updates, omitting both selections preserves the current methods. Nonempty IDs are rejected when custom payments are not selected. */
+  customPaymentMethodIds?: string[];
   otherSettings?: ReplaceProductVariantWithPutRequestApplicationJsonPropertyOtherSettings;
   /** Optional optimistic-concurrency snapshot for updates. Use the variant's latest updated_at value; stale snapshots receive a 422 validation response. */
   expectedUpdatedAt?: Date;
+  /** Set an existing variant's stock count while preserving delivery instructions and uploaded files. Send 0 for out of stock or null for unlimited stock. Omit deliverable for a stock-only change. TEXT variants manage stock through their serial inventory and reject this field. */
+  stock?: number | null;
 }

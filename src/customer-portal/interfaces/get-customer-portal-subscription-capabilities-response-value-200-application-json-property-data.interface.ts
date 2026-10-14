@@ -3,13 +3,14 @@
 import type { GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilities, GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilitiesResponse } from './get-customer-portal-subscription-capabilities-response-value-200-application-json-property-data-property-capabilities.interface';
 
 export interface GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyData {
-  subscriptionId: number;
+  /** The SellApp subscription ID. */
+  id: number;
   capabilities: GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilities;
   [key: string]: unknown;
 }
 
 export interface GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataResponse {
-  subscription_id: number;
+  id: number;
   capabilities: GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilitiesResponse;
   [key: string]: unknown;
 }

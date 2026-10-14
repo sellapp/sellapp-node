@@ -4,8 +4,8 @@ import type { UpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaymentP
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeUpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyData } from './update-invoice-status-response-value-200-application-json-property-payment-property-gateway-property-data.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"UpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"UpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"UpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"UpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
 
 export const deserializeUpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaymentPropertyGateway = (
   response: UpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayResponse,
@@ -14,6 +14,6 @@ export const deserializeUpdateInvoiceStatusResponseValue200ApplicationJsonProper
   return {
     ...preserveUnknownFields(response, ["data","type"]),
     data: deserializeUpdateInvoiceStatusResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyData(response.data),
-    type: response.type,
+    type: response.type ?? null,
   };
 };

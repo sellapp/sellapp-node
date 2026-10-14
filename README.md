@@ -28,7 +28,7 @@ const { SellApp } = require('@sell.app/sdk');
 
 To build from [source](https://github.com/sellapp/sellapp-node), use
 Node.js 24.19.0, run `npm install && npm run build && npm pack` in the checkout,
-then install the resulting `sell.app-sdk-0.1.1.tgz` in your app.
+then install the resulting `sell.app-sdk-0.2.0.tgz` in your app.
 
 ## Your first request
 

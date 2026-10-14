@@ -2,12 +2,14 @@
 
 import type { ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequency, ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequencyResponse } from './replace-product-variant-with-put-response-value-200-application-json-property-data-property-pricing-property-frequency.interface';
 import type { ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice, ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPriceResponse } from './replace-product-variant-with-put-response-value-200-application-json-property-data-property-pricing-property-price.interface';
+import type { ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial, ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrialResponse } from './replace-product-variant-with-put-response-value-200-application-json-property-data-property-pricing-property-trial.interface';
 
 export interface ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricing {
   humble: boolean;
   frequency: ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequency;
   type: string;
   price: ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice;
+  trial?: ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial;
   [key: string]: unknown;
 }
 
@@ -16,5 +18,6 @@ export interface ReplaceProductVariantWithPutResponseValue200ApplicationJsonProp
   frequency: ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequencyResponse;
   type: string;
   price: ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPriceResponse;
+  trial?: ReplaceProductVariantWithPutResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrialResponse;
   [key: string]: unknown;
 }

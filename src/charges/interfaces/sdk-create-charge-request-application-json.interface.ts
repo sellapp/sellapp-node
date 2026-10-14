@@ -26,6 +26,7 @@ export interface SdkCreateChargeRequestApplicationJson {
   useAllPaymentMethods?: boolean;
   deliverable?: CreateChargeRequestApplicationJsonPropertyDeliverable;
   metadata?: CreateChargeRequestApplicationJsonPropertyMetadata;
+  /** Optional coupon code. A charge takes a store-wide coupon for one-time purchases only: a coupon whose `applies_to` is `subscriptions` returns `422` with `Coupon code {code} only applies to subscriptions.` */
   couponCode?: string | null;
   [key: string]: unknown;
 }

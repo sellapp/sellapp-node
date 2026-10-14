@@ -10,6 +10,11 @@ export * from './get-bundle-item-response-value-200-application-json-property-da
 export * from './get-bundle-item-response-value-200-application-json-property-data-property-other-settings.interface';
 export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-frequency.interface';
 export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-price.interface';
+export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-trial-kind.interface';
+export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-trial-property-length-interval.interface';
+export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-trial-property-length.interface';
+export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-trial-property-price.interface';
+export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-trial.interface';
 export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing.interface';
 export * from './get-bundle-item-response-value-200-application-json-property-data-property-product-property-additional-information-item.interface';
 export * from './get-bundle-item-response-value-200-application-json-property-data-property-product.interface';
@@ -20,6 +25,11 @@ export * from './list-bundle-items-response-value-200-application-json-property-
 export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-other-settings.interface';
 export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-frequency.interface';
 export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-price.interface';
+export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-trial-kind.interface';
+export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-length-interval.interface';
+export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-length.interface';
+export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-price.interface';
+export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-trial.interface';
 export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing.interface';
 export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-product-property-additional-information-item.interface';
 export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-product.interface';

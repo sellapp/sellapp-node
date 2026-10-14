@@ -6,6 +6,7 @@ export interface ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDat
   id: string;
   eventId: string;
   eventType: string;
+  /** A disabled channel retains new deliveries with zero attempts. Fix the endpoint and save the channel to re-enable automatic delivery. Retained deliveries require an explicit replay; saving does not send the backlog. */
   status: ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItemStatus | (string & Record<never, never>);
   destinationOrigin: string;
   attempts: number;

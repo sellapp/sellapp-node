@@ -4,12 +4,13 @@ import type { CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataProp
 
 export interface CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGateway {
   data: CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGatewayPropertyData;
-  type: string;
+  /** The payment method, or `null` for an invoice that costs nothing. A free trial sold through Stripe, PayPal, or Razorpay keeps its payment method, because that provider bills the plan once the trial ends. */
+  type: string | null;
   [key: string]: unknown;
 }
 
 export interface CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGatewayResponse {
   data: CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGatewayPropertyDataResponse;
-  type: string;
+  type: string | null;
   [key: string]: unknown;
 }

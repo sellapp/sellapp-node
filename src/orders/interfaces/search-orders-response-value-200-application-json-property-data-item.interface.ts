@@ -14,6 +14,7 @@ export interface SearchOrdersResponseValue200ApplicationJsonPropertyDataItem {
   customer: SearchOrdersResponseValue200ApplicationJsonPropertyDataItemPropertyCustomer;
   payment: SearchOrdersResponseValue200ApplicationJsonPropertyDataItemPropertyPayment;
   totals: SearchOrdersResponseValue200ApplicationJsonPropertyDataItemPropertyTotals;
+  /** The coupon this order was sold with, or null. A subscription's renewal and plan-change orders carry null, even while the subscription still bills a discounted price, so a coupon's `limit` counts a subscription once, at signup. */
   couponId: number | null;
   lineItems: SearchOrdersResponseValue200ApplicationJsonPropertyDataItemPropertyLineItemsItem[];
   createdAt: Date | null;

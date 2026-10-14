@@ -3,8 +3,10 @@
 export const ReplayWebhookDeliveryResponseValue201ApplicationJsonPropertyDataStatus = {
   Pending: 'pending',
   Delivering: 'delivering',
+  Retrying: 'retrying',
   Succeeded: 'succeeded',
   Failed: 'failed',
+  Disabled: 'disabled',
 } as const;
 
 export type ReplayWebhookDeliveryResponseValue201ApplicationJsonPropertyDataStatus =

@@ -4,8 +4,8 @@ import type { GetInvoiceResponseValue200ApplicationJsonPropertyDataPropertyPayme
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeGetInvoiceResponseValue200ApplicationJsonPropertyDataPropertyPaymentPropertyGatewayPropertyData } from './get-invoice-response-value-200-application-json-property-data-property-payment-property-gateway-property-data.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"GetInvoiceResponseValue200ApplicationJsonPropertyDataPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"GetInvoiceResponseValue200ApplicationJsonPropertyDataPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"GetInvoiceResponseValue200ApplicationJsonPropertyDataPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"GetInvoiceResponseValue200ApplicationJsonPropertyDataPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
 
 export const deserializeGetInvoiceResponseValue200ApplicationJsonPropertyDataPropertyPaymentPropertyGateway = (
   response: GetInvoiceResponseValue200ApplicationJsonPropertyDataPropertyPaymentPropertyGatewayResponse,
@@ -14,6 +14,6 @@ export const deserializeGetInvoiceResponseValue200ApplicationJsonPropertyDataPro
   return {
     ...preserveUnknownFields(response, ["data","type"]),
     data: deserializeGetInvoiceResponseValue200ApplicationJsonPropertyDataPropertyPaymentPropertyGatewayPropertyData(response.data),
-    type: response.type,
+    type: response.type ?? null,
   };
 };

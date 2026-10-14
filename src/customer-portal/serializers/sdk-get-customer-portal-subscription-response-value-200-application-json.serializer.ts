@@ -2,7 +2,7 @@
 
 import type { SdkGetCustomerPortalSubscriptionResponseValue200ApplicationJson, SdkGetCustomerPortalSubscriptionResponseValue200ApplicationJsonResponse } from '../interfaces/sdk-get-customer-portal-subscription-response-value-200-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
-import { deserializeGetCustomerPortalSubscriptionResponseValue200ApplicationJsonPropertyData } from './get-customer-portal-subscription-response-value-200-application-json-property-data.serializer';
+import { deserializeCustomerPortalSubscription } from './customer-portal-subscription.serializer';
 
 const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkGetCustomerPortalSubscriptionResponseValue200ApplicationJson","required":["data"],"properties":{"data":{"kind":"any"}},"additionalProperties":true};
 const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkGetCustomerPortalSubscriptionResponseValue200ApplicationJson","required":["data"],"properties":{"data":{"kind":"any"}},"additionalProperties":true};
@@ -13,6 +13,6 @@ export const deserializeSdkGetCustomerPortalSubscriptionResponseValue200Applicat
   assertValidModel(response, wireRuntimeSchema, { direction: 'response', allowUnknownEnums: true, allowUnknownUnionVariants: true, allowUnknownFields: true });
   return {
     ...preserveUnknownFields(response, ["data"]),
-    data: deserializeGetCustomerPortalSubscriptionResponseValue200ApplicationJsonPropertyData(response.data),
+    data: deserializeCustomerPortalSubscription(response.data),
   };
 };

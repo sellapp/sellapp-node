@@ -33,9 +33,9 @@ export interface InvoicesListOptions extends PaginationOptions {
   cryptoAddress?: string;
   /** Filter by coupon code. */
   couponCode?: string;
-  /** Filter by one or more invoice statuses. */
+  /** Filter by one or more invoice statuses. Repeat the parameter to select several. */
   status?: (InvoicesStatus | (string & Record<never, never>))[];
-  /** Filter by one or more payment methods. */
+  /** Filter by one or more payment methods. Repeat the parameter to select several. */
   paymentMethods?: (InvoicesPaymentMethods | (string & Record<never, never>))[];
   /** Sort order for the result set. */
   sort?: InvoicesSort | (string & Record<never, never>);

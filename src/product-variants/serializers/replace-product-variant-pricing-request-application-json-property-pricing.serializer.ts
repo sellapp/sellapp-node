@@ -5,20 +5,22 @@ import { assertValidModel, preserveUnknownFields } from '../../common/utils/sche
 import { serializeReplaceProductVariantPricingRequestApplicationJsonPropertyPricingPropertyPrice } from './replace-product-variant-pricing-request-application-json-property-pricing-property-price.serializer';
 import { serializeReplaceProductVariantPricingRequestApplicationJsonPropertyPricingPropertyCompareAtPrice } from './replace-product-variant-pricing-request-application-json-property-pricing-property-compare-at-price.serializer';
 import { serializeReplaceProductVariantPricingRequestApplicationJsonPropertyPricingPropertyFrequency } from './replace-product-variant-pricing-request-application-json-property-pricing-property-frequency.serializer';
+import { serializeReplaceProductVariantPricingRequestApplicationJsonPropertyPricingPropertyTrial } from './replace-product-variant-pricing-request-application-json-property-pricing-property-trial.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"ReplaceProductVariantPricingRequestApplicationJsonPropertyPricing","required":["type","price","humble"],"properties":{"type":{"kind":"enum","values":["SINGLE_PAYMENT","SUBSCRIPTION"]},"price":{"kind":"any"},"compareAtPrice":{"kind":"nullable","inner":{"kind":"any"}},"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"ReplaceProductVariantPricingRequestApplicationJsonPropertyPricing","required":["type","price","humble"],"properties":{"type":{"kind":"enum","values":["SINGLE_PAYMENT","SUBSCRIPTION"]},"price":{"kind":"any"},"compare_at_price":{"kind":"nullable","inner":{"kind":"any"}},"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"ReplaceProductVariantPricingRequestApplicationJsonPropertyPricing","required":["type","price","humble"],"properties":{"type":{"kind":"enum","values":["SINGLE_PAYMENT","SUBSCRIPTION"]},"price":{"kind":"any"},"compareAtPrice":{"kind":"nullable","inner":{"kind":"any"}},"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"},"trial":{"kind":"nullable","inner":{"kind":"any"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"ReplaceProductVariantPricingRequestApplicationJsonPropertyPricing","required":["type","price","humble"],"properties":{"type":{"kind":"enum","values":["SINGLE_PAYMENT","SUBSCRIPTION"]},"price":{"kind":"any"},"compare_at_price":{"kind":"nullable","inner":{"kind":"any"}},"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"},"trial":{"kind":"nullable","inner":{"kind":"any"}}},"additionalProperties":true};
 
 export const serializeReplaceProductVariantPricingRequestApplicationJsonPropertyPricing = (
   model: ReplaceProductVariantPricingRequestApplicationJsonPropertyPricing,
 ): ReplaceProductVariantPricingRequestApplicationJsonPropertyPricingResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["type","price","compareAtPrice","humble","frequency"]),
+    ...preserveUnknownFields(model, ["type","price","compareAtPrice","humble","frequency","trial"]),
     type: model.type,
     price: serializeReplaceProductVariantPricingRequestApplicationJsonPropertyPricingPropertyPrice(model.price),
     compare_at_price: model.compareAtPrice != null ? serializeReplaceProductVariantPricingRequestApplicationJsonPropertyPricingPropertyCompareAtPrice(model.compareAtPrice) : null,
     humble: model.humble,
     frequency: model.frequency != null ? serializeReplaceProductVariantPricingRequestApplicationJsonPropertyPricingPropertyFrequency(model.frequency) : undefined,
+    trial: model.trial != null ? serializeReplaceProductVariantPricingRequestApplicationJsonPropertyPricingPropertyTrial(model.trial) : null,
   };
 };

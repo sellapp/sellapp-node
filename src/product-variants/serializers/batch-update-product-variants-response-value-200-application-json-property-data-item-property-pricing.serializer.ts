@@ -4,19 +4,21 @@ import type { BatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyD
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeBatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequency } from './batch-update-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-frequency.serializer';
 import { deserializeBatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice } from './batch-update-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-price.serializer';
+import { deserializeBatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial } from './batch-update-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"BatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricing","required":["humble","frequency","type","price"],"properties":{"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"},"type":{"kind":"primitive","type":"string"},"price":{"kind":"any"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"BatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricing","required":["humble","frequency","type","price"],"properties":{"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"},"type":{"kind":"primitive","type":"string"},"price":{"kind":"any"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"BatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricing","required":["humble","frequency","type","price"],"properties":{"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"},"type":{"kind":"primitive","type":"string"},"price":{"kind":"any"},"trial":{"kind":"any"}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"BatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricing","required":["humble","frequency","type","price"],"properties":{"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"},"type":{"kind":"primitive","type":"string"},"price":{"kind":"any"},"trial":{"kind":"any"}},"additionalProperties":true};
 
 export const deserializeBatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricing = (
   response: BatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingResponse,
 ): BatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricing => {
   assertValidModel(response, wireRuntimeSchema, { direction: 'response', allowUnknownEnums: true, allowUnknownUnionVariants: true, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(response, ["humble","frequency","type","price"]),
+    ...preserveUnknownFields(response, ["humble","frequency","type","price","trial"]),
     humble: response.humble,
     frequency: deserializeBatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequency(response.frequency),
     type: response.type,
     price: deserializeBatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice(response.price),
+    trial: response.trial != null ? deserializeBatchUpdateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial(response.trial) : undefined,
   };
 };

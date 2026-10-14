@@ -4,6 +4,7 @@ import type { PreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJso
 import type { PreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyRequestPayload, PreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyRequestPayloadResponse } from './preview-subscription-renewal-date-change-response-value-200-application-json-property-data-property-request-payload.interface';
 
 export interface PreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyData {
+  /** The token the matching confirmation must send back. Previews expire 30 minutes after they are created. */
   previewToken?: string | null;
   expiresAt?: Date | null;
   previewPayload?: PreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyPreviewPayload;

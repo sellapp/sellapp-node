@@ -4,16 +4,16 @@ import type { GetCustomerPortalSubscriptionCapabilitiesResponseValue200Applicati
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeGetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilities } from './get-customer-portal-subscription-capabilities-response-value-200-application-json-property-data-property-capabilities.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyData","required":["subscriptionId","capabilities"],"properties":{"subscriptionId":{"kind":"primitive","type":"integer"},"capabilities":{"kind":"any"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyData","required":["subscription_id","capabilities"],"properties":{"subscription_id":{"kind":"primitive","type":"integer"},"capabilities":{"kind":"any"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyData","required":["id","capabilities"],"properties":{"id":{"kind":"primitive","type":"integer"},"capabilities":{"kind":"any"}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyData","required":["id","capabilities"],"properties":{"id":{"kind":"primitive","type":"integer"},"capabilities":{"kind":"any"}},"additionalProperties":true};
 
 export const deserializeGetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyData = (
   response: GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataResponse,
 ): GetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyData => {
   assertValidModel(response, wireRuntimeSchema, { direction: 'response', allowUnknownEnums: true, allowUnknownUnionVariants: true, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(response, ["subscription_id","capabilities"]),
-    subscriptionId: response.subscription_id,
+    ...preserveUnknownFields(response, ["id","capabilities"]),
+    id: response.id,
     capabilities: deserializeGetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonPropertyDataPropertyCapabilities(response.capabilities),
   };
 };

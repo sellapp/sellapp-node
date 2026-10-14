@@ -2,12 +2,14 @@
 
 import type { GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequency, GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequencyResponse } from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-frequency.interface';
 import type { GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice, GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPriceResponse } from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-price.interface';
+import type { GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial, GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrialResponse } from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-trial.interface';
 
 export interface GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricing {
   humble: boolean;
   frequency: GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequency;
   type: string;
   price: GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice;
+  trial?: GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial;
   [key: string]: unknown;
 }
 
@@ -16,5 +18,6 @@ export interface GetBundleItemResponseValue200ApplicationJsonPropertyDataPropert
   frequency: GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequencyResponse;
   type: string;
   price: GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPriceResponse;
+  trial?: GetBundleItemResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrialResponse;
   [key: string]: unknown;
 }

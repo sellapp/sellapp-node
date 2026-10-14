@@ -16,6 +16,7 @@ export * from './create-checkout-session-response-value-200-application-json-pro
 export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-payment-property-subtotal.interface';
 export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-payment.interface';
 export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-product-variants-item.interface';
+export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-status-property-history-item.interface';
 export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-status-property-status.interface';
 export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-status.interface';
 export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-webhooks-item.interface';

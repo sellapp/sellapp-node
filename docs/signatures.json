@@ -1452,6 +1452,72 @@
     "sourceFile": "src/subscriptions/subscriptions.ts"
   },
   {
+    "operationId": "listSubscriptions",
+    "resource": "subscriptions",
+    "method": "listSubscriptions",
+    "nativeSignature": "async listSubscriptions(options?: ListSubscriptionsOptions): Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, ListSubscriptionsOptions>>",
+    "signatures": [
+      {
+        "name": "listSubscriptions",
+        "params": [
+          {
+            "name": "options",
+            "type": "ListSubscriptionsOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, ListSubscriptionsOptions>>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/subscriptions/subscriptions.ts"
+  },
+  {
+    "operationId": "searchSubscriptions",
+    "resource": "subscriptions",
+    "method": "searchSubscriptions",
+    "nativeSignature": "async searchSubscriptions(options: SearchSubscriptionsOptions): Promise<SdkSearchSubscriptionsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "searchSubscriptions",
+        "params": [
+          {
+            "name": "options",
+            "type": "SearchSubscriptionsOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkSearchSubscriptionsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/subscriptions/subscriptions.ts"
+  },
+  {
+    "operationId": "getSubscription",
+    "resource": "subscriptions",
+    "method": "getSubscription",
+    "nativeSignature": "async getSubscription(options: GetSubscriptionOptions): Promise<SdkGetSubscriptionResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getSubscription",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetSubscriptionOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetSubscriptionResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/subscriptions/subscriptions.ts"
+  },
+  {
     "operationId": "getSubscriptionCapabilities",
     "resource": "subscriptions",
     "method": "getCapabilities",
@@ -1518,6 +1584,28 @@
     "sourceFile": "src/subscriptions/subscriptions.ts"
   },
   {
+    "operationId": "keepSubscription",
+    "resource": "subscriptions",
+    "method": "keep",
+    "nativeSignature": "async keep(options: KeepOptions): Promise<SdkKeepSubscriptionResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "keep",
+        "params": [
+          {
+            "name": "options",
+            "type": "KeepOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkKeepSubscriptionResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/subscriptions/subscriptions.ts"
+  },
+  {
     "operationId": "pauseSubscription",
     "resource": "subscriptions",
     "method": "pause",
@@ -1565,7 +1653,7 @@
     "operationId": "updateSubscriptionPaymentMethod",
     "resource": "subscriptions",
     "method": "updatePaymentMethod",
-    "nativeSignature": "async updatePaymentMethod(options: UpdatePaymentMethodOptions): Promise<void>",
+    "nativeSignature": "async updatePaymentMethod(options: UpdatePaymentMethodOptions): Promise<SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson>",
     "signatures": [
       {
         "name": "updatePaymentMethod",
@@ -1577,7 +1665,7 @@
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<void>",
+        "returnType": "Promise<SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson>",
         "async": true
       }
     ],
@@ -1587,7 +1675,7 @@
     "operationId": "previewSubscriptionPlanChange",
     "resource": "subscriptions",
     "method": "previewPlanChange",
-    "nativeSignature": "async previewPlanChange(options: PreviewPlanChangeOptions): Promise<void>",
+    "nativeSignature": "async previewPlanChange(options: PreviewPlanChangeOptions): Promise<SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson>",
     "signatures": [
       {
         "name": "previewPlanChange",
@@ -1599,7 +1687,7 @@
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<void>",
+        "returnType": "Promise<SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson>",
         "async": true
       }
     ],
@@ -1609,7 +1697,7 @@
     "operationId": "confirmSubscriptionPlanChange",
     "resource": "subscriptions",
     "method": "confirmPlanChange",
-    "nativeSignature": "async confirmPlanChange(options: ConfirmPlanChangeOptions): Promise<void>",
+    "nativeSignature": "async confirmPlanChange(options: ConfirmPlanChangeOptions): Promise<SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson>",
     "signatures": [
       {
         "name": "confirmPlanChange",
@@ -1621,7 +1709,7 @@
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<void>",
+        "returnType": "Promise<SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson>",
         "async": true
       }
     ],
@@ -1672,70 +1760,70 @@
     "sourceFile": "src/subscriptions/subscriptions.ts"
   },
   {
-    "operationId": "listSubscriptions",
-    "resource": "subscriptions",
-    "method": "listSubscriptions",
-    "nativeSignature": "async listSubscriptions(options?: ListSubscriptionsOptions): Promise<AutoPaginatable<ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem, ListSubscriptionsOptions>>",
+    "operationId": "listSubscriptionActions",
+    "resource": "subscriptionsActions",
+    "method": "list",
+    "nativeSignature": "async list(options: SubscriptionsActionsListOptions): Promise<AutoPaginatable<SdkListSubscriptionActionsResponseValue200ApplicationJson, Omit<SubscriptionsActionsListOptions, 'productSubscription'>>>",
     "signatures": [
       {
-        "name": "listSubscriptions",
+        "name": "list",
         "params": [
           {
             "name": "options",
-            "type": "PaginationOptions | undefined",
-            "optional": true,
-            "passingStyle": "options_object"
-          }
-        ],
-        "returnType": "Promise<AutoPaginatable<ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
-        "async": true
-      }
-    ],
-    "sourceFile": "src/subscriptions/subscriptions.ts"
-  },
-  {
-    "operationId": "searchSubscriptions",
-    "resource": "subscriptions",
-    "method": "searchSubscriptions",
-    "nativeSignature": "async searchSubscriptions(options: SearchSubscriptionsOptions): Promise<SdkSearchSubscriptionsResponseValue200ApplicationJson>",
-    "signatures": [
-      {
-        "name": "searchSubscriptions",
-        "params": [
-          {
-            "name": "options",
-            "type": "SearchSubscriptionsOptions",
+            "type": "SubscriptionsActionsListOptions",
             "optional": false,
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<SdkSearchSubscriptionsResponseValue200ApplicationJson>",
+        "returnType": "Promise<AutoPaginatable<SdkListSubscriptionActionsResponseValue200ApplicationJson, Omit<SubscriptionsActionsListOptions, \"productSubscription\">>>",
         "async": true
       }
     ],
-    "sourceFile": "src/subscriptions/subscriptions.ts"
+    "sourceFile": "src/subscriptions-actions/subscriptions-actions.ts"
   },
   {
-    "operationId": "getSubscription",
-    "resource": "subscriptions",
-    "method": "getSubscription",
-    "nativeSignature": "async getSubscription(options: GetSubscriptionOptions): Promise<SdkGetSubscriptionResponseValue200ApplicationJson>",
+    "operationId": "getSubscriptionAction",
+    "resource": "subscriptionsActions",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetSubscriptionActionResponseValue200ApplicationJson>",
     "signatures": [
       {
-        "name": "getSubscription",
+        "name": "get",
         "params": [
           {
             "name": "options",
-            "type": "GetSubscriptionOptions",
+            "type": "GetOptions",
             "optional": false,
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<SdkGetSubscriptionResponseValue200ApplicationJson>",
+        "returnType": "Promise<SdkGetSubscriptionActionResponseValue200ApplicationJson>",
         "async": true
       }
     ],
-    "sourceFile": "src/subscriptions/subscriptions.ts"
+    "sourceFile": "src/subscriptions-actions/subscriptions-actions.ts"
+  },
+  {
+    "operationId": "dismissSubscriptionAction",
+    "resource": "subscriptionsActions",
+    "method": "dismiss",
+    "nativeSignature": "async dismiss(options: DismissOptions): Promise<SdkDismissSubscriptionActionResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "dismiss",
+        "params": [
+          {
+            "name": "options",
+            "type": "DismissOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkDismissSubscriptionActionResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/subscriptions-actions/subscriptions-actions.ts"
   },
   {
     "operationId": "listAppointments",
@@ -7065,19 +7153,19 @@
     "operationId": "listCustomerPortalSubscriptions",
     "resource": "customerPortal",
     "method": "listCustomerPortalSubscriptions",
-    "nativeSignature": "async listCustomerPortalSubscriptions(requestOptions: RequestOptions = {}): Promise<SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson>",
+    "nativeSignature": "async listCustomerPortalSubscriptions(options?: ListCustomerPortalSubscriptionsOptions): Promise<AutoPaginatable<CustomerPortalSubscription, ListCustomerPortalSubscriptionsOptions>>",
     "signatures": [
       {
         "name": "listCustomerPortalSubscriptions",
         "params": [
           {
-            "name": "requestOptions",
-            "type": "GetOptions",
+            "name": "options",
+            "type": "PaginationOptions | undefined",
             "optional": true,
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson>",
+        "returnType": "Promise<AutoPaginatable<CustomerPortalSubscription, PaginationOptions>>",
         "async": true
       }
     ],

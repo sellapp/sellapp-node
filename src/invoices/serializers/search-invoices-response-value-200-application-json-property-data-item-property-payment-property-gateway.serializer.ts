@@ -4,8 +4,8 @@ import type { SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPrope
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeSearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGatewayPropertyData } from './search-invoices-response-value-200-application-json-property-data-item-property-payment-property-gateway-property-data.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
 
 export const deserializeSearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGateway = (
   response: SearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGatewayResponse,
@@ -14,6 +14,6 @@ export const deserializeSearchInvoicesResponseValue200ApplicationJsonPropertyDat
   return {
     ...preserveUnknownFields(response, ["data","type"]),
     data: deserializeSearchInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGatewayPropertyData(response.data),
-    type: response.type,
+    type: response.type ?? null,
   };
 };

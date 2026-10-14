@@ -2,24 +2,20 @@
 
 import type { PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyData, PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataResponse } from '../interfaces/preview-customer-subscription-renewal-date-change-response-value-200-application-json-property-data.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
-import { deserializePreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyCustomer } from './preview-customer-subscription-renewal-date-change-response-value-200-application-json-property-data-property-customer.serializer';
+import { deserializePreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyPreview } from './preview-customer-subscription-renewal-date-change-response-value-200-application-json-property-data-property-preview.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyData","required":["id","status","providerSubscriptionId","providerCustomerId","customer"],"properties":{"id":{"kind":"primitive","type":"integer"},"status":{"kind":"primitive","type":"string"},"subscriptionId":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"customerId":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"providerSubscriptionId":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"providerCustomerId":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"customer":{"kind":"any"},"productVariantId":{"kind":"primitive","type":"integer"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyData","required":["id","status","provider_subscription_id","provider_customer_id","customer"],"properties":{"id":{"kind":"primitive","type":"integer"},"status":{"kind":"primitive","type":"string"},"subscription_id":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"customer_id":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"provider_subscription_id":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"provider_customer_id":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"customer":{"kind":"any"},"product_variant_id":{"kind":"primitive","type":"integer"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyData","required":["previewToken","expiresAt","preview","customerMessage"],"properties":{"previewToken":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"expiresAt":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}},"preview":{"kind":"any"},"customerMessage":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyData","required":["preview_token","expires_at","preview","customer_message"],"properties":{"preview_token":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"expires_at":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}},"preview":{"kind":"any"},"customer_message":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
 
 export const deserializePreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyData = (
   response: PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataResponse,
 ): PreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyData => {
   assertValidModel(response, wireRuntimeSchema, { direction: 'response', allowUnknownEnums: true, allowUnknownUnionVariants: true, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(response, ["id","status","subscription_id","customer_id","provider_subscription_id","provider_customer_id","customer","product_variant_id"]),
-    id: response.id,
-    status: response.status,
-    subscriptionId: response.subscription_id ?? null,
-    customerId: response.customer_id ?? null,
-    providerSubscriptionId: response.provider_subscription_id ?? null,
-    providerCustomerId: response.provider_customer_id ?? null,
-    customer: deserializePreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyCustomer(response.customer),
-    productVariantId: response.product_variant_id,
+    ...preserveUnknownFields(response, ["preview_token","expires_at","preview","customer_message"]),
+    previewToken: response.preview_token ?? null,
+    expiresAt: response.expires_at != null ? new Date(response.expires_at) : null,
+    preview: deserializePreviewCustomerSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataPropertyPreview(response.preview),
+    customerMessage: response.customer_message ?? null,
   };
 };

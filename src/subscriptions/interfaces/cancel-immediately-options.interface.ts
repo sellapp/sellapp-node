@@ -12,6 +12,6 @@ export interface CancelImmediatelyOptions {
   reason?: string | null;
   /** Request a real refund of the latest payment during immediate cancellation. Cancellation success does not prove refund success; verify provider/order refund records. */
   refundLastPayment?: boolean;
-  /** Request a prorated refund. Requires refund_last_payment=true. False requests a full latest-payment refund when refund_last_payment is enabled. */
+  /** Request a prorated refund. Requires refund_last_payment=true. False requests a full latest-payment refund when refund_last_payment is enabled. Refused with `422` while a Stripe, PayPal, or Razorpay subscription is past due or unpaid. */
   proRatedRefund?: boolean;
 }

@@ -2,12 +2,14 @@
 
 import type { CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyFrequency, CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyFrequencyResponse } from './create-product-variant-response-value-201-application-json-property-data-property-pricing-property-frequency.interface';
 import type { CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyPrice, CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyPriceResponse } from './create-product-variant-response-value-201-application-json-property-data-property-pricing-property-price.interface';
+import type { CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyTrial, CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyTrialResponse } from './create-product-variant-response-value-201-application-json-property-data-property-pricing-property-trial.interface';
 
 export interface CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricing {
   humble: boolean;
   frequency: CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyFrequency;
   type: string;
   price: CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyPrice;
+  trial?: CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyTrial;
   [key: string]: unknown;
 }
 
@@ -16,5 +18,6 @@ export interface CreateProductVariantResponseValue201ApplicationJsonPropertyData
   frequency: CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyFrequencyResponse;
   type: string;
   price: CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyPriceResponse;
+  trial?: CreateProductVariantResponseValue201ApplicationJsonPropertyDataPropertyPricingPropertyTrialResponse;
   [key: string]: unknown;
 }

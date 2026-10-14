@@ -7,9 +7,5 @@ export interface UpdateCustomerSubscriptionPaymentMethodOptions {
   requestOptions?: RequestOptions;
   /** The productSubscription identifier. */
   productSubscription: number;
-  previewId?: string;
-  productVariantId?: number;
-  renewalDate?: string;
-  returnUrl?: string;
-  reason?: string;
+  returnUrl?: string | null;
 }

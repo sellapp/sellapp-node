@@ -26,6 +26,7 @@ import type { SdkBatchUpdateProductVariantsResponseValue200ApplicationJson, SdkB
 import type { SdkCreateProductVariantRequestApplicationJsonResponse } from './interfaces/sdk-create-product-variant-request-application-json.interface';
 import type { SdkReplaceProductVariantWithPutRequestApplicationJsonResponse } from './interfaces/sdk-replace-product-variant-with-put-request-application-json.interface';
 import type { SdkUpdateProductVariantRequestApplicationJsonResponse } from './interfaces/sdk-update-product-variant-request-application-json.interface';
+import type { SdkDeleteProductVariantRequestApplicationJsonResponse } from './interfaces/sdk-delete-product-variant-request-application-json.interface';
 import type { SdkSearchProductVariantsRequestApplicationJsonResponse } from './interfaces/sdk-search-product-variants-request-application-json.interface';
 import type { SdkBatchCreateProductVariantsRequestApplicationJsonResponse } from './interfaces/sdk-batch-create-product-variants-request-application-json.interface';
 import type { SdkBatchUpdateProductVariantsRequestApplicationJsonResponse } from './interfaces/sdk-batch-update-product-variants-request-application-json.interface';
@@ -41,6 +42,7 @@ import { deserializeSdkBatchUpdateProductVariantsResponseValue200ApplicationJson
 import { serializeSdkCreateProductVariantRequestApplicationJson } from './serializers/sdk-create-product-variant-request-application-json.serializer';
 import { serializeSdkReplaceProductVariantWithPutRequestApplicationJson } from './serializers/sdk-replace-product-variant-with-put-request-application-json.serializer';
 import { serializeSdkUpdateProductVariantRequestApplicationJson } from './serializers/sdk-update-product-variant-request-application-json.serializer';
+import { serializeSdkDeleteProductVariantRequestApplicationJson } from './serializers/sdk-delete-product-variant-request-application-json.serializer';
 import { serializeSdkSearchProductVariantsRequestApplicationJson } from './serializers/sdk-search-product-variants-request-application-json.serializer';
 import { serializeSdkBatchCreateProductVariantsRequestApplicationJson } from './serializers/sdk-batch-create-product-variants-request-application-json.serializer';
 import { serializeSdkBatchUpdateProductVariantsRequestApplicationJson } from './serializers/sdk-batch-update-product-variants-request-application-json.serializer';
@@ -166,7 +168,7 @@ export class ProductVariants {
   /**
    * Update a product variant with PUT
    *
-   * Update a product variant using the PUT compatibility method. Fields remain partial for backward compatibility. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Update a product variant using the PUT compatibility method. Fields remain partial for backward compatibility. Bundle products only support one-time pricing. Adding the bundle deliverable type to a subscription variant is refused with a `422` carrying that sentence on `deliverable.types`. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.product - The product path parameter.
    * @example 120
@@ -192,7 +194,7 @@ export class ProductVariants {
   /**
    * Update a product variant
    *
-   * Updates a product variant's details. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Updates a product variant's details. Bundle products only support one-time pricing. Adding the bundle deliverable type to a subscription variant is refused with a `422` carrying that sentence on `deliverable.types`. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.product - The product path parameter.
    * @example 120
@@ -218,7 +220,7 @@ export class ProductVariants {
   /**
    * Delete a product variant
    *
-   * Deletes a product variant. This will permanently delete the product variant and all of its details, including the sensitive deliverables, will no longer be retrievable. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Soft-delete a variant in the authenticated store. Variants referenced by non-terminal subscriptions cannot be deleted. Send expected_updated_at from the latest variant response to reject a stale deletion with 422. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.product - The product path parameter.
    * @example 1
@@ -233,8 +235,8 @@ export class ProductVariants {
    * @throws {RateLimitExceededException} 429
    */
   async delete(options: DeleteOptions): Promise<void> {
-    const { product, variant } = options;
-    await this.sellApp.delete(`/v2/products/${encodeURIComponent(product)}/variants/${encodeURIComponent(variant)}`, { ...options.requestOptions, operationId: 'deleteProductVariant' });
+    const { product, variant, requestOptions, ...payload } = options;
+    await this.sellApp.deleteWithBody<SdkDeleteProductVariantRequestApplicationJsonResponse>(`/v2/products/${encodeURIComponent(product)}/variants/${encodeURIComponent(variant)}`, serializeSdkDeleteProductVariantRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'deleteProductVariant' });
   }
 
   /**

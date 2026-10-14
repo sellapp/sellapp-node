@@ -7,9 +7,6 @@ export interface PauseCustomerSubscriptionOptions {
   requestOptions?: RequestOptions;
   /** The productSubscription identifier. */
   productSubscription: number;
-  previewId?: string;
-  productVariantId?: number;
-  renewalDate?: string;
-  returnUrl?: string;
-  reason?: string;
+  resumeAt?: Date | null;
+  reason?: string | null;
 }

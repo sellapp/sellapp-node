@@ -2,12 +2,14 @@
 
 import type { ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequency, ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequencyResponse } from './list-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-frequency.interface';
 import type { ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice, ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPriceResponse } from './list-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-price.interface';
+import type { ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial, ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrialResponse } from './list-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial.interface';
 
 export interface ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricing {
   humble: boolean;
   frequency: ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequency;
   type: string;
   price: ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice;
+  trial?: ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial;
   [key: string]: unknown;
 }
 
@@ -16,5 +18,6 @@ export interface ListProductVariantsResponseValue200ApplicationJsonPropertyDataI
   frequency: ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequencyResponse;
   type: string;
   price: ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPriceResponse;
+  trial?: ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrialResponse;
   [key: string]: unknown;
 }

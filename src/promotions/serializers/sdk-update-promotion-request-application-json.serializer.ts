@@ -4,15 +4,15 @@ import type { SdkUpdatePromotionRequestApplicationJson, SdkUpdatePromotionReques
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { serializeUpdatePromotionRequestApplicationJsonPropertyPhasesItem } from './update-promotion-request-application-json-property-phases-item.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdatePromotionRequestApplicationJson","required":[],"properties":{"name":{"kind":"primitive","type":"string","constraints":{"maxLength":255}},"status":{"kind":"enum","values":["active","disabled"]},"startsAt":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}},"endsAt":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}},"priority":{"kind":"primitive","type":"integer","constraints":{"minimum":0,"maximum":2147483647}},"isStackable":{"kind":"primitive","type":"boolean"},"maxRedemptions":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":1,"maximum":4294967295}}},"phases":{"kind":"array","items":{"kind":"any"},"constraints":{"minItems":1}}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdatePromotionRequestApplicationJson","required":[],"properties":{"name":{"kind":"primitive","type":"string","constraints":{"maxLength":255}},"status":{"kind":"enum","values":["active","disabled"]},"starts_at":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}},"ends_at":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}},"priority":{"kind":"primitive","type":"integer","constraints":{"minimum":0,"maximum":2147483647}},"is_stackable":{"kind":"primitive","type":"boolean"},"max_redemptions":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":1,"maximum":4294967295}}},"phases":{"kind":"array","items":{"kind":"any"},"constraints":{"minItems":1}}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdatePromotionRequestApplicationJson","required":[],"properties":{"name":{"kind":"primitive","type":"string","constraints":{"maxLength":255}},"status":{"kind":"enum","values":["active","disabled"]},"startsAt":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}},"endsAt":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}},"priority":{"kind":"primitive","type":"integer","constraints":{"minimum":0,"maximum":2147483647}},"isStackable":{"kind":"primitive","type":"boolean"},"maxRedemptions":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":1,"maximum":4294967295}}},"appliesTo":{"kind":"enum","values":["one_time","subscriptions"]},"subscriptionPayments":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":1,"maximum":36}}},"storeWide":{"kind":"primitive","type":"boolean"},"products":{"kind":"array","items":{"kind":"primitive","type":"integer"}},"productVariants":{"kind":"array","items":{"kind":"primitive","type":"integer"}},"phases":{"kind":"array","items":{"kind":"any"},"constraints":{"minItems":1}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdatePromotionRequestApplicationJson","required":[],"properties":{"name":{"kind":"primitive","type":"string","constraints":{"maxLength":255}},"status":{"kind":"enum","values":["active","disabled"]},"starts_at":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}},"ends_at":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}},"priority":{"kind":"primitive","type":"integer","constraints":{"minimum":0,"maximum":2147483647}},"is_stackable":{"kind":"primitive","type":"boolean"},"max_redemptions":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":1,"maximum":4294967295}}},"applies_to":{"kind":"enum","values":["one_time","subscriptions"]},"subscription_payments":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":1,"maximum":36}}},"store_wide":{"kind":"primitive","type":"boolean"},"products":{"kind":"array","items":{"kind":"primitive","type":"integer"}},"product_variants":{"kind":"array","items":{"kind":"primitive","type":"integer"}},"phases":{"kind":"array","items":{"kind":"any"},"constraints":{"minItems":1}}},"additionalProperties":true};
 
 export const serializeSdkUpdatePromotionRequestApplicationJson = (
   model: SdkUpdatePromotionRequestApplicationJson,
 ): SdkUpdatePromotionRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["name","status","startsAt","endsAt","priority","isStackable","maxRedemptions","phases"]),
+    ...preserveUnknownFields(model, ["name","status","startsAt","endsAt","priority","isStackable","maxRedemptions","appliesTo","subscriptionPayments","storeWide","products","productVariants","phases"]),
     name: model.name,
     status: model.status,
     starts_at: model.startsAt != null ? model.startsAt.toISOString() : null,
@@ -20,6 +20,11 @@ export const serializeSdkUpdatePromotionRequestApplicationJson = (
     priority: model.priority,
     is_stackable: model.isStackable,
     max_redemptions: model.maxRedemptions,
+    applies_to: model.appliesTo,
+    subscription_payments: model.subscriptionPayments,
+    store_wide: model.storeWide,
+    products: model.products,
+    product_variants: model.productVariants,
     phases: model.phases != null ? model.phases.map(serializeUpdatePromotionRequestApplicationJsonPropertyPhasesItem) : undefined,
   };
 };

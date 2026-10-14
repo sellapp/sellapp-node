@@ -4,19 +4,21 @@ import type { UpdateProductVariantPricingResponseValue200ApplicationJsonProperty
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeUpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequency } from './update-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-frequency.serializer';
 import { deserializeUpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice } from './update-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-price.serializer';
+import { deserializeUpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial } from './update-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-trial.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"UpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricing","required":["humble","frequency","type","price"],"properties":{"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"},"type":{"kind":"primitive","type":"string"},"price":{"kind":"any"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"UpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricing","required":["humble","frequency","type","price"],"properties":{"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"},"type":{"kind":"primitive","type":"string"},"price":{"kind":"any"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"UpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricing","required":["humble","frequency","type","price"],"properties":{"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"},"type":{"kind":"primitive","type":"string"},"price":{"kind":"any"},"trial":{"kind":"any"}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"UpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricing","required":["humble","frequency","type","price"],"properties":{"humble":{"kind":"primitive","type":"boolean"},"frequency":{"kind":"any"},"type":{"kind":"primitive","type":"string"},"price":{"kind":"any"},"trial":{"kind":"any"}},"additionalProperties":true};
 
 export const deserializeUpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricing = (
   response: UpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingResponse,
 ): UpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricing => {
   assertValidModel(response, wireRuntimeSchema, { direction: 'response', allowUnknownEnums: true, allowUnknownUnionVariants: true, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(response, ["humble","frequency","type","price"]),
+    ...preserveUnknownFields(response, ["humble","frequency","type","price","trial"]),
     humble: response.humble,
     frequency: deserializeUpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequency(response.frequency),
     type: response.type,
     price: deserializeUpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice(response.price),
+    trial: response.trial != null ? deserializeUpdateProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial(response.trial) : undefined,
   };
 };

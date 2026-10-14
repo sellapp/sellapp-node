@@ -9,4 +9,6 @@ export interface UpdatePaymentMethodOptions {
   productSubscription: number;
   /** Optional idempotency key. You may also send this as the Idempotency-Key header. */
   idempotencyKey?: string | null;
+  /** Where Stripe returns the customer once its hosted page finishes. Defaults to the store's customer portal page for this subscription. Razorpay subscriptions ignore it. */
+  returnUrl?: string | null;
 }

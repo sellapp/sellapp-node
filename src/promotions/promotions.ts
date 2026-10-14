@@ -89,7 +89,7 @@ export class Promotions {
   /**
    * Create a promotion
    *
-   * Create a promotion and its initial ordered phase set. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Create a promotion and its initial ordered phase set. `applies_to` chooses whether it discounts one-time purchases or the first `subscription_payments` payments of a subscription plan, and a subscription promotion can be limited to picked products and plans with `store_wide`, `products`, and `product_variants`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @returns {Promise<SdkCreatePromotionResponseValue201ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401

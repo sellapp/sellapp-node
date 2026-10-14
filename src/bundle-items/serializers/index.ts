@@ -9,6 +9,9 @@ export * from './get-bundle-item-response-value-200-application-json-property-da
 export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing.serializer';
 export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-frequency.serializer';
 export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-price.serializer';
+export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-trial.serializer';
+export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-trial-property-length.serializer';
+export * from './get-bundle-item-response-value-200-application-json-property-data-property-pricing-property-trial-property-price.serializer';
 export * from './get-bundle-item-response-value-200-application-json-property-data-property-product.serializer';
 export * from './get-bundle-item-response-value-200-application-json-property-data-property-product-property-additional-information-item.serializer';
 export * from './list-bundle-items-response-value-200-application-json-property-data-item.serializer';
@@ -19,6 +22,9 @@ export * from './list-bundle-items-response-value-200-application-json-property-
 export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing.serializer';
 export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-frequency.serializer';
 export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-price.serializer';
+export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-trial.serializer';
+export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-length.serializer';
+export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-price.serializer';
 export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-product.serializer';
 export * from './list-bundle-items-response-value-200-application-json-property-data-item-property-product-property-additional-information-item.serializer';
 export * from './sdk-attach-bundle-items-request-application-json.serializer';

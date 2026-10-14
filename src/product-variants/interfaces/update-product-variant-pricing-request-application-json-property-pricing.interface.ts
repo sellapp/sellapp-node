@@ -3,6 +3,7 @@
 import type { UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyPrice, UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyPriceResponse } from './update-product-variant-pricing-request-application-json-property-pricing-property-price.interface';
 import type { UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyCompareAtPrice, UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyCompareAtPriceResponse } from './update-product-variant-pricing-request-application-json-property-pricing-property-compare-at-price.interface';
 import type { UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyFrequency, UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyFrequencyResponse } from './update-product-variant-pricing-request-application-json-property-pricing-property-frequency.interface';
+import type { UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyTrial, UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyTrialResponse } from './update-product-variant-pricing-request-application-json-property-pricing-property-trial.interface';
 import type { UpdateProductVariantPricingRequestApplicationJsonPropertyPricingType } from './update-product-variant-pricing-request-application-json-property-pricing-type.interface';
 
 export interface UpdateProductVariantPricingRequestApplicationJsonPropertyPricing {
@@ -11,6 +12,7 @@ export interface UpdateProductVariantPricingRequestApplicationJsonPropertyPricin
   compareAtPrice?: UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyCompareAtPrice | null;
   humble?: boolean;
   frequency?: UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyFrequency;
+  trial?: UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyTrial | null;
   [key: string]: unknown;
 }
 
@@ -20,5 +22,6 @@ export interface UpdateProductVariantPricingRequestApplicationJsonPropertyPricin
   compare_at_price?: UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyCompareAtPriceResponse | null;
   humble?: boolean;
   frequency?: UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyFrequencyResponse;
+  trial?: UpdateProductVariantPricingRequestApplicationJsonPropertyPricingPropertyTrialResponse | null;
   [key: string]: unknown;
 }

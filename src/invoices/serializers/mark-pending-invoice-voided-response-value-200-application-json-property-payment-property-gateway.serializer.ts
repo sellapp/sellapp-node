@@ -4,8 +4,8 @@ import type { MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPay
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeMarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyData } from './mark-pending-invoice-voided-response-value-200-application-json-property-payment-property-gateway-property-data.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
 
 export const deserializeMarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGateway = (
   response: MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayResponse,
@@ -14,6 +14,6 @@ export const deserializeMarkPendingInvoiceVoidedResponseValue200ApplicationJsonP
   return {
     ...preserveUnknownFields(response, ["data","type"]),
     data: deserializeMarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyData(response.data),
-    type: response.type,
+    type: response.type ?? null,
   };
 };

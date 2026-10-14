@@ -4,8 +4,8 @@ import type { ListInvoicesResponseValue200ApplicationJsonPropertyDataItemPropert
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeListInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGatewayPropertyData } from './list-invoices-response-value-200-application-json-property-data-item-property-payment-property-gateway-property-data.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"ListInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"ListInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"ListInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"ListInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
 
 export const deserializeListInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGateway = (
   response: ListInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGatewayResponse,
@@ -14,6 +14,6 @@ export const deserializeListInvoicesResponseValue200ApplicationJsonPropertyDataI
   return {
     ...preserveUnknownFields(response, ["data","type"]),
     data: deserializeListInvoicesResponseValue200ApplicationJsonPropertyDataItemPropertyPaymentPropertyGatewayPropertyData(response.data),
-    type: response.type,
+    type: response.type ?? null,
   };
 };

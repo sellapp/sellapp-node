@@ -2,12 +2,14 @@
 
 import type { ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequency, ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequencyResponse } from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-frequency.interface';
 import type { ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice, ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPriceResponse } from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-price.interface';
+import type { ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial, ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrialResponse } from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-trial.interface';
 
 export interface ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricing {
   humble: boolean;
   frequency: ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequency;
   type: string;
   price: ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPrice;
+  trial?: ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrial;
   [key: string]: unknown;
 }
 
@@ -16,5 +18,6 @@ export interface ReplaceProductVariantPricingResponseValue200ApplicationJsonProp
   frequency: ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyFrequencyResponse;
   type: string;
   price: ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyPriceResponse;
+  trial?: ReplaceProductVariantPricingResponseValue200ApplicationJsonPropertyDataPropertyPricingPropertyTrialResponse;
   [key: string]: unknown;
 }

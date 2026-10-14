@@ -91,7 +91,7 @@ export class WebhookPlatform {
   /**
    * Retrieve a webhook delivery
    *
-   * Retrieve one redacted delivery. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Retrieve one redacted delivery. A disabled delivery with zero attempts was retained without contacting the endpoint. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.delivery - The delivery identifier.
    * @example "01992b31-c8bd-75b5-b02d-6ae0aa418940"
@@ -113,7 +113,7 @@ export class WebhookPlatform {
   /**
    * Replay a webhook delivery
    *
-   * Accept no URL, payload, or query overrides. Resolve the current channel server-side, create a new delivery ID, retain the integration-event ID, and sign with a new timestamp. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Accept no URL, payload, or query overrides. Resolve the current channel server-side, create a new delivery ID, retain the integration-event ID, and sign with a new timestamp. A disabled channel returns 422: fix the endpoint and save the channel before replaying. A successful test alone does not re-enable delivery. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.delivery - The delivery identifier.
    * @example "delivery_01K4CUSTOMER"

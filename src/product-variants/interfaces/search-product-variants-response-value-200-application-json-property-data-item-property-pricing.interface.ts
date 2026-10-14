@@ -2,12 +2,14 @@
 
 import type { SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequency, SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequencyResponse } from './search-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-frequency.interface';
 import type { SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice, SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPriceResponse } from './search-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-price.interface';
+import type { SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial, SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrialResponse } from './search-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial.interface';
 
 export interface SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricing {
   humble: boolean;
   frequency: SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequency;
   type: string;
   price: SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice;
+  trial?: SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial;
   [key: string]: unknown;
 }
 
@@ -16,5 +18,6 @@ export interface SearchProductVariantsResponseValue200ApplicationJsonPropertyDat
   frequency: SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequencyResponse;
   type: string;
   price: SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPriceResponse;
+  trial?: SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrialResponse;
   [key: string]: unknown;
 }

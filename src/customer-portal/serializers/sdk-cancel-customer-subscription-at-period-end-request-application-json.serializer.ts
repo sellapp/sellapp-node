@@ -3,19 +3,15 @@
 import type { SdkCancelCustomerSubscriptionAtPeriodEndRequestApplicationJson, SdkCancelCustomerSubscriptionAtPeriodEndRequestApplicationJsonResponse } from '../interfaces/sdk-cancel-customer-subscription-at-period-end-request-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkCancelCustomerSubscriptionAtPeriodEndRequestApplicationJson","required":[],"properties":{"previewId":{"kind":"primitive","type":"string"},"productVariantId":{"kind":"primitive","type":"integer"},"renewalDate":{"kind":"primitive","type":"string","format":"date"},"returnUrl":{"kind":"primitive","type":"string","format":"uri"},"reason":{"kind":"primitive","type":"string"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkCancelCustomerSubscriptionAtPeriodEndRequestApplicationJson","required":[],"properties":{"preview_id":{"kind":"primitive","type":"string"},"product_variant_id":{"kind":"primitive","type":"integer"},"renewal_date":{"kind":"primitive","type":"string","format":"date"},"return_url":{"kind":"primitive","type":"string","format":"uri"},"reason":{"kind":"primitive","type":"string"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkCancelCustomerSubscriptionAtPeriodEndRequestApplicationJson","required":[],"properties":{"reason":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":500}}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkCancelCustomerSubscriptionAtPeriodEndRequestApplicationJson","required":[],"properties":{"reason":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":500}}}},"additionalProperties":true};
 
 export const serializeSdkCancelCustomerSubscriptionAtPeriodEndRequestApplicationJson = (
   model: SdkCancelCustomerSubscriptionAtPeriodEndRequestApplicationJson,
 ): SdkCancelCustomerSubscriptionAtPeriodEndRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["previewId","productVariantId","renewalDate","returnUrl","reason"]),
-    preview_id: model.previewId,
-    product_variant_id: model.productVariantId,
-    renewal_date: model.renewalDate,
-    return_url: model.returnUrl,
+    ...preserveUnknownFields(model, ["reason"]),
     reason: model.reason,
   };
 };

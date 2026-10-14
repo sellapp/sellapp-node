@@ -8,8 +8,14 @@ export interface PauseSubscriptionResponseValue200ApplicationJsonPropertyData {
   productSubscriptionId?: number;
   subscriptionId?: string | null;
   action?: PauseSubscriptionResponseValue200ApplicationJsonPropertyDataAction | (string & Record<never, never>);
+  /** `pending` while the provider or the customer still has to respond, then `confirmed`, `failed`, `expired`, `dismissed`, or `force_resolved`. */
   status?: PauseSubscriptionResponseValue200ApplicationJsonPropertyDataStatus | (string & Record<never, never>);
   provider?: string;
+  /** The order a plan change's proration was billed on. Only a subscription the store bills in house bills a proration as an order of its own, so this is null for every other provider, including one that prorated the change itself. */
+  prorationOrderId?: number | null;
+  /** The seller-facing failure message, truncated to 255 characters. A dismissed action carries its dismissal note here instead. */
+  error?: string | null;
+  /** The sentence SellApp shows the customer about this action, such as why it failed or that the seller dismissed it. SellApp writes it; the customer never types it. `null` when there is nothing to tell them. */
   customerMessage?: string | null;
   confirmedAt?: Date | null;
   failedAt?: Date | null;
@@ -25,6 +31,8 @@ export interface PauseSubscriptionResponseValue200ApplicationJsonPropertyDataRes
   action?: PauseSubscriptionResponseValue200ApplicationJsonPropertyDataAction | (string & Record<never, never>);
   status?: PauseSubscriptionResponseValue200ApplicationJsonPropertyDataStatus | (string & Record<never, never>);
   provider?: string;
+  proration_order_id?: number | null;
+  error?: string | null;
   customer_message?: string | null;
   confirmed_at?: string | null;
   failed_at?: string | null;

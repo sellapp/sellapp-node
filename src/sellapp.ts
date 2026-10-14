@@ -51,6 +51,7 @@ import { LicensesInstances } from './licenses-instances/licenses-instances';
 import { LicenseInstances } from './license-instances/license-instances';
 import { ProductVariantsPricing } from './product-variants-pricing/product-variants-pricing';
 import { ProductVariantsBooking } from './product-variants-booking/product-variants-booking';
+import { SubscriptionsActions } from './subscriptions-actions/subscriptions-actions';
 import { BookingsCalendarEvents } from './bookings-calendar-events/bookings-calendar-events';
 import { PromotionsPhases } from './promotions-phases/promotions-phases';
 import { AddOnsParentProducts } from './add-ons-parent-products/add-ons-parent-products';
@@ -133,6 +134,7 @@ export class SellApp extends SellAppBase {
   readonly licenseInstances = new LicenseInstances(this);
   readonly productVariantsPricing = new ProductVariantsPricing(this);
   readonly productVariantsBooking = new ProductVariantsBooking(this);
+  readonly subscriptionsActions = new SubscriptionsActions(this);
   readonly bookingsCalendarEvents = new BookingsCalendarEvents(this);
   readonly promotionsPhases = new PromotionsPhases(this);
   readonly addOnsParentProducts = new AddOnsParentProducts(this);

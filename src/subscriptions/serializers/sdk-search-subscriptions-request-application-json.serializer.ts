@@ -2,17 +2,23 @@
 
 import type { SdkSearchSubscriptionsRequestApplicationJson, SdkSearchSubscriptionsRequestApplicationJsonResponse } from '../interfaces/sdk-search-subscriptions-request-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
+import { serializeSearchSubscriptionsRequestApplicationJsonPropertyFiltersItem } from './search-subscriptions-request-application-json-property-filters-item.serializer';
+import { serializeSearchSubscriptionsRequestApplicationJsonPropertySortItem } from './search-subscriptions-request-application-json-property-sort-item.serializer';
+import { serializeSearchSubscriptionsRequestApplicationJsonPropertySearch } from './search-subscriptions-request-application-json-property-search.serializer';
+import { serializeSearchSubscriptionsRequestApplicationJsonPropertyIncludesItem } from './search-subscriptions-request-application-json-property-includes-item.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsRequestApplicationJson","required":[],"properties":{"search":{"kind":"primitive","type":"string"},"status":{"kind":"primitive","type":"string"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsRequestApplicationJson","required":[],"properties":{"search":{"kind":"primitive","type":"string"},"status":{"kind":"primitive","type":"string"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}}},"additionalProperties":true};
 
 export const serializeSdkSearchSubscriptionsRequestApplicationJson = (
   model: SdkSearchSubscriptionsRequestApplicationJson,
 ): SdkSearchSubscriptionsRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["search","status"]),
-    search: model.search,
-    status: model.status,
+    ...preserveUnknownFields(model, ["filters","sort","search","includes"]),
+    filters: model.filters != null ? model.filters.map(serializeSearchSubscriptionsRequestApplicationJsonPropertyFiltersItem) : undefined,
+    sort: model.sort != null ? model.sort.map(serializeSearchSubscriptionsRequestApplicationJsonPropertySortItem) : undefined,
+    search: model.search != null ? serializeSearchSubscriptionsRequestApplicationJsonPropertySearch(model.search) : undefined,
+    includes: model.includes != null ? model.includes.map(serializeSearchSubscriptionsRequestApplicationJsonPropertyIncludesItem) : undefined,
   };
 };

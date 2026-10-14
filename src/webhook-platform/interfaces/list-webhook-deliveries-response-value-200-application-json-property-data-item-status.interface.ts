@@ -3,8 +3,10 @@
 export const ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItemStatus = {
   Pending: 'pending',
   Delivering: 'delivering',
+  Retrying: 'retrying',
   Succeeded: 'succeeded',
   Failed: 'failed',
+  Disabled: 'disabled',
 } as const;
 
 export type ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItemStatus =

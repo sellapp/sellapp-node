@@ -193,14 +193,14 @@ List customer subscriptions
 [API reference](https://sell.app/docs/api/customer-portal) · Effect: **read**
 
 ```typescript
-async listCustomerPortalSubscriptions(requestOptions: RequestOptions = {}): Promise<SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson>
+async listCustomerPortalSubscriptions(options?: ListCustomerPortalSubscriptionsOptions): Promise<AutoPaginatable<CustomerPortalSubscription, ListCustomerPortalSubscriptionsOptions>>
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
-| requestOptions | `GetOptions` | No |
+| options | `PaginationOptions \| undefined` | No |
 
-Returns: `Promise<SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson>`.
+Returns: `Promise<AutoPaginatable<CustomerPortalSubscription, PaginationOptions>>`.
 
 ```ts
 import { SellApp } from '@sell.app/sdk';
@@ -397,8 +397,7 @@ const client = new SellApp({
 
 const result = await client.customerPortal.cancelCustomerSubscriptionAtPeriodEnd({
   "productSubscription": 42,
-  "reason": "Customer requested this change",
-  requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
+  "reason": "Taking a break over the summer."
 });
 console.log(result);
 ```
@@ -446,8 +445,7 @@ const client = new SellApp({
 
 const result = await client.customerPortal.cancelCustomerSubscriptionImmediately({
   "productSubscription": 42,
-  "reason": "Customer requested this change",
-  requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
+  "reason": "No longer needed."
 });
 console.log(result);
 ```
@@ -495,8 +493,7 @@ const client = new SellApp({
 
 const result = await client.customerPortal.pauseCustomerSubscription({
   "productSubscription": 42,
-  "reason": "Customer requested this change",
-  requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
+  "resumeAt": new Date("2026-11-01T00:00:00Z")
 });
 console.log(result);
 ```
@@ -543,9 +540,7 @@ const client = new SellApp({
 });
 
 const result = await client.customerPortal.resumeCustomerSubscription({
-  "productSubscription": 42,
-  "reason": "Customer requested this change",
-  requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
+  "productSubscription": 42
 });
 console.log(result);
 ```
@@ -593,8 +588,7 @@ const client = new SellApp({
 
 const result = await client.customerPortal.updateCustomerSubscriptionPaymentMethod({
   "productSubscription": 42,
-  "reason": "Customer requested this change",
-  requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
+  "returnUrl": "https://acme.sell.app/customer-portal/subscriptions/991"
 });
 console.log(result);
 ```
@@ -642,8 +636,7 @@ const client = new SellApp({
 
 const result = await client.customerPortal.previewCustomerSubscriptionPlanChange({
   "productSubscription": 42,
-  "productVariantId": 84,
-  requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
+  "targetVariantId": 97
 });
 console.log(result);
 ```
@@ -691,8 +684,8 @@ const client = new SellApp({
 
 const result = await client.customerPortal.confirmCustomerSubscriptionPlanChange({
   "productSubscription": 42,
-  "previewId": "preview_01K4",
-  requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
+  "targetVariantId": 97,
+  "previewToken": "subprev_portal_991"
 });
 console.log(result);
 ```
@@ -740,8 +733,7 @@ const client = new SellApp({
 
 const result = await client.customerPortal.previewCustomerSubscriptionRenewalDateChange({
   "productSubscription": 42,
-  "renewalDate": "2026-10-15",
-  requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
+  "renewalDate": new Date("2026-10-15T00:00:00Z")
 });
 console.log(result);
 ```
@@ -789,8 +781,8 @@ const client = new SellApp({
 
 const result = await client.customerPortal.confirmCustomerSubscriptionRenewalDateChange({
   "productSubscription": 42,
-  "previewId": "preview_01K4",
-  requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
+  "renewalDate": new Date("2026-10-15T00:00:00Z"),
+  "previewToken": "subprev_portal_renewal_991"
 });
 console.log(result);
 ```

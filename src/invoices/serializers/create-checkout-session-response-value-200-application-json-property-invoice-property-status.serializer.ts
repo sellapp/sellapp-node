@@ -2,10 +2,11 @@
 
 import type { CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatus, CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatusResponse } from '../interfaces/create-checkout-session-response-value-200-application-json-property-invoice-property-status.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
+import { deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatusPropertyHistoryItem } from './create-checkout-session-response-value-200-application-json-property-invoice-property-status-property-history-item.serializer';
 import { deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatusPropertyStatus } from './create-checkout-session-response-value-200-application-json-property-invoice-property-status-property-status.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatus","required":["history","status"],"properties":{"history":{"kind":"array","items":{"kind":"primitive","type":"string"}},"status":{"kind":"any"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatus","required":["history","status"],"properties":{"history":{"kind":"array","items":{"kind":"primitive","type":"string"}},"status":{"kind":"any"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatus","required":["history","status"],"properties":{"history":{"kind":"array","items":{"kind":"any"}},"status":{"kind":"any"}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatus","required":["history","status"],"properties":{"history":{"kind":"array","items":{"kind":"any"}},"status":{"kind":"any"}},"additionalProperties":true};
 
 export const deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatus = (
   response: CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatusResponse,
@@ -13,7 +14,7 @@ export const deserializeCreateCheckoutSessionResponseValue200ApplicationJsonProp
   assertValidModel(response, wireRuntimeSchema, { direction: 'response', allowUnknownEnums: true, allowUnknownUnionVariants: true, allowUnknownFields: true });
   return {
     ...preserveUnknownFields(response, ["history","status"]),
-    history: response.history,
+    history: response.history.map(deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatusPropertyHistoryItem),
     status: deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyStatusPropertyStatus(response.status),
   };
 };

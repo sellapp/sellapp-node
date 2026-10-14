@@ -8,6 +8,7 @@ import type { PostOptions } from '../common/interfaces/post-options.interface';
 import type { UpdateCustomerPortalProfileOptions } from './interfaces/update-customer-portal-profile-options.interface';
 import type { ListCustomerPortalOrdersOptions } from './interfaces/list-customer-portal-orders-options.interface';
 import type { GetCustomerPortalOrderOptions } from './interfaces/get-customer-portal-order-options.interface';
+import type { ListCustomerPortalSubscriptionsOptions } from './interfaces/list-customer-portal-subscriptions-options.interface';
 import type { GetCustomerPortalSubscriptionOptions } from './interfaces/get-customer-portal-subscription-options.interface';
 import type { GetCustomerPortalSubscriptionCapabilitiesOptions } from './interfaces/get-customer-portal-subscription-capabilities-options.interface';
 import type { CancelCustomerSubscriptionAtPeriodEndOptions } from './interfaces/cancel-customer-subscription-at-period-end-options.interface';
@@ -23,7 +24,7 @@ import type { SdkGetCustomerPortalProfileResponseValue200ApplicationJson, SdkGet
 import type { SdkUpdateCustomerPortalProfileResponseValue200ApplicationJson, SdkUpdateCustomerPortalProfileResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-customer-portal-profile-response-value-200-application-json.interface';
 import type { CustomerPortalOrder, CustomerPortalOrderResponse } from './interfaces/customer-portal-order.interface';
 import type { SdkGetCustomerPortalOrderResponseValue200ApplicationJson, SdkGetCustomerPortalOrderResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-customer-portal-order-response-value-200-application-json.interface';
-import type { SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson, SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-customer-portal-subscriptions-response-value-200-application-json.interface';
+import type { CustomerPortalSubscription, CustomerPortalSubscriptionResponse } from './interfaces/customer-portal-subscription.interface';
 import type { SdkGetCustomerPortalSubscriptionResponseValue200ApplicationJson, SdkGetCustomerPortalSubscriptionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-customer-portal-subscription-response-value-200-application-json.interface';
 import type { SdkGetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJson, SdkGetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-customer-portal-subscription-capabilities-response-value-200-application-json.interface';
 import type { SdkListCustomerPortalEntitlementsResponseValue200ApplicationJson, SdkListCustomerPortalEntitlementsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-customer-portal-entitlements-response-value-200-application-json.interface';
@@ -40,7 +41,6 @@ import type { SdkUpdateCustomerPortalProfileRequestApplicationJsonResponse } fro
 import type { SdkCancelCustomerSubscriptionAtPeriodEndRequestApplicationJsonResponse } from './interfaces/sdk-cancel-customer-subscription-at-period-end-request-application-json.interface';
 import type { SdkCancelCustomerSubscriptionImmediatelyRequestApplicationJsonResponse } from './interfaces/sdk-cancel-customer-subscription-immediately-request-application-json.interface';
 import type { SdkPauseCustomerSubscriptionRequestApplicationJsonResponse } from './interfaces/sdk-pause-customer-subscription-request-application-json.interface';
-import type { SdkResumeCustomerSubscriptionRequestApplicationJsonResponse } from './interfaces/sdk-resume-customer-subscription-request-application-json.interface';
 import type { SdkUpdateCustomerSubscriptionPaymentMethodRequestApplicationJsonResponse } from './interfaces/sdk-update-customer-subscription-payment-method-request-application-json.interface';
 import type { SdkPreviewCustomerSubscriptionPlanChangeRequestApplicationJsonResponse } from './interfaces/sdk-preview-customer-subscription-plan-change-request-application-json.interface';
 import type { SdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJsonResponse } from './interfaces/sdk-confirm-customer-subscription-plan-change-request-application-json.interface';
@@ -50,7 +50,7 @@ import { deserializeSdkGetCustomerPortalProfileResponseValue200ApplicationJson }
 import { deserializeSdkUpdateCustomerPortalProfileResponseValue200ApplicationJson } from './serializers/sdk-update-customer-portal-profile-response-value-200-application-json.serializer';
 import { deserializeCustomerPortalOrder } from './serializers/customer-portal-order.serializer';
 import { deserializeSdkGetCustomerPortalOrderResponseValue200ApplicationJson } from './serializers/sdk-get-customer-portal-order-response-value-200-application-json.serializer';
-import { deserializeSdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson } from './serializers/sdk-list-customer-portal-subscriptions-response-value-200-application-json.serializer';
+import { deserializeCustomerPortalSubscription } from './serializers/customer-portal-subscription.serializer';
 import { deserializeSdkGetCustomerPortalSubscriptionResponseValue200ApplicationJson } from './serializers/sdk-get-customer-portal-subscription-response-value-200-application-json.serializer';
 import { deserializeSdkGetCustomerPortalSubscriptionCapabilitiesResponseValue200ApplicationJson } from './serializers/sdk-get-customer-portal-subscription-capabilities-response-value-200-application-json.serializer';
 import { deserializeSdkListCustomerPortalEntitlementsResponseValue200ApplicationJson } from './serializers/sdk-list-customer-portal-entitlements-response-value-200-application-json.serializer';
@@ -67,7 +67,6 @@ import { serializeSdkUpdateCustomerPortalProfileRequestApplicationJson } from '.
 import { serializeSdkCancelCustomerSubscriptionAtPeriodEndRequestApplicationJson } from './serializers/sdk-cancel-customer-subscription-at-period-end-request-application-json.serializer';
 import { serializeSdkCancelCustomerSubscriptionImmediatelyRequestApplicationJson } from './serializers/sdk-cancel-customer-subscription-immediately-request-application-json.serializer';
 import { serializeSdkPauseCustomerSubscriptionRequestApplicationJson } from './serializers/sdk-pause-customer-subscription-request-application-json.serializer';
-import { serializeSdkResumeCustomerSubscriptionRequestApplicationJson } from './serializers/sdk-resume-customer-subscription-request-application-json.serializer';
 import { serializeSdkUpdateCustomerSubscriptionPaymentMethodRequestApplicationJson } from './serializers/sdk-update-customer-subscription-payment-method-request-application-json.serializer';
 import { serializeSdkPreviewCustomerSubscriptionPlanChangeRequestApplicationJson } from './serializers/sdk-preview-customer-subscription-plan-change-request-application-json.serializer';
 import { serializeSdkConfirmCustomerSubscriptionPlanChangeRequestApplicationJson } from './serializers/sdk-confirm-customer-subscription-plan-change-request-application-json.serializer';
@@ -190,8 +189,9 @@ export class CustomerPortal {
   /**
    * List customer subscriptions
    *
-   * List subscriptions belonging to the customer session.
-   * @returns {Promise<SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson>}
+   * List subscriptions belonging to the customer session, newest first, 15 per page. `trial_ends_at` is only set while a subscription is `TRIALING`.
+   * @param options - Pagination and filter options.
+   * @returns {Promise<AutoPaginatable<CustomerPortalSubscription>>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
    * @throws {AuthorizationException} 403
@@ -200,9 +200,24 @@ export class CustomerPortal {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async listCustomerPortalSubscriptions(requestOptions: RequestOptions = {}): Promise<SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson> {
-    const { data } = await this.sellApp.get<SdkListCustomerPortalSubscriptionsResponseValue200ApplicationJsonResponse>('/v2/customer-portal/subscriptions', requestOptions);
-    return deserializeSdkListCustomerPortalSubscriptionsResponseValue200ApplicationJson(data);
+  async listCustomerPortalSubscriptions(options?: ListCustomerPortalSubscriptionsOptions): Promise<AutoPaginatable<CustomerPortalSubscription, ListCustomerPortalSubscriptionsOptions>> {
+    const paginationOptions = options;
+    return new AutoPaginatable(
+      await fetchAndDeserialize<CustomerPortalSubscriptionResponse, CustomerPortalSubscription>(
+        this.sellApp,
+        '/v2/customer-portal/subscriptions',
+        deserializeCustomerPortalSubscription,
+        paginationOptions,
+      ),
+      (params) =>
+        fetchAndDeserialize<CustomerPortalSubscriptionResponse, CustomerPortalSubscription>(
+          this.sellApp,
+          '/v2/customer-portal/subscriptions',
+          deserializeCustomerPortalSubscription,
+          params,
+        ),
+      paginationOptions,
+    );
   }
 
   /**
@@ -230,7 +245,7 @@ export class CustomerPortal {
   /**
    * Retrieve subscription capabilities
    *
-   * Read immediately before displaying lifecycle controls.
+   * Read immediately before displaying lifecycle controls. Each of the nine actions (`pause`, `resume`, `cancel_at_period_end`, `cancel_immediately`, `keep_subscription`, `update_payment_method`, `change_plan`, `shift_billing_date`, and `set_auto_renew`) reports a status and the reason to show the customer when it is not available. While a Stripe, PayPal, or Razorpay subscription has a payment still owed, every action except `cancel_immediately` and, on Razorpay, `update_payment_method`, is `unsupported`. `resume` is `unsupported` on a subscription on hold for an unpaid renewal, which the customer pays and resumes on the store's customer portal page. The example is abbreviated to three of the actions.
    * @param options - The request options.
    * @param options.subscription - The subscription identifier.
    * @example 42
@@ -270,7 +285,7 @@ export class CustomerPortal {
   /**
    * Cancel at period end
    *
-   * Cancel at period end. Read capabilities first; state conflicts return 409.
+   * Schedule the subscription to end when the current period ends. The customer keeps access until then. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription identifier.
    * @example 42
@@ -295,7 +310,7 @@ export class CustomerPortal {
   /**
    * Cancel immediately
    *
-   * Cancel immediately. Read capabilities first; state conflicts return 409.
+   * End the subscription now. A customer session cannot request a refund. It is the one action left on a Stripe or PayPal subscription with a payment still owed, and one of two left on a Razorpay one alongside a payment method update. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription identifier.
    * @example 42
@@ -320,7 +335,7 @@ export class CustomerPortal {
   /**
    * Pause a subscription
    *
-   * Pause a subscription. Read capabilities first; state conflicts return 409.
+   * Pause billing, optionally until `resume_at`. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription identifier.
    * @example 42
@@ -345,7 +360,7 @@ export class CustomerPortal {
   /**
    * Resume a subscription
    *
-   * Resume a subscription. Read capabilities first; state conflicts return 409.
+   * Resume a paused subscription. A subscription the store bills in house that is on hold for an unpaid renewal comes back only when the customer pays that renewal on the store's customer portal page, so it is refused. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription identifier.
    * @example 42
@@ -359,18 +374,15 @@ export class CustomerPortal {
    * @throws {RateLimitExceededException} 429
    */
   async resumeCustomerSubscription(options: ResumeCustomerSubscriptionOptions): Promise<SdkResumeCustomerSubscriptionResponseValue200ApplicationJson> {
-    const { productSubscription, requestOptions, ...payload } = options;
-    const { data } = await this.sellApp.post<SdkResumeCustomerSubscriptionResponseValue200ApplicationJsonResponse, SdkResumeCustomerSubscriptionRequestApplicationJsonResponse>(
-      `/v2/customer-portal/subscriptions/${encodeURIComponent(productSubscription)}/actions/resume`,
-      serializeSdkResumeCustomerSubscriptionRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'resumeCustomerSubscription' },
-    );
+    const { productSubscription } = options;
+    const { data } = await this.sellApp.post<SdkResumeCustomerSubscriptionResponseValue200ApplicationJsonResponse>(`/v2/customer-portal/subscriptions/${encodeURIComponent(productSubscription)}/actions/resume`, {}, { ...options.requestOptions, operationId: 'resumeCustomerSubscription' });
     return deserializeSdkResumeCustomerSubscriptionResponseValue200ApplicationJson(data);
   }
 
   /**
    * Update payment method
    *
-   * Update payment method. Read capabilities first; state conflicts return 409.
+   * Start a payment method update. Send the customer to `redirect_url` to finish it with the provider. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription identifier.
    * @example 42
@@ -395,7 +407,7 @@ export class CustomerPortal {
   /**
    * Preview a plan change
    *
-   * Preview a plan change. Read capabilities first; state conflicts return 409.
+   * Preview a plan change before confirming it. On Stripe and in-house subscriptions, `preview.payment_required` says whether confirming charges `amount_due` today or leaves any amount to the next invoice, and `preview.renewal_date` says when the subscription renews next. A plan change during a trial never charges today. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription identifier.
    * @example 42
@@ -420,7 +432,7 @@ export class CustomerPortal {
   /**
    * Confirm a plan change
    *
-   * Confirm a plan change. Read capabilities first; state conflicts return 409.
+   * Confirm a previewed plan change, sending back its `preview_token`. When the change still needs the customer to approve it with the provider or pay for it, the action is `pending` and `redirect_url` says where. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription identifier.
    * @example 42
@@ -445,7 +457,7 @@ export class CustomerPortal {
   /**
    * Preview a renewal-date change
    *
-   * Preview a renewal-date change. Read capabilities first; state conflicts return 409.
+   * Preview moving the next renewal to `renewal_date`. `preview` is the provider's own preview, so its keys differ per provider. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription identifier.
    * @example 42
@@ -470,7 +482,7 @@ export class CustomerPortal {
   /**
    * Confirm a renewal-date change
    *
-   * Confirm a renewal-date change. Read capabilities first; state conflicts return 409.
+   * Confirm a renewal-date change, sending the `preview_token` when the plan requires a preview. Read capabilities first. A refusal returns 422 with the sentence to show the customer under `errors.subscription`.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription identifier.
    * @example 42

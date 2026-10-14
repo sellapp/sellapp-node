@@ -4,8 +4,8 @@ import type { IssueReplacementForCompletedInvoiceResponseValue200ApplicationJson
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeIssueReplacementForCompletedInvoiceResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyData } from './issue-replacement-for-completed-invoice-response-value-200-application-json-property-payment-property-gateway-property-data.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"IssueReplacementForCompletedInvoiceResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"IssueReplacementForCompletedInvoiceResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"IssueReplacementForCompletedInvoiceResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"IssueReplacementForCompletedInvoiceResponseValue200ApplicationJsonPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
 
 export const deserializeIssueReplacementForCompletedInvoiceResponseValue200ApplicationJsonPropertyPaymentPropertyGateway = (
   response: IssueReplacementForCompletedInvoiceResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayResponse,
@@ -14,6 +14,6 @@ export const deserializeIssueReplacementForCompletedInvoiceResponseValue200Appli
   return {
     ...preserveUnknownFields(response, ["data","type"]),
     data: deserializeIssueReplacementForCompletedInvoiceResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyData(response.data),
-    type: response.type,
+    type: response.type ?? null,
   };
 };

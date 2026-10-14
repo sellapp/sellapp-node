@@ -2,6 +2,7 @@
 
 import type { RestorePromotionResponseValue200ApplicationJsonPropertyDataPropertyPhasesItem, RestorePromotionResponseValue200ApplicationJsonPropertyDataPropertyPhasesItemResponse } from './restore-promotion-response-value-200-application-json-property-data-property-phases-item.interface';
 import type { RestorePromotionResponseValue200ApplicationJsonPropertyDataStatus } from './restore-promotion-response-value-200-application-json-property-data-status.interface';
+import type { RestorePromotionResponseValue200ApplicationJsonPropertyDataAppliesTo } from './restore-promotion-response-value-200-application-json-property-data-applies-to.interface';
 
 export interface RestorePromotionResponseValue200ApplicationJsonPropertyData {
   id: number;
@@ -12,6 +13,16 @@ export interface RestorePromotionResponseValue200ApplicationJsonPropertyData {
   priority: number;
   isStackable: boolean;
   maxRedemptions?: number | null;
+  /** `one_time` when the promotion discounts one-time purchases, or `subscriptions` when it discounts the first payments of a subscription plan. */
+  appliesTo: RestorePromotionResponseValue200ApplicationJsonPropertyDataAppliesTo | (string & Record<never, never>);
+  /** How many payments a `subscriptions` promotion discounts, counting the signup payment as the first. Null on a `one_time` promotion. */
+  subscriptionPayments: number | null;
+  /** Whether the promotion reaches every product of its kind. A `one_time` promotion is always store-wide. A `subscriptions` promotion with `false` reaches only the products in `products`, limited to the plans in `product_variants`. */
+  storeWide: boolean;
+  /** Product IDs a narrowed subscription promotion reaches. Empty when the promotion is store-wide. */
+  products: number[];
+  /** Subscription plan IDs the picked products are limited to. A picked product with none of its plans listed here takes every plan of that product, including plans added later. Empty when the promotion is store-wide. */
+  productVariants: number[];
   phases: RestorePromotionResponseValue200ApplicationJsonPropertyDataPropertyPhasesItem[];
   createdAt?: Date | null;
   updatedAt?: Date | null;
@@ -28,6 +39,11 @@ export interface RestorePromotionResponseValue200ApplicationJsonPropertyDataResp
   priority: number;
   is_stackable: boolean;
   max_redemptions?: number | null;
+  applies_to: RestorePromotionResponseValue200ApplicationJsonPropertyDataAppliesTo | (string & Record<never, never>);
+  subscription_payments: number | null;
+  store_wide: boolean;
+  products: number[];
+  product_variants: number[];
   phases: RestorePromotionResponseValue200ApplicationJsonPropertyDataPropertyPhasesItemResponse[];
   created_at?: string | null;
   updated_at?: string | null;

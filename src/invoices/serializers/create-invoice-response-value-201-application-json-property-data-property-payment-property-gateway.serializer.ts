@@ -4,8 +4,8 @@ import type { CreateInvoiceResponseValue201ApplicationJsonPropertyDataPropertyPa
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeCreateInvoiceResponseValue201ApplicationJsonPropertyDataPropertyPaymentPropertyGatewayPropertyData } from './create-invoice-response-value-201-application-json-property-data-property-payment-property-gateway-property-data.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateInvoiceResponseValue201ApplicationJsonPropertyDataPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateInvoiceResponseValue201ApplicationJsonPropertyDataPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateInvoiceResponseValue201ApplicationJsonPropertyDataPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateInvoiceResponseValue201ApplicationJsonPropertyDataPropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
 
 export const deserializeCreateInvoiceResponseValue201ApplicationJsonPropertyDataPropertyPaymentPropertyGateway = (
   response: CreateInvoiceResponseValue201ApplicationJsonPropertyDataPropertyPaymentPropertyGatewayResponse,
@@ -14,6 +14,6 @@ export const deserializeCreateInvoiceResponseValue201ApplicationJsonPropertyData
   return {
     ...preserveUnknownFields(response, ["data","type"]),
     data: deserializeCreateInvoiceResponseValue201ApplicationJsonPropertyDataPropertyPaymentPropertyGatewayPropertyData(response.data),
-    type: response.type,
+    type: response.type ?? null,
   };
 };

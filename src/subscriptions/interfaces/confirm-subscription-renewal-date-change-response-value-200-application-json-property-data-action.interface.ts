@@ -5,9 +5,11 @@ export const ConfirmSubscriptionRenewalDateChangeResponseValue200ApplicationJson
   Resume: 'resume',
   CancelAtPeriodEnd: 'cancel_at_period_end',
   CancelImmediately: 'cancel_immediately',
+  KeepSubscription: 'keep_subscription',
   UpdatePaymentMethod: 'update_payment_method',
   ChangePlan: 'change_plan',
   ShiftBillingDate: 'shift_billing_date',
+  SetAutoRenew: 'set_auto_renew',
 } as const;
 
 export type ConfirmSubscriptionRenewalDateChangeResponseValue200ApplicationJsonPropertyDataAction =

@@ -6,9 +6,13 @@ import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { PostOptions } from '../common/interfaces/post-options.interface';
 import type { CancelOptions } from './interfaces/cancel-options.interface';
+import type { ListSubscriptionsOptions } from './interfaces/list-subscriptions-options.interface';
+import type { SearchSubscriptionsOptions } from './interfaces/search-subscriptions-options.interface';
+import type { GetSubscriptionOptions } from './interfaces/get-subscription-options.interface';
 import type { GetCapabilitiesOptions } from './interfaces/get-capabilities-options.interface';
 import type { CancelAtPeriodEndOptions } from './interfaces/cancel-at-period-end-options.interface';
 import type { CancelImmediatelyOptions } from './interfaces/cancel-immediately-options.interface';
+import type { KeepOptions } from './interfaces/keep-options.interface';
 import type { PauseOptions } from './interfaces/pause-options.interface';
 import type { ResumeOptions } from './interfaces/resume-options.interface';
 import type { UpdatePaymentMethodOptions } from './interfaces/update-payment-method-options.interface';
@@ -16,23 +20,26 @@ import type { PreviewPlanChangeOptions } from './interfaces/preview-plan-change-
 import type { ConfirmPlanChangeOptions } from './interfaces/confirm-plan-change-options.interface';
 import type { PreviewRenewalDateOptions } from './interfaces/preview-renewal-date-options.interface';
 import type { ConfirmRenewalDateOptions } from './interfaces/confirm-renewal-date-options.interface';
-import type { ListSubscriptionsOptions } from './interfaces/list-subscriptions-options.interface';
-import type { SearchSubscriptionsOptions } from './interfaces/search-subscriptions-options.interface';
-import type { GetSubscriptionOptions } from './interfaces/get-subscription-options.interface';
 import type { SdkCancelSubscriptionResponseValue200ApplicationJson, SdkCancelSubscriptionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-cancel-subscription-response-value-200-application-json.interface';
+import type { SdkListSubscriptionsResponseValue200ApplicationJson, SdkListSubscriptionsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-subscriptions-response-value-200-application-json.interface';
+import type { SdkSearchSubscriptionsResponseValue200ApplicationJson, SdkSearchSubscriptionsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-search-subscriptions-response-value-200-application-json.interface';
+import type { SdkGetSubscriptionResponseValue200ApplicationJson, SdkGetSubscriptionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-subscription-response-value-200-application-json.interface';
 import type { SdkGetSubscriptionCapabilitiesResponseValue200ApplicationJson, SdkGetSubscriptionCapabilitiesResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-subscription-capabilities-response-value-200-application-json.interface';
 import type { SdkCancelSubscriptionAtPeriodEndResponseValue200ApplicationJson, SdkCancelSubscriptionAtPeriodEndResponseValue200ApplicationJsonResponse } from './interfaces/sdk-cancel-subscription-at-period-end-response-value-200-application-json.interface';
 import type { SdkCancelSubscriptionImmediatelyResponseValue200ApplicationJson, SdkCancelSubscriptionImmediatelyResponseValue200ApplicationJsonResponse } from './interfaces/sdk-cancel-subscription-immediately-response-value-200-application-json.interface';
+import type { SdkKeepSubscriptionResponseValue200ApplicationJson, SdkKeepSubscriptionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-keep-subscription-response-value-200-application-json.interface';
 import type { SdkPauseSubscriptionResponseValue200ApplicationJson, SdkPauseSubscriptionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-pause-subscription-response-value-200-application-json.interface';
 import type { SdkResumeSubscriptionResponseValue200ApplicationJson, SdkResumeSubscriptionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-resume-subscription-response-value-200-application-json.interface';
+import type { SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson, SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-subscription-payment-method-response-value-200-application-json.interface';
+import type { SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson, SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJsonResponse } from './interfaces/sdk-preview-subscription-plan-change-response-value-200-application-json.interface';
+import type { SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson, SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJsonResponse } from './interfaces/sdk-confirm-subscription-plan-change-response-value-200-application-json.interface';
 import type { SdkPreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJson, SdkPreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJsonResponse } from './interfaces/sdk-preview-subscription-renewal-date-change-response-value-200-application-json.interface';
 import type { SdkConfirmSubscriptionRenewalDateChangeResponseValue200ApplicationJson, SdkConfirmSubscriptionRenewalDateChangeResponseValue200ApplicationJsonResponse } from './interfaces/sdk-confirm-subscription-renewal-date-change-response-value-200-application-json.interface';
-import type { ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem, ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItemResponse } from './interfaces/list-subscriptions-response-value-200-application-json-property-data-item.interface';
-import type { SearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem, SearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItemResponse } from './interfaces/search-subscriptions-response-value-200-application-json-property-data-item.interface';
-import type { SdkGetSubscriptionResponseValue200ApplicationJson, SdkGetSubscriptionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-subscription-response-value-200-application-json.interface';
 import type { SdkCancelSubscriptionRequestApplicationJsonResponse } from './interfaces/sdk-cancel-subscription-request-application-json.interface';
+import type { SdkSearchSubscriptionsRequestApplicationJsonResponse } from './interfaces/sdk-search-subscriptions-request-application-json.interface';
 import type { SdkCancelSubscriptionAtPeriodEndRequestApplicationJsonResponse } from './interfaces/sdk-cancel-subscription-at-period-end-request-application-json.interface';
 import type { SdkCancelSubscriptionImmediatelyRequestApplicationJsonResponse } from './interfaces/sdk-cancel-subscription-immediately-request-application-json.interface';
+import type { SdkKeepSubscriptionRequestApplicationJsonResponse } from './interfaces/sdk-keep-subscription-request-application-json.interface';
 import type { SdkPauseSubscriptionRequestApplicationJsonResponse } from './interfaces/sdk-pause-subscription-request-application-json.interface';
 import type { SdkResumeSubscriptionRequestApplicationJsonResponse } from './interfaces/sdk-resume-subscription-request-application-json.interface';
 import type { SdkUpdateSubscriptionPaymentMethodRequestApplicationJsonResponse } from './interfaces/sdk-update-subscription-payment-method-request-application-json.interface';
@@ -40,21 +47,26 @@ import type { SdkPreviewSubscriptionPlanChangeRequestApplicationJsonResponse } f
 import type { SdkConfirmSubscriptionPlanChangeRequestApplicationJsonResponse } from './interfaces/sdk-confirm-subscription-plan-change-request-application-json.interface';
 import type { SdkPreviewSubscriptionRenewalDateChangeRequestApplicationJsonResponse } from './interfaces/sdk-preview-subscription-renewal-date-change-request-application-json.interface';
 import type { SdkConfirmSubscriptionRenewalDateChangeRequestApplicationJsonResponse } from './interfaces/sdk-confirm-subscription-renewal-date-change-request-application-json.interface';
-import type { SdkSearchSubscriptionsRequestApplicationJsonResponse } from './interfaces/sdk-search-subscriptions-request-application-json.interface';
 import { deserializeSdkCancelSubscriptionResponseValue200ApplicationJson } from './serializers/sdk-cancel-subscription-response-value-200-application-json.serializer';
+import { deserializeSdkListSubscriptionsResponseValue200ApplicationJson } from './serializers/sdk-list-subscriptions-response-value-200-application-json.serializer';
+import { deserializeSdkSearchSubscriptionsResponseValue200ApplicationJson } from './serializers/sdk-search-subscriptions-response-value-200-application-json.serializer';
+import { deserializeSdkGetSubscriptionResponseValue200ApplicationJson } from './serializers/sdk-get-subscription-response-value-200-application-json.serializer';
 import { deserializeSdkGetSubscriptionCapabilitiesResponseValue200ApplicationJson } from './serializers/sdk-get-subscription-capabilities-response-value-200-application-json.serializer';
 import { deserializeSdkCancelSubscriptionAtPeriodEndResponseValue200ApplicationJson } from './serializers/sdk-cancel-subscription-at-period-end-response-value-200-application-json.serializer';
 import { deserializeSdkCancelSubscriptionImmediatelyResponseValue200ApplicationJson } from './serializers/sdk-cancel-subscription-immediately-response-value-200-application-json.serializer';
+import { deserializeSdkKeepSubscriptionResponseValue200ApplicationJson } from './serializers/sdk-keep-subscription-response-value-200-application-json.serializer';
 import { deserializeSdkPauseSubscriptionResponseValue200ApplicationJson } from './serializers/sdk-pause-subscription-response-value-200-application-json.serializer';
 import { deserializeSdkResumeSubscriptionResponseValue200ApplicationJson } from './serializers/sdk-resume-subscription-response-value-200-application-json.serializer';
+import { deserializeSdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson } from './serializers/sdk-update-subscription-payment-method-response-value-200-application-json.serializer';
+import { deserializeSdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson } from './serializers/sdk-preview-subscription-plan-change-response-value-200-application-json.serializer';
+import { deserializeSdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson } from './serializers/sdk-confirm-subscription-plan-change-response-value-200-application-json.serializer';
 import { deserializeSdkPreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJson } from './serializers/sdk-preview-subscription-renewal-date-change-response-value-200-application-json.serializer';
 import { deserializeSdkConfirmSubscriptionRenewalDateChangeResponseValue200ApplicationJson } from './serializers/sdk-confirm-subscription-renewal-date-change-response-value-200-application-json.serializer';
-import { deserializeListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem } from './serializers/list-subscriptions-response-value-200-application-json-property-data-item.serializer';
-import { deserializeSearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem } from './serializers/search-subscriptions-response-value-200-application-json-property-data-item.serializer';
-import { deserializeSdkGetSubscriptionResponseValue200ApplicationJson } from './serializers/sdk-get-subscription-response-value-200-application-json.serializer';
 import { serializeSdkCancelSubscriptionRequestApplicationJson } from './serializers/sdk-cancel-subscription-request-application-json.serializer';
+import { serializeSdkSearchSubscriptionsRequestApplicationJson } from './serializers/sdk-search-subscriptions-request-application-json.serializer';
 import { serializeSdkCancelSubscriptionAtPeriodEndRequestApplicationJson } from './serializers/sdk-cancel-subscription-at-period-end-request-application-json.serializer';
 import { serializeSdkCancelSubscriptionImmediatelyRequestApplicationJson } from './serializers/sdk-cancel-subscription-immediately-request-application-json.serializer';
+import { serializeSdkKeepSubscriptionRequestApplicationJson } from './serializers/sdk-keep-subscription-request-application-json.serializer';
 import { serializeSdkPauseSubscriptionRequestApplicationJson } from './serializers/sdk-pause-subscription-request-application-json.serializer';
 import { serializeSdkResumeSubscriptionRequestApplicationJson } from './serializers/sdk-resume-subscription-request-application-json.serializer';
 import { serializeSdkUpdateSubscriptionPaymentMethodRequestApplicationJson } from './serializers/sdk-update-subscription-payment-method-request-application-json.serializer';
@@ -62,7 +74,6 @@ import { serializeSdkPreviewSubscriptionPlanChangeRequestApplicationJson } from 
 import { serializeSdkConfirmSubscriptionPlanChangeRequestApplicationJson } from './serializers/sdk-confirm-subscription-plan-change-request-application-json.serializer';
 import { serializeSdkPreviewSubscriptionRenewalDateChangeRequestApplicationJson } from './serializers/sdk-preview-subscription-renewal-date-change-request-application-json.serializer';
 import { serializeSdkConfirmSubscriptionRenewalDateChangeRequestApplicationJson } from './serializers/sdk-confirm-subscription-renewal-date-change-request-application-json.serializer';
-import { serializeSdkSearchSubscriptionsRequestApplicationJson } from './serializers/sdk-search-subscriptions-request-application-json.serializer';
 
 interface SellAppResponseEnvelope<T> { data: T; status: number; headers: Headers; requestId?: string }
 type SellAppWithResponse<T extends object> = {
@@ -84,7 +95,7 @@ export class Subscriptions {
   /**
    * Cancel a subscription
    *
-   * Cancel an active subscription now or at period end. cancel_at_period_end is required. Refund flags are valid only when it is false; period-end cancellation does not refund the last payment. Refunds are off by default. refund_last_payment requests a real refund; pro_rated_refund requires refund_last_payment and defaults to false. Cancellation can succeed even if the requested refund fails. A 200 response or confirmed cancellation does not prove a refund, and the action response does not expose the provider refund result. Check the order and payment-provider refund records before retrying; do not replay cancellation as a refund-recovery step. Reuse an idempotency key only with identical action input and actor. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Cancel an active subscription now or at period end, or one with a payment still owed now: a past due one the store bills in house, or a past due or unpaid Stripe, PayPal, or Razorpay subscription. cancel_at_period_end is required. Refund flags are valid only when it is false; period-end cancellation does not refund the last payment. New integrations should use the cancel-at-period-end and cancel-immediately lifecycle actions instead. A provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. Refunds are off by default. refund_last_payment requests a real refund; pro_rated_refund requires refund_last_payment and defaults to false. While a Stripe, PayPal, or Razorpay subscription is past due or unpaid, its current period was never paid for, so a pro-rated refund returns `422`; a full refund or no refund still works. Cancellation can succeed even if the requested refund fails. A 200 response or confirmed cancellation does not prove a refund, and the action response does not expose the provider refund result. Check the order and payment-provider refund records before retrying; do not replay cancellation as a refund-recovery step. Reuse an idempotency key only with identical action input and actor. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.subscription - The subscription path parameter.
    * @example 55
@@ -95,6 +106,7 @@ export class Subscriptions {
    * @throws {NotFoundException} 404
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
+   * @deprecated
    */
   async cancel(options: CancelOptions): Promise<SdkCancelSubscriptionResponseValue200ApplicationJson> {
     const { subscription, requestOptions, ...payload } = options;
@@ -106,9 +118,83 @@ export class Subscriptions {
   }
 
   /**
+   * List subscriptions
+   *
+   * List the subscriptions belonging to the authenticated store, ordered by identifier ascending. Requires the `invoice` Sanctum ability. Use `status[]` to keep only the states you care about. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - Pagination and filter options.
+   * @returns {Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson>>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async listSubscriptions(options?: ListSubscriptionsOptions): Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, ListSubscriptionsOptions>> {
+    const paginationOptions = options;
+    return new AutoPaginatable(
+      await fetchAndDeserialize<SdkListSubscriptionsResponseValue200ApplicationJsonResponse, SdkListSubscriptionsResponseValue200ApplicationJson>(
+        this.sellApp,
+        '/v2/subscriptions',
+        deserializeSdkListSubscriptionsResponseValue200ApplicationJson,
+        paginationOptions,
+      ),
+      (params) =>
+        fetchAndDeserialize<SdkListSubscriptionsResponseValue200ApplicationJsonResponse, SdkListSubscriptionsResponseValue200ApplicationJson>(
+          this.sellApp,
+          '/v2/subscriptions',
+          deserializeSdkListSubscriptionsResponseValue200ApplicationJson,
+          params,
+        ),
+      paginationOptions,
+    );
+  }
+
+  /**
+   * Search subscriptions
+   *
+   * Search the store's subscriptions, ordered by identifier ascending unless `sort` says otherwise. `search.value` matches the provider subscription ID, the provider customer ID, and the customer email. Filter on `id`, `customer_id` (the SellApp customer ID, as in `customer.id`), `provider`, `status`, or `product_variant_id`, and sort on `id`, `status`, `current_period_start`, `current_period_end`, `created_at`, or `updated_at`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - Pagination and filter options.
+   * @returns {Promise<AutoPaginatable<SdkSearchSubscriptionsResponseValue200ApplicationJson>>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async searchSubscriptions(options: SearchSubscriptionsOptions): Promise<SdkSearchSubscriptionsResponseValue200ApplicationJson> {
+    const { page, pagination, requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.post<SdkSearchSubscriptionsResponseValue200ApplicationJsonResponse, SdkSearchSubscriptionsRequestApplicationJsonResponse>(
+      '/v2/subscriptions/search',
+      serializeSdkSearchSubscriptionsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'searchSubscriptions', query: { ...(options.page !== undefined && { page: options.page }), ...(options.pagination !== undefined && { pagination: options.pagination }) } },
+    );
+    return deserializeSdkSearchSubscriptionsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Retrieve a subscription
+   *
+   * Retrieve one subscription by its SellApp subscription record identifier. Requires the `invoice` Sanctum ability. Foreign-store identifiers return not found. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.productSubscription - The productSubscription path parameter.
+   * @example 123
+   * @returns {Promise<SdkGetSubscriptionResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async getSubscription(options: GetSubscriptionOptions): Promise<SdkGetSubscriptionResponseValue200ApplicationJson> {
+    const { productSubscription } = options;
+    const { data } = await this.sellApp.get<SdkGetSubscriptionResponseValue200ApplicationJsonResponse>(`/v2/subscriptions/${encodeURIComponent(productSubscription)}`, { ...options.requestOptions, operationId: 'getSubscription' });
+    return deserializeSdkGetSubscriptionResponseValue200ApplicationJson(data);
+  }
+
+  /**
    * View subscription capabilities
    *
-   * Return the lifecycle actions currently supported for a subscription. Capability status controls whether an actor can pause, resume, cancel, update the payment method, change plan, or shift the billing date. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Return the lifecycle actions currently supported for a subscription, each with the reason the customer and the seller are shown. A `customer_only` status names who owns the action rather than who may call the API: a store token carries a plan change and a payment method update on the customer's behalf, while a `customer_only` auto-renewal switch stays with the customer portal. `set_auto_renew` has no API route at all. While a Stripe, PayPal, or Razorpay subscription is past due or unpaid, every action except `cancel_immediately` and, on Razorpay, `update_payment_method`, is `unsupported`, and a subscription the store bills in house that is on hold for an unpaid renewal reports `resume` as `customer_only`, because only the customer can pay to resume it. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription path parameter.
    * @returns {Promise<SdkGetSubscriptionCapabilitiesResponseValue200ApplicationJson>}
@@ -128,7 +214,7 @@ export class Subscriptions {
   /**
    * Cancel a subscription at period end
    *
-   * Schedule cancellation at the end of the current billing period without requesting a refund. Inspect capabilities first. The response records the cancellation action; retrieve the subscription to observe its current state. Reuse an idempotency key only with identical action input and actor. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Schedule cancellation at the end of the current billing period without requesting a refund. Inspect capabilities first. PayPal has no cancellation at period end, so on a PayPal subscription this cancels it with PayPal straight away and keeps the customer's access until the period ends; it can't be kept afterwards. The response records the cancellation action; retrieve the subscription to observe its current state. Reuse an idempotency key only with identical action input and actor. A provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription path parameter.
    * @example 55
@@ -152,7 +238,7 @@ export class Subscriptions {
   /**
    * Cancel a subscription immediately
    *
-   * Request immediate subscription cancellation. Inspect capabilities for provider support. This ends future billing and can change customer access. Refunds are off by default. refund_last_payment requests a real refund; pro_rated_refund requires refund_last_payment and defaults to false. Cancellation can succeed even if the requested refund fails. A 200 response or confirmed cancellation does not prove a refund, and the action response does not expose the provider refund result. Check the order and payment-provider refund records before retrying; do not replay cancellation as a refund-recovery step. Reuse an idempotency key only with identical action input and actor. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Request immediate subscription cancellation. Inspect capabilities for provider support. This ends future billing and can change customer access. It is the one action left on a Stripe or PayPal subscription that is past due or unpaid, and one of two left on a Razorpay one alongside a payment method update. A provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. Refunds are off by default. refund_last_payment requests a real refund; pro_rated_refund requires refund_last_payment and defaults to false. While a Stripe, PayPal, or Razorpay subscription is past due or unpaid, its current period was never paid for, so a pro-rated refund returns `422`; a full refund or no refund still works. Cancellation can succeed even if the requested refund fails. A 200 response or confirmed cancellation does not prove a refund, and the action response does not expose the provider refund result. Check the order and payment-provider refund records before retrying; do not replay cancellation as a refund-recovery step. Reuse an idempotency key only with identical action input and actor. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription path parameter.
    * @example 55
@@ -174,9 +260,33 @@ export class Subscriptions {
   }
 
   /**
+   * Keep a subscription
+   *
+   * Stop a scheduled cancellation so the subscription keeps renewing, which is the undo for cancelling at period end. The subscription has to still be active, still be scheduled to cancel, and its period must not have ended yet. Any of those, a provider that cannot undo its own schedule (a PayPal subscription or a Razorpay trial, both already cancelled with the provider), or a change already in progress returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.productSubscription - The productSubscription path parameter.
+   * @example 55
+   * @returns {Promise<SdkKeepSubscriptionResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async keep(options: KeepOptions): Promise<SdkKeepSubscriptionResponseValue200ApplicationJson> {
+    const { productSubscription, requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.post<SdkKeepSubscriptionResponseValue200ApplicationJsonResponse, SdkKeepSubscriptionRequestApplicationJsonResponse>(
+      `/v2/subscriptions/${encodeURIComponent(productSubscription)}/actions/keep`,
+      serializeSdkKeepSubscriptionRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'keepSubscription' },
+    );
+    return deserializeSdkKeepSubscriptionResponseValue200ApplicationJson(data);
+  }
+
+  /**
    * Pause a subscription
    *
-   * Pause a subscription after checking capabilities. Automatic resume dates are supported only by the current Stripe flow; use a future resume_at when supplied. Other provider pauses may need an explicit resume action. Customer-originated pauses are also subject to store pause policies. Reuse an idempotency key only with identical input and actor, and retrieve the subscription after the action. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Pause a subscription after checking capabilities. Automatic resume dates are supported by Stripe and by subscriptions the store bills in house; use a future resume_at when supplied. Other provider pauses may need an explicit resume action. Customer-originated pauses are also subject to store pause policies. Reuse an idempotency key only with identical input and actor, and retrieve the subscription after the action. A provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription path parameter.
    * @example 55
@@ -200,7 +310,7 @@ export class Subscriptions {
   /**
    * Resume a subscription
    *
-   * Resume a paused subscription and restore related entitlements where possible. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Resume a paused subscription and restore related entitlements where possible. A subscription that is not paused, a subscription the store bills in house that is on hold for an unpaid renewal (only the customer can resume it, by paying that renewal from the customer portal), a provider refusal, or a change already in progress returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription path parameter.
    * @example 55
@@ -224,10 +334,11 @@ export class Subscriptions {
   /**
    * Update a subscription payment method
    *
-   * This action belongs to the customer. Seller API requests return a 422 validation error. Check subscription capabilities and use the customer flow; never expose a seller API key to work around this restriction. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Request a subscription payment method update. A payment method belongs to the customer, and a store token requests the update on their behalf. The customer still enters the new card themselves, so the action stays `pending` and `redirect_url` is where they finish it: Stripe's hosted page for a Stripe subscription, or a SellApp page for a Razorpay one. `return_url` chooses where Stripe sends the customer afterwards; Razorpay ignores it. PayPal subscriptions and subscriptions the store bills in house don't support the update. Read `update_payment_method` in the capabilities response before calling: an unsupported payment method, or a state check such as a change already in progress, a subscription that is no longer active, or a Stripe subscription with a payment still owed, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription path parameter.
-   * @returns {Promise<string>}
+   * @example 55
+   * @returns {Promise<SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
    * @throws {AuthorizationException} 403
@@ -235,18 +346,22 @@ export class Subscriptions {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async updatePaymentMethod(options: UpdatePaymentMethodOptions): Promise<void> {
+  async updatePaymentMethod(options: UpdatePaymentMethodOptions): Promise<SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson> {
     const { productSubscription, requestOptions, ...payload } = options;
-    await this.sellApp.post<void, SdkUpdateSubscriptionPaymentMethodRequestApplicationJsonResponse>(`/v2/subscriptions/${encodeURIComponent(productSubscription)}/actions/update-payment-method`, serializeSdkUpdateSubscriptionPaymentMethodRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updateSubscriptionPaymentMethod' });
+    const { data } = await this.sellApp.post<SdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJsonResponse, SdkUpdateSubscriptionPaymentMethodRequestApplicationJsonResponse>(
+      `/v2/subscriptions/${encodeURIComponent(productSubscription)}/actions/update-payment-method`,
+      serializeSdkUpdateSubscriptionPaymentMethodRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updateSubscriptionPaymentMethod' },
+    );
+    return deserializeSdkUpdateSubscriptionPaymentMethodResponseValue200ApplicationJson(data);
   }
 
   /**
    * Preview a subscription plan change
    *
-   * This action belongs to the customer. Seller API requests return a 422 validation error. Check subscription capabilities and use the customer flow; never expose a seller API key to work around this restriction. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Preview a subscription plan change before confirming it. The preview stores the change it was taken for and returns a `preview_token` the confirmation must send back, alongside the provider's own pricing preview. On Stripe and in-house subscriptions, `preview_payload.payment_required` says whether confirming charges `amount_due` today or leaves any amount to the next invoice, and `preview_payload.renewal_date` says when the subscription renews next. A plan change belongs to the customer, and a store token previews it on their behalf; a provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription path parameter.
-   * @returns {Promise<string>}
+   * @returns {Promise<SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
    * @throws {AuthorizationException} 403
@@ -254,18 +369,23 @@ export class Subscriptions {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async previewPlanChange(options: PreviewPlanChangeOptions): Promise<void> {
+  async previewPlanChange(options: PreviewPlanChangeOptions): Promise<SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson> {
     const { productSubscription, requestOptions, ...payload } = options;
-    await this.sellApp.post<void, SdkPreviewSubscriptionPlanChangeRequestApplicationJsonResponse>(`/v2/subscriptions/${encodeURIComponent(productSubscription)}/actions/change-plan/preview`, serializeSdkPreviewSubscriptionPlanChangeRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'previewSubscriptionPlanChange' });
+    const { data } = await this.sellApp.post<SdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJsonResponse, SdkPreviewSubscriptionPlanChangeRequestApplicationJsonResponse>(
+      `/v2/subscriptions/${encodeURIComponent(productSubscription)}/actions/change-plan/preview`,
+      serializeSdkPreviewSubscriptionPlanChangeRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'previewSubscriptionPlanChange' },
+    );
+    return deserializeSdkPreviewSubscriptionPlanChangeResponseValue200ApplicationJson(data);
   }
 
   /**
    * Confirm a subscription plan change
    *
-   * This action belongs to the customer. Seller API requests return a 422 validation error. Check subscription capabilities and use the customer flow; never expose a seller API key to work around this restriction. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Confirm a previously previewed subscription plan change, sending back the `preview_token` for a preview of the same change. A plan change belongs to the customer, and a store token confirms it on their behalf; a provider refusal, or a state check such as a change already in progress or a subscription that is no longer active, returns `422` with the refusal sentence under `errors.subscription`. `approval_url` accompanies a `pending` action whenever the customer still has to approve the revision at the provider or pay the proration order `proration_order_id` names, and is left out entirely when the provider applied the change itself. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription path parameter.
-   * @returns {Promise<string>}
+   * @example 55
+   * @returns {Promise<SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
    * @throws {AuthorizationException} 403
@@ -273,15 +393,19 @@ export class Subscriptions {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async confirmPlanChange(options: ConfirmPlanChangeOptions): Promise<void> {
+  async confirmPlanChange(options: ConfirmPlanChangeOptions): Promise<SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson> {
     const { productSubscription, requestOptions, ...payload } = options;
-    await this.sellApp.post<void, SdkConfirmSubscriptionPlanChangeRequestApplicationJsonResponse>(`/v2/subscriptions/${encodeURIComponent(productSubscription)}/actions/change-plan/confirm`, serializeSdkConfirmSubscriptionPlanChangeRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'confirmSubscriptionPlanChange' });
+    const { data } = await this.sellApp.post<SdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJsonResponse, SdkConfirmSubscriptionPlanChangeRequestApplicationJsonResponse>(
+      `/v2/subscriptions/${encodeURIComponent(productSubscription)}/actions/change-plan/confirm`,
+      serializeSdkConfirmSubscriptionPlanChangeRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'confirmSubscriptionPlanChange' },
+    );
+    return deserializeSdkConfirmSubscriptionPlanChangeResponseValue200ApplicationJson(data);
   }
 
   /**
    * Preview a subscription renewal date change
    *
-   * Preview a new renewal date before confirmation when the subscription's billing-date policy requires a preview. The current Stripe and PayPal provider flows do not support renewal-date changes and return 422. Check shift_billing_date capabilities before sending a request. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Preview a new renewal date before confirmation when the subscription's billing-date policy requires one. No payment method supports renewal-date changes today: Stripe, PayPal, Razorpay, and subscriptions the store bills in house all report `shift_billing_date` as `unsupported`, so this returns `422` with the refusal sentence under `errors.subscription`. Read the capabilities response first. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription path parameter.
    * @returns {Promise<SdkPreviewSubscriptionRenewalDateChangeResponseValue200ApplicationJson>}
@@ -304,7 +428,7 @@ export class Subscriptions {
   /**
    * Confirm a subscription renewal date change
    *
-   * Confirm a subscription renewal date change. A preview token is required when the variant's billing-date policy requires previews. The current Stripe and PayPal provider flows do not support renewal-date changes and return 422. Check shift_billing_date capabilities before sending a request. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Confirm a subscription renewal date change, sending a `preview_token` when the variant's billing-date policy requires previews. No payment method supports renewal-date changes today: Stripe, PayPal, Razorpay, and subscriptions the store bills in house all report `shift_billing_date` as `unsupported`, so this returns `422` with the refusal sentence under `errors.subscription`. Read the capabilities response first. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription path parameter.
    * @returns {Promise<SdkConfirmSubscriptionRenewalDateChangeResponseValue200ApplicationJson>}
@@ -322,84 +446,5 @@ export class Subscriptions {
       serializeSdkConfirmSubscriptionRenewalDateChangeRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'confirmSubscriptionRenewalDateChange' },
     );
     return deserializeSdkConfirmSubscriptionRenewalDateChangeResponseValue200ApplicationJson(data);
-  }
-
-  /**
-   * List subscriptions
-   *
-   * List page-based subscriptions with canonical customer and deprecated provider aliases. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
-   * @param options - Pagination and filter options.
-   * @returns {Promise<AutoPaginatable<ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem>>}
-   * @throws {BadRequestException} 400
-   * @throws {UnauthorizedException} 401
-   * @throws {AuthorizationException} 403
-   * @throws {NotFoundException} 404
-   * @throws {ConflictException} 409
-   * @throws {UnprocessableEntityException} 422
-   * @throws {RateLimitExceededException} 429
-   */
-  async listSubscriptions(options?: ListSubscriptionsOptions): Promise<AutoPaginatable<ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem, ListSubscriptionsOptions>> {
-    const paginationOptions = options;
-    return new AutoPaginatable(
-      await fetchAndDeserialize<ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItemResponse, ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem>(
-        this.sellApp,
-        '/v2/subscriptions',
-        deserializeListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem,
-        paginationOptions,
-      ),
-      (params) =>
-        fetchAndDeserialize<ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItemResponse, ListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem>(
-          this.sellApp,
-          '/v2/subscriptions',
-          deserializeListSubscriptionsResponseValue200ApplicationJsonPropertyDataItem,
-          params,
-        ),
-      paginationOptions,
-    );
-  }
-
-  /**
-   * Search subscriptions
-   *
-   * Search while preserving page-based pagination. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
-   * @param options - Pagination and filter options.
-   * @returns {Promise<AutoPaginatable<SearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem>>}
-   * @throws {BadRequestException} 400
-   * @throws {UnauthorizedException} 401
-   * @throws {AuthorizationException} 403
-   * @throws {NotFoundException} 404
-   * @throws {ConflictException} 409
-   * @throws {UnprocessableEntityException} 422
-   * @throws {RateLimitExceededException} 429
-   */
-  async searchSubscriptions(options: SearchSubscriptionsOptions): Promise<SdkSearchSubscriptionsResponseValue200ApplicationJson> {
-    const { requestOptions, ...payload } = options;
-    const { data } = await this.sellApp.post<SdkSearchSubscriptionsResponseValue200ApplicationJsonResponse, SdkSearchSubscriptionsRequestApplicationJsonResponse>(
-      '/v2/subscriptions/search',
-      serializeSdkSearchSubscriptionsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'searchSubscriptions' },
-    );
-    return deserializeSdkSearchSubscriptionsResponseValue200ApplicationJson(data);
-  }
-
-  /**
-   * Retrieve a subscription
-   *
-   * Retrieve by SellApp subscription record ID. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
-   * @param options - The request options.
-   * @param options.productSubscription - The productSubscription identifier.
-   * @example 991
-   * @returns {Promise<SdkGetSubscriptionResponseValue200ApplicationJson>}
-   * @throws {BadRequestException} 400
-   * @throws {UnauthorizedException} 401
-   * @throws {AuthorizationException} 403
-   * @throws {NotFoundException} 404
-   * @throws {ConflictException} 409
-   * @throws {UnprocessableEntityException} 422
-   * @throws {RateLimitExceededException} 429
-   */
-  async getSubscription(options: GetSubscriptionOptions): Promise<SdkGetSubscriptionResponseValue200ApplicationJson> {
-    const { productSubscription } = options;
-    const { data } = await this.sellApp.get<SdkGetSubscriptionResponseValue200ApplicationJsonResponse>(`/v2/subscriptions/${encodeURIComponent(productSubscription)}`, { ...options.requestOptions, operationId: 'getSubscription' });
-    return deserializeSdkGetSubscriptionResponseValue200ApplicationJson(data);
   }
 }

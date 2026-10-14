@@ -2,12 +2,14 @@
 
 import type { BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequency, BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequencyResponse } from './batch-create-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-frequency.interface';
 import type { BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice, BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPriceResponse } from './batch-create-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-price.interface';
+import type { BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial, BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrialResponse } from './batch-create-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial.interface';
 
 export interface BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricing {
   humble: boolean;
   frequency: BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequency;
   type: string;
   price: BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice;
+  trial?: BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial;
   [key: string]: unknown;
 }
 
@@ -16,5 +18,6 @@ export interface BatchCreateProductVariantsResponseValue200ApplicationJsonProper
   frequency: BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequencyResponse;
   type: string;
   price: BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPriceResponse;
+  trial?: BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrialResponse;
   [key: string]: unknown;
 }

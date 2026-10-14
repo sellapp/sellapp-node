@@ -4,8 +4,8 @@ import type { CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataProp
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeCreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGatewayPropertyData } from './create-invoice-refund-response-value-200-application-json-property-data-property-invoice-property-payment-property-gateway-property-data.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
 
 export const deserializeCreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGateway = (
   response: CreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGatewayResponse,
@@ -14,6 +14,6 @@ export const deserializeCreateInvoiceRefundResponseValue200ApplicationJsonProper
   return {
     ...preserveUnknownFields(response, ["data","type"]),
     data: deserializeCreateInvoiceRefundResponseValue200ApplicationJsonPropertyDataPropertyInvoicePropertyPaymentPropertyGatewayPropertyData(response.data),
-    type: response.type,
+    type: response.type ?? null,
   };
 };

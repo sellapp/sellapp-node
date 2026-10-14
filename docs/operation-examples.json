@@ -530,6 +530,30 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "listSubscriptions",
+    "mountTarget": "Subscriptions",
+    "methodName": "list_subscriptions",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptions.listSubscriptions({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "searchSubscriptions",
+    "mountTarget": "Subscriptions",
+    "methodName": "search_subscriptions",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptions.searchSubscriptions({\n  \"filters\": [{\"field\": \"status\", \"operator\": \"=\", \"value\": \"ACTIVE\"}],\n  \"search\": {\"value\": \"maya.chen@example.com\"}\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getSubscription",
+    "mountTarget": "Subscriptions",
+    "methodName": "get_subscription",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptions.getSubscription({\n  \"productSubscription\": 123\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "getSubscriptionCapabilities",
     "mountTarget": "Subscriptions",
     "methodName": "get_capabilities",
@@ -554,6 +578,14 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "keepSubscription",
+    "mountTarget": "Subscriptions",
+    "methodName": "keep",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptions.keep({\n  \"productSubscription\": 55\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "pauseSubscription",
     "mountTarget": "Subscriptions",
     "methodName": "pause",
@@ -573,7 +605,7 @@
     "operationId": "updateSubscriptionPaymentMethod",
     "mountTarget": "Subscriptions",
     "methodName": "update_payment_method",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptions.updatePaymentMethod({\n  \"productSubscription\": 1\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptions.updatePaymentMethod({\n  \"productSubscription\": 55,\n  \"returnUrl\": \"https://store.example.com/billing/updated\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -589,7 +621,7 @@
     "operationId": "confirmSubscriptionPlanChange",
     "mountTarget": "Subscriptions",
     "methodName": "confirm_plan_change",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptions.confirmPlanChange({\n  \"productSubscription\": 1,\n  \"targetVariantId\": 4321,\n  \"previewToken\": \"subprev_9c4b2f\"\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptions.confirmPlanChange({\n  \"productSubscription\": 55,\n  \"targetVariantId\": 4321,\n  \"previewToken\": \"subprev_9c4b2f\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -610,26 +642,26 @@
   {
     "language": "node",
     "fileExtension": "ts",
-    "operationId": "listSubscriptions",
-    "mountTarget": "Subscriptions",
-    "methodName": "list_subscriptions",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptions.listSubscriptions();\nconsole.log(result);\n"
+    "operationId": "listSubscriptionActions",
+    "mountTarget": "SubscriptionsActions",
+    "methodName": "list",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptionsActions.list({\n  \"productSubscription\": 124\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
     "fileExtension": "ts",
-    "operationId": "searchSubscriptions",
-    "mountTarget": "Subscriptions",
-    "methodName": "search_subscriptions",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptions.searchSubscriptions({\n  \"search\": \"maya.chen@example.com\",\n  \"status\": \"active\"\n});\nconsole.log(result);\n"
+    "operationId": "getSubscriptionAction",
+    "mountTarget": "SubscriptionsActions",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptionsActions.get({\n  \"productSubscription\": 124,\n  \"action\": 4192\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
     "fileExtension": "ts",
-    "operationId": "getSubscription",
-    "mountTarget": "Subscriptions",
-    "methodName": "get_subscription",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptions.getSubscription({\n  \"productSubscription\": 991\n});\nconsole.log(result);\n"
+    "operationId": "dismissSubscriptionAction",
+    "mountTarget": "SubscriptionsActions",
+    "methodName": "dismiss",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.subscriptionsActions.dismiss({\n  \"productSubscription\": 124,\n  \"action\": 4207,\n  \"note\": \"Confirmed with the customer that they no longer want the upgrade.\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2605,7 +2637,7 @@
     "operationId": "cancelCustomerSubscriptionAtPeriodEnd",
     "mountTarget": "CustomerPortal",
     "methodName": "cancel_customer_subscription_at_period_end",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.cancelCustomerSubscriptionAtPeriodEnd({\n  \"productSubscription\": 42,\n  \"reason\": \"Customer requested this change\",\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.cancelCustomerSubscriptionAtPeriodEnd({\n  \"productSubscription\": 42,\n  \"reason\": \"Taking a break over the summer.\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2613,7 +2645,7 @@
     "operationId": "cancelCustomerSubscriptionImmediately",
     "mountTarget": "CustomerPortal",
     "methodName": "cancel_customer_subscription_immediately",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.cancelCustomerSubscriptionImmediately({\n  \"productSubscription\": 42,\n  \"reason\": \"Customer requested this change\",\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.cancelCustomerSubscriptionImmediately({\n  \"productSubscription\": 42,\n  \"reason\": \"No longer needed.\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2621,7 +2653,7 @@
     "operationId": "pauseCustomerSubscription",
     "mountTarget": "CustomerPortal",
     "methodName": "pause_customer_subscription",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.pauseCustomerSubscription({\n  \"productSubscription\": 42,\n  \"reason\": \"Customer requested this change\",\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.pauseCustomerSubscription({\n  \"productSubscription\": 42,\n  \"resumeAt\": new Date(\"2026-11-01T00:00:00Z\")\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2629,7 +2661,7 @@
     "operationId": "resumeCustomerSubscription",
     "mountTarget": "CustomerPortal",
     "methodName": "resume_customer_subscription",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.resumeCustomerSubscription({\n  \"productSubscription\": 42,\n  \"reason\": \"Customer requested this change\",\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.resumeCustomerSubscription({\n  \"productSubscription\": 42\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2637,7 +2669,7 @@
     "operationId": "updateCustomerSubscriptionPaymentMethod",
     "mountTarget": "CustomerPortal",
     "methodName": "update_customer_subscription_payment_method",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.updateCustomerSubscriptionPaymentMethod({\n  \"productSubscription\": 42,\n  \"reason\": \"Customer requested this change\",\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.updateCustomerSubscriptionPaymentMethod({\n  \"productSubscription\": 42,\n  \"returnUrl\": \"https://acme.sell.app/customer-portal/subscriptions/991\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2645,7 +2677,7 @@
     "operationId": "previewCustomerSubscriptionPlanChange",
     "mountTarget": "CustomerPortal",
     "methodName": "preview_customer_subscription_plan_change",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.previewCustomerSubscriptionPlanChange({\n  \"productSubscription\": 42,\n  \"productVariantId\": 84,\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.previewCustomerSubscriptionPlanChange({\n  \"productSubscription\": 42,\n  \"targetVariantId\": 97\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2653,7 +2685,7 @@
     "operationId": "confirmCustomerSubscriptionPlanChange",
     "mountTarget": "CustomerPortal",
     "methodName": "confirm_customer_subscription_plan_change",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.confirmCustomerSubscriptionPlanChange({\n  \"productSubscription\": 42,\n  \"previewId\": \"preview_01K4\",\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.confirmCustomerSubscriptionPlanChange({\n  \"productSubscription\": 42,\n  \"targetVariantId\": 97,\n  \"previewToken\": \"subprev_portal_991\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2661,7 +2693,7 @@
     "operationId": "previewCustomerSubscriptionRenewalDateChange",
     "mountTarget": "CustomerPortal",
     "methodName": "preview_customer_subscription_renewal_date_change",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.previewCustomerSubscriptionRenewalDateChange({\n  \"productSubscription\": 42,\n  \"renewalDate\": \"2026-10-15\",\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.previewCustomerSubscriptionRenewalDateChange({\n  \"productSubscription\": 42,\n  \"renewalDate\": new Date(\"2026-10-15T00:00:00Z\")\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2669,7 +2701,7 @@
     "operationId": "confirmCustomerSubscriptionRenewalDateChange",
     "mountTarget": "CustomerPortal",
     "methodName": "confirm_customer_subscription_renewal_date_change",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.confirmCustomerSubscriptionRenewalDateChange({\n  \"productSubscription\": 42,\n  \"previewId\": \"preview_01K4\",\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  customerSession: process.env.SELLAPP_CUSTOMER_SESSION!,\n  store: \"\",\n});\n\nconst result = await client.customerPortal.confirmCustomerSubscriptionRenewalDateChange({\n  \"productSubscription\": 42,\n  \"renewalDate\": new Date(\"2026-10-15T00:00:00Z\"),\n  \"previewToken\": \"subprev_portal_renewal_991\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",

@@ -5,6 +5,6 @@ import type { GetOptions as RequestOptions } from '../../common/interfaces/get-o
 export interface GetSubscriptionOptions {
   /** Per-call timeout, retry, headers, cancellation, and lifecycle metadata. */
   requestOptions?: RequestOptions;
-  /** The productSubscription identifier. */
+  /** The productSubscription path parameter. */
   productSubscription: number;
 }

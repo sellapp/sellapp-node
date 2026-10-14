@@ -2,12 +2,14 @@
 
 import type { ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequency, ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequencyResponse } from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-frequency.interface';
 import type { ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice, ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPriceResponse } from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-price.interface';
+import type { ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial, ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrialResponse } from './list-bundle-items-response-value-200-application-json-property-data-item-property-pricing-property-trial.interface';
 
 export interface ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricing {
   humble: boolean;
   frequency: ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequency;
   type: string;
   price: ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPrice;
+  trial?: ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrial;
   [key: string]: unknown;
 }
 
@@ -16,5 +18,6 @@ export interface ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemP
   frequency: ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyFrequencyResponse;
   type: string;
   price: ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyPriceResponse;
+  trial?: ListBundleItemsResponseValue200ApplicationJsonPropertyDataItemPropertyPricingPropertyTrialResponse;
   [key: string]: unknown;
 }

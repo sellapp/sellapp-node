@@ -9,7 +9,7 @@ export interface PauseOptions {
   productSubscription: number;
   /** Optional idempotency key. You may also send this as the Idempotency-Key header. */
   idempotencyKey?: string | null;
-  /** Use a future date-time at execution time. Automatic resume dates are supported only for Stripe; the shown date is illustrative. */
+  /** Use a future date-time at execution time. Automatic resume dates are supported by Stripe and by subscriptions the store bills in house; the shown date is illustrative. */
   resumeAt?: Date | null;
   reason?: string | null;
 }

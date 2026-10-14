@@ -14,7 +14,10 @@ export interface BatchCreateProductVariantsRequestApplicationJsonPropertyResourc
   minimumPurchaseQuantity?: number;
   maximumPurchaseQuantity?: number | null;
   bulkDiscount?: BatchCreateProductVariantsRequestApplicationJsonPropertyResourcesItemPropertyBulkDiscountItem[];
+  /** Complete gateway selection for this variant. Selecting CUSTOM_PAYMENT_METHOD also requires at least one custom_payment_method_ids entry. */
   paymentMethods: (BatchCreateProductVariantsRequestApplicationJsonPropertyResourcesItemPaymentMethods | (string & Record<never, never>))[];
+  /** Enabled, usable custom payment method ULIDs belonging to the selected store. Supply at least one when payment_methods includes CUSTOM_PAYMENT_METHOD. Include CUSTOM_PAYMENT_METHOD in payment_methods whenever sending nonempty IDs. On updates, omitting both selections preserves the current methods. Nonempty IDs are rejected when custom payments are not selected. */
+  customPaymentMethodIds?: string[];
   otherSettings?: BatchCreateProductVariantsRequestApplicationJsonPropertyResourcesItemPropertyOtherSettings;
   /** Optional optimistic-concurrency snapshot for updates. Use the variant's latest updated_at value; stale snapshots receive a 422 validation response. */
   expectedUpdatedAt?: Date;
@@ -30,6 +33,7 @@ export interface BatchCreateProductVariantsRequestApplicationJsonPropertyResourc
   maximum_purchase_quantity?: number | null;
   bulk_discount?: BatchCreateProductVariantsRequestApplicationJsonPropertyResourcesItemPropertyBulkDiscountItemResponse[];
   payment_methods: (BatchCreateProductVariantsRequestApplicationJsonPropertyResourcesItemPaymentMethods | (string & Record<never, never>))[];
+  custom_payment_method_ids?: string[];
   other_settings?: BatchCreateProductVariantsRequestApplicationJsonPropertyResourcesItemPropertyOtherSettingsResponse;
   expected_updated_at?: string;
   [key: string]: unknown;

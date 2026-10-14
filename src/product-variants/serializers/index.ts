@@ -19,6 +19,9 @@ export * from './batch-create-product-variants-response-value-200-application-js
 export * from './batch-create-product-variants-response-value-200-application-json-property-data-item-property-pricing.serializer';
 export * from './batch-create-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-frequency.serializer';
 export * from './batch-create-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-price.serializer';
+export * from './batch-create-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial.serializer';
+export * from './batch-create-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-length.serializer';
+export * from './batch-create-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-price.serializer';
 export * from './batch-create-product-variants-response-value-200-application-json-property-data-item-property-product.serializer';
 export * from './batch-create-product-variants-response-value-200-application-json-property-data-item-property-product-property-additional-information-item.serializer';
 export * from './batch-update-product-variants-request-application-json-property-resources.serializer';
@@ -30,6 +33,9 @@ export * from './batch-update-product-variants-response-value-200-application-js
 export * from './batch-update-product-variants-response-value-200-application-json-property-data-item-property-pricing.serializer';
 export * from './batch-update-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-frequency.serializer';
 export * from './batch-update-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-price.serializer';
+export * from './batch-update-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial.serializer';
+export * from './batch-update-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-length.serializer';
+export * from './batch-update-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-price.serializer';
 export * from './batch-update-product-variants-response-value-200-application-json-property-data-item-property-product.serializer';
 export * from './batch-update-product-variants-response-value-200-application-json-property-data-item-property-product-property-additional-information-item.serializer';
 export * from './create-booking-hold-request-application-json-property-meta.serializer';
@@ -52,6 +58,9 @@ export * from './create-product-variant-response-value-201-application-json-prop
 export * from './create-product-variant-response-value-201-application-json-property-data-property-pricing.serializer';
 export * from './create-product-variant-response-value-201-application-json-property-data-property-pricing-property-frequency.serializer';
 export * from './create-product-variant-response-value-201-application-json-property-data-property-pricing-property-price.serializer';
+export * from './create-product-variant-response-value-201-application-json-property-data-property-pricing-property-trial.serializer';
+export * from './create-product-variant-response-value-201-application-json-property-data-property-pricing-property-trial-property-length.serializer';
+export * from './create-product-variant-response-value-201-application-json-property-data-property-pricing-property-trial-property-price.serializer';
 export * from './create-product-variant-response-value-201-application-json-property-data-property-product.serializer';
 export * from './create-product-variant-response-value-201-application-json-property-data-property-product-property-additional-information-item.serializer';
 export * from './get-product-variant-response-value-200-application-json-property-data.serializer';
@@ -62,6 +71,9 @@ export * from './get-product-variant-response-value-200-application-json-propert
 export * from './get-product-variant-response-value-200-application-json-property-data-property-pricing.serializer';
 export * from './get-product-variant-response-value-200-application-json-property-data-property-pricing-property-frequency.serializer';
 export * from './get-product-variant-response-value-200-application-json-property-data-property-pricing-property-price.serializer';
+export * from './get-product-variant-response-value-200-application-json-property-data-property-pricing-property-trial.serializer';
+export * from './get-product-variant-response-value-200-application-json-property-data-property-pricing-property-trial-property-length.serializer';
+export * from './get-product-variant-response-value-200-application-json-property-data-property-pricing-property-trial-property-price.serializer';
 export * from './get-product-variant-response-value-200-application-json-property-data-property-product.serializer';
 export * from './get-product-variant-response-value-200-application-json-property-data-property-product-property-additional-information-item.serializer';
 export * from './list-booking-availability-response-value-200-application-json-property-data-item.serializer';
@@ -73,6 +85,9 @@ export * from './list-product-variants-response-value-200-application-json-prope
 export * from './list-product-variants-response-value-200-application-json-property-data-item-property-pricing.serializer';
 export * from './list-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-frequency.serializer';
 export * from './list-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-price.serializer';
+export * from './list-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial.serializer';
+export * from './list-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-length.serializer';
+export * from './list-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-price.serializer';
 export * from './list-product-variants-response-value-200-application-json-property-data-item-property-product.serializer';
 export * from './list-product-variants-response-value-200-application-json-property-data-item-property-product-property-additional-information-item.serializer';
 export * from './replace-product-variant-pricing-request-application-json-property-bulk-discount-item.serializer';
@@ -80,6 +95,9 @@ export * from './replace-product-variant-pricing-request-application-json-proper
 export * from './replace-product-variant-pricing-request-application-json-property-pricing-property-compare-at-price.serializer';
 export * from './replace-product-variant-pricing-request-application-json-property-pricing-property-frequency.serializer';
 export * from './replace-product-variant-pricing-request-application-json-property-pricing-property-price.serializer';
+export * from './replace-product-variant-pricing-request-application-json-property-pricing-property-trial.serializer';
+export * from './replace-product-variant-pricing-request-application-json-property-pricing-property-trial-value-property-length.serializer';
+export * from './replace-product-variant-pricing-request-application-json-property-pricing-property-trial-value-property-price.serializer';
 export * from './replace-product-variant-pricing-response-value-200-application-json-property-data.serializer';
 export * from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-bulk-discount-item.serializer';
 export * from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-deliverable.serializer';
@@ -88,6 +106,9 @@ export * from './replace-product-variant-pricing-response-value-200-application-
 export * from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-pricing.serializer';
 export * from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-frequency.serializer';
 export * from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-price.serializer';
+export * from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-trial.serializer';
+export * from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-trial-property-length.serializer';
+export * from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-trial-property-price.serializer';
 export * from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-product.serializer';
 export * from './replace-product-variant-pricing-response-value-200-application-json-property-data-property-product-property-additional-information-item.serializer';
 export * from './replace-product-variant-with-put-request-application-json-property-bulk-discount-item.serializer';
@@ -108,6 +129,9 @@ export * from './replace-product-variant-with-put-response-value-200-application
 export * from './replace-product-variant-with-put-response-value-200-application-json-property-data-property-pricing.serializer';
 export * from './replace-product-variant-with-put-response-value-200-application-json-property-data-property-pricing-property-frequency.serializer';
 export * from './replace-product-variant-with-put-response-value-200-application-json-property-data-property-pricing-property-price.serializer';
+export * from './replace-product-variant-with-put-response-value-200-application-json-property-data-property-pricing-property-trial.serializer';
+export * from './replace-product-variant-with-put-response-value-200-application-json-property-data-property-pricing-property-trial-property-length.serializer';
+export * from './replace-product-variant-with-put-response-value-200-application-json-property-data-property-pricing-property-trial-property-price.serializer';
 export * from './replace-product-variant-with-put-response-value-200-application-json-property-data-property-product.serializer';
 export * from './replace-product-variant-with-put-response-value-200-application-json-property-data-property-product-property-additional-information-item.serializer';
 export * from './sdk-batch-create-product-variants-request-application-json.serializer';
@@ -119,6 +143,7 @@ export * from './sdk-create-booking-hold-request-application-json.serializer';
 export * from './sdk-create-booking-hold-response-value-201-application-json.serializer';
 export * from './sdk-create-product-variant-request-application-json.serializer';
 export * from './sdk-create-product-variant-response-value-201-application-json.serializer';
+export * from './sdk-delete-product-variant-request-application-json.serializer';
 export * from './sdk-get-product-variant-response-value-200-application-json.serializer';
 export * from './sdk-list-booking-availability-response-value-200-application-json.serializer';
 export * from './sdk-release-booking-hold-request-application-json.serializer';
@@ -145,6 +170,9 @@ export * from './search-product-variants-response-value-200-application-json-pro
 export * from './search-product-variants-response-value-200-application-json-property-data-item-property-pricing.serializer';
 export * from './search-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-frequency.serializer';
 export * from './search-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-price.serializer';
+export * from './search-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial.serializer';
+export * from './search-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-length.serializer';
+export * from './search-product-variants-response-value-200-application-json-property-data-item-property-pricing-property-trial-property-price.serializer';
 export * from './search-product-variants-response-value-200-application-json-property-data-item-property-product.serializer';
 export * from './search-product-variants-response-value-200-application-json-property-data-item-property-product-property-additional-information-item.serializer';
 export * from './search-product-variants-response-value-200-application-json-property-links.serializer';
@@ -154,6 +182,9 @@ export * from './update-product-variant-pricing-request-application-json-propert
 export * from './update-product-variant-pricing-request-application-json-property-pricing-property-compare-at-price.serializer';
 export * from './update-product-variant-pricing-request-application-json-property-pricing-property-frequency.serializer';
 export * from './update-product-variant-pricing-request-application-json-property-pricing-property-price.serializer';
+export * from './update-product-variant-pricing-request-application-json-property-pricing-property-trial.serializer';
+export * from './update-product-variant-pricing-request-application-json-property-pricing-property-trial-value-property-length.serializer';
+export * from './update-product-variant-pricing-request-application-json-property-pricing-property-trial-value-property-price.serializer';
 export * from './update-product-variant-pricing-response-value-200-application-json-property-data.serializer';
 export * from './update-product-variant-pricing-response-value-200-application-json-property-data-property-bulk-discount-item.serializer';
 export * from './update-product-variant-pricing-response-value-200-application-json-property-data-property-deliverable.serializer';
@@ -162,6 +193,9 @@ export * from './update-product-variant-pricing-response-value-200-application-j
 export * from './update-product-variant-pricing-response-value-200-application-json-property-data-property-pricing.serializer';
 export * from './update-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-frequency.serializer';
 export * from './update-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-price.serializer';
+export * from './update-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-trial.serializer';
+export * from './update-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-trial-property-length.serializer';
+export * from './update-product-variant-pricing-response-value-200-application-json-property-data-property-pricing-property-trial-property-price.serializer';
 export * from './update-product-variant-pricing-response-value-200-application-json-property-data-property-product.serializer';
 export * from './update-product-variant-pricing-response-value-200-application-json-property-data-property-product-property-additional-information-item.serializer';
 export * from './update-product-variant-request-application-json-property-bulk-discount-item.serializer';
@@ -182,5 +216,8 @@ export * from './update-product-variant-response-value-200-application-json-prop
 export * from './update-product-variant-response-value-200-application-json-property-data-property-pricing.serializer';
 export * from './update-product-variant-response-value-200-application-json-property-data-property-pricing-property-frequency.serializer';
 export * from './update-product-variant-response-value-200-application-json-property-data-property-pricing-property-price.serializer';
+export * from './update-product-variant-response-value-200-application-json-property-data-property-pricing-property-trial.serializer';
+export * from './update-product-variant-response-value-200-application-json-property-data-property-pricing-property-trial-property-length.serializer';
+export * from './update-product-variant-response-value-200-application-json-property-data-property-pricing-property-trial-property-price.serializer';
 export * from './update-product-variant-response-value-200-application-json-property-data-property-product.serializer';
 export * from './update-product-variant-response-value-200-application-json-property-data-property-product-property-additional-information-item.serializer';

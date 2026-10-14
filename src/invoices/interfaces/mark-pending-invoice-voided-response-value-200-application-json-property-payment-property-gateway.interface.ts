@@ -4,12 +4,13 @@ import type { MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPay
 
 export interface MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGateway {
   data: MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyData;
-  type: string;
+  /** The payment method, or `null` for an invoice that costs nothing. A free trial sold through Stripe, PayPal, or Razorpay keeps its payment method, because that provider bills the plan once the trial ends. */
+  type: string | null;
   [key: string]: unknown;
 }
 
 export interface MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayResponse {
   data: MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyGatewayPropertyDataResponse;
-  type: string;
+  type: string | null;
   [key: string]: unknown;
 }

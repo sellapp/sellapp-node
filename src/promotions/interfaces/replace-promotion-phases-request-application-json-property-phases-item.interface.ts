@@ -4,7 +4,7 @@ import type { ReplacePromotionPhasesRequestApplicationJsonPropertyPhasesItemDisc
 
 export interface ReplacePromotionPhasesRequestApplicationJsonPropertyPhasesItem {
   discountType: ReplacePromotionPhasesRequestApplicationJsonPropertyPhasesItemDiscountType | (string & Record<never, never>);
-  /** Percentage from 1 through 100, or a fixed decimal amount of at least 1. */
+  /** Percentage from 1 through 100, or a fixed decimal amount of at least 1. A `subscriptions` promotion cannot take 100% off: such a phase returns `422` on `phases.{index}.discount_value`, or on `subscription_payments` when an update switches the promotion to `subscriptions` without sending `phases`. Offer a free trial instead. */
   discountValue: number | string;
   /** A future date and time, or null for no time limit. */
   endsAt?: Date | null;

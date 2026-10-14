@@ -6,6 +6,7 @@ import type { SdkCreateOrderRequestApplicationJsonPaymentMethod } from './sdk-cr
 
 export interface SdkCreateOrderRequestApplicationJson {
   customerEmail: string;
+  /** The IP address the customer is buying from. Send it when you sell a plan with a trial: a trial of the same product taken from this address in the last 30 days counts as the customer's. Without it, only `customer_email` is checked, so a customer could take another trial with a new email address. */
   customerIp?: string | null;
   paymentMethod: SdkCreateOrderRequestApplicationJsonPaymentMethod | (string & Record<never, never>);
   coupon?: string;

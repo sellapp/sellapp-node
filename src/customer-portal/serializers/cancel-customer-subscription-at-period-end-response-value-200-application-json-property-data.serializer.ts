@@ -2,24 +2,22 @@
 
 import type { CancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJsonPropertyData, CancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJsonPropertyDataResponse } from '../interfaces/cancel-customer-subscription-at-period-end-response-value-200-application-json-property-data.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
-import { deserializeCancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJsonPropertyDataPropertyCustomer } from './cancel-customer-subscription-at-period-end-response-value-200-application-json-property-data-property-customer.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"CancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJsonPropertyData","required":["id","status","providerSubscriptionId","providerCustomerId","customer"],"properties":{"id":{"kind":"primitive","type":"integer"},"status":{"kind":"primitive","type":"string"},"subscriptionId":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"customerId":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"providerSubscriptionId":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"providerCustomerId":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"customer":{"kind":"any"},"productVariantId":{"kind":"primitive","type":"integer"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"CancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJsonPropertyData","required":["id","status","provider_subscription_id","provider_customer_id","customer"],"properties":{"id":{"kind":"primitive","type":"integer"},"status":{"kind":"primitive","type":"string"},"subscription_id":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"customer_id":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"provider_subscription_id":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"provider_customer_id":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"customer":{"kind":"any"},"product_variant_id":{"kind":"primitive","type":"integer"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"CancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJsonPropertyData","required":["id","subscriptionId","action","status","customerMessage","redirectUrl","createdAt"],"properties":{"id":{"kind":"primitive","type":"integer"},"subscriptionId":{"kind":"primitive","type":"integer"},"action":{"kind":"enum","values":["pause","resume","cancel_at_period_end","cancel_immediately","keep_subscription","update_payment_method","change_plan","shift_billing_date","set_auto_renew"]},"status":{"kind":"enum","values":["pending","confirmed","failed","expired","dismissed"]},"customerMessage":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"redirectUrl":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"uri"}},"createdAt":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"CancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJsonPropertyData","required":["id","subscription_id","action","status","customer_message","redirect_url","created_at"],"properties":{"id":{"kind":"primitive","type":"integer"},"subscription_id":{"kind":"primitive","type":"integer"},"action":{"kind":"enum","values":["pause","resume","cancel_at_period_end","cancel_immediately","keep_subscription","update_payment_method","change_plan","shift_billing_date","set_auto_renew"]},"status":{"kind":"enum","values":["pending","confirmed","failed","expired","dismissed"]},"customer_message":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"redirect_url":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"uri"}},"created_at":{"kind":"nullable","inner":{"kind":"primitive","type":"string","format":"date-time"}}},"additionalProperties":true};
 
 export const deserializeCancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJsonPropertyData = (
   response: CancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJsonPropertyDataResponse,
 ): CancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJsonPropertyData => {
   assertValidModel(response, wireRuntimeSchema, { direction: 'response', allowUnknownEnums: true, allowUnknownUnionVariants: true, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(response, ["id","status","subscription_id","customer_id","provider_subscription_id","provider_customer_id","customer","product_variant_id"]),
+    ...preserveUnknownFields(response, ["id","subscription_id","action","status","customer_message","redirect_url","created_at"]),
     id: response.id,
+    subscriptionId: response.subscription_id,
+    action: response.action,
     status: response.status,
-    subscriptionId: response.subscription_id ?? null,
-    customerId: response.customer_id ?? null,
-    providerSubscriptionId: response.provider_subscription_id ?? null,
-    providerCustomerId: response.provider_customer_id ?? null,
-    customer: deserializeCancelCustomerSubscriptionAtPeriodEndResponseValue200ApplicationJsonPropertyDataPropertyCustomer(response.customer),
-    productVariantId: response.product_variant_id,
+    customerMessage: response.customer_message ?? null,
+    redirectUrl: response.redirect_url ?? null,
+    createdAt: response.created_at != null ? new Date(response.created_at) : null,
   };
 };

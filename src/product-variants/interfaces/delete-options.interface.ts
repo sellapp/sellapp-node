@@ -9,4 +9,6 @@ export interface DeleteOptions {
   product: number;
   /** The variant path parameter. */
   variant: number;
+  /** Optional optimistic-concurrency snapshot. Send the exact `updated_at` value from the product you last retrieved; the mutation is rejected if the product has changed. */
+  expectedUpdatedAt?: Date;
 }

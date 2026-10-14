@@ -14,6 +14,7 @@ export interface CreateOrderRefundResponseValue200ApplicationJsonPropertyDataPro
   customer: CreateOrderRefundResponseValue200ApplicationJsonPropertyDataPropertyOrderPropertyCustomer;
   payment: CreateOrderRefundResponseValue200ApplicationJsonPropertyDataPropertyOrderPropertyPayment;
   totals: CreateOrderRefundResponseValue200ApplicationJsonPropertyDataPropertyOrderPropertyTotals;
+  /** The coupon this order was sold with, or null. A subscription's renewal and plan-change orders carry null, even while the subscription still bills a discounted price, so a coupon's `limit` counts a subscription once, at signup. */
   couponId: number | null;
   lineItems: CreateOrderRefundResponseValue200ApplicationJsonPropertyDataPropertyOrderPropertyLineItemsItem[];
   createdAt: Date | null;

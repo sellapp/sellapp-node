@@ -4,8 +4,8 @@ import type { CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoic
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyGatewayPropertyData } from './create-checkout-session-response-value-200-application-json-property-invoice-property-payment-property-gateway-property-data.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"primitive","type":"string"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyGateway","required":["data","type"],"properties":{"data":{"kind":"any"},"type":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}}},"additionalProperties":true};
 
 export const deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyGateway = (
   response: CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyGatewayResponse,
@@ -14,6 +14,6 @@ export const deserializeCreateCheckoutSessionResponseValue200ApplicationJsonProp
   return {
     ...preserveUnknownFields(response, ["data","type"]),
     data: deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyGatewayPropertyData(response.data),
-    type: response.type,
+    type: response.type ?? null,
   };
 };

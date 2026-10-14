@@ -7,6 +7,7 @@ import type { ListCustomerEntitlementsResponseValue200ApplicationJsonPropertyDat
 export interface ListCustomerEntitlementsResponseValue200ApplicationJsonPropertyDataItem {
   id: string;
   kind: ListCustomerEntitlementsResponseValue200ApplicationJsonPropertyDataItemKind | (string & Record<never, never>);
+  /** Whether the customer has this access now. For `subscription_access`: `active` while the subscription is active, trialing, or past due, because a past-due subscription keeps access while its payment is collected; `suspended` while it is unpaid, paused, or on hold for an unpaid renewal, until it is paid or resumed; `revoked` once cancelled; `pending` while incomplete; `expired` when its first payment expired. */
   state: ListCustomerEntitlementsResponseValue200ApplicationJsonPropertyDataItemState | (string & Record<never, never>);
   customerId: number;
   subject: ListCustomerEntitlementsResponseValue200ApplicationJsonPropertyDataItemPropertySubject;

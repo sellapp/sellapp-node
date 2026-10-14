@@ -2,21 +2,15 @@
 
 import type { SdkSearchSubscriptionsResponseValue200ApplicationJson, SdkSearchSubscriptionsResponseValue200ApplicationJsonResponse } from '../interfaces/sdk-search-subscriptions-response-value-200-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
-import { deserializeSearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem } from './search-subscriptions-response-value-200-application-json-property-data-item.serializer';
-import { deserializePaginationLinks } from '../../charges/serializers/pagination-links.serializer';
-import { deserializePaginationMeta } from '../../charges/serializers/pagination-meta.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsResponseValue200ApplicationJson","required":["data","links","meta"],"properties":{"data":{"kind":"array","items":{"kind":"any"}},"links":{"kind":"any"},"meta":{"kind":"any"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsResponseValue200ApplicationJson","required":["data","links","meta"],"properties":{"data":{"kind":"array","items":{"kind":"any"}},"links":{"kind":"any"},"meta":{"kind":"any"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsResponseValue200ApplicationJson","required":[],"properties":{},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsResponseValue200ApplicationJson","required":[],"properties":{},"additionalProperties":true};
 
 export const deserializeSdkSearchSubscriptionsResponseValue200ApplicationJson = (
-  response: SdkSearchSubscriptionsResponseValue200ApplicationJsonResponse,
+  _response: SdkSearchSubscriptionsResponseValue200ApplicationJsonResponse,
 ): SdkSearchSubscriptionsResponseValue200ApplicationJson => {
-  assertValidModel(response, wireRuntimeSchema, { direction: 'response', allowUnknownEnums: true, allowUnknownUnionVariants: true, allowUnknownFields: true });
+  assertValidModel(_response, wireRuntimeSchema, { direction: 'response', allowUnknownEnums: true, allowUnknownUnionVariants: true, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(response, ["data","links","meta"]),
-    data: response.data.map(deserializeSearchSubscriptionsResponseValue200ApplicationJsonPropertyDataItem),
-    links: deserializePaginationLinks(response.links),
-    meta: deserializePaginationMeta(response.meta),
+    ...preserveUnknownFields(_response, []),
   };
 };

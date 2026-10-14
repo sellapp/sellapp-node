@@ -18,6 +18,7 @@ export * from './create-checkout-session-response-value-200-application-json-pro
 export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-payment-property-subtotal-property-total.serializer';
 export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-product-variants-item.serializer';
 export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-status.serializer';
+export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-status-property-history-item.serializer';
 export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-status-property-status.serializer';
 export * from './create-checkout-session-response-value-200-application-json-property-invoice-property-webhooks-item.serializer';
 export * from './create-dynamic-delivery-retry-response-value-200-application-json-property-data.serializer';
