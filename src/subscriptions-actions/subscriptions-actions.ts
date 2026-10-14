@@ -4,7 +4,6 @@ import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
-import type { PostOptions } from '../common/interfaces/post-options.interface';
 import type { SubscriptionsActionsListOptions } from './interfaces/subscriptions-actions-list-options.interface';
 import type { GetOptions } from './interfaces/get-options.interface';
 import type { DismissOptions } from './interfaces/dismiss-options.interface';
@@ -95,7 +94,7 @@ export class SubscriptionsActions {
   /**
    * Dismiss a subscription action
    *
-   * Dismiss a pending lifecycle action that the provider left unresolved, which frees the subscription for its next change. Only a pending action can be dismissed, and the required `note` is stored on the action as its `error` so the decision stays on the record. An action in any other state returns `422` with the refusal sentence under `errors.subscription`, while a missing or over-long `note` returns an ordinary field error. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Dismiss a pending lifecycle action that the provider left unresolved, which frees the subscription for its next change. Only a pending action can be dismissed, and the required `note` is stored on the action as its `error` so the decision stays on the record. An action in any other state returns `422` with the refusal sentence under `errors.subscription`, while a missing or over-long `note` returns an ordinary field error. This operation does not replay completed dismissals: idempotency keys are ignored. After a lost response, retrieve the action before repeating the request; an already-dismissed action returns `422`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.productSubscription - The productSubscription path parameter.
    * @example 124

@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "language": "node",
   "repository": "sellapp/sellapp-node",
-  "sourceSha": "2a8fd1a82c3091e60f332257fe4460785b0c6e9a",
-  "specSha256": "aea767326d7193deffe5004a5751f7e8f59e40b037636c8fc29b936699dfff2e",
+  "sourceSha": "5bfb944881c821f7c8b0af0e254d6f9bd16c0806",
+  "specSha256": "22a0f17c1c7099fa036382e9f037daa5b7e273d57605163d22042e03f964f1c8",
   "runId": "0",
   "runAttempt": "1",
-  "treeDigest": "89eb99779edd195c3c586010c36d74efe7bf1167c162159aee93d1d033ac7654",
-  "contentDigest": "4e96f46db72161340644c3b6d90b22f8114193386a2e5b4e86620e066ed540cc",
+  "treeDigest": "9e17af16d4f7157466ef871c8be55f33595d1c444d4950660bd4ff67fa93bc5e",
+  "contentDigest": "e79c7eef02f4097f5f3aa311ce03530de50f524ead099ce4cab58041cda5f1ba",
   "files": [
     {
       "path": ".github/scripts/native-ci.mjs",
@@ -47,7 +47,7 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "sha256": "feae7efba05aa20bdb9c8838a8224ad0cd38b4216cede1c4c9e72133098c80ec"
+      "sha256": "570e369ae859bddc3c6bf0a6986df76794f2baa00f8b6a28526d4fb055765267"
     },
     {
       "path": "docs/methods.md",
@@ -57,7 +57,7 @@
     {
       "path": "docs/migration.md",
       "mode": "100644",
-      "sha256": "d2152af699fb26ebea01160423ee170c0d2516d1100b8188a4e583956b20528d"
+      "sha256": "fc66a4951d15ce6a3455cd4aac9a310b3f8db00af0c07ef4567bdb83c3f54bea"
     },
     {
       "path": "docs/operation-examples.json",
@@ -487,12 +487,12 @@
     {
       "path": "generation-manifest.json",
       "mode": "100644",
-      "sha256": "73999d51c9ed9f8fb4a53bf32c52b6a1d7d735f84a2a046f5ca78fa9de7a8bf8"
+      "sha256": "18790b7985d3abb18673a28d81dd3a1be7380f7c1d17b4e6cf5321d1a496fad1"
     },
     {
       "path": "package.json",
       "mode": "100644",
-      "sha256": "ec78898336cd4c5ab71fedc481592d8a251f2f47acacab047336b0ce0d03efc2"
+      "sha256": "ad7eff1d2570ef1d157b13dc7d7d16f2db6d919e954b57b04b1aabc9d45aa70f"
     },
     {
       "path": "src/account/account.ts",
@@ -6917,7 +6917,7 @@
     {
       "path": "src/common/sellapp-base.ts",
       "mode": "100644",
-      "sha256": "e9b30949bc2d9735d7bf997f189670f767dc99384d08fc21a6555307c257f7f6"
+      "sha256": "331bcd780f41e0d1830acf36eac6c2df696d8d269a5828bd314daf3d45b9b508"
     },
     {
       "path": "src/common/utils/fetch-and-deserialize.ts",
@@ -25877,7 +25877,7 @@
     {
       "path": "src/subscriptions-actions/interfaces/dismiss-options.interface.ts",
       "mode": "100644",
-      "sha256": "a8f9ca10171a54b0e7b638d963e59fa2b33f7af724f4cdfd23ed3a51005b11e4"
+      "sha256": "16a91b52ecb0dc2c0bafd9fedd85fef2788e532cfaf6310641c2501465c59f57"
     },
     {
       "path": "src/subscriptions-actions/interfaces/get-options.interface.ts",
@@ -25897,7 +25897,7 @@
     {
       "path": "src/subscriptions-actions/subscriptions-actions.ts",
       "mode": "100644",
-      "sha256": "38472e7e2e6006969144faf236c93e0e6505e996b26f95d0fa00964990611b35"
+      "sha256": "44fe1297f25e52a25df9813c9fec3f47024bf8832d47199b945e592c83c71d89"
     },
     {
       "path": "src/subscriptions/interfaces/cancel-at-period-end-options.interface.ts",
@@ -26257,7 +26257,7 @@
     {
       "path": "src/subscriptions/interfaces/sdk-dismiss-subscription-action-request-application-json.interface.ts",
       "mode": "100644",
-      "sha256": "cd0c09fe3fd65a6ee751d51dc88a0a65224dddeef42863e84de77a91e701da1b"
+      "sha256": "d7481b4f194f982e9a185cc1b816f4315097648466b90681e5c56e8864679bad"
     },
     {
       "path": "src/subscriptions/interfaces/sdk-dismiss-subscription-action-response-value-200-application-json.interface.ts",
