@@ -3,6 +3,8 @@
 export * from './create-webhook-channel-response-value-201-application-json-property-data.serializer';
 export * from './get-webhook-channel-response-value-200-application-json-property-data.serializer';
 export * from './list-webhook-channels-response-value-200-application-json-property-data-item.serializer';
+export * from './list-webhook-channels-response-value-200-application-json-property-data-item-property-health.serializer';
+export * from './list-webhook-channels-response-value-200-application-json-property-data-item-property-last-delivery.serializer';
 export * from './replace-webhook-channel-response-value-200-application-json-property-data.serializer';
 export * from './rotate-webhook-signing-secret-response-value-200-application-json-property-data.serializer';
 export * from './sdk-create-webhook-channel-request-application-json.serializer';
@@ -20,5 +22,7 @@ export * from './sdk-update-webhook-channel-request-application-json.serializer'
 export * from './sdk-update-webhook-channel-response-value-200-application-json.serializer';
 export * from './search-webhook-channels-request-application-json-property-search.serializer';
 export * from './search-webhook-channels-response-value-200-application-json-property-data-item.serializer';
+export * from './search-webhook-channels-response-value-200-application-json-property-data-item-property-health.serializer';
+export * from './search-webhook-channels-response-value-200-application-json-property-data-item-property-last-delivery.serializer';
 export * from './send-test-webhook-response-value-200-application-json-property-data.serializer';
 export * from './update-webhook-channel-response-value-200-application-json-property-data.serializer';

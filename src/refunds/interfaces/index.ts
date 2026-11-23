@@ -8,4 +8,8 @@ export * from './list-refunds-options.interface';
 export * from './list-refunds-response-value-200-application-json-property-data-item-property-refundable-type.interface';
 export * from './list-refunds-response-value-200-application-json-property-data-item-property-refundable.interface';
 export * from './list-refunds-response-value-200-application-json-property-data-item.interface';
+export * from './refunds-provider.interface';
+export * from './refunds-refundable-type.interface';
+export * from './refunds-source.interface';
+export * from './refunds-status.interface';
 export * from './sdk-get-refund-response-value-200-application-json.interface';

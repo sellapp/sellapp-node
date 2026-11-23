@@ -203,14 +203,14 @@ List all feedback
 [API reference](https://sell.app/docs/api/feedback/list-all-feedback) · Effect: **read**
 
 ```typescript
-async v2ListFeedback(options?: V2ListFeedbackOptions): Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, V2ListFeedbackOptions>>
+async v2ListFeedback(options?: V2ListFeedbackOptions): Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
 | options | `V2ListFeedbackOptions \| undefined` | No |
 
-Returns: `Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, V2ListFeedbackOptions>>`.
+Returns: `Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
 import { SellApp } from '@sell.app/sdk';

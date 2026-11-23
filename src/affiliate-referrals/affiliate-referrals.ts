@@ -40,6 +40,7 @@ const serializeAffiliateReferralsListOptions = (options: AffiliateReferralsListO
     after: options.after,
     order: options.order,
   };
+  if (options.search !== undefined) wire.search = options.search;
   if (options.affiliateId !== undefined) wire.affiliate_id = options.affiliateId;
   if (options.orderId !== undefined) wire.order_id = options.orderId;
   if (options.status !== undefined) wire.status = options.status;
@@ -54,7 +55,7 @@ export class AffiliateReferrals {
   /**
    * List affiliate referrals
    *
-   * List store referrals with their attributed order and purchase line item. Requires the `affiliate` credential ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List store referrals with their attributed order and purchase line item, newest first, 15 per page by default. Requires the `affiliate` credential ability. Use `search` to find referrals by affiliate email, product or variant title, or an exact referral or order ID. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<ListAffiliateReferralsResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400

@@ -42,6 +42,14 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "getChargeSummary",
+    "mountTarget": "Charges",
+    "methodName": "get_summary",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.charges.getSummary({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "listGroups",
     "mountTarget": "Groups",
     "methodName": "list",
@@ -205,7 +213,7 @@
     "operationId": "issueReplacementForCompletedInvoice",
     "mountTarget": "Invoices",
     "methodName": "issue_replacement",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.invoices.issueReplacement({\n  \"invoice\": 1,\n  \"productVariants\": {\"0\": 117214}\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.invoices.issueReplacement({\n  \"invoice\": 1,\n  \"productVariants\": [117214]\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -221,7 +229,7 @@
     "operationId": "createInvoiceRefund",
     "mountTarget": "Invoices",
     "methodName": "create_refund",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.invoices.createRefund({\n  \"invoice\": 1,\n  \"amount\": \"12.50\"\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.invoices.createRefund({\n  \"invoice\": 1,\n  \"amount\": \"12.50\",\n  \"expectedRefundedTotalCents\": 0\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -373,7 +381,7 @@
     "operationId": "searchProducts",
     "mountTarget": "Products",
     "methodName": "search",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.products.search({\n  \"filters\": [{\"field\": \"id\", \"operator\": \"=\", \"value\": 1}],\n  \"sort\": [{\"field\": \"created_at\", \"direction\": \"desc\"}]\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.products.search({\n  \"search\": {\"value\": \"launch\"},\n  \"maxPrice\": 2500,\n  \"stock\": \"in_stock\",\n  \"visibility\": [\"PUBLIC\"],\n  \"hasSales\": true\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -398,6 +406,62 @@
     "mountTarget": "Products",
     "methodName": "batch_delete",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.products.batchDelete({\n  \"resources\": [1, 2]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "publishProduct",
+    "mountTarget": "Products",
+    "methodName": "publish",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.products.publish({\n  \"product\": 1,\n  \"variantIds\": [2]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "duplicateProduct",
+    "mountTarget": "Products",
+    "methodName": "duplicate",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.products.duplicate({\n  \"product\": 1\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "moveProduct",
+    "mountTarget": "Products",
+    "methodName": "move",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.products.move({\n  \"product\": 1,\n  \"position\": 1,\n  \"expectedPosition\": 3\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getProductFeaturedVariant",
+    "mountTarget": "ProductsFeaturedVariant",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.productsFeaturedVariant.get({\n  \"product\": 1\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceProductFeaturedVariant",
+    "mountTarget": "ProductsFeaturedVariant",
+    "methodName": "replace",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.productsFeaturedVariant.replace({\n  \"product\": 1,\n  \"variantId\": 2,\n  \"highlightLabel\": \"best_value\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "listProductSimilarProducts",
+    "mountTarget": "ProductsSimilarProducts",
+    "methodName": "list",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.productsSimilarProducts.list({\n  \"product\": 30\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceProductSimilarProducts",
+    "mountTarget": "ProductsSimilarProducts",
+    "methodName": "replace",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.productsSimilarProducts.replace({\n  \"product\": 30,\n  \"variantIds\": [31, 41]\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -518,6 +582,54 @@
     "mountTarget": "ProductVariants",
     "methodName": "batch_delete",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.productVariants.batchDelete({\n  \"product\": 1,\n  \"resources\": [1, 2]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "publishProductVariant",
+    "mountTarget": "ProductVariants",
+    "methodName": "publish",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.productVariants.publish({\n  \"product\": 11,\n  \"variant\": 12\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "duplicateProductVariant",
+    "mountTarget": "ProductVariants",
+    "methodName": "duplicate",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.productVariants.duplicate({\n  \"product\": 1,\n  \"variant\": 2\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "reorderProductVariants",
+    "mountTarget": "ProductVariants",
+    "methodName": "reorder",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.productVariants.reorder({\n  \"product\": 1,\n  \"variantIds\": [2, 1]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getVariantSubscriptionSettings",
+    "mountTarget": "ProductVariantsSubscriptionSettings",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.productVariantsSubscriptionSettings.get({\n  \"product\": 1,\n  \"variant\": 4\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateVariantSubscriptionSettings",
+    "mountTarget": "ProductVariantsSubscriptionSettings",
+    "methodName": "update",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.productVariantsSubscriptionSettings.update({\n  \"product\": 1,\n  \"variant\": 4,\n  \"pausePolicy\": {\"maxPauseDays\": 30},\n  \"renewalPolicy\": {\"redeliverOnRenewal\": false},\n  \"expectedState\": \"3f9a1c0e7b2d4a6f8e1c5b9d0a7f3e2c4b6d8a0f1e3c5a7b9d2f4e6a8c0b1d3e\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceVariantCommunityAccess",
+    "mountTarget": "ProductVariantsCommunityAccess",
+    "methodName": "replace",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.productVariantsCommunityAccess.replace({\n  \"product\": 1,\n  \"variant\": 2,\n  \"community\": {\"platform\": \"discord\", \"serverId\": \"1187040134912155648\", \"roleIds\": [\"1187040299781210112\"], \"required\": true, \"removeOnExpire\": true},\n  \"expectedUpdatedAt\": new Date(\"2024-01-10T18:47:22.000000Z\")\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -746,6 +858,14 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "createBookingProduct",
+    "mountTarget": "Bookings",
+    "methodName": "create",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.bookings.create({\n  \"title\": \"Strategy consultation\",\n  \"description\": \"<p>A private strategy session for your next launch.</p>\",\n  \"variantTitle\": \"60 minute session\",\n  \"priceCents\": 2500,\n  \"currency\": \"USD\",\n  \"paymentMethods\": [\"STRIPE\"],\n  \"timezone\": \"Europe/London\",\n  \"durationMinutes\": 60,\n  \"availability\": [{\"day\": 1, \"enabled\": true, \"start\": \"09:00\", \"end\": \"12:00\"}, {\"day\": 3, \"enabled\": true, \"start\": \"13:00\", \"end\": \"17:00\"}]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "getBundleItem",
     "mountTarget": "BundleItems",
     "methodName": "get",
@@ -774,6 +894,38 @@
     "mountTarget": "BundleItems",
     "methodName": "detach",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.bundleItems.detach({\n  \"bundle\": 1,\n  \"resources\": [1]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "previewVariantBuyerNotification",
+    "mountTarget": "VariantDeliverables",
+    "methodName": "preview",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.variantDeliverables.preview({\n  \"product\": 1,\n  \"variant\": 2\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "notifyVariantBuyers",
+    "mountTarget": "VariantDeliverables",
+    "methodName": "notify",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.variantDeliverables.notify({\n  \"product\": 1,\n  \"variant\": 2,\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getVariantDeliverableConfiguration",
+    "mountTarget": "VariantDeliverables",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.variantDeliverables.get({\n  \"product\": \"string_example\",\n  \"variant\": 1\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceVariantDeliverableConfiguration",
+    "mountTarget": "VariantDeliverables",
+    "methodName": "replace",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.variantDeliverables.replace({\n  \"product\": \"string_example\",\n  \"variant\": 1,\n  \"types\": [\"MANUAL\"],\n  \"data\": {\"comment\": \"Delivery is arranged by Launch Lab.\"}\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -854,6 +1006,14 @@
     "mountTarget": "PromotionsPhases",
     "methodName": "replace",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.promotionsPhases.replace({\n  \"promotion\": 1,\n  \"phases\": [{\"discountType\": \"percentage\", \"discountValue\": \"20\", \"endsAt\": new Date(\"2026-08-04T00:00:00Z\"), \"maxRedemptions\": 200, \"minimumAmount\": \"10\"}, {\"discountType\": \"fixed\", \"discountValue\": \"5\", \"endsAt\": null, \"maxRedemptions\": null, \"minimumAmount\": \"25\"}]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getPromotionUsage",
+    "mountTarget": "Promotions",
+    "methodName": "get_usage",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.promotions.getUsage({\n  \"promotion\": 30\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -1138,6 +1298,222 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "listSupportReplyTemplates",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "list",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReplyTemplates.list({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "createSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "create",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReplyTemplates.create({\n  \"label\": \"Refund credited\",\n  \"body\": \"Hi {customer_email}, we credited {refund_amount} to your {store_name} wallet for {product_title}. Your wallet balance is now {wallet_balance}.\",\n  \"supportsAutoRespond\": true\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReplyTemplates.get({\n  \"supportReplyTemplate\": 32\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "replace",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReplyTemplates.replace({\n  \"supportReplyTemplate\": 31,\n  \"isActive\": false,\n  \"expectedUpdatedAt\": new Date(\"2026-07-03T09:12:00.000000Z\")\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "update",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReplyTemplates.update({\n  \"supportReplyTemplate\": 31,\n  \"isActive\": false,\n  \"expectedUpdatedAt\": new Date(\"2026-07-03T09:12:00.000000Z\")\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "deleteSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "delete",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReplyTemplates.delete({\n  \"supportReplyTemplate\": 33\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "renderSupportReplyTemplate",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "render",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReplyTemplates.render({\n  \"supportReplyTemplate\": 1,\n  \"ticketId\": 4821,\n  \"invoiceId\": 7001,\n  \"refundAmountCents\": 999\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "reorderSupportReplyTemplates",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "reorder",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReplyTemplates.reorder({\n  \"orderedTemplateIds\": [32, 31]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getSupportReplyTemplateOptions",
+    "mountTarget": "SupportReplyTemplates",
+    "methodName": "get_options",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReplyTemplates.getOptions({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "listSupportReasons",
+    "mountTarget": "SupportReasons",
+    "methodName": "list",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReasons.list({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "createSupportReason",
+    "mountTarget": "SupportReasons",
+    "methodName": "create",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReasons.create({\n  \"label\": \"Download link expired\",\n  \"description\": \"The download link in the order email no longer works.\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getSupportReason",
+    "mountTarget": "SupportReasons",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReasons.get({\n  \"supportReason\": 14\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceSupportReason",
+    "mountTarget": "SupportReasons",
+    "methodName": "replace",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReasons.replace({\n  \"supportReason\": 14,\n  \"description\": \"The download link in the order email no longer opens.\",\n  \"expectedUpdatedAt\": new Date(\"2026-07-03T09:10:00.000000Z\")\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateSupportReason",
+    "mountTarget": "SupportReasons",
+    "methodName": "update",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReasons.update({\n  \"supportReason\": 14,\n  \"description\": \"The download link in the order email no longer opens.\",\n  \"expectedUpdatedAt\": new Date(\"2026-07-03T09:10:00.000000Z\")\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "deleteSupportReason",
+    "mountTarget": "SupportReasons",
+    "methodName": "delete",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReasons.delete({\n  \"supportReason\": 15\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getSupportReasonOptions",
+    "mountTarget": "SupportReasons",
+    "methodName": "get_options",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportReasons.getOptions();\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "listSupportAutomationRules",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "list",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportAutomationRules.list({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "createSupportAutomationRule",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "create",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportAutomationRules.create({\n  \"name\": \"Expired download links\",\n  \"matchReasonSource\": \"store\",\n  \"matchReasonCode\": \"download-link-expired\",\n  \"matchProductIds\": [120],\n  \"matchMaxOrderTotalCents\": 5000,\n  \"maxPriorSupportRefundCount\": 0,\n  \"responseTemplateId\": 32,\n  \"actionRefundKind\": \"partial\",\n  \"actionRefundPercentBasis\": 5000,\n  \"actionRefundCapCents\": 1000,\n  \"actionCloseOutcome\": \"refunded_partial\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getSupportAutomationRule",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportAutomationRules.get({\n  \"supportAutomationRule\": 7\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceSupportAutomationRule",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "replace",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportAutomationRules.replace({\n  \"supportAutomationRule\": 7,\n  \"name\": \"Expired download links, first refund only\",\n  \"clear\": [\"match_max_order_total_cents\"],\n  \"expectedUpdatedAt\": new Date(\"2026-07-03T09:20:00.000000Z\")\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateSupportAutomationRule",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "update",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportAutomationRules.update({\n  \"supportAutomationRule\": 7,\n  \"name\": \"Expired download links, first refund only\",\n  \"clear\": [\"match_max_order_total_cents\"],\n  \"expectedUpdatedAt\": new Date(\"2026-07-03T09:20:00.000000Z\")\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateSupportAutomationRuleState",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "update_state",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportAutomationRules.updateState({\n  \"supportAutomationRule\": 1,\n  \"state\": \"active\",\n  \"expectedUpdatedAt\": new Date(\"2026-07-03T09:20:00.000000Z\")\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "reorderSupportAutomationRules",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "reorder",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportAutomationRules.reorder({\n  \"orderedRuleIds\": [7]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "dryRunSupportAutomationRules",
+    "mountTarget": "SupportAutomationRules",
+    "methodName": "dry_run",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportAutomationRules.dryRun({\n  \"ticketId\": 4821\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getSupportAutomationSettings",
+    "mountTarget": "SupportAutomationSettings",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportAutomationSettings.get();\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceSupportAutomationSettings",
+    "mountTarget": "SupportAutomationSettings",
+    "methodName": "replace",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportAutomationSettings.replace({\n  \"automationEnabled\": true,\n  \"dailyRefundCapCents\": 5000,\n  \"expectedAutomationEnabled\": false,\n  \"expectedDailyRefundCapCents\": null\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateSupportAutomationSettings",
+    "mountTarget": "SupportAutomationSettings",
+    "methodName": "update",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.supportAutomationSettings.update({\n  \"automationEnabled\": true,\n  \"dailyRefundCapCents\": 5000,\n  \"expectedAutomationEnabled\": false,\n  \"expectedDailyRefundCapCents\": null\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "listCustomers",
     "mountTarget": "Customers",
     "methodName": "list",
@@ -1221,7 +1597,7 @@
     "operationId": "searchOrders",
     "mountTarget": "Orders",
     "methodName": "search",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.orders.search({\n  \"filters\": [{\"field\": \"transaction_id\", \"operator\": \"contains\", \"value\": \"pi_3Example\"}, {\"field\": \"status\", \"operator\": \"in\", \"value\": [\"COMPLETED\"]}],\n  \"sort\": [{\"field\": \"created_at\", \"direction\": \"desc\"}],\n  \"pagination\": {\"page\": 1, \"limit\": 25}\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.orders.search({\n  \"filters\": [{\"field\": \"created_at\", \"operator\": \"gte\", \"value\": \"2026-07-01T00:00:00Z\"}, {\"field\": \"created_at\", \"operator\": \"lte\", \"value\": \"2026-07-31T23:59:59Z\"}, {\"field\": \"total\", \"operator\": \"gte\", \"value\": 1000}, {\"field\": \"currency\", \"operator\": \"eq\", \"value\": \"USD\"}, {\"field\": \"status\", \"operator\": \"in\", \"value\": [\"COMPLETED\"]}],\n  \"sort\": [{\"field\": \"created_at\", \"direction\": \"desc\"}],\n  \"pagination\": {\"page\": 1, \"limit\": 25}\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -1253,7 +1629,7 @@
     "operationId": "createOrderReplacement",
     "mountTarget": "Orders",
     "methodName": "create_replacement",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.orders.createReplacement({\n  \"order\": 9001,\n  \"productVariants\": {\"0\": 4321},\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.orders.createReplacement({\n  \"order\": 9001,\n  \"productVariants\": [4321],\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -1261,7 +1637,7 @@
     "operationId": "createOrderRefund",
     "mountTarget": "Orders",
     "methodName": "create_refund",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.orders.createRefund({\n  \"order\": 9001,\n  \"amount\": \"5.00\",\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.orders.createRefund({\n  \"order\": 9001,\n  \"amount\": \"5.00\",\n  \"expectedRefundedTotalCents\": 0,\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -1286,6 +1662,14 @@
     "mountTarget": "Orders",
     "methodName": "send_fulfillment_notifications",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.orders.sendFulfillmentNotifications({\n  \"order\": 9001,\n  \"email\": \"maya@example.com\",\n  \"productVariantIds\": [4321],\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "regenerateOrderTelegramInvite",
+    "mountTarget": "Orders",
+    "methodName": "regenerate_telegram_invite",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.orders.regenerateTelegramInvite({\n  \"order\": 9001,\n  \"variantId\": 4321,\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -1358,22 +1742,6 @@
     "mountTarget": "OrdersLineItems",
     "methodName": "get",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.ordersLineItems.get({\n  \"order\": 4001,\n  \"lineItem\": 9001\n});\nconsole.log(result);\n"
-  },
-  {
-    "language": "node",
-    "fileExtension": "ts",
-    "operationId": "getVariantDeliverableConfiguration",
-    "mountTarget": "VariantDeliverables",
-    "methodName": "get",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.variantDeliverables.get({\n  \"product\": \"string_example\",\n  \"variant\": 1\n});\nconsole.log(result);\n"
-  },
-  {
-    "language": "node",
-    "fileExtension": "ts",
-    "operationId": "replaceVariantDeliverableConfiguration",
-    "mountTarget": "VariantDeliverables",
-    "methodName": "replace",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.variantDeliverables.replace({\n  \"product\": \"string_example\",\n  \"variant\": 1,\n  \"types\": [\"MANUAL\"],\n  \"data\": {\"comment\": \"Delivery is arranged by Launch Lab.\"}\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -1542,6 +1910,14 @@
     "mountTarget": "AffiliateProgram",
     "methodName": "invite",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.affiliateProgram.invite({\n  \"email\": \"alex.morgan@example.com\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "resendAffiliateInvitation",
+    "mountTarget": "AffiliateProgram",
+    "methodName": "resend",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.affiliateProgram.resend({\n  \"invitation\": 77\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -1730,6 +2106,14 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "getUpsellOfferPerformance",
+    "mountTarget": "UpsellOffers",
+    "methodName": "get_performance",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.upsellOffers.getPerformance({\n  \"upsellOffer\": 71\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "listCommunityConnections",
     "mountTarget": "CommunityConnections",
     "methodName": "list",
@@ -1778,6 +2162,62 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "listCommunityFailedGrantReasons",
+    "mountTarget": "CommunityConnections",
+    "methodName": "list_failed_grant_reasons",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.communityConnections.listFailedGrantReasons();\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getCommunityServer",
+    "mountTarget": "CommunityConnectionsServers",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.communityConnectionsServers.get({\n  \"platform\": \"discord\",\n  \"server\": \"server_ship_room\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "removeCommunityServer",
+    "mountTarget": "CommunityConnectionsServers",
+    "methodName": "remove",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.communityConnectionsServers.remove({\n  \"platform\": \"discord\",\n  \"server\": \"server_ship_room\",\n  \"affectedVariantIds\": [902]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "syncDiscordRoles",
+    "mountTarget": "CommunityConnections",
+    "methodName": "sync_discord_roles",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.communityConnections.syncDiscordRoles({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "listSlackAvailableChannels",
+    "mountTarget": "CommunityConnectionsSlack",
+    "methodName": "list_channels",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.communityConnectionsSlack.listChannels();\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "addSlackChannel",
+    "mountTarget": "CommunityConnectionsSlack",
+    "methodName": "add_channel",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.communityConnectionsSlack.addChannel({\n  \"channelId\": \"C07LAUNCHVIP\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceSlackWorkspaceInviteLink",
+    "mountTarget": "CommunityConnectionsSlack",
+    "methodName": "replace_invite_link",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.communityConnectionsSlack.replaceInviteLink({\n  \"inviteLink\": \"https://join.slack.com/t/launch-lab/shared_invite/zt-2abc123\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "getWalletSettings",
     "mountTarget": "WalletSettings",
     "methodName": "get",
@@ -1813,7 +2253,7 @@
     "operationId": "adjustCustomerWallet",
     "mountTarget": "Wallet",
     "methodName": "adjust",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.wallet.adjust({\n  \"customer\": 1,\n  \"amountCents\": 2500,\n  \"idempotencyKey\": \"wallet-adjustment-01992a65\",\n  \"note\": \"Launch-day account credit\"\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.wallet.adjust({\n  \"customer\": 1,\n  \"amountCents\": 2500,\n  \"idempotencyKey\": \"wallet-adjustment-01992a65\",\n  \"note\": \"Launch-day account credit\",\n  \"expectedBalanceCents\": 0\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -1822,6 +2262,30 @@
     "mountTarget": "Wallet",
     "methodName": "update_status",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.wallet.updateStatus({\n  \"customer\": 1,\n  \"status\": \"frozen\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "reverseWalletTransaction",
+    "mountTarget": "WalletTransactions",
+    "methodName": "reverse",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.walletTransactions.reverse({\n  \"customer\": 42,\n  \"transaction\": 501,\n  \"note\": \"Credit went to the wrong customer\",\n  \"expectedBalanceCents\": 2500\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "listStoreWalletTransactions",
+    "mountTarget": "WalletLedger",
+    "methodName": "list",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.walletLedger.list({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getWalletOverview",
+    "mountTarget": "WalletOverview",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.walletOverview.get({\n\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -1890,6 +2354,14 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "quoteCashbackRule",
+    "mountTarget": "CashbackRules",
+    "methodName": "quote",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.cashbackRules.quote({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "listWalletBonusTiers",
     "mountTarget": "WalletBonusTiers",
     "methodName": "list",
@@ -1938,10 +2410,26 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "quoteWalletBonusTier",
+    "mountTarget": "WalletBonusTiers",
+    "methodName": "quote",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.walletBonusTiers.quote({\n  \"topUpCents\": 20000\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "listCourses",
     "mountTarget": "Courses",
     "methodName": "list",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.courses.list({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "createCourse",
+    "mountTarget": "Courses",
+    "methodName": "create",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.courses.create({\n  \"category\": \"design\",\n  \"level\": \"beginner\",\n  \"language\": \"English\",\n  \"whatYouLearn\": [\"Sketch a logo concept.\", \"Choose a color palette.\"],\n  \"certificateEnabled\": true,\n  \"deliveryText\": \"Open your course from the link in your receipt.\",\n  \"title\": \"Brand identity basics\",\n  \"description\": \"<p>Design a logo, color palette, and type system for your next project.</p>\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -1974,6 +2462,14 @@
     "mountTarget": "Courses",
     "methodName": "update",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.courses.update({\n  \"course\": \"string_example\",\n  \"level\": \"beginner\",\n  \"visibility\": \"HIDDEN\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getCourseStudentSummary",
+    "mountTarget": "Courses",
+    "methodName": "get_student_summary",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.courses.getStudentSummary({\n  \"startDate\": \"2026-08-01\",\n  \"endDate\": \"2026-08-31\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2058,6 +2554,62 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "listCheckoutFieldTemplates",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "list",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.checkoutFieldTemplates.list({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "createCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "create",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.checkoutFieldTemplates.create({\n  \"name\": \"Discord access\",\n  \"fields\": [{\"type\": \"text\", \"label\": \"Discord username\", \"key\": \"discord_username\", \"required\": true, \"placeholder\": \"name#0001\", \"description\": \"We add this account to the community after purchase.\"}, {\"type\": \"radio\", \"label\": \"Experience level\", \"key\": \"experience_level\", \"required\": false, \"options\": [\"Beginner\", \"Intermediate\", \"Advanced\"], \"variant\": \"cards\", \"variantOptions\": {\"vertical\": true, \"indicator\": true}}]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.checkoutFieldTemplates.get({\n  \"checkoutFieldTemplate\": 14\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "replace",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.checkoutFieldTemplates.replace({\n  \"checkoutFieldTemplate\": 14,\n  \"name\": \"Discord onboarding\",\n  \"expectedUpdatedAt\": new Date(\"2026-09-04T09:00:00.000000Z\")\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "update",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.checkoutFieldTemplates.update({\n  \"checkoutFieldTemplate\": 14,\n  \"name\": \"Discord onboarding\",\n  \"expectedUpdatedAt\": new Date(\"2026-09-04T09:00:00.000000Z\")\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "deleteCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "delete",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.checkoutFieldTemplates.delete({\n  \"checkoutFieldTemplate\": 14,\n  \"expectedUpdatedAt\": new Date(\"2026-09-04T09:00:00.000000Z\")\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "duplicateCheckoutFieldTemplate",
+    "mountTarget": "CheckoutFieldTemplates",
+    "methodName": "duplicate",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.checkoutFieldTemplates.duplicate({\n  \"checkoutFieldTemplate\": 14,\n  \"name\": \"Discord access for courses\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "listPaymentMethods",
     "mountTarget": "PaymentMethods",
     "methodName": "list",
@@ -2094,6 +2646,22 @@
     "mountTarget": "PaymentMethods",
     "methodName": "validate",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.paymentMethods.validate({\n  \"paymentMethod\": \"NMI\",\n  \"merchantSecureKey\": \"replace-with-nmi-secure-key\",\n  \"merchantTokenizationKey\": \"replace-with-nmi-tokenization-key\",\n  \"signingKey\": \"replace-with-nmi-signing-key\",\n  \"currencies\": [\"USD\"]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getPaymentMethodModifier",
+    "mountTarget": "PaymentMethodsModifier",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.paymentMethodsModifier.get({\n  \"paymentMethod\": \"STRIPE\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replacePaymentMethodModifier",
+    "mountTarget": "PaymentMethodsModifier",
+    "methodName": "replace",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.paymentMethodsModifier.replace({\n  \"paymentMethod\": \"STRIPE\",\n  \"kind\": \"fee\",\n  \"percentage\": \"3.00\",\n  \"fixedAmount\": \"0.30\",\n  \"condition\": \"below\",\n  \"threshold\": \"20.00\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2202,6 +2770,190 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "getCheckoutSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "get_checkout",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.getCheckout();\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceCheckoutSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_checkout",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.replaceCheckout({\n  \"shoppingCartEnabled\": true,\n  \"customerEmailRequired\": true,\n  \"allowVpnPurchases\": true,\n  \"blacklistOnDispute\": true,\n  \"minimumSpend\": \"5.00\",\n  \"billingDescriptor\": \"LAUNCH LAB\",\n  \"attemptsPerCustomer\": 5,\n  \"attemptsPerIp\": 20,\n  \"attemptsPerEmail\": null,\n  \"attemptsPerFingerprint\": null,\n  \"rateLimitWindowSeconds\": 3600,\n  \"crypto\": {\"underpaidPercentage\": 2, \"minimumConfirmations\": 2}\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateCheckoutSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_checkout",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.updateCheckout({\n  \"minimumSpend\": \"10.00\",\n  \"attemptsPerEmail\": 10\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getTaxSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "get_taxes",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.getTaxes();\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceTaxSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_taxes",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.replaceTaxes({\n  \"vatEnabled\": true,\n  \"vatInclusivePricing\": true,\n  \"collectBillingDetails\": false\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateTaxSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_taxes",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.updateTaxes({\n  \"vatInclusivePricing\": true\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getCustomerEmailSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "get_customer_emails",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.getCustomerEmails();\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceCustomerEmailSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_customer_emails",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.replaceCustomerEmails({\n  \"sendDeliveryEmail\": true,\n  \"sendPaymentFailureEmail\": false\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateCustomerEmailSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_customer_emails",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.updateCustomerEmails({\n  \"sendPaymentFailureEmail\": false\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getStoreAlertSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "get_store_alerts",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.getStoreAlerts();\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceStoreAlertSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_store_alerts",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.replaceStoreAlerts({\n  \"saleEmailsEnabled\": false\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateStoreAlertSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_store_alerts",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.updateStoreAlerts({\n  \"saleEmailsEnabled\": false\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getPersonalizationSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "get_personalization",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.getPersonalization();\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replacePersonalizationSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_personalization",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.replacePersonalization({\n  \"supportEmail\": \"support@launch-lab.example.com\",\n  \"trustpilotEmail\": null,\n  \"senderName\": \"Launch Lab\",\n  \"senderEmail\": \"orders@launch-lab.example.com\",\n  \"storeAddress\": \"651 N Broad St, Suite 206\",\n  \"storeCity\": \"Middletown\",\n  \"storeState\": \"Delaware\",\n  \"storeZip\": \"19709\",\n  \"storeCountry\": \"United States\",\n  \"storeTax\": \"EIN 98-7654321\",\n  \"backLinkLabel\": \"Back to Launch Lab\",\n  \"backLinkUrl\": \"https://launch-lab.example.com\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updatePersonalizationSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_personalization",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.updatePersonalization({\n  \"backLinkLabel\": \"Return to the shop\",\n  \"backLinkUrl\": \"https://launch-lab.example.com/shop\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "replaceCryptoCheckoutSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "replace_crypto_checkout",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.replaceCryptoCheckout({\n  \"underpaidPercentage\": 1,\n  \"minimumConfirmations\": 3\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateCryptoCheckoutSettings",
+    "mountTarget": "StoreSettings",
+    "methodName": "update_crypto_checkout",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSettings.updateCryptoCheckout({\n  \"minimumConfirmations\": 3\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getSenderEmail",
+    "mountTarget": "StoreSenderEmail",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSenderEmail.get({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "setSenderEmail",
+    "mountTarget": "StoreSenderEmail",
+    "methodName": "set",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSenderEmail.set({\n  \"email\": \"orders@launch-lab.example.com\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "deleteSenderEmail",
+    "mountTarget": "StoreSenderEmail",
+    "methodName": "delete",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSenderEmail.delete({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "sendSenderEmailVerification",
+    "mountTarget": "StoreSenderEmail",
+    "methodName": "send_verification",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeSenderEmail.sendVerification({\n  \"email\": \"orders@launch-lab.example.com\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getStoreIntegrations",
+    "mountTarget": "StoreIntegrations",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeIntegrations.get();\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "disconnectGoogleCalendar",
+    "mountTarget": "StoreIntegrations",
+    "methodName": "disconnect_google_calendar",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeIntegrations.disconnectGoogleCalendar({\n  \"connectionId\": 7\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "listNotificationChannels",
     "mountTarget": "StoreNotificationChannels",
     "methodName": "list",
@@ -2286,6 +3038,22 @@
     "mountTarget": "StoreCustomDomains",
     "methodName": "refresh",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.storeCustomDomains.refresh({\n  \"customDomain\": 1\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "listNotifications",
+    "mountTarget": "Notifications",
+    "methodName": "list",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.notifications.list({\n\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "markNotificationsSeen",
+    "mountTarget": "Notifications",
+    "methodName": "mark",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.notifications.mark({\n  \"notificationIds\": [9182]\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2402,6 +3170,46 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "getAffiliateProducts",
+    "mountTarget": "AffiliatesProducts",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.affiliatesProducts.get({\n  \"affiliate\": 88\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "updateAffiliateProducts",
+    "mountTarget": "AffiliatesProducts",
+    "methodName": "update",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.affiliatesProducts.update({\n  \"affiliate\": 88,\n  \"enableSpecificProducts\": true,\n  \"products\": [{\"id\": 42, \"enabled\": true, \"commission\": {\"type\": \"percentage\", \"percentage\": \"25\"}}, {\"id\": 43, \"enabled\": true, \"commission\": {\"type\": \"fixed\", \"amountUsdCents\": 550}}],\n  \"replaceProducts\": true\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getAffiliateCoupon",
+    "mountTarget": "AffiliatesCoupon",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.affiliatesCoupon.get({\n  \"affiliate\": 88\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "saveAffiliateCoupon",
+    "mountTarget": "AffiliatesCoupon",
+    "methodName": "save",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.affiliatesCoupon.save({\n  \"affiliate\": 88,\n  \"code\": \"ALEX15\",\n  \"type\": \"PERCENTAGE\",\n  \"discount\": \"15\",\n  \"storeWide\": true,\n  \"maximumDiscountAmount\": \"20\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "disableAffiliateCoupon",
+    "mountTarget": "AffiliatesCoupon",
+    "methodName": "disable",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.affiliatesCoupon.disable({\n  \"affiliate\": 88\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "listAffiliateReferrals",
     "mountTarget": "AffiliateReferrals",
     "methodName": "list",
@@ -2474,10 +3282,18 @@
   {
     "language": "node",
     "fileExtension": "ts",
+    "operationId": "markAffiliatePayoutsPaid",
+    "mountTarget": "AffiliatePayouts",
+    "methodName": "mark_paid",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.affiliatePayouts.markPaid({\n  \"payoutIds\": [91, 92],\n  \"expectedTotalUsdCents\": 4250\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
     "operationId": "listRefunds",
     "mountTarget": "Refunds",
     "methodName": "list_refunds",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.refunds.listRefunds();\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.refunds.listRefunds({\n\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2493,7 +3309,7 @@
     "operationId": "listExports",
     "mountTarget": "Exports",
     "methodName": "list_exports",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.exports.listExports();\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.exports.listExports({\n\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2525,7 +3341,7 @@
     "operationId": "listDisputes",
     "mountTarget": "Disputes",
     "methodName": "list_disputes",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.disputes.listDisputes();\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.disputes.listDisputes({\n\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -2733,7 +3549,7 @@
     "operationId": "listWebhookDeliveries",
     "mountTarget": "WebhookPlatform",
     "methodName": "list_webhook_deliveries",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.webhookPlatform.listWebhookDeliveries();\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.webhookPlatform.listWebhookDeliveries({\n\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -3125,7 +3941,7 @@
     "operationId": "v2ListBlacklists",
     "mountTarget": "Blacklists",
     "methodName": "v2_list_blacklists",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.blacklists.v2ListBlacklists();\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.blacklists.v2ListBlacklists({\n\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -3246,6 +4062,14 @@
     "mountTarget": "Coupons",
     "methodName": "v2_batch_delete_coupons",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.coupons.v2BatchDeleteCoupons({\n  \"resources\": [1, 2]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "v2GetCouponUsage",
+    "mountTarget": "Coupons",
+    "methodName": "v2_get_coupon_usage",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.coupons.v2GetCouponUsage({\n  \"coupon\": 1\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -3421,7 +4245,7 @@
     "operationId": "updateTicket",
     "mountTarget": "Tickets",
     "methodName": "update",
-    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.tickets.update({\n  \"ticket\": 42,\n  \"status\": \"CLOSED\",\n  \"archived\": true\n});\nconsole.log(result);\n"
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.tickets.update({\n  \"ticket\": 42,\n  \"status\": \"CLOSED\",\n  \"archived\": true,\n  \"outcome\": \"delivered\"\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",
@@ -3454,6 +4278,62 @@
     "mountTarget": "TicketsMessages",
     "methodName": "v2_get_ticket_message",
     "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.ticketsMessages.v2GetTicketMessage({\n  \"ticket\": 1,\n  \"message\": 2\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "batchUpdateTickets",
+    "mountTarget": "Tickets",
+    "methodName": "batch_update",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.tickets.batchUpdate({\n  \"action\": \"close\",\n  \"outcome\": \"delivered\",\n  \"resources\": [311, 313]\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "v2GetTicketContext",
+    "mountTarget": "Tickets",
+    "methodName": "get_context",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.tickets.getContext({\n  \"ticket\": 312\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "v2ListTicketWalletRefundOptions",
+    "mountTarget": "TicketsWalletRefunds",
+    "methodName": "list_options",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.ticketsWalletRefunds.listOptions({\n  \"ticket\": 312\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "v2ListTicketWalletRefunds",
+    "mountTarget": "TicketsWalletRefunds",
+    "methodName": "list",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.ticketsWalletRefunds.list({\n  \"ticket\": 312\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "v2RefundTicketToWallet",
+    "mountTarget": "TicketsWalletRefunds",
+    "methodName": "create",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.ticketsWalletRefunds.create({\n  \"ticket\": 312,\n  \"invoiceId\": 5120,\n  \"amountCents\": 500,\n  \"expectedRefundableCents\": 1999,\n  \"customerNote\": \"We added $5.00 to your store wallet for the trouble with your download link.\",\n  requestOptions: { headers: { \"Idempotency-Key\": \"example-mutation-001\" } }\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "v2ReverseTicketWalletRefund",
+    "mountTarget": "TicketsWalletRefunds",
+    "methodName": "reverse",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.ticketsWalletRefunds.reverse({\n  \"ticket\": 312,\n  \"walletRefund\": 7001,\n  \"reason\": \"Issued on the wrong ticket.\"\n});\nconsole.log(result);\n"
+  },
+  {
+    "language": "node",
+    "fileExtension": "ts",
+    "operationId": "getSupportAnalytics",
+    "mountTarget": "TicketsAnalytics",
+    "methodName": "get",
+    "content": "import { SellApp } from '@sell.app/sdk';\n\nconst client = new SellApp({\n  baseUrl: process.env.SELLAPP_API_BASE_URL!,\n  apiKey: process.env.SELLAPP_API_KEY!,\n  store: process.env.SELLAPP_STORE!,\n});\n\nconst result = await client.ticketsAnalytics.get({\n\n});\nconsole.log(result);\n"
   },
   {
     "language": "node",

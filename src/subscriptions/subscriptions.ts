@@ -2,6 +2,7 @@
 
 import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
+import type { PaginationOptions } from '../common/interfaces/pagination-options.interface';
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { PostOptions } from '../common/interfaces/post-options.interface';
@@ -88,6 +89,30 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
   }) as SellAppWithResponse<T>;
 }
 
+const serializeListSubscriptionsOptions = (options: ListSubscriptionsOptions): PaginationOptions => {
+  const wire: Record<string, unknown> = {
+    maxItems: options.maxItems,
+    maxPages: options.maxPages,
+    requestOptions: options.requestOptions,
+    limit: options.limit,
+    before: options.before,
+    after: options.after,
+    order: options.order,
+  };
+  if (options.page !== undefined) wire.page = options.page;
+  if (options.pagination !== undefined) wire.pagination = options.pagination;
+  if (options.status !== undefined) wire.status = options.status;
+  if (options.orderId !== undefined) wire.order_id = options.orderId;
+  if (options.productId !== undefined) wire.product_id = options.productId;
+  if (options.renewsAfter !== undefined) wire.renews_after = options.renewsAfter;
+  if (options.renewsBefore !== undefined) wire.renews_before = options.renewsBefore;
+  if (options.cancelledAfter !== undefined) wire.cancelled_after = options.cancelledAfter;
+  if (options.cancelledBefore !== undefined) wire.cancelled_before = options.cancelledBefore;
+  if (options.scheduledToCancel !== undefined) wire.scheduled_to_cancel = options.scheduledToCancel;
+  if (options.paused !== undefined) wire.paused = options.paused;
+  return wire as PaginationOptions;
+};
+
 export class Subscriptions {
   constructor(private readonly sellApp: SellApp) {}
   get withResponse(): SellAppWithResponse<this> { return createResourceWithResponse(this, this.sellApp); }
@@ -120,7 +145,7 @@ export class Subscriptions {
   /**
    * List subscriptions
    *
-   * List the subscriptions belonging to the authenticated store, ordered by identifier ascending. Requires the `invoice` Sanctum ability. Use `status[]` to keep only the states you care about. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List the subscriptions belonging to the authenticated store, ordered by identifier ascending. Requires the `invoice` Sanctum ability. Use `status[]` to keep only the states you care about, and the other filters to find subscriptions by order, product, renewal date, cancellation date, or whether they are paused or set to cancel. Filters combine: a subscription must match all of them. Date filters read whole days in the store's time zone and include both ends. A filter value in the wrong shape, or a `*_before` date earlier than its `*_after` date, returns `422` on that parameter. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson>>}
    * @throws {BadRequestException} 400
@@ -129,14 +154,13 @@ export class Subscriptions {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async listSubscriptions(options?: ListSubscriptionsOptions): Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, ListSubscriptionsOptions>> {
-    const paginationOptions = options;
+  async listSubscriptions(options?: ListSubscriptionsOptions): Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, PaginationOptions>> {
     return new AutoPaginatable(
       await fetchAndDeserialize<SdkListSubscriptionsResponseValue200ApplicationJsonResponse, SdkListSubscriptionsResponseValue200ApplicationJson>(
         this.sellApp,
         '/v2/subscriptions',
         deserializeSdkListSubscriptionsResponseValue200ApplicationJson,
-        paginationOptions,
+        options ? serializeListSubscriptionsOptions(options) : undefined,
       ),
       (params) =>
         fetchAndDeserialize<SdkListSubscriptionsResponseValue200ApplicationJsonResponse, SdkListSubscriptionsResponseValue200ApplicationJson>(
@@ -145,14 +169,14 @@ export class Subscriptions {
           deserializeSdkListSubscriptionsResponseValue200ApplicationJson,
           params,
         ),
-      paginationOptions,
+      options ? serializeListSubscriptionsOptions(options) : undefined,
     );
   }
 
   /**
    * Search subscriptions
    *
-   * Search the store's subscriptions, ordered by identifier ascending unless `sort` says otherwise. `search.value` matches the provider subscription ID, the provider customer ID, and the customer email. Filter on `id`, `customer_id` (the SellApp customer ID, as in `customer.id`), `provider`, `status`, or `product_variant_id`, and sort on `id`, `status`, `current_period_start`, `current_period_end`, `created_at`, or `updated_at`. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Search the store's subscriptions, ordered by identifier ascending unless `sort` says otherwise. `search.value` matches the provider subscription ID, the provider customer ID, and the customer email. Filter on `id`, `customer_id` (the SellApp customer ID, as in `customer.id`), `provider`, `status`, or `product_variant_id`, and sort on `id`, `status`, `current_period_start`, `current_period_end`, `created_at`, or `updated_at`. The body also takes the list endpoint's filters as top-level fields: `order_id`, `product_id`, `renews_after`, `renews_before`, `cancelled_after`, `cancelled_before`, `scheduled_to_cancel`, and `paused`, with the same rules; date filters read whole days in the store's time zone and include both ends. Requires the `invoice` Sanctum ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<SdkSearchSubscriptionsResponseValue200ApplicationJson>>}
    * @throws {BadRequestException} 400

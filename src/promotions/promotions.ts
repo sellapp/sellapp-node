@@ -12,6 +12,7 @@ import type { ReplaceOptions } from './interfaces/replace-options.interface';
 import type { UpdateOptions } from './interfaces/update-options.interface';
 import type { DeleteOptions } from './interfaces/delete-options.interface';
 import type { RestoreOptions } from './interfaces/restore-options.interface';
+import type { GetUsageOptions } from './interfaces/get-usage-options.interface';
 import type { SdkListPromotionsResponseValue200ApplicationJson, SdkListPromotionsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-promotions-response-value-200-application-json.interface';
 import type { SdkCreatePromotionResponseValue201ApplicationJson, SdkCreatePromotionResponseValue201ApplicationJsonResponse } from './interfaces/sdk-create-promotion-response-value-201-application-json.interface';
 import type { SdkSearchPromotionsResponseValue200ApplicationJson, SdkSearchPromotionsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-search-promotions-response-value-200-application-json.interface';
@@ -19,6 +20,7 @@ import type { SdkGetPromotionResponseValue200ApplicationJson, SdkGetPromotionRes
 import type { SdkReplacePromotionResponseValue200ApplicationJson, SdkReplacePromotionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-promotion-response-value-200-application-json.interface';
 import type { SdkUpdatePromotionResponseValue200ApplicationJson, SdkUpdatePromotionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-promotion-response-value-200-application-json.interface';
 import type { SdkRestorePromotionResponseValue200ApplicationJson, SdkRestorePromotionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-restore-promotion-response-value-200-application-json.interface';
+import type { SdkGetPromotionUsageResponseValue200ApplicationJson, SdkGetPromotionUsageResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-promotion-usage-response-value-200-application-json.interface';
 import type { SdkCreatePromotionRequestApplicationJsonResponse } from './interfaces/sdk-create-promotion-request-application-json.interface';
 import type { SdkSearchPromotionsRequestApplicationJsonResponse } from './interfaces/sdk-search-promotions-request-application-json.interface';
 import type { SdkReplacePromotionRequestApplicationJsonResponse } from './interfaces/sdk-replace-promotion-request-application-json.interface';
@@ -31,6 +33,7 @@ import { deserializeSdkGetPromotionResponseValue200ApplicationJson } from './ser
 import { deserializeSdkReplacePromotionResponseValue200ApplicationJson } from './serializers/sdk-replace-promotion-response-value-200-application-json.serializer';
 import { deserializeSdkUpdatePromotionResponseValue200ApplicationJson } from './serializers/sdk-update-promotion-response-value-200-application-json.serializer';
 import { deserializeSdkRestorePromotionResponseValue200ApplicationJson } from './serializers/sdk-restore-promotion-response-value-200-application-json.serializer';
+import { deserializeSdkGetPromotionUsageResponseValue200ApplicationJson } from './serializers/sdk-get-promotion-usage-response-value-200-application-json.serializer';
 import { serializeSdkCreatePromotionRequestApplicationJson } from './serializers/sdk-create-promotion-request-application-json.serializer';
 import { serializeSdkSearchPromotionsRequestApplicationJson } from './serializers/sdk-search-promotions-request-application-json.serializer';
 import { serializeSdkReplacePromotionRequestApplicationJson } from './serializers/sdk-replace-promotion-request-application-json.serializer';
@@ -236,5 +239,30 @@ export class Promotions {
       serializeSdkRestorePromotionRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'restorePromotion' },
     );
     return deserializeSdkRestorePromotionResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Retrieve promotion usage
+   *
+   * Count the completed orders that used a promotion, across all of its phases and its whole life, and list the newest of them. Only orders whose status is `COMPLETED` count; pending and refunded orders do not. A promotion from another store returns `404`, and so does a deleted one unless you send `with_trashed=true`. Requires the `promotion` API-key ability and the promotion permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - Additional query options.
+   * @param options.promotion - The promotion ID.
+   * @example 30
+   * @param options.withTrashed - Set to `true` to also find a deleted promotion.
+   * @default false
+   * @param options.onlyTrashed - Set to `true` to find only a deleted promotion. Ignored when `with_trashed` is `true`.
+   * @default false
+   * @returns {Promise<SdkGetPromotionUsageResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async getUsage(options: GetUsageOptions): Promise<SdkGetPromotionUsageResponseValue200ApplicationJson> {
+    const { promotion } = options;
+    const { data } = await this.sellApp.get<SdkGetPromotionUsageResponseValue200ApplicationJsonResponse>(`/v2/promotions/${encodeURIComponent(promotion)}/usage`, { ...options.requestOptions, operationId: 'getPromotionUsage', query: { ...(options.withTrashed !== undefined && { with_trashed: options.withTrashed }), ...(options.onlyTrashed !== undefined && { only_trashed: options.onlyTrashed }) } });
+    return deserializeSdkGetPromotionUsageResponseValue200ApplicationJson(data);
   }
 }

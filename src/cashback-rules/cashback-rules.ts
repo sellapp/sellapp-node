@@ -7,11 +7,13 @@ import type { ReplaceOptions } from './interfaces/replace-options.interface';
 import type { UpdateOptions } from './interfaces/update-options.interface';
 import type { ArchiveOptions } from './interfaces/archive-options.interface';
 import type { RestoreOptions } from './interfaces/restore-options.interface';
+import type { QuoteOptions } from './interfaces/quote-options.interface';
 import type { SdkListCashbackRulesResponseValue200ApplicationJson, SdkListCashbackRulesResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-cashback-rules-response-value-200-application-json.interface';
 import type { SdkCreateCashbackRuleResponseValue201ApplicationJson, SdkCreateCashbackRuleResponseValue201ApplicationJsonResponse } from './interfaces/sdk-create-cashback-rule-response-value-201-application-json.interface';
 import type { SdkReplaceCashbackRuleResponseValue200ApplicationJson, SdkReplaceCashbackRuleResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-cashback-rule-response-value-200-application-json.interface';
 import type { SdkUpdateCashbackRuleResponseValue200ApplicationJson, SdkUpdateCashbackRuleResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-cashback-rule-response-value-200-application-json.interface';
 import type { SdkRestoreCashbackRuleResponseValue200ApplicationJson, SdkRestoreCashbackRuleResponseValue200ApplicationJsonResponse } from './interfaces/sdk-restore-cashback-rule-response-value-200-application-json.interface';
+import type { SdkQuoteCashbackRuleResponseValue200ApplicationJson, SdkQuoteCashbackRuleResponseValue200ApplicationJsonResponse } from './interfaces/sdk-quote-cashback-rule-response-value-200-application-json.interface';
 import type { SdkCreateCashbackRuleRequestApplicationJsonResponse } from './interfaces/sdk-create-cashback-rule-request-application-json.interface';
 import type { SdkReplaceCashbackRuleRequestApplicationJsonResponse } from './interfaces/sdk-replace-cashback-rule-request-application-json.interface';
 import type { SdkUpdateCashbackRuleRequestApplicationJsonResponse } from './interfaces/sdk-update-cashback-rule-request-application-json.interface';
@@ -20,6 +22,7 @@ import { deserializeSdkCreateCashbackRuleResponseValue201ApplicationJson } from 
 import { deserializeSdkReplaceCashbackRuleResponseValue200ApplicationJson } from './serializers/sdk-replace-cashback-rule-response-value-200-application-json.serializer';
 import { deserializeSdkUpdateCashbackRuleResponseValue200ApplicationJson } from './serializers/sdk-update-cashback-rule-response-value-200-application-json.serializer';
 import { deserializeSdkRestoreCashbackRuleResponseValue200ApplicationJson } from './serializers/sdk-restore-cashback-rule-response-value-200-application-json.serializer';
+import { deserializeSdkQuoteCashbackRuleResponseValue200ApplicationJson } from './serializers/sdk-quote-cashback-rule-response-value-200-application-json.serializer';
 import { serializeSdkCreateCashbackRuleRequestApplicationJson } from './serializers/sdk-create-cashback-rule-request-application-json.serializer';
 import { serializeSdkReplaceCashbackRuleRequestApplicationJson } from './serializers/sdk-replace-cashback-rule-request-application-json.serializer';
 import { serializeSdkUpdateCashbackRuleRequestApplicationJson } from './serializers/sdk-update-cashback-rule-request-application-json.serializer';
@@ -44,7 +47,7 @@ export class CashbackRules {
   /**
    * List cashback rules
    *
-   * List current and archived store records. Requires the `wallet` or `wallet:write` API ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List current and archived store records. Requires the `wallet` or `wallet:write` API-key ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @returns {Promise<SdkListCashbackRulesResponseValue200ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
@@ -60,7 +63,7 @@ export class CashbackRules {
   /**
    * Create a cashback rule
    *
-   * Create a cashback rule. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Create a cashback rule. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @returns {Promise<SdkCreateCashbackRuleResponseValue201ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
@@ -80,7 +83,7 @@ export class CashbackRules {
   /**
    * Update a cashback rule
    *
-   * Update a cashback rule. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Update a cashback rule. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.cashbackRule - The cashbackRule path parameter.
    * @returns {Promise<SdkReplaceCashbackRuleResponseValue200ApplicationJson>}
@@ -103,7 +106,7 @@ export class CashbackRules {
   /**
    * Update a cashback rule
    *
-   * Update a cashback rule. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Update a cashback rule. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.cashbackRule - The cashbackRule path parameter.
    * @returns {Promise<SdkUpdateCashbackRuleResponseValue200ApplicationJson>}
@@ -126,7 +129,7 @@ export class CashbackRules {
   /**
    * Archive a cashback rule
    *
-   * Archive a cashback rule. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Archive a cashback rule. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.cashbackRule - The cashbackRule path parameter.
    * @returns {Promise<void>}
@@ -145,7 +148,7 @@ export class CashbackRules {
   /**
    * Restore a cashback rule
    *
-   * Restore a cashback rule. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Restore a cashback rule. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.cashbackRule - The cashbackRule path parameter.
    * @returns {Promise<SdkRestoreCashbackRuleResponseValue200ApplicationJson>}
@@ -160,5 +163,24 @@ export class CashbackRules {
     const { cashbackRule } = options;
     const { data } = await this.sellApp.post<SdkRestoreCashbackRuleResponseValue200ApplicationJsonResponse>(`/v2/cashback-rules/${encodeURIComponent(cashbackRule)}/restore`, {}, { ...options.requestOptions, operationId: 'restoreCashbackRule' });
     return deserializeSdkRestoreCashbackRuleResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Quote a cashback rule
+   *
+   * See which cashback rule a purchase would earn right now, and how much it would add to the customer's wallet, without creating anything. Send `product_id` to check one product (a rule naming the product wins over the store-wide rule); leave it out to check only the store-wide rule. Add `purchase_cents` to get the cashback amount. Amounts are integer USD cents: `purchase_cents=10000` asks about a $100.00 purchase. Requires the `wallet` or `wallet:write` API-key ability and the wallet permission in your team role. A product that is not in your store returns `422` on `product_id`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - Additional query options.
+   * @param options.productId - The product to quote. Leave it out to quote the store-wide rule.
+   * @param options.purchaseCents - The purchase amount to quote, in integer USD cents.
+   * @returns {Promise<SdkQuoteCashbackRuleResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async quote(options?: QuoteOptions): Promise<SdkQuoteCashbackRuleResponseValue200ApplicationJson> {
+    const { data } = await this.sellApp.get<SdkQuoteCashbackRuleResponseValue200ApplicationJsonResponse>('/v2/cashback-rules/quote', { ...options?.requestOptions, operationId: 'quoteCashbackRule', query: { ...(options?.productId !== undefined && { product_id: options?.productId }), ...(options?.purchaseCents !== undefined && { purchase_cents: options?.purchaseCents }) } });
+    return deserializeSdkQuoteCashbackRuleResponseValue200ApplicationJson(data);
   }
 }

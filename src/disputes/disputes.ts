@@ -2,6 +2,7 @@
 
 import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
+import type { PaginationOptions } from '../common/interfaces/pagination-options.interface';
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { ListDisputesOptions } from './interfaces/list-disputes-options.interface';
@@ -24,6 +25,24 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
   }) as SellAppWithResponse<T>;
 }
 
+const serializeListDisputesOptions = (options: ListDisputesOptions): PaginationOptions => {
+  const wire: Record<string, unknown> = {
+    maxItems: options.maxItems,
+    maxPages: options.maxPages,
+    requestOptions: options.requestOptions,
+    limit: options.limit,
+    before: options.before,
+    after: options.after,
+    order: options.order,
+  };
+  if (options.page !== undefined) wire.page = options.page;
+  if (options.status !== undefined) wire.status = options.status;
+  if (options.provider !== undefined) wire.provider = options.provider;
+  if (options.openedAfter !== undefined) wire.opened_after = options.openedAfter;
+  if (options.openedBefore !== undefined) wire.opened_before = options.openedBefore;
+  return wire as PaginationOptions;
+};
+
 export class Disputes {
   constructor(private readonly sellApp: SellApp) {}
   get withResponse(): SellAppWithResponse<this> { return createResourceWithResponse(this, this.sellApp); }
@@ -31,7 +50,7 @@ export class Disputes {
   /**
    * List disputes
    *
-   * Read-only, redacted, store-scoped disputes that may reference an Order or Charge. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List your store's payment disputes, most recently opened first, 50 per page. Each dispute is read-only and redacted, and may reference an order or a standalone charge. Filter by `status`, `provider`, or the day a dispute was opened; filters combine, and the date filters read whole days in the store's time zone and include both ends. An unknown `status`, a date that cannot be read, or an `opened_before` earlier than `opened_after` returns `422` on that parameter. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<ListDisputesResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -42,14 +61,13 @@ export class Disputes {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async listDisputes(options?: ListDisputesOptions): Promise<AutoPaginatable<ListDisputesResponseValue200ApplicationJsonPropertyDataItem, ListDisputesOptions>> {
-    const paginationOptions = options;
+  async listDisputes(options?: ListDisputesOptions): Promise<AutoPaginatable<ListDisputesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>> {
     return new AutoPaginatable(
       await fetchAndDeserialize<ListDisputesResponseValue200ApplicationJsonPropertyDataItemResponse, ListDisputesResponseValue200ApplicationJsonPropertyDataItem>(
         this.sellApp,
         '/v2/disputes',
         deserializeListDisputesResponseValue200ApplicationJsonPropertyDataItem,
-        paginationOptions,
+        options ? serializeListDisputesOptions(options) : undefined,
       ),
       (params) =>
         fetchAndDeserialize<ListDisputesResponseValue200ApplicationJsonPropertyDataItemResponse, ListDisputesResponseValue200ApplicationJsonPropertyDataItem>(
@@ -58,7 +76,7 @@ export class Disputes {
           deserializeListDisputesResponseValue200ApplicationJsonPropertyDataItem,
           params,
         ),
-      paginationOptions,
+      options ? serializeListDisputesOptions(options) : undefined,
     );
   }
 

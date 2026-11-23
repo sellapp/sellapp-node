@@ -13,7 +13,7 @@ export interface SearchProductsResponseValue200ApplicationJsonPropertyDataItem {
   images: SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyImagesItem[];
   order: number | null;
   visibility: string;
-  deliveryText: string;
+  deliveryText: string | null;
   additionalInformation: SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyAdditionalInformationItem[];
   otherSettings: SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyOtherSettings;
   deletedAt: Date | null;
@@ -25,6 +25,14 @@ export interface SearchProductsResponseValue200ApplicationJsonPropertyDataItem {
   isDiscoverable: boolean;
   variants: SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem[];
   url: string;
+  /** The lowest and highest price among the product's published variants, formatted for display with the currency symbol: `$19.99`, or `$9.99 - $19.99` when the prices differ. Null when no published variant has a price. */
+  priceRange: string | null;
+  /** Units left across the product's published variants, or null when any of them has unlimited stock. */
+  stock: number | null;
+  /** How many purchase line items of the product have status `COMPLETED`. Pending or refunded ones do not count. */
+  sales: number;
+  /** `true` when none of the product's published variants can be bought: none has unlimited stock or at least its minimum purchase quantity left. Also `true` for a product without published variants. */
+  soldOut: boolean;
   [key: string]: unknown;
 }
 
@@ -36,7 +44,7 @@ export interface SearchProductsResponseValue200ApplicationJsonPropertyDataItemRe
   images: SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyImagesItemResponse[];
   order: number | null;
   visibility: string;
-  delivery_text: string;
+  delivery_text: string | null;
   additional_information: SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyAdditionalInformationItemResponse[];
   other_settings: SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyOtherSettingsResponse;
   deleted_at: string | null;
@@ -48,5 +56,9 @@ export interface SearchProductsResponseValue200ApplicationJsonPropertyDataItemRe
   is_discoverable: boolean;
   variants: SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItemResponse[];
   url: string;
+  price_range: string | null;
+  stock: number | null;
+  sales: number;
+  sold_out: boolean;
   [key: string]: unknown;
 }

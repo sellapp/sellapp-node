@@ -14,9 +14,9 @@ async listExports(options?: ListExportsOptions): Promise<AutoPaginatable<ListExp
 
 | Argument | Native type | Required |
 | --- | --- | --- |
-| options | `PaginationOptions \| undefined` | No |
+| options | `ListExportsOptions \| undefined` | No |
 
-Returns: `Promise<AutoPaginatable<ListExportsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
+Returns: `Promise<AutoPaginatable<ListExportsResponseValue200ApplicationJsonPropertyDataItem, ListExportsOptions>>`.
 
 ```ts
 import { SellApp } from '@sell.app/sdk';
@@ -27,7 +27,9 @@ const client = new SellApp({
   store: process.env.SELLAPP_STORE!,
 });
 
-const result = await client.exports.listExports();
+const result = await client.exports.listExports({
+
+});
 console.log(result);
 ```
 

@@ -3,16 +3,17 @@
 import type { SdkUpdateOrderStatusRequestApplicationJson, SdkUpdateOrderStatusRequestApplicationJsonResponse } from '../interfaces/sdk-update-order-status-request-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdateOrderStatusRequestApplicationJson","required":["status"],"properties":{"status":{"kind":"enum","values":["COMPLETED","VOIDED","REVIEW","DISPUTING"]},"expectedStatus":{"kind":"nullable","inner":{"kind":"enum","values":["PENDING","REVERSED","PARTIAL","VOIDED","REFUNDED","PAID","COMPLETED","DISPUTING","REVIEW","FAILED","null"]}}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdateOrderStatusRequestApplicationJson","required":["status"],"properties":{"status":{"kind":"enum","values":["COMPLETED","VOIDED","REVIEW","DISPUTING"]},"expected_status":{"kind":"nullable","inner":{"kind":"enum","values":["PENDING","REVERSED","PARTIAL","VOIDED","REFUNDED","PAID","COMPLETED","DISPUTING","REVIEW","FAILED","null"]}}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdateOrderStatusRequestApplicationJson","required":["status"],"properties":{"status":{"kind":"enum","values":["COMPLETED","VOIDED","REVIEW","DISPUTING"]},"expectedStatus":{"kind":"nullable","inner":{"kind":"enum","values":["PENDING","REVERSED","PARTIAL","VOIDED","REFUNDED","PAID","COMPLETED","DISPUTING","REVIEW","FAILED","null"]}},"paymentReceived":{"kind":"primitive","type":"boolean"}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdateOrderStatusRequestApplicationJson","required":["status"],"properties":{"status":{"kind":"enum","values":["COMPLETED","VOIDED","REVIEW","DISPUTING"]},"expected_status":{"kind":"nullable","inner":{"kind":"enum","values":["PENDING","REVERSED","PARTIAL","VOIDED","REFUNDED","PAID","COMPLETED","DISPUTING","REVIEW","FAILED","null"]}},"payment_received":{"kind":"primitive","type":"boolean"}},"additionalProperties":true};
 
 export const serializeSdkUpdateOrderStatusRequestApplicationJson = (
   model: SdkUpdateOrderStatusRequestApplicationJson,
 ): SdkUpdateOrderStatusRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["status","expectedStatus"]),
+    ...preserveUnknownFields(model, ["status","expectedStatus","paymentReceived"]),
     status: model.status,
     expected_status: model.expectedStatus,
+    payment_received: model.paymentReceived,
   };
 };

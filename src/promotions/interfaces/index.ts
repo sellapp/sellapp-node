@@ -15,6 +15,8 @@ export * from './get-promotion-response-value-200-application-json-property-data
 export * from './get-promotion-response-value-200-application-json-property-data-property-phases-item.interface';
 export * from './get-promotion-response-value-200-application-json-property-data-status.interface';
 export * from './get-promotion-response-value-200-application-json-property-data.interface';
+export * from './get-promotion-usage-response-value-200-application-json-property-data.interface';
+export * from './get-usage-options.interface';
 export * from './list-promotion-phases-response-value-200-application-json-property-data-item-discount-type.interface';
 export * from './list-promotion-phases-response-value-200-application-json-property-data-item.interface';
 export * from './promotions-list-options.interface';
@@ -42,6 +44,7 @@ export * from './sdk-create-promotion-request-application-json-status.interface'
 export * from './sdk-create-promotion-request-application-json.interface';
 export * from './sdk-create-promotion-response-value-201-application-json.interface';
 export * from './sdk-get-promotion-response-value-200-application-json.interface';
+export * from './sdk-get-promotion-usage-response-value-200-application-json.interface';
 export * from './sdk-list-promotion-phases-response-value-200-application-json.interface';
 export * from './sdk-list-promotions-response-value-200-application-json.interface';
 export * from './sdk-replace-promotion-phases-request-application-json.interface';

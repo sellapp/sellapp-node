@@ -2,4 +2,7 @@
 
 import type { PaginationOptions } from '../../common/interfaces/pagination-options.interface';
 
-export type ListExportsOptions = PaginationOptions;
+export interface ListExportsOptions extends PaginationOptions {
+  /** Page number, starting at 1. */
+  page?: number;
+}

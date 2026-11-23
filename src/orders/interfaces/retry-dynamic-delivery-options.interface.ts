@@ -7,6 +7,6 @@ export interface RetryDynamicDeliveryOptions {
   requestOptions?: RequestOptions;
   /** The order identifier. */
   order: number;
-  /** Delivered product record ID, not a catalog product or order line-item ID. The public order-deliverables response does not currently expose this ID; obtain it from an authorized integration context before requesting a retry. */
+  /** Delivered product record ID, not a catalog product or order line-item ID. Read it from `delivered_product_id` in `GET /v2/orders/{order}/deliverables`. */
   deliveredProductId: number;
 }

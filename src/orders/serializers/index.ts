@@ -14,7 +14,7 @@ export * from './create-order-refund-response-value-200-application-json-propert
 export * from './create-order-refund-response-value-200-application-json-property-data-property-order-property-timeline-item.serializer';
 export * from './create-order-refund-response-value-200-application-json-property-data-property-order-property-totals.serializer';
 export * from './create-order-refund-response-value-200-application-json-property-data-property-refund.serializer';
-export * from './create-order-replacement-request-application-json-property-product-variants.serializer';
+export * from './create-order-replacement-request-application-json-property-product-variants-any-of-value-3.serializer';
 export * from './create-order-replacement-response-value-200-application-json-property-data.serializer';
 export * from './create-order-replacement-response-value-200-application-json-property-data-property-customer.serializer';
 export * from './create-order-replacement-response-value-200-application-json-property-data-property-line-items-item.serializer';
@@ -46,7 +46,7 @@ export * from './get-order-response-value-200-application-json-property-data-pro
 export * from './list-order-deliverables-response-value-200-application-json-property-data-item.serializer';
 export * from './list-order-deliverables-response-value-200-application-json-property-data-item-property-additional-information-item.serializer';
 export * from './list-order-deliverables-response-value-200-application-json-property-data-item-property-deliverable.serializer';
-export * from './list-order-deliverables-response-value-200-application-json-property-data-item-property-deliverable-property-data.serializer';
+export * from './list-order-deliverables-response-value-200-application-json-property-data-item-property-deliverable-property-data-any-of-value-1.serializer';
 export * from './list-orders-response-value-200-application-json-property-data-item.serializer';
 export * from './list-orders-response-value-200-application-json-property-data-item-property-customer.serializer';
 export * from './list-orders-response-value-200-application-json-property-data-item-property-line-items-item.serializer';
@@ -59,6 +59,7 @@ export * from './pay-order-from-wallet-response-value-200-application-json-prope
 export * from './pay-order-from-wallet-response-value-200-application-json-property-data-property-payment.serializer';
 export * from './pay-order-from-wallet-response-value-200-application-json-property-data-property-timeline-item.serializer';
 export * from './pay-order-from-wallet-response-value-200-application-json-property-data-property-totals.serializer';
+export * from './regenerate-order-telegram-invite-response-value-201-application-json-property-data.serializer';
 export * from './retry-order-dynamic-delivery-response-value-202-application-json-property-data.serializer';
 export * from './retry-order-dynamic-delivery-response-value-202-application-json-property-data-property-customer.serializer';
 export * from './retry-order-dynamic-delivery-response-value-202-application-json-property-data-property-line-items-item.serializer';
@@ -87,6 +88,8 @@ export * from './sdk-get-order-response-value-200-application-json.serializer';
 export * from './sdk-list-order-deliverables-response-value-200-application-json.serializer';
 export * from './sdk-pay-order-from-wallet-request-application-json.serializer';
 export * from './sdk-pay-order-from-wallet-response-value-200-application-json.serializer';
+export * from './sdk-regenerate-order-telegram-invite-request-application-json.serializer';
+export * from './sdk-regenerate-order-telegram-invite-response-value-201-application-json.serializer';
 export * from './sdk-retry-order-dynamic-delivery-request-application-json.serializer';
 export * from './sdk-retry-order-dynamic-delivery-response-value-202-application-json.serializer';
 export * from './sdk-retry-order-fulfillment-request-application-json.serializer';

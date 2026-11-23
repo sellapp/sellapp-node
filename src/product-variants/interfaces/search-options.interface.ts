@@ -9,6 +9,12 @@ import type { SearchProductVariantsRequestApplicationJsonPropertyIncludesItem } 
 export interface SearchOptions extends PaginationOptions {
   /** The product path parameter. */
   product: number;
+  /** Page number to return. */
+  page?: number;
+  /** Include draft variants alongside published variants. */
+  withDrafts?: boolean;
+  /** Return only draft variants. */
+  onlyDrafts?: boolean;
   filters?: SearchProductVariantsRequestApplicationJsonPropertyFiltersItem[];
   sort?: SearchProductVariantsRequestApplicationJsonPropertySortItem[];
   search?: SearchProductVariantsRequestApplicationJsonPropertySearch;

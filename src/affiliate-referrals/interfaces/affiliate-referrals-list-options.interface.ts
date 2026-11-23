@@ -4,6 +4,8 @@ import type { PaginationOptions } from '../../common/interfaces/pagination-optio
 import type { AffiliateReferralsStatus } from './affiliate-referrals-status.interface';
 
 export interface AffiliateReferralsListOptions extends PaginationOptions {
+  /** Text to look for in the affiliate's email address and the product and variant titles. A number also matches the referral ID or the order ID exactly. `%` and `_` match themselves. */
+  search?: string;
   /** Filter by store affiliate ID. */
   affiliateId?: number;
   /** Filter by attributed Order ID. */

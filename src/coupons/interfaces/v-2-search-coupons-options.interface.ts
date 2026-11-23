@@ -7,6 +7,8 @@ import type { V2SearchCouponsRequestApplicationJsonPropertySearch } from '../../
 import type { V2SearchCouponsRequestApplicationJsonPropertyIncludesItem } from '../../blacklists/interfaces/v-2-search-coupons-request-application-json-property-includes-item.interface';
 
 export interface V2SearchCouponsOptions extends PaginationOptions {
+  /** Page number to return. */
+  page?: number;
   /** Include soft-deleted resources in the result. */
   withTrashed?: boolean;
   /** Return only soft-deleted resources. Ignored when with_trashed is true. */

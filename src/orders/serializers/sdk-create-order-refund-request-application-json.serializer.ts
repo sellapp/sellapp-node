@@ -3,15 +3,16 @@
 import type { SdkCreateOrderRefundRequestApplicationJson, SdkCreateOrderRefundRequestApplicationJsonResponse } from '../interfaces/sdk-create-order-refund-request-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateOrderRefundRequestApplicationJson","required":[],"properties":{"amount":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":32}}}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateOrderRefundRequestApplicationJson","required":[],"properties":{"amount":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":32}}}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateOrderRefundRequestApplicationJson","required":[],"properties":{"amount":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":32}}},"expectedRefundedTotalCents":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":0}}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateOrderRefundRequestApplicationJson","required":[],"properties":{"amount":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":32}}},"expected_refunded_total_cents":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":0}}}},"additionalProperties":true};
 
 export const serializeSdkCreateOrderRefundRequestApplicationJson = (
   model: SdkCreateOrderRefundRequestApplicationJson,
 ): SdkCreateOrderRefundRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["amount"]),
+    ...preserveUnknownFields(model, ["amount","expectedRefundedTotalCents"]),
     amount: model.amount,
+    expected_refunded_total_cents: model.expectedRefundedTotalCents,
   };
 };

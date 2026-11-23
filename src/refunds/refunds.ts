@@ -2,6 +2,7 @@
 
 import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
+import type { PaginationOptions } from '../common/interfaces/pagination-options.interface';
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { ListRefundsOptions } from './interfaces/list-refunds-options.interface';
@@ -24,6 +25,25 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
   }) as SellAppWithResponse<T>;
 }
 
+const serializeListRefundsOptions = (options: ListRefundsOptions): PaginationOptions => {
+  const wire: Record<string, unknown> = {
+    maxItems: options.maxItems,
+    maxPages: options.maxPages,
+    requestOptions: options.requestOptions,
+    limit: options.limit,
+    before: options.before,
+    after: options.after,
+    order: options.order,
+  };
+  if (options.page !== undefined) wire.page = options.page;
+  if (options.status !== undefined) wire.status = options.status;
+  if (options.provider !== undefined) wire.provider = options.provider;
+  if (options.source !== undefined) wire.source = options.source;
+  if (options.refundableType !== undefined) wire.refundable_type = options.refundableType;
+  if (options.refundableId !== undefined) wire.refundable_id = options.refundableId;
+  return wire as PaginationOptions;
+};
+
 export class Refunds {
   constructor(private readonly sellApp: SellApp) {}
   get withResponse(): SellAppWithResponse<this> { return createResourceWithResponse(this, this.sellApp); }
@@ -31,7 +51,7 @@ export class Refunds {
   /**
    * List refunds
    *
-   * List refunds for orders and standalone charges in the selected store, one page at a time. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List refunds for orders and standalone charges in the selected store, newest first, 15 per page by default. Filter by `status`, `provider`, `source`, or the order or charge refunded; filters combine. To see every refund of one order, send `refundable_type=order` and `refundable_id` set to the order ID. A value outside a parameter's accepted values, a `limit` above 100, or a query parameter the endpoint does not take returns `422` on that parameter. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<ListRefundsResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -42,14 +62,13 @@ export class Refunds {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async listRefunds(options?: ListRefundsOptions): Promise<AutoPaginatable<ListRefundsResponseValue200ApplicationJsonPropertyDataItem, ListRefundsOptions>> {
-    const paginationOptions = options;
+  async listRefunds(options?: ListRefundsOptions): Promise<AutoPaginatable<ListRefundsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>> {
     return new AutoPaginatable(
       await fetchAndDeserialize<ListRefundsResponseValue200ApplicationJsonPropertyDataItemResponse, ListRefundsResponseValue200ApplicationJsonPropertyDataItem>(
         this.sellApp,
         '/v2/refunds',
         deserializeListRefundsResponseValue200ApplicationJsonPropertyDataItem,
-        paginationOptions,
+        options ? serializeListRefundsOptions(options) : undefined,
       ),
       (params) =>
         fetchAndDeserialize<ListRefundsResponseValue200ApplicationJsonPropertyDataItemResponse, ListRefundsResponseValue200ApplicationJsonPropertyDataItem>(
@@ -58,7 +77,7 @@ export class Refunds {
           deserializeListRefundsResponseValue200ApplicationJsonPropertyDataItem,
           params,
         ),
-      paginationOptions,
+      options ? serializeListRefundsOptions(options) : undefined,
     );
   }
 

@@ -8,6 +8,18 @@ import type { ReplaceAnalyticsOptions } from './interfaces/replace-analytics-opt
 import type { UpdateAnalyticsOptions } from './interfaces/update-analytics-options.interface';
 import type { ReplaceMarketingOptions } from './interfaces/replace-marketing-options.interface';
 import type { UpdateMarketingOptions } from './interfaces/update-marketing-options.interface';
+import type { ReplaceCheckoutOptions } from './interfaces/replace-checkout-options.interface';
+import type { UpdateCheckoutOptions } from './interfaces/update-checkout-options.interface';
+import type { ReplaceTaxesOptions } from './interfaces/replace-taxes-options.interface';
+import type { UpdateTaxesOptions } from './interfaces/update-taxes-options.interface';
+import type { ReplaceCustomerEmailsOptions } from './interfaces/replace-customer-emails-options.interface';
+import type { UpdateCustomerEmailsOptions } from './interfaces/update-customer-emails-options.interface';
+import type { ReplaceStoreAlertsOptions } from './interfaces/replace-store-alerts-options.interface';
+import type { UpdateStoreAlertsOptions } from './interfaces/update-store-alerts-options.interface';
+import type { ReplacePersonalizationOptions } from './interfaces/replace-personalization-options.interface';
+import type { UpdatePersonalizationOptions } from './interfaces/update-personalization-options.interface';
+import type { ReplaceCryptoCheckoutOptions } from './interfaces/replace-crypto-checkout-options.interface';
+import type { UpdateCryptoCheckoutOptions } from './interfaces/update-crypto-checkout-options.interface';
 import type { SdkGetStoreSettingsResponseValue200ApplicationJson, SdkGetStoreSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-store-settings-response-value-200-application-json.interface';
 import type { SdkReplaceGeneralStoreSettingsResponseValue200ApplicationJson, SdkReplaceGeneralStoreSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-general-store-settings-response-value-200-application-json.interface';
 import type { SdkUpdateGeneralStoreSettingsResponseValue200ApplicationJson, SdkUpdateGeneralStoreSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-general-store-settings-response-value-200-application-json.interface';
@@ -15,12 +27,41 @@ import type { SdkReplaceAnalyticsSettingsResponseValue200ApplicationJson, SdkRep
 import type { SdkUpdateAnalyticsSettingsResponseValue200ApplicationJson, SdkUpdateAnalyticsSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-analytics-settings-response-value-200-application-json.interface';
 import type { SdkReplaceMarketingSettingsResponseValue200ApplicationJson, SdkReplaceMarketingSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-marketing-settings-response-value-200-application-json.interface';
 import type { SdkUpdateMarketingSettingsResponseValue200ApplicationJson, SdkUpdateMarketingSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-marketing-settings-response-value-200-application-json.interface';
+import type { SdkGetCheckoutSettingsResponseValue200ApplicationJson, SdkGetCheckoutSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-checkout-settings-response-value-200-application-json.interface';
+import type { SdkReplaceCheckoutSettingsResponseValue200ApplicationJson, SdkReplaceCheckoutSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-checkout-settings-response-value-200-application-json.interface';
+import type { SdkUpdateCheckoutSettingsResponseValue200ApplicationJson, SdkUpdateCheckoutSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-checkout-settings-response-value-200-application-json.interface';
+import type { SdkGetTaxSettingsResponseValue200ApplicationJson, SdkGetTaxSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-tax-settings-response-value-200-application-json.interface';
+import type { SdkReplaceTaxSettingsResponseValue200ApplicationJson, SdkReplaceTaxSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-tax-settings-response-value-200-application-json.interface';
+import type { SdkUpdateTaxSettingsResponseValue200ApplicationJson, SdkUpdateTaxSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-tax-settings-response-value-200-application-json.interface';
+import type { SdkGetCustomerEmailSettingsResponseValue200ApplicationJson, SdkGetCustomerEmailSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-customer-email-settings-response-value-200-application-json.interface';
+import type { SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson, SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-customer-email-settings-response-value-200-application-json.interface';
+import type { SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson, SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-customer-email-settings-response-value-200-application-json.interface';
+import type { SdkGetStoreAlertSettingsResponseValue200ApplicationJson, SdkGetStoreAlertSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-store-alert-settings-response-value-200-application-json.interface';
+import type { SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson, SdkReplaceStoreAlertSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-store-alert-settings-response-value-200-application-json.interface';
+import type { SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson, SdkUpdateStoreAlertSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-store-alert-settings-response-value-200-application-json.interface';
+import type { SdkGetPersonalizationSettingsResponseValue200ApplicationJson, SdkGetPersonalizationSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-personalization-settings-response-value-200-application-json.interface';
+import type { SdkReplacePersonalizationSettingsResponseValue200ApplicationJson, SdkReplacePersonalizationSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-personalization-settings-response-value-200-application-json.interface';
+import type { SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson, SdkUpdatePersonalizationSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-personalization-settings-response-value-200-application-json.interface';
+import type { SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson, SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-crypto-checkout-settings-response-value-200-application-json.interface';
+import type { SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson, SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-crypto-checkout-settings-response-value-200-application-json.interface';
 import type { SdkReplaceGeneralStoreSettingsRequestApplicationJsonResponse } from './interfaces/sdk-replace-general-store-settings-request-application-json.interface';
 import type { SdkUpdateGeneralStoreSettingsRequestApplicationJsonResponse } from './interfaces/sdk-update-general-store-settings-request-application-json.interface';
 import type { SdkReplaceAnalyticsSettingsRequestApplicationJsonResponse } from './interfaces/sdk-replace-analytics-settings-request-application-json.interface';
 import type { SdkUpdateAnalyticsSettingsRequestApplicationJsonResponse } from './interfaces/sdk-update-analytics-settings-request-application-json.interface';
 import type { SdkReplaceMarketingSettingsRequestApplicationJsonResponse } from './interfaces/sdk-replace-marketing-settings-request-application-json.interface';
 import type { SdkUpdateMarketingSettingsRequestApplicationJsonResponse } from './interfaces/sdk-update-marketing-settings-request-application-json.interface';
+import type { SdkReplaceCheckoutSettingsRequestApplicationJsonResponse } from './interfaces/sdk-replace-checkout-settings-request-application-json.interface';
+import type { SdkUpdateCheckoutSettingsRequestApplicationJsonResponse } from './interfaces/sdk-update-checkout-settings-request-application-json.interface';
+import type { SdkReplaceTaxSettingsRequestApplicationJsonResponse } from './interfaces/sdk-replace-tax-settings-request-application-json.interface';
+import type { SdkUpdateTaxSettingsRequestApplicationJsonResponse } from './interfaces/sdk-update-tax-settings-request-application-json.interface';
+import type { SdkReplaceCustomerEmailSettingsRequestApplicationJsonResponse } from './interfaces/sdk-replace-customer-email-settings-request-application-json.interface';
+import type { SdkUpdateCustomerEmailSettingsRequestApplicationJsonResponse } from './interfaces/sdk-update-customer-email-settings-request-application-json.interface';
+import type { SdkReplaceStoreAlertSettingsRequestApplicationJsonResponse } from './interfaces/sdk-replace-store-alert-settings-request-application-json.interface';
+import type { SdkUpdateStoreAlertSettingsRequestApplicationJsonResponse } from './interfaces/sdk-update-store-alert-settings-request-application-json.interface';
+import type { SdkReplacePersonalizationSettingsRequestApplicationJsonResponse } from './interfaces/sdk-replace-personalization-settings-request-application-json.interface';
+import type { SdkUpdatePersonalizationSettingsRequestApplicationJsonResponse } from './interfaces/sdk-update-personalization-settings-request-application-json.interface';
+import type { SdkReplaceCryptoCheckoutSettingsRequestApplicationJsonResponse } from './interfaces/sdk-replace-crypto-checkout-settings-request-application-json.interface';
+import type { SdkUpdateCryptoCheckoutSettingsRequestApplicationJsonResponse } from './interfaces/sdk-update-crypto-checkout-settings-request-application-json.interface';
 import { deserializeSdkGetStoreSettingsResponseValue200ApplicationJson } from './serializers/sdk-get-store-settings-response-value-200-application-json.serializer';
 import { deserializeSdkReplaceGeneralStoreSettingsResponseValue200ApplicationJson } from './serializers/sdk-replace-general-store-settings-response-value-200-application-json.serializer';
 import { deserializeSdkUpdateGeneralStoreSettingsResponseValue200ApplicationJson } from './serializers/sdk-update-general-store-settings-response-value-200-application-json.serializer';
@@ -28,12 +69,41 @@ import { deserializeSdkReplaceAnalyticsSettingsResponseValue200ApplicationJson }
 import { deserializeSdkUpdateAnalyticsSettingsResponseValue200ApplicationJson } from './serializers/sdk-update-analytics-settings-response-value-200-application-json.serializer';
 import { deserializeSdkReplaceMarketingSettingsResponseValue200ApplicationJson } from './serializers/sdk-replace-marketing-settings-response-value-200-application-json.serializer';
 import { deserializeSdkUpdateMarketingSettingsResponseValue200ApplicationJson } from './serializers/sdk-update-marketing-settings-response-value-200-application-json.serializer';
+import { deserializeSdkGetCheckoutSettingsResponseValue200ApplicationJson } from './serializers/sdk-get-checkout-settings-response-value-200-application-json.serializer';
+import { deserializeSdkReplaceCheckoutSettingsResponseValue200ApplicationJson } from './serializers/sdk-replace-checkout-settings-response-value-200-application-json.serializer';
+import { deserializeSdkUpdateCheckoutSettingsResponseValue200ApplicationJson } from './serializers/sdk-update-checkout-settings-response-value-200-application-json.serializer';
+import { deserializeSdkGetTaxSettingsResponseValue200ApplicationJson } from './serializers/sdk-get-tax-settings-response-value-200-application-json.serializer';
+import { deserializeSdkReplaceTaxSettingsResponseValue200ApplicationJson } from './serializers/sdk-replace-tax-settings-response-value-200-application-json.serializer';
+import { deserializeSdkUpdateTaxSettingsResponseValue200ApplicationJson } from './serializers/sdk-update-tax-settings-response-value-200-application-json.serializer';
+import { deserializeSdkGetCustomerEmailSettingsResponseValue200ApplicationJson } from './serializers/sdk-get-customer-email-settings-response-value-200-application-json.serializer';
+import { deserializeSdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson } from './serializers/sdk-replace-customer-email-settings-response-value-200-application-json.serializer';
+import { deserializeSdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson } from './serializers/sdk-update-customer-email-settings-response-value-200-application-json.serializer';
+import { deserializeSdkGetStoreAlertSettingsResponseValue200ApplicationJson } from './serializers/sdk-get-store-alert-settings-response-value-200-application-json.serializer';
+import { deserializeSdkReplaceStoreAlertSettingsResponseValue200ApplicationJson } from './serializers/sdk-replace-store-alert-settings-response-value-200-application-json.serializer';
+import { deserializeSdkUpdateStoreAlertSettingsResponseValue200ApplicationJson } from './serializers/sdk-update-store-alert-settings-response-value-200-application-json.serializer';
+import { deserializeSdkGetPersonalizationSettingsResponseValue200ApplicationJson } from './serializers/sdk-get-personalization-settings-response-value-200-application-json.serializer';
+import { deserializeSdkReplacePersonalizationSettingsResponseValue200ApplicationJson } from './serializers/sdk-replace-personalization-settings-response-value-200-application-json.serializer';
+import { deserializeSdkUpdatePersonalizationSettingsResponseValue200ApplicationJson } from './serializers/sdk-update-personalization-settings-response-value-200-application-json.serializer';
+import { deserializeSdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson } from './serializers/sdk-replace-crypto-checkout-settings-response-value-200-application-json.serializer';
+import { deserializeSdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson } from './serializers/sdk-update-crypto-checkout-settings-response-value-200-application-json.serializer';
 import { serializeSdkReplaceGeneralStoreSettingsRequestApplicationJson } from './serializers/sdk-replace-general-store-settings-request-application-json.serializer';
 import { serializeSdkUpdateGeneralStoreSettingsRequestApplicationJson } from './serializers/sdk-update-general-store-settings-request-application-json.serializer';
 import { serializeSdkReplaceAnalyticsSettingsRequestApplicationJson } from './serializers/sdk-replace-analytics-settings-request-application-json.serializer';
 import { serializeSdkUpdateAnalyticsSettingsRequestApplicationJson } from './serializers/sdk-update-analytics-settings-request-application-json.serializer';
 import { serializeSdkReplaceMarketingSettingsRequestApplicationJson } from './serializers/sdk-replace-marketing-settings-request-application-json.serializer';
 import { serializeSdkUpdateMarketingSettingsRequestApplicationJson } from './serializers/sdk-update-marketing-settings-request-application-json.serializer';
+import { serializeSdkReplaceCheckoutSettingsRequestApplicationJson } from './serializers/sdk-replace-checkout-settings-request-application-json.serializer';
+import { serializeSdkUpdateCheckoutSettingsRequestApplicationJson } from './serializers/sdk-update-checkout-settings-request-application-json.serializer';
+import { serializeSdkReplaceTaxSettingsRequestApplicationJson } from './serializers/sdk-replace-tax-settings-request-application-json.serializer';
+import { serializeSdkUpdateTaxSettingsRequestApplicationJson } from './serializers/sdk-update-tax-settings-request-application-json.serializer';
+import { serializeSdkReplaceCustomerEmailSettingsRequestApplicationJson } from './serializers/sdk-replace-customer-email-settings-request-application-json.serializer';
+import { serializeSdkUpdateCustomerEmailSettingsRequestApplicationJson } from './serializers/sdk-update-customer-email-settings-request-application-json.serializer';
+import { serializeSdkReplaceStoreAlertSettingsRequestApplicationJson } from './serializers/sdk-replace-store-alert-settings-request-application-json.serializer';
+import { serializeSdkUpdateStoreAlertSettingsRequestApplicationJson } from './serializers/sdk-update-store-alert-settings-request-application-json.serializer';
+import { serializeSdkReplacePersonalizationSettingsRequestApplicationJson } from './serializers/sdk-replace-personalization-settings-request-application-json.serializer';
+import { serializeSdkUpdatePersonalizationSettingsRequestApplicationJson } from './serializers/sdk-update-personalization-settings-request-application-json.serializer';
+import { serializeSdkReplaceCryptoCheckoutSettingsRequestApplicationJson } from './serializers/sdk-replace-crypto-checkout-settings-request-application-json.serializer';
+import { serializeSdkUpdateCryptoCheckoutSettingsRequestApplicationJson } from './serializers/sdk-update-crypto-checkout-settings-request-application-json.serializer';
 
 interface SellAppResponseEnvelope<T> { data: T; status: number; headers: Headers; requestId?: string }
 type SellAppWithResponse<T extends object> = {
@@ -186,5 +256,325 @@ export class StoreSettings {
       serializeSdkUpdateMarketingSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updateMarketingSettings' },
     );
     return deserializeSdkUpdateMarketingSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Retrieve checkout settings
+   *
+   * Get your store's checkout settings: the shopping cart, whether checkout asks for an email, fraud controls, the minimum order total, the billing descriptor, the checkout rate limits, and the crypto checkout values when the store takes crypto through SellApp's crypto processor. The response body can be sent back to `PUT /v2/store/settings/checkout` unchanged. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkGetCheckoutSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async getCheckout(requestOptions: RequestOptions = {}): Promise<SdkGetCheckoutSettingsResponseValue200ApplicationJson> {
+    const { data } = await this.sellApp.get<SdkGetCheckoutSettingsResponseValue200ApplicationJsonResponse>('/v2/store/settings/checkout', requestOptions);
+    return deserializeSdkGetCheckoutSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update checkout settings
+   *
+   * Replace all eleven checkout settings. Every field except `crypto` is required; send `null` to remove a nullable one. A missing field returns `422` and nothing is saved. The body of `GET /v2/store/settings/checkout`, including `crypto`, can be sent back unchanged. Sending the same body again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkReplaceCheckoutSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async replaceCheckout(options: ReplaceCheckoutOptions): Promise<SdkReplaceCheckoutSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.put<SdkReplaceCheckoutSettingsResponseValue200ApplicationJsonResponse, SdkReplaceCheckoutSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/checkout',
+      serializeSdkReplaceCheckoutSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'replaceCheckoutSettings' },
+    );
+    return deserializeSdkReplaceCheckoutSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update checkout settings
+   *
+   * Change only the checkout settings you send and keep the others, including one someone else saved while your request was in flight. Send `null` to remove `minimum_spend`, `billing_descriptor`, `attempts_per_ip`, `attempts_per_email` or `attempts_per_fingerprint`. `crypto` is read-only here; change it with `PATCH /v2/store/settings/checkout/crypto`. A refused value returns `422` on the field name of this endpoint, such as `rate_limit_window_seconds`, and nothing is saved. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkUpdateCheckoutSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async updateCheckout(options: UpdateCheckoutOptions): Promise<SdkUpdateCheckoutSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.patch<SdkUpdateCheckoutSettingsResponseValue200ApplicationJsonResponse, SdkUpdateCheckoutSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/checkout',
+      serializeSdkUpdateCheckoutSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updateCheckoutSettings' },
+    );
+    return deserializeSdkUpdateCheckoutSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Retrieve tax settings
+   *
+   * Get whether checkout collects VAT, whether your prices include it, and whether checkout asks for billing details. The response body can be sent back to `PUT /v2/store/settings/taxes` unchanged. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkGetTaxSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async getTaxes(requestOptions: RequestOptions = {}): Promise<SdkGetTaxSettingsResponseValue200ApplicationJson> {
+    const { data } = await this.sellApp.get<SdkGetTaxSettingsResponseValue200ApplicationJsonResponse>('/v2/store/settings/taxes', requestOptions);
+    return deserializeSdkGetTaxSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update tax settings
+   *
+   * Replace all three tax settings; every field is required. A missing field returns `422` and nothing is saved. `vat_enabled: true` while Stripe Tax is on returns `422` on `vat_enabled` and saves nothing: turn Stripe Tax off in the dashboard first. When Stripe Tax was turned on but Stripe is now turned off as a payment method, turning VAT on also turns Stripe Tax off. Sending the same body again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkReplaceTaxSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async replaceTaxes(options: ReplaceTaxesOptions): Promise<SdkReplaceTaxSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.put<SdkReplaceTaxSettingsResponseValue200ApplicationJsonResponse, SdkReplaceTaxSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/taxes',
+      serializeSdkReplaceTaxSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'replaceTaxSettings' },
+    );
+    return deserializeSdkReplaceTaxSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update tax settings
+   *
+   * Change only the tax settings you send and keep the others. Turning VAT off also turns VAT-inclusive pricing off. Asking for VAT-inclusive pricing while VAT stays off returns `422` on `vat_inclusive_pricing` and saves nothing. Turning VAT on while Stripe Tax is on returns `422` on `vat_enabled` and saves nothing: turn Stripe Tax off in the dashboard first. When Stripe Tax was turned on but Stripe is now turned off as a payment method, turning VAT on also turns Stripe Tax off. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkUpdateTaxSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async updateTaxes(options: UpdateTaxesOptions): Promise<SdkUpdateTaxSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.patch<SdkUpdateTaxSettingsResponseValue200ApplicationJsonResponse, SdkUpdateTaxSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/taxes',
+      serializeSdkUpdateTaxSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updateTaxSettings' },
+    );
+    return deserializeSdkUpdateTaxSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Retrieve customer email settings
+   *
+   * Get which automatic emails your customers get: the delivery email after they pay, and the email asking them to pay when a subscription payment cannot be collected. The address these emails come from is managed with `/v2/store/settings/sender-email`. The response body can be sent back to `PUT /v2/store/settings/customer-emails` unchanged. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkGetCustomerEmailSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async getCustomerEmails(requestOptions: RequestOptions = {}): Promise<SdkGetCustomerEmailSettingsResponseValue200ApplicationJson> {
+    const { data } = await this.sellApp.get<SdkGetCustomerEmailSettingsResponseValue200ApplicationJsonResponse>('/v2/store/settings/customer-emails', requestOptions);
+    return deserializeSdkGetCustomerEmailSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update customer email settings
+   *
+   * Set both customer emails; both fields are required. A missing field returns `422` and nothing is saved. Sending the same body again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async replaceCustomerEmails(options: ReplaceCustomerEmailsOptions): Promise<SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.put<SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJsonResponse, SdkReplaceCustomerEmailSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/customer-emails',
+      serializeSdkReplaceCustomerEmailSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'replaceCustomerEmailSettings' },
+    );
+    return deserializeSdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update customer email settings
+   *
+   * Turn the customer emails you send on or off and keep the other one. Takes effect for emails sent after the change. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async updateCustomerEmails(options: UpdateCustomerEmailsOptions): Promise<SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.patch<SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJsonResponse, SdkUpdateCustomerEmailSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/customer-emails',
+      serializeSdkUpdateCustomerEmailSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updateCustomerEmailSettings' },
+    );
+    return deserializeSdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Retrieve store alert settings
+   *
+   * Get whether the store owner gets an email for each sale. Other alerts go to notification channels (`/v2/store/notification-channels`) and to the dashboard notifications (`/v2/notifications`). The response body can be sent back to `PUT /v2/store/settings/store-alerts` unchanged. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkGetStoreAlertSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async getStoreAlerts(requestOptions: RequestOptions = {}): Promise<SdkGetStoreAlertSettingsResponseValue200ApplicationJson> {
+    const { data } = await this.sellApp.get<SdkGetStoreAlertSettingsResponseValue200ApplicationJsonResponse>('/v2/store/settings/store-alerts', requestOptions);
+    return deserializeSdkGetStoreAlertSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update store alert settings
+   *
+   * Set the sale emails to the store owner; `sale_emails_enabled` is required. Sending the same body again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async replaceStoreAlerts(options: ReplaceStoreAlertsOptions): Promise<SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.put<SdkReplaceStoreAlertSettingsResponseValue200ApplicationJsonResponse, SdkReplaceStoreAlertSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/store-alerts',
+      serializeSdkReplaceStoreAlertSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'replaceStoreAlertSettings' },
+    );
+    return deserializeSdkReplaceStoreAlertSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update store alert settings
+   *
+   * Turn the sale emails to the store owner on or off. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async updateStoreAlerts(options: UpdateStoreAlertsOptions): Promise<SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.patch<SdkUpdateStoreAlertSettingsResponseValue200ApplicationJsonResponse, SdkUpdateStoreAlertSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/store-alerts',
+      serializeSdkUpdateStoreAlertSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updateStoreAlertSettings' },
+    );
+    return deserializeSdkUpdateStoreAlertSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Retrieve personalization settings
+   *
+   * Get the details customers see from your store: the support and Trustpilot addresses, the sender name and custom sender email of customer emails, the business details printed on invoices, and the Back button link of product and checkout pages. The response body can be sent back to `PUT /v2/store/settings/personalization` unchanged. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkGetPersonalizationSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async getPersonalization(requestOptions: RequestOptions = {}): Promise<SdkGetPersonalizationSettingsResponseValue200ApplicationJson> {
+    const { data } = await this.sellApp.get<SdkGetPersonalizationSettingsResponseValue200ApplicationJsonResponse>('/v2/store/settings/personalization', requestOptions);
+    return deserializeSdkGetPersonalizationSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update personalization settings
+   *
+   * Replace every personalization setting. All fields except `sender_email` are required; send `null` to remove one. A missing field returns `422` and nothing is saved. The body of `GET /v2/store/settings/personalization`, including `sender_email`, can be sent back unchanged. Sending the same body again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkReplacePersonalizationSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async replacePersonalization(options: ReplacePersonalizationOptions): Promise<SdkReplacePersonalizationSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.put<SdkReplacePersonalizationSettingsResponseValue200ApplicationJsonResponse, SdkReplacePersonalizationSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/personalization',
+      serializeSdkReplacePersonalizationSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'replacePersonalizationSettings' },
+    );
+    return deserializeSdkReplacePersonalizationSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update personalization settings
+   *
+   * Change only the personalization settings you send and keep the others. Send `null` to remove one. A request with no field this endpoint knows returns `200` with the current settings and saves nothing. A return link needs both `back_link_label` and `back_link_url`: a change that leaves one empty returns `422` on that field. `sender_email` is read-only here. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async updatePersonalization(options: UpdatePersonalizationOptions): Promise<SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.patch<SdkUpdatePersonalizationSettingsResponseValue200ApplicationJsonResponse, SdkUpdatePersonalizationSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/personalization',
+      serializeSdkUpdatePersonalizationSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updatePersonalizationSettings' },
+    );
+    return deserializeSdkUpdatePersonalizationSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update crypto checkout settings
+   *
+   * Replace both crypto checkout values, for a store that takes crypto through SellApp's crypto processor; `underpaid_percentage` and `minimum_confirmations` are required. SellApp sends the changed values to the crypto processor and saves them only once it accepts them; an unchanged value is not sent. Returns the checkout settings with the new `crypto` values. `422` on `crypto` when the store does not take crypto through SellApp's crypto processor, or when the processor refuses the values; nothing is saved then. `422` on `underpaid_percentage` or `minimum_confirmations` for a value out of range. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async replaceCryptoCheckout(options: ReplaceCryptoCheckoutOptions): Promise<SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.put<SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJsonResponse, SdkReplaceCryptoCheckoutSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/checkout/crypto',
+      serializeSdkReplaceCryptoCheckoutSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'replaceCryptoCheckoutSettings' },
+    );
+    return deserializeSdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update crypto checkout settings
+   *
+   * Change the crypto checkout values you send, for a store that takes crypto through SellApp's crypto processor. SellApp sends the changed values to the crypto processor and saves them only once it accepts them; an unchanged value is not sent. Returns the checkout settings with the new `crypto` values. `422` on `crypto` when the store does not take crypto through SellApp's crypto processor, or when the processor refuses the values; nothing is saved then. `422` on `underpaid_percentage` or `minimum_confirmations` for a value out of range. Sending the same change again is safe. Requires the `store` API-key ability and the `store` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async updateCryptoCheckout(options: UpdateCryptoCheckoutOptions): Promise<SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.patch<SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJsonResponse, SdkUpdateCryptoCheckoutSettingsRequestApplicationJsonResponse>(
+      '/v2/store/settings/checkout/crypto',
+      serializeSdkUpdateCryptoCheckoutSettingsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updateCryptoCheckoutSettings' },
+    );
+    return deserializeSdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson(data);
   }
 }

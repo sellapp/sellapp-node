@@ -2,12 +2,17 @@
 
 import type { PaginationOptions } from '../../common/interfaces/pagination-options.interface';
 import type { AffiliatePayoutsStatus } from './affiliate-payouts-status.interface';
+import type { AffiliatePayoutsPayoutMethod } from './affiliate-payouts-payout-method.interface';
 
 export interface AffiliatePayoutsListOptions extends PaginationOptions {
   /** Filter by affiliate ID. */
   affiliateId?: number;
   /** Filter by payout status. */
   status?: AffiliatePayoutsStatus | (string & Record<never, never>);
+  /** List only payouts recorded for this payout method. Uppercase, as returned in `payout_method`; `paypal` returns `422`. */
+  payoutMethod?: AffiliatePayoutsPayoutMethod | (string & Record<never, never>);
+  /** The start of the affiliate's email address, such as `alex` or `alex.morgan@`. It matches from the first character only, and `%` and `_` match themselves. */
+  search?: string;
   /** Page number to return. */
   page?: number;
 }

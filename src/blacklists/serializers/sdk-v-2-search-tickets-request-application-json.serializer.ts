@@ -7,18 +7,21 @@ import { serializeV2SearchTicketsRequestApplicationJsonPropertySortItem } from '
 import { serializeV2SearchTicketsRequestApplicationJsonPropertySearch } from './v-2-search-tickets-request-application-json-property-search.serializer';
 import { serializeV2SearchTicketsRequestApplicationJsonPropertyIncludesItem } from './v-2-search-tickets-request-application-json-property-includes-item.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkV2SearchTicketsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkV2SearchTicketsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkV2SearchTicketsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}},"waitingOn":{"kind":"nullable","inner":{"kind":"enum","values":["store","customer","null"]}},"reason":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":150}}},"customerEmail":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":255}}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkV2SearchTicketsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}},"waiting_on":{"kind":"nullable","inner":{"kind":"enum","values":["store","customer","null"]}},"reason":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":150}}},"customer_email":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":255}}}},"additionalProperties":true};
 
 export const serializeSdkV2SearchTicketsRequestApplicationJson = (
   model: SdkV2SearchTicketsRequestApplicationJson,
 ): SdkV2SearchTicketsRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["filters","sort","search","includes"]),
+    ...preserveUnknownFields(model, ["filters","sort","search","includes","waitingOn","reason","customerEmail"]),
     filters: model.filters != null ? model.filters.map(serializeV2SearchTicketsRequestApplicationJsonPropertyFiltersItem) : undefined,
     sort: model.sort != null ? model.sort.map(serializeV2SearchTicketsRequestApplicationJsonPropertySortItem) : undefined,
     search: model.search != null ? serializeV2SearchTicketsRequestApplicationJsonPropertySearch(model.search) : undefined,
     includes: model.includes != null ? model.includes.map(serializeV2SearchTicketsRequestApplicationJsonPropertyIncludesItem) : undefined,
+    waiting_on: model.waitingOn,
+    reason: model.reason,
+    customer_email: model.customerEmail,
   };
 };

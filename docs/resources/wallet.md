@@ -137,7 +137,8 @@ const result = await client.wallet.adjust({
   "customer": 1,
   "amountCents": 2500,
   "idempotencyKey": "wallet-adjustment-01992a65",
-  "note": "Launch-day account credit"
+  "note": "Launch-day account credit",
+  "expectedBalanceCents": 0
 });
 console.log(result);
 ```

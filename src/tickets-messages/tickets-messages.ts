@@ -218,7 +218,7 @@ export class TicketsMessages {
   /**
    * Search ticket messages
    *
-   * Search a ticket's messages using JSON body filters, search terms, includes, and sort instructions. This v2 route is store-scoped. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Search a ticket's messages using JSON body filters, search terms, includes, and sort instructions. This v2 route is store-scoped. Page through results with `limit` (1 to 100, default 15; a larger value returns `422`) and `page`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @param options.ticket - The ticket path parameter.
    * @example 1
@@ -231,10 +231,10 @@ export class TicketsMessages {
    * @throws {RateLimitExceededException} 429
    */
   async v2SearchTicketMessages(options: V2SearchTicketMessagesOptions): Promise<SdkV2SearchTicketMessagesResponseValue200ApplicationJson> {
-    const { ticket, requestOptions, ...payload } = options;
+    const { ticket, page, requestOptions, ...payload } = options;
     const { data } = await this.sellApp.post<SdkV2SearchTicketMessagesResponseValue200ApplicationJsonResponse, SdkV2SearchTicketMessagesRequestApplicationJsonResponse>(
       `/v2/tickets/${encodeURIComponent(ticket)}/messages/search`,
-      serializeSdkV2SearchTicketMessagesRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'v2SearchTicketMessages' },
+      serializeSdkV2SearchTicketMessagesRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'v2SearchTicketMessages', query: { ...(options.page !== undefined && { page: options.page }) } },
     );
     return deserializeSdkV2SearchTicketMessagesResponseValue200ApplicationJson(data);
   }

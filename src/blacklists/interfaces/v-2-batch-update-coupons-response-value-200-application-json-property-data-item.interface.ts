@@ -18,7 +18,7 @@ export interface V2BatchUpdateCouponsResponseValue200ApplicationJsonPropertyData
   updatedAt: Date;
   storeId: number;
   deletedAt: Date | null;
-  /** The maximum decimal discount in the store currency's major unit for percentage coupons. This field is managed from the dashboard and is read-only in the v1 Coupons API. */
+  /** The most this percentage coupon takes off one order, as a decimal amount in the major unit of the order's currency, or null when the discount is not capped. Always null on an `AMOUNT` coupon. */
   maximumDiscountAmount: string | null;
   /** `one_time` when the coupon discounts one-time purchases, or `subscriptions` when it discounts the first payments of a subscription plan. */
   appliesTo: V2BatchUpdateCouponsResponseValue200ApplicationJsonPropertyDataItemAppliesTo | (string & Record<never, never>);

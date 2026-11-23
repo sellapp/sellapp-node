@@ -2,6 +2,7 @@
 
 import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
+import type { PaginationOptions } from '../common/interfaces/pagination-options.interface';
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { PostOptions } from '../common/interfaces/post-options.interface';
@@ -44,6 +45,25 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
     ),
   }) as SellAppWithResponse<T>;
 }
+
+const serializeLicensesListOptions = (options: LicensesListOptions): PaginationOptions => {
+  const wire: Record<string, unknown> = {
+    maxItems: options.maxItems,
+    maxPages: options.maxPages,
+    requestOptions: options.requestOptions,
+    limit: options.limit,
+    before: options.before,
+    after: options.after,
+    order: options.order,
+  };
+  if (options.page !== undefined) wire.page = options.page;
+  if (options.key !== undefined) wire.key = options.key;
+  if (options.customerEmail !== undefined) wire.customer_email = options.customerEmail;
+  if (options.productId !== undefined) wire.product_id = options.productId;
+  if (options.orderId !== undefined) wire.order_id = options.orderId;
+  if (options.validity !== undefined) wire.validity = options.validity;
+  return wire as PaginationOptions;
+};
 
 export class Licenses {
   constructor(private readonly sellApp: SellApp) {}
@@ -92,7 +112,7 @@ export class Licenses {
   /**
    * List all license keys
    *
-   * List your store's license keys. Use `limit` and `page` to read one page at a time. The response schema describes each license. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List your store's license keys, one page at a time with `limit` and `page`. Filter by part of the key, the customer's email, the product, the order, or `validity`; several filters combine, and a key must match all of them. A filter value in the wrong shape returns `422` on that parameter. Requires the `license` API-key ability. The response schema describes each license. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson>>}
    * @throws {BadRequestException} 400
@@ -101,14 +121,13 @@ export class Licenses {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async list(options?: LicensesListOptions): Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson, LicensesListOptions>> {
-    const paginationOptions = options;
+  async list(options?: LicensesListOptions): Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson, PaginationOptions>> {
     return new AutoPaginatable(
       await fetchAndDeserialize<SdkListLicenseKeysResponseValue200ApplicationJsonResponse, SdkListLicenseKeysResponseValue200ApplicationJson>(
         this.sellApp,
         '/v2/license-keys',
         deserializeSdkListLicenseKeysResponseValue200ApplicationJson,
-        paginationOptions,
+        options ? serializeLicensesListOptions(options) : undefined,
       ),
       (params) =>
         fetchAndDeserialize<SdkListLicenseKeysResponseValue200ApplicationJsonResponse, SdkListLicenseKeysResponseValue200ApplicationJson>(
@@ -117,7 +136,7 @@ export class Licenses {
           deserializeSdkListLicenseKeysResponseValue200ApplicationJson,
           params,
         ),
-      paginationOptions,
+      options ? serializeLicensesListOptions(options) : undefined,
     );
   }
 

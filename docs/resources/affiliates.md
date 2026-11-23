@@ -9,14 +9,14 @@ List affiliates
 [API reference](https://sell.app/docs/api/affiliates/list-affiliates) · Effect: **read**
 
 ```typescript
-async list(options?: AffiliatesListOptions): Promise<AutoPaginatable<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem, AffiliatesListOptions>>
+async list(options?: AffiliatesListOptions): Promise<AutoPaginatable<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
 | options | `AffiliatesListOptions \| undefined` | No |
 
-Returns: `Promise<AutoPaginatable<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem, AffiliatesListOptions>>`.
+Returns: `Promise<AutoPaginatable<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
 import { SellApp } from '@sell.app/sdk';

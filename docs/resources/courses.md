@@ -55,6 +55,66 @@ Documented HTTP responses: 200, 400, 401, 403, 422, 429, 500. See the API refere
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
+## create
+
+Create a course
+
+[API reference](https://sell.app/docs/api/courses/create-a-course) · Effect: **write**
+
+```typescript
+async create(options: CreateOptions): Promise<SdkCreateCourseResponseValue201ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| options | `CreateOptions` | Yes |
+
+Returns: `Promise<SdkCreateCourseResponseValue201ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.courses.create({
+  "category": "design",
+  "level": "beginner",
+  "language": "English",
+  "whatYouLearn": ["Sketch a logo concept.", "Choose a color palette."],
+  "certificateEnabled": true,
+  "deliveryText": "Open your course from the link in your receipt.",
+  "title": "Brand identity basics",
+  "description": "<p>Design a logo, color palette, and type system for your next project.</p>"
+});
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 201, 400, 401, 403, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
 ## search
 
 Search courses
@@ -269,6 +329,60 @@ Supported credential alternatives (each object is one alternative):
 ```
 
 Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## getStudentSummary
+
+Retrieve a course student summary
+
+[API reference](https://sell.app/docs/api/courses/retrieve-course-student-summary) · Effect: **read**
+
+```typescript
+async getStudentSummary(options: GetStudentSummaryOptions): Promise<SdkGetCourseStudentSummaryResponseValue200ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| options | `GetStudentSummaryOptions` | Yes |
+
+Returns: `Promise<SdkGetCourseStudentSummaryResponseValue200ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.courses.getStudentSummary({
+  "startDate": "2026-08-01",
+  "endDate": "2026-08-31"
+});
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 422, 429, 500. See the API reference for field-level validation and consequences.
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 

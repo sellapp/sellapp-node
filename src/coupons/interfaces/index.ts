@@ -7,6 +7,7 @@ export * from './v-2-batch-update-coupons-options.interface';
 export * from './v-2-create-coupon-options.interface';
 export * from './v-2-delete-coupon-options.interface';
 export * from './v-2-get-coupon-options.interface';
+export * from './v-2-get-coupon-usage-options.interface';
 export * from './v-2-list-coupons-options.interface';
 export * from './v-2-replace-coupon-options.interface';
 export * from './v-2-search-coupons-options.interface';

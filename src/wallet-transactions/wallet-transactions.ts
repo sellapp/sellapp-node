@@ -4,9 +4,15 @@ import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
+import type { PostOptions } from '../common/interfaces/post-options.interface';
+import type { ReverseOptions } from './interfaces/reverse-options.interface';
 import type { WalletTransactionsListOptions } from './interfaces/wallet-transactions-list-options.interface';
+import type { SdkReverseWalletTransactionResponseValue201ApplicationJson, SdkReverseWalletTransactionResponseValue201ApplicationJsonResponse } from '../wallet-settings/interfaces/sdk-reverse-wallet-transaction-response-value-201-application-json.interface';
 import type { ListWalletTransactionsResponseValue200ApplicationJsonPropertyDataItem, ListWalletTransactionsResponseValue200ApplicationJsonPropertyDataItemResponse } from '../wallet-settings/interfaces/list-wallet-transactions-response-value-200-application-json-property-data-item.interface';
+import type { SdkReverseWalletTransactionRequestApplicationJsonResponse } from '../wallet-settings/interfaces/sdk-reverse-wallet-transaction-request-application-json.interface';
+import { deserializeSdkReverseWalletTransactionResponseValue201ApplicationJson } from '../wallet-settings/serializers/sdk-reverse-wallet-transaction-response-value-201-application-json.serializer';
 import { deserializeListWalletTransactionsResponseValue200ApplicationJsonPropertyDataItem } from '../wallet-settings/serializers/list-wallet-transactions-response-value-200-application-json-property-data-item.serializer';
+import { serializeSdkReverseWalletTransactionRequestApplicationJson } from '../wallet-settings/serializers/sdk-reverse-wallet-transaction-request-application-json.serializer';
 
 interface SellAppResponseEnvelope<T> { data: T; status: number; headers: Headers; requestId?: string }
 type SellAppWithResponse<T extends object> = {
@@ -24,6 +30,33 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
 export class WalletTransactions {
   constructor(private readonly sellApp: SellApp) {}
   get withResponse(): SellAppWithResponse<this> { return createResourceWithResponse(this, this.sellApp); }
+
+  /**
+   * Reverse a wallet transaction
+   *
+   * Undo one top-up or manual adjustment in a customer's wallet. SellApp writes a `REVERSAL` entry for the opposite amount, in integer USD cents, and returns it with `201`. Reversing a `TOP_UP` also reverses its `TOP_UP_BONUS`, so the balance drops by the top-up plus its bonus; the returned entry reverses the top-up itself. Reversing a negative `MANUAL_ADJUSTMENT` gives the money back, except credit that the debit had spent and that has since been refunded: a clawback entry takes that part back. The customer is not emailed, and no payment is refunded: reversing a paid top-up does not return money to the customer's card. Requires the `wallet:write` API-key ability and the wallet permission in your team role. Only `TOP_UP` and `MANUAL_ADJUSTMENT` entries can be reversed, once each, and a reversal cannot itself be reversed. Every refusal returns `422` on `transaction` and writes nothing: the entry was already reversed, is a reversal, is an expired credit, or is a type only the system reverses (`TOP_UP_BONUS` goes with its top-up, `CASHBACK` and `REWARD` are reversed by the system, a `REFUND` on its support ticket, a `PURCHASE_DEBIT` through its order); wallets are turned off for the store; or the money is reserved by a checkout or already spent. A customer of another store, a customer without a wallet, or an entry from another customer's wallet returns `404`. Send `expected_balance_cents` with the balance you read to reverse only while the wallet still holds it; otherwise the request returns `422` on `expected_balance_cents` and nothing changes. Repeating the request never takes the money twice: without a key, the repeat returns `422` because the entry is already reversed. To get the original `201` response back instead, send an `Idempotency-Key` header and repeat the same key with the same body within 24 hours; the replay carries `Idempotent-Replayed: true`. The same key with a different body returns `409`. To put money back after a reversal, make a new manual adjustment. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.customer - The customer ID whose wallet holds the entry.
+   * @example 42
+   * @param options.transaction - The ID of the wallet entry to reverse, as listed by `GET /v2/wallets/{customer}/transactions` or `GET /v2/wallet/transactions`.
+   * @example 501
+   * @returns {Promise<SdkReverseWalletTransactionResponseValue201ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {ConflictException} 409
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async reverse(options: ReverseOptions): Promise<SdkReverseWalletTransactionResponseValue201ApplicationJson> {
+    const { customer, transaction, requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.post<SdkReverseWalletTransactionResponseValue201ApplicationJsonResponse, SdkReverseWalletTransactionRequestApplicationJsonResponse>(
+      `/v2/wallets/${encodeURIComponent(customer)}/transactions/${encodeURIComponent(transaction)}/reverse`,
+      serializeSdkReverseWalletTransactionRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'reverseWalletTransaction' },
+    );
+    return deserializeSdkReverseWalletTransactionResponseValue201ApplicationJson(data);
+  }
 
   /**
    * List wallet transactions

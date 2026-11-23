@@ -3,16 +3,17 @@
 import type { SdkUpdateTicketRequestApplicationJson, SdkUpdateTicketRequestApplicationJsonResponse } from '../interfaces/sdk-update-ticket-request-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdateTicketRequestApplicationJson","required":[],"properties":{"status":{"kind":"enum","values":["OPEN","CLOSED"]},"archived":{"kind":"primitive","type":"boolean"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdateTicketRequestApplicationJson","required":[],"properties":{"status":{"kind":"enum","values":["OPEN","CLOSED"]},"archived":{"kind":"primitive","type":"boolean"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdateTicketRequestApplicationJson","required":[],"properties":{"status":{"kind":"enum","values":["OPEN","CLOSED"]},"archived":{"kind":"primitive","type":"boolean"},"outcome":{"kind":"enum","values":["refunded","refunded_partial","delivered","no_action","duplicate","other"]}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkUpdateTicketRequestApplicationJson","required":[],"properties":{"status":{"kind":"enum","values":["OPEN","CLOSED"]},"archived":{"kind":"primitive","type":"boolean"},"outcome":{"kind":"enum","values":["refunded","refunded_partial","delivered","no_action","duplicate","other"]}},"additionalProperties":true};
 
 export const serializeSdkUpdateTicketRequestApplicationJson = (
   model: SdkUpdateTicketRequestApplicationJson,
 ): SdkUpdateTicketRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["status","archived"]),
+    ...preserveUnknownFields(model, ["status","archived","outcome"]),
     status: model.status,
     archived: model.archived,
+    outcome: model.outcome,
   };
 };

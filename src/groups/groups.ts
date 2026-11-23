@@ -164,7 +164,7 @@ export class Groups {
   /**
    * Search groups
    *
-   * Search groups using JSON body filters, search terms, includes, and sort instructions. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Search groups using JSON body filters, search terms, includes, and sort instructions, 15 per page by default. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<SearchGroupsResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -174,10 +174,10 @@ export class Groups {
    * @throws {RateLimitExceededException} 429
    */
   async search(options: SearchOptions): Promise<SdkSearchGroupsResponseValue200ApplicationJson> {
-    const { requestOptions, ...payload } = options;
+    const { page, requestOptions, ...payload } = options;
     const { data } = await this.sellApp.post<SdkSearchGroupsResponseValue200ApplicationJsonResponse, SdkSearchGroupsRequestApplicationJsonResponse>(
       '/v2/groups/search',
-      serializeSdkSearchGroupsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'searchGroups' },
+      serializeSdkSearchGroupsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'searchGroups', query: { ...(options.page !== undefined && { page: options.page }) } },
     );
     return deserializeSdkSearchGroupsResponseValue200ApplicationJson(data);
   }

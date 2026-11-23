@@ -7,18 +7,25 @@ import { serializeSearchProductsRequestApplicationJsonPropertySortItem } from '.
 import { serializeSearchProductsRequestApplicationJsonPropertySearch } from './search-products-request-application-json-property-search.serializer';
 import { serializeSearchProductsRequestApplicationJsonPropertyIncludesItem } from './search-products-request-application-json-property-includes-item.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchProductsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchProductsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchProductsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}},"minPrice":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":0}}},"maxPrice":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":0}}},"stock":{"kind":"nullable","inner":{"kind":"enum","values":["in_stock","sold_out","any_variant_sold_out","limited","unlimited","null"]}},"visibility":{"kind":"array","items":{"kind":"enum","values":["PUBLIC","ON_HOLD","HIDDEN","PRIVATE"]},"constraints":{"minItems":1,"uniqueItems":true}},"hasSales":{"kind":"nullable","inner":{"kind":"primitive","type":"boolean"}},"withDrafts":{"kind":"primitive","type":"boolean"},"onlyDrafts":{"kind":"primitive","type":"boolean"}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchProductsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}},"min_price":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":0}}},"max_price":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":0}}},"stock":{"kind":"nullable","inner":{"kind":"enum","values":["in_stock","sold_out","any_variant_sold_out","limited","unlimited","null"]}},"visibility":{"kind":"array","items":{"kind":"enum","values":["PUBLIC","ON_HOLD","HIDDEN","PRIVATE"]},"constraints":{"minItems":1,"uniqueItems":true}},"has_sales":{"kind":"nullable","inner":{"kind":"primitive","type":"boolean"}},"with_drafts":{"kind":"primitive","type":"boolean"},"only_drafts":{"kind":"primitive","type":"boolean"}},"additionalProperties":true};
 
 export const serializeSdkSearchProductsRequestApplicationJson = (
   model: SdkSearchProductsRequestApplicationJson,
 ): SdkSearchProductsRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["filters","sort","search","includes"]),
+    ...preserveUnknownFields(model, ["filters","sort","search","includes","minPrice","maxPrice","stock","visibility","hasSales","withDrafts","onlyDrafts"]),
     filters: model.filters != null ? model.filters.map(serializeSearchProductsRequestApplicationJsonPropertyFiltersItem) : undefined,
     sort: model.sort != null ? model.sort.map(serializeSearchProductsRequestApplicationJsonPropertySortItem) : undefined,
     search: model.search != null ? serializeSearchProductsRequestApplicationJsonPropertySearch(model.search) : undefined,
     includes: model.includes != null ? model.includes.map(serializeSearchProductsRequestApplicationJsonPropertyIncludesItem) : undefined,
+    min_price: model.minPrice,
+    max_price: model.maxPrice,
+    stock: model.stock,
+    visibility: model.visibility,
+    has_sales: model.hasSales,
+    with_drafts: model.withDrafts,
+    only_drafts: model.onlyDrafts,
   };
 };

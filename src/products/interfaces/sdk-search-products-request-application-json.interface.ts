@@ -4,12 +4,31 @@ import type { SearchProductsRequestApplicationJsonPropertyFiltersItem, SearchPro
 import type { SearchProductsRequestApplicationJsonPropertySortItem, SearchProductsRequestApplicationJsonPropertySortItemResponse } from './search-products-request-application-json-property-sort-item.interface';
 import type { SearchProductsRequestApplicationJsonPropertySearch, SearchProductsRequestApplicationJsonPropertySearchResponse } from './search-products-request-application-json-property-search.interface';
 import type { SearchProductsRequestApplicationJsonPropertyIncludesItem, SearchProductsRequestApplicationJsonPropertyIncludesItemResponse } from './search-products-request-application-json-property-includes-item.interface';
+import type { Stock } from './stock.interface';
+import type { SdkSearchProductsRequestApplicationJsonVisibility } from './sdk-search-products-request-application-json-visibility.interface';
 
 export interface SdkSearchProductsRequestApplicationJson {
+  /** Not supported for products: no field can be filtered this way, so any entry returns `422` on `filters`. Use the price, stock, visibility, and sales fields instead. */
   filters?: SearchProductsRequestApplicationJsonPropertyFiltersItem[];
+  /** Not supported for products: any entry returns `422` on `sort`. */
   sort?: SearchProductsRequestApplicationJsonPropertySortItem[];
   search?: SearchProductsRequestApplicationJsonPropertySearch;
+  /** Only `variants` is accepted, and variants are always included. */
   includes?: SearchProductsRequestApplicationJsonPropertyIncludesItem[];
+  /** Only products whose every priced variant costs at least this much, in integer minor units of that variant's own currency: `999` means $9.99 for a USD variant. Draft variants count. A product without a priced variant never matches a price filter. Must not be greater than `max_price`. */
+  minPrice?: number | null;
+  /** Only products whose every priced variant costs at most this much, in integer minor units of that variant's own currency: `2500` means $25.00 for a USD variant. Draft variants count. A product without a priced variant never matches a price filter. */
+  maxPrice?: number | null;
+  /** Filter by stock, draft variants included. `in_stock`: at least one variant can be bought (unlimited stock, or at least its minimum purchase quantity left). `sold_out`: no variant can be bought. `any_variant_sold_out`: at least one variant with a stock count is sold out. `limited`: at least one variant has a stock count. `unlimited`: no variant has a stock count. */
+  stock?: Stock | (string & Record<never, never>) | null;
+  /** Only products with one of these visibilities. A single string such as `"HIDDEN"` is also accepted. */
+  visibility?: (SdkSearchProductsRequestApplicationJsonVisibility | (string & Record<never, never>))[];
+  /** `true` for products with at least one completed sale, `false` for products without one. Only purchase line items with status `COMPLETED` count, so pending or refunded ones do not. */
+  hasSales?: boolean | null;
+  /** Include draft products alongside published products. */
+  withDrafts?: boolean;
+  /** Return only draft products. */
+  onlyDrafts?: boolean;
   [key: string]: unknown;
 }
 
@@ -18,5 +37,12 @@ export interface SdkSearchProductsRequestApplicationJsonResponse {
   sort?: SearchProductsRequestApplicationJsonPropertySortItemResponse[];
   search?: SearchProductsRequestApplicationJsonPropertySearchResponse;
   includes?: SearchProductsRequestApplicationJsonPropertyIncludesItemResponse[];
+  min_price?: number | null;
+  max_price?: number | null;
+  stock?: Stock | (string & Record<never, never>) | null;
+  visibility?: (SdkSearchProductsRequestApplicationJsonVisibility | (string & Record<never, never>))[];
+  has_sales?: boolean | null;
+  with_drafts?: boolean;
+  only_drafts?: boolean;
   [key: string]: unknown;
 }

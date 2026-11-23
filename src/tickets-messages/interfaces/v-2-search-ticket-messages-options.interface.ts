@@ -9,6 +9,8 @@ import type { V2SearchTicketMessagesRequestApplicationJsonPropertyIncludesItem }
 export interface V2SearchTicketMessagesOptions extends PaginationOptions {
   /** The ticket path parameter. */
   ticket: number;
+  /** Page number to return. */
+  page?: number;
   filters?: V2SearchTicketMessagesRequestApplicationJsonPropertyFiltersItem[];
   sort?: V2SearchTicketMessagesRequestApplicationJsonPropertySortItem[];
   search?: V2SearchTicketMessagesRequestApplicationJsonPropertySearch;

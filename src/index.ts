@@ -35,6 +35,9 @@ export { Bookings } from './bookings/bookings';
 export * from './bundle-items/interfaces';
 export { BundleItems } from './bundle-items/bundle-items';
 
+export * from './variant-deliverables/interfaces';
+export { VariantDeliverables } from './variant-deliverables/variant-deliverables';
+
 export * from './promotions/interfaces';
 export { Promotions } from './promotions/promotions';
 
@@ -47,14 +50,23 @@ export { Highlights } from './highlights/highlights';
 export * from './webhook-channels/interfaces';
 export { WebhookChannels } from './webhook-channels/webhook-channels';
 
+export * from './support-reply-templates/interfaces';
+export { SupportReplyTemplates } from './support-reply-templates/support-reply-templates';
+
+export * from './support-reasons/interfaces';
+export { SupportReasons } from './support-reasons/support-reasons';
+
+export * from './support-automation-rules/interfaces';
+export { SupportAutomationRules } from './support-automation-rules/support-automation-rules';
+
+export * from './support-automation-settings/interfaces';
+export { SupportAutomationSettings } from './support-automation-settings/support-automation-settings';
+
 export * from './customers/interfaces';
 export { Customers } from './customers/customers';
 
 export * from './orders/interfaces';
 export { Orders } from './orders/orders';
-
-export * from './variant-deliverables/interfaces';
-export { VariantDeliverables } from './variant-deliverables/variant-deliverables';
 
 export * from './variant-deliverable-files/interfaces';
 export { VariantDeliverableFiles } from './variant-deliverable-files/variant-deliverable-files';
@@ -92,11 +104,17 @@ export { WalletBonusTiers } from './wallet-bonus-tiers/wallet-bonus-tiers';
 export * from './courses/interfaces';
 export { Courses } from './courses/courses';
 
+export * from './checkout-field-templates/interfaces';
+export { CheckoutFieldTemplates } from './checkout-field-templates/checkout-field-templates';
+
 export * from './payment-methods/interfaces';
 export { PaymentMethods } from './payment-methods/payment-methods';
 
 export * from './store-settings/interfaces';
 export { StoreSettings } from './store-settings/store-settings';
+
+export * from './notifications/interfaces';
+export { Notifications } from './notifications/notifications';
 
 export * from './affiliates/interfaces';
 export { Affiliates } from './affiliates/affiliates';
@@ -153,9 +171,17 @@ export type { SdkGetLicenseInstanceResponseValue200ApplicationJson, SdkGetLicens
 export type { ListLicenseInstancesResponseValue200ApplicationJsonPropertyDataItem, ListLicenseInstancesResponseValue200ApplicationJsonPropertyDataItemResponse } from './licenses-instances/interfaces/list-license-instances-response-value-200-application-json-property-data-item.interface';
 // LicenseInstances is covered by an existing hand-written class — not re-exported.
 
+export { ProductsFeaturedVariant } from './products-featured-variant/products-featured-variant';
+
+export { ProductsSimilarProducts } from './products-similar-products/products-similar-products';
+
 export { ProductVariantsPricing } from './product-variants-pricing/product-variants-pricing';
 
 export { ProductVariantsBooking } from './product-variants-booking/product-variants-booking';
+
+export { ProductVariantsSubscriptionSettings } from './product-variants-subscription-settings/product-variants-subscription-settings';
+
+export { ProductVariantsCommunityAccess } from './product-variants-community-access/product-variants-community-access';
 
 export { SubscriptionsActions } from './subscriptions-actions/subscriptions-actions';
 
@@ -173,6 +199,10 @@ export { LineItems } from './line-items/line-items';
 
 export { OrdersLineItems } from './orders-line-items/orders-line-items';
 
+export { CommunityConnectionsServers } from './community-connections-servers/community-connections-servers';
+
+export { CommunityConnectionsSlack } from './community-connections-slack/community-connections-slack';
+
 export { WalletSettings } from './wallet-settings/wallet-settings';
 
 export type { GetWalletSettingsResponseValue200ApplicationJsonPropertyData, GetWalletSettingsResponseValue200ApplicationJsonPropertyDataResponse } from './wallet-settings/interfaces/get-wallet-settings-response-value-200-application-json-property-data.interface';
@@ -189,13 +219,32 @@ export type { SdkAdjustCustomerWalletResponseValue200ApplicationJson, SdkAdjustC
 export type { SdkUpdateCustomerWalletStatusRequestApplicationJson, SdkUpdateCustomerWalletStatusRequestApplicationJsonResponse } from './wallet-settings/interfaces/sdk-update-customer-wallet-status-request-application-json.interface';
 export type { UpdateCustomerWalletStatusResponseValue200ApplicationJsonPropertyData, UpdateCustomerWalletStatusResponseValue200ApplicationJsonPropertyDataResponse } from './wallet-settings/interfaces/update-customer-wallet-status-response-value-200-application-json-property-data.interface';
 export type { SdkUpdateCustomerWalletStatusResponseValue200ApplicationJson, SdkUpdateCustomerWalletStatusResponseValue200ApplicationJsonResponse } from './wallet-settings/interfaces/sdk-update-customer-wallet-status-response-value-200-application-json.interface';
+export type { SdkReverseWalletTransactionRequestApplicationJson, SdkReverseWalletTransactionRequestApplicationJsonResponse } from './wallet-settings/interfaces/sdk-reverse-wallet-transaction-request-application-json.interface';
+export type { ReverseWalletTransactionResponseValue201ApplicationJsonPropertyData, ReverseWalletTransactionResponseValue201ApplicationJsonPropertyDataResponse } from './wallet-settings/interfaces/reverse-wallet-transaction-response-value-201-application-json-property-data.interface';
+export type { SdkReverseWalletTransactionResponseValue201ApplicationJson, SdkReverseWalletTransactionResponseValue201ApplicationJsonResponse } from './wallet-settings/interfaces/sdk-reverse-wallet-transaction-response-value-201-application-json.interface';
+export type { ListStoreWalletTransactionsResponseValue200ApplicationJsonPropertyDataItem, ListStoreWalletTransactionsResponseValue200ApplicationJsonPropertyDataItemResponse } from './wallet-settings/interfaces/list-store-wallet-transactions-response-value-200-application-json-property-data-item.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyPeriod, GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyPeriodResponse } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-period.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertySettings, GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertySettingsResponse } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-settings.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyHealth, GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyHealthResponse } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-health.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyActivity, GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyActivityResponse } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-activity.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyIncentiveSpend, GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyIncentiveSpendResponse } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-incentive-spend.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyActiveRules, GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyActiveRulesResponse } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-active-rules.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyTopWalletsItem, GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyTopWalletsItemResponse } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-top-wallets-item.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyRecentActivityItem, GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyRecentActivityItemResponse } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-recent-activity-item.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyData, GetWalletOverviewResponseValue200ApplicationJsonPropertyDataResponse } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data.interface';
+export type { SdkGetWalletOverviewResponseValue200ApplicationJson, SdkGetWalletOverviewResponseValue200ApplicationJsonResponse } from './wallet-settings/interfaces/sdk-get-wallet-overview-response-value-200-application-json.interface';
 export type { ListWalletTransactionsResponseValue200ApplicationJsonPropertyDataItem, ListWalletTransactionsResponseValue200ApplicationJsonPropertyDataItemResponse } from './wallet-settings/interfaces/list-wallet-transactions-response-value-200-application-json-property-data-item.interface';
 export type { SdkCreateWalletTopUpRequestApplicationJson, SdkCreateWalletTopUpRequestApplicationJsonResponse } from './wallet-settings/interfaces/sdk-create-wallet-top-up-request-application-json.interface';
 export type { CreateWalletTopUpResponseValue201ApplicationJsonPropertyData, CreateWalletTopUpResponseValue201ApplicationJsonPropertyDataResponse } from './wallet-settings/interfaces/create-wallet-top-up-response-value-201-application-json-property-data.interface';
 export type { SdkCreateWalletTopUpResponseValue201ApplicationJson, SdkCreateWalletTopUpResponseValue201ApplicationJsonResponse } from './wallet-settings/interfaces/sdk-create-wallet-top-up-response-value-201-application-json.interface';
+export type { ListStoreWalletTransactionsResponseValue200ApplicationJsonPropertyMetaLink, ListStoreWalletTransactionsResponseValue200ApplicationJsonPropertyMetaLinkResponse } from './wallet-settings/interfaces/list-store-wallet-transactions-response-value-200-application-json-property-meta-link.interface';
 // Wallet is covered by an existing hand-written class — not re-exported.
 
 export { WalletTransactions } from './wallet-transactions/wallet-transactions';
+
+export { WalletLedger } from './wallet-ledger/wallet-ledger';
+
+export { WalletOverview } from './wallet-overview/wallet-overview';
 
 export { WalletTopups } from './wallet-topups/wallet-topups';
 
@@ -203,7 +252,13 @@ export { CoursesSections } from './courses-sections/courses-sections';
 
 export { CoursesLessons } from './courses-lessons/courses-lessons';
 
+export { PaymentMethodsModifier } from './payment-methods-modifier/payment-methods-modifier';
+
 export { PaymentMethodsCustom } from './payment-methods-custom/payment-methods-custom';
+
+export { StoreSenderEmail } from './store-sender-email/store-sender-email';
+
+export { StoreIntegrations } from './store-integrations/store-integrations';
 
 export { StoreNotificationChannels } from './store-notification-channels/store-notification-channels';
 
@@ -264,6 +319,10 @@ export type { ListCreditBalanceTransactionsResponseValue200ApplicationJsonProper
 
 export { CreditsBalancesTransactions } from './credits-balances-transactions/credits-balances-transactions';
 
+export { AffiliatesProducts } from './affiliates-products/affiliates-products';
+
+export { AffiliatesCoupon } from './affiliates-coupon/affiliates-coupon';
+
 export { Blacklists } from './blacklists/blacklists';
 
 export { Coupons } from './coupons/coupons';
@@ -275,6 +334,10 @@ export { Sections } from './sections/sections';
 export { Tickets } from './tickets/tickets';
 
 export { TicketsMessages } from './tickets-messages/tickets-messages';
+
+export { TicketsWalletRefunds } from './tickets-wallet-refunds/tickets-wallet-refunds';
+
+export { TicketsAnalytics } from './tickets-analytics/tickets-analytics';
 
 export * from './common/interfaces';
 export type { BlacklistType } from './blacklists/interfaces/blacklist-type.interface';
@@ -343,6 +406,14 @@ export type { GetCustomerWalletResponseValue200ApplicationJsonPropertyDataStatus
 export type { AdjustCustomerWalletResponseValue200ApplicationJsonPropertyDataType } from './wallet-settings/interfaces/adjust-customer-wallet-response-value-200-application-json-property-data-type.interface';
 export type { SdkUpdateCustomerWalletStatusRequestApplicationJsonStatus } from './wallet-settings/interfaces/sdk-update-customer-wallet-status-request-application-json-status.interface';
 export type { UpdateCustomerWalletStatusResponseValue200ApplicationJsonPropertyDataStatus } from './wallet-settings/interfaces/update-customer-wallet-status-response-value-200-application-json-property-data-status.interface';
+export type { ReverseWalletTransactionResponseValue201ApplicationJsonPropertyDataType } from './wallet-settings/interfaces/reverse-wallet-transaction-response-value-201-application-json-property-data-type.interface';
+export type { ListStoreWalletTransactionsResponseValue200ApplicationJsonPropertyDataItemType } from './wallet-settings/interfaces/list-store-wallet-transactions-response-value-200-application-json-property-data-item-type.interface';
+export type { ListStoreWalletTransactionsResponseValue200ApplicationJsonPropertyMetaAllOfValue2PropertyPeriodRange } from './wallet-settings/interfaces/list-store-wallet-transactions-response-value-200-application-json-property-meta-all-of-value-2-property-period-range.interface';
+export type { Type } from './wallet-settings/interfaces/type.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyPeriodRange } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-period-range.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyIncentiveSpendPeriod } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-incentive-spend-period.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyTopWalletsItemStatus } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-top-wallets-item-status.interface';
+export type { GetWalletOverviewResponseValue200ApplicationJsonPropertyDataPropertyRecentActivityItemType } from './wallet-settings/interfaces/get-wallet-overview-response-value-200-application-json-property-data-property-recent-activity-item-type.interface';
 export type { SdkCreateCreditsProductRequestApplicationJsonPaymentMethods } from './credits-products/interfaces/sdk-create-credits-product-request-application-json-payment-methods.interface';
 export type { CreateCreditsProductResponseValue201ApplicationJsonPropertyDataPropertyVariantInvariantState } from './credits-products/interfaces/create-credits-product-response-value-201-application-json-property-data-property-variant-invariant-state.interface';
 export type { SearchCreditsProductsRequestApplicationJsonPropertyFiltersItemField } from './credits-products/interfaces/search-credits-products-request-application-json-property-filters-item-field.interface';
@@ -395,19 +466,33 @@ export type { V2SearchSectionsRequestApplicationJsonPropertySortItemDirection } 
 export type { V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItemSentiment } from './blacklists/interfaces/v-2-list-feedback-response-value-200-application-json-property-data-item-sentiment.interface';
 export type { V2SearchFeedbackRequestApplicationJsonPropertyFiltersItemType } from './blacklists/interfaces/v-2-search-feedback-request-application-json-property-filters-item-type.interface';
 export type { V2SearchFeedbackRequestApplicationJsonPropertySortItemDirection } from './blacklists/interfaces/v-2-search-feedback-request-application-json-property-sort-item-direction.interface';
+export type { ReplyState } from './blacklists/interfaces/reply-state.interface';
 export type { V2SearchFeedbackResponseValue200ApplicationJsonPropertyDataItemSentiment } from './blacklists/interfaces/v-2-search-feedback-response-value-200-application-json-property-data-item-sentiment.interface';
 export type { V2GetFeedbackResponseValue200ApplicationJsonPropertyDataSentiment } from './blacklists/interfaces/v-2-get-feedback-response-value-200-application-json-property-data-sentiment.interface';
 export type { V2ReplaceFeedbackResponseValue200ApplicationJsonPropertyDataSentiment } from './blacklists/interfaces/v-2-replace-feedback-response-value-200-application-json-property-data-sentiment.interface';
 export type { V2ReplyToFeedbackResponseValue200ApplicationJsonPropertyDataSentiment } from './blacklists/interfaces/v-2-reply-to-feedback-response-value-200-application-json-property-data-sentiment.interface';
-export type { Type } from './blacklists/interfaces/type.interface';
 export type { V2SearchTicketsRequestApplicationJsonPropertyFiltersItemType } from './blacklists/interfaces/v-2-search-tickets-request-application-json-property-filters-item-type.interface';
 export type { V2SearchTicketsRequestApplicationJsonPropertySortItemDirection } from './blacklists/interfaces/v-2-search-tickets-request-application-json-property-sort-item-direction.interface';
+export type { WaitingOn } from './blacklists/interfaces/waiting-on.interface';
 export type { SdkUpdateTicketRequestApplicationJsonStatus } from './blacklists/interfaces/sdk-update-ticket-request-application-json-status.interface';
+export type { SdkUpdateTicketRequestApplicationJsonOutcome } from './blacklists/interfaces/sdk-update-ticket-request-application-json-outcome.interface';
 export type { V2SearchTicketMessagesRequestApplicationJsonPropertyFiltersItemType } from './blacklists/interfaces/v-2-search-ticket-messages-request-application-json-property-filters-item-type.interface';
 export type { V2SearchTicketMessagesRequestApplicationJsonPropertySortItemDirection } from './blacklists/interfaces/v-2-search-ticket-messages-request-application-json-property-sort-item-direction.interface';
 export type { ListWalletTransactionsResponseValue200ApplicationJsonPropertyDataItemType } from './wallet-settings/interfaces/list-wallet-transactions-response-value-200-application-json-property-data-item-type.interface';
 export type { ListCreditBalanceTransactionsResponseValue200ApplicationJsonPropertyDataItemKind } from './credits-products/interfaces/list-credit-balance-transactions-response-value-200-application-json-property-data-item-kind.interface';
 export type { SdkCreateWalletTopUpRequestApplicationJsonPaymentMethod } from './wallet-settings/interfaces/sdk-create-wallet-top-up-request-application-json-payment-method.interface';
 export type { CreateWalletTopUpResponseValue201ApplicationJsonPropertyDataPaymentMethod } from './wallet-settings/interfaces/create-wallet-top-up-response-value-201-application-json-property-data-payment-method.interface';
+export type { SdkBatchUpdateTicketsRequestApplicationJsonAction } from './blacklists/interfaces/sdk-batch-update-tickets-request-application-json-action.interface';
+export type { SdkBatchUpdateTicketsRequestApplicationJsonOutcome } from './blacklists/interfaces/sdk-batch-update-tickets-request-application-json-outcome.interface';
+export type { BatchUpdateTicketsResponseValue200ApplicationJsonPropertyDataItemResult } from './blacklists/interfaces/batch-update-tickets-response-value-200-application-json-property-data-item-result.interface';
+export type { Outcome } from './blacklists/interfaces/outcome.interface';
+export type { V2GetTicketContextResponseValue200ApplicationJsonPropertyDataPropertyActivityItemEvent } from './blacklists/interfaces/v-2-get-ticket-context-response-value-200-application-json-property-data-property-activity-item-event.interface';
+export type { GetSupportAnalyticsResponseValue200ApplicationJsonPropertyDataRange } from './blacklists/interfaces/get-support-analytics-response-value-200-application-json-property-data-range.interface';
+export type { WalletPeriod } from './wallet-settings/interfaces/wallet-period.interface';
+export type { WalletType } from './wallet-settings/interfaces/wallet-type.interface';
+export type { BlacklistsType } from './blacklists/interfaces/blacklists-type.interface';
+export type { FeedbackReplyState } from './blacklists/interfaces/feedback-reply-state.interface';
+export type { TicketsWaitingOn } from './blacklists/interfaces/tickets-waiting-on.interface';
+export type { TicketsRange } from './blacklists/interfaces/tickets-range.interface';
 
 export { SellApp } from './sellapp';

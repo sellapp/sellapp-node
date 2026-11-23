@@ -271,3 +271,64 @@ Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API r
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
+## create
+
+Create a booking product
+
+[API reference](https://sell.app/docs/api/bookings/create-a-booking-product) · Effect: **consequential**
+
+```typescript
+async create(options: CreateOptions): Promise<SdkCreateBookingProductResponseValue201ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| options | `CreateOptions` | Yes |
+
+Returns: `Promise<SdkCreateBookingProductResponseValue201ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.bookings.create({
+  "title": "Strategy consultation",
+  "description": "<p>A private strategy session for your next launch.</p>",
+  "variantTitle": "60 minute session",
+  "priceCents": 2500,
+  "currency": "USD",
+  "paymentMethods": ["STRIPE"],
+  "timezone": "Europe/London",
+  "durationMinutes": 60,
+  "availability": [{"day": 1, "enabled": true, "start": "09:00", "end": "12:00"}, {"day": 3, "enabled": true, "start": "13:00", "end": "17:00"}]
+});
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 201, 400, 401, 403, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+

@@ -550,3 +550,165 @@ Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API r
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
+## publish
+
+Publish a product variant
+
+[API reference](https://sell.app/docs/api/product-variants/publish-a-product-variant) · Effect: **consequential**
+
+```typescript
+async publish(options: PublishOptions): Promise<SdkPublishProductVariantResponseValue200ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| options | `PublishOptions` | Yes |
+
+Returns: `Promise<SdkPublishProductVariantResponseValue200ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.productVariants.publish({
+  "product": 11,
+  "variant": 12
+});
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## duplicate
+
+Duplicate a product variant
+
+[API reference](https://sell.app/docs/api/product-variants/duplicate-a-product-variant) · Effect: **write**
+
+```typescript
+async duplicate(options: DuplicateOptions): Promise<SdkDuplicateProductVariantResponseValue201ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| options | `DuplicateOptions` | Yes |
+
+Returns: `Promise<SdkDuplicateProductVariantResponseValue201ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.productVariants.duplicate({
+  "product": 1,
+  "variant": 2
+});
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 201, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## reorder
+
+Reorder product variants
+
+[API reference](https://sell.app/docs/api/product-variants/reorder-product-variants) · Effect: **consequential**
+
+```typescript
+async reorder(options: ReorderOptions): Promise<SdkReorderProductVariantsResponseValue200ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| options | `ReorderOptions` | Yes |
+
+Returns: `Promise<SdkReorderProductVariantsResponseValue200ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.productVariants.reorder({
+  "product": 1,
+  "variantIds": [2, 1]
+});
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+

@@ -34,7 +34,7 @@ test('connected catalog, upload, checkout, failures and credential isolation', a
       assert.equal(req.headers['x-store'], 'launch-lab');
       if (req.method === 'GET' && url.pathname === '/api/v2/products') {
         const page = Number(url.searchParams.get('page') ?? 1);
-        return send(200, {data: page === 2 ? [] : [fixture.product.data], meta:{current_page:page,last_page:3},links:{next:page < 3 ? '?page=' + (page + 1) : null}});
+        return send(200, {data: page === 2 ? [] : [{...fixture.product.data, price_range:null, stock:0, sales:0, sold_out:true}], meta:{current_page:page,last_page:3},links:{next:page < 3 ? '?page=' + (page + 1) : null}});
       }
       if (req.method === 'POST' && url.pathname === '/api/v2/products') {
         const body = JSON.parse(raw); assert.equal(body.title, 'Design kit'); assert.equal(body.visibility, 'HIDDEN');

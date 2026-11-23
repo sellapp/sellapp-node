@@ -2,11 +2,18 @@
 
 import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
+import type { PostOptions } from '../common/interfaces/post-options.interface';
+import type { PreviewOptions } from './interfaces/preview-options.interface';
+import type { NotifyOptions } from './interfaces/notify-options.interface';
 import type { GetOptions } from './interfaces/get-options.interface';
 import type { ReplaceOptions } from './interfaces/replace-options.interface';
+import type { SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson, SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJsonResponse } from './interfaces/sdk-preview-variant-buyer-notification-response-value-200-application-json.interface';
+import type { SdkNotifyVariantBuyersResponseValue202ApplicationJson, SdkNotifyVariantBuyersResponseValue202ApplicationJsonResponse } from './interfaces/sdk-notify-variant-buyers-response-value-202-application-json.interface';
 import type { SdkGetVariantDeliverableConfigurationResponseValue200ApplicationJson, SdkGetVariantDeliverableConfigurationResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-variant-deliverable-configuration-response-value-200-application-json.interface';
 import type { SdkReplaceVariantDeliverableConfigurationResponseValue200ApplicationJson, SdkReplaceVariantDeliverableConfigurationResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-variant-deliverable-configuration-response-value-200-application-json.interface';
 import type { SdkReplaceVariantDeliverableConfigurationRequestApplicationJsonResponse } from './interfaces/sdk-replace-variant-deliverable-configuration-request-application-json.interface';
+import { deserializeSdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson } from './serializers/sdk-preview-variant-buyer-notification-response-value-200-application-json.serializer';
+import { deserializeSdkNotifyVariantBuyersResponseValue202ApplicationJson } from './serializers/sdk-notify-variant-buyers-response-value-202-application-json.serializer';
 import { deserializeSdkGetVariantDeliverableConfigurationResponseValue200ApplicationJson } from './serializers/sdk-get-variant-deliverable-configuration-response-value-200-application-json.serializer';
 import { deserializeSdkReplaceVariantDeliverableConfigurationResponseValue200ApplicationJson } from './serializers/sdk-replace-variant-deliverable-configuration-response-value-200-application-json.serializer';
 import { serializeSdkReplaceVariantDeliverableConfigurationRequestApplicationJson } from './serializers/sdk-replace-variant-deliverable-configuration-request-application-json.serializer';
@@ -27,6 +34,53 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
 export class VariantDeliverables {
   constructor(private readonly sellApp: SellApp) {}
   get withResponse(): SellAppWithResponse<this> { return createResourceWithResponse(this, this.sellApp); }
+
+  /**
+   * Preview variant buyer notification
+   *
+   * See who would be emailed if you told this variant's buyers about new downloadable files, without sending anything. Use it before `POST` on the same path to check the numbers. Works for any variant, drafts included. Requires the `listing` API-key ability and the `listing` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.product - The product path parameter.
+   * @example 1
+   * @param options.variant - The variant path parameter.
+   * @example 2
+   * @returns {Promise<SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async preview(options: PreviewOptions): Promise<SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson> {
+    const { product, variant } = options;
+    const { data } = await this.sellApp.get<SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJsonResponse>(`/v2/products/${encodeURIComponent(product)}/variants/${encodeURIComponent(variant)}/deliverable/buyer-notification`, { ...options.requestOptions, operationId: 'previewVariantBuyerNotification' });
+    return deserializeSdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Notify variant buyers
+   *
+   * Email your customers that this variant has new content: every completed order that delivered its downloadable files gets one email. The emails are queued, so `202` means they were queued, not delivered. It sends only for a published variant with at least one file, at least one such order, and no upload in progress. The buyers of one variant can be emailed this way at most once an hour, whichever API key or team member sends it, and each team member can send at most 3 times a minute per variant. Requires the `listing` API-key ability and the `listing` permission in your team role. Send an `Idempotency-Key` header; requests without one return `400`. A retry with the same key and an empty body returns the first response with `Idempotent-Replayed: true` and sends nothing new. Use a new key for every send you intend, including a new attempt after a `422`. The same key while the first request is still running returns `409`. Every refusal is `422` on `variant`: a draft variant, a variant without files, a variant nobody has bought, an upload still in progress, the hourly limit (the message says how many minutes are left), the per-minute limit, or another send for the same variant at the same moment. Check `GET` on the same path first to see the numbers. A variant of another product returns `404`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.product - The product path parameter.
+   * @example 1
+   * @param options.variant - The variant path parameter.
+   * @example 2
+   * @returns {Promise<SdkNotifyVariantBuyersResponseValue202ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {ConflictException} 409
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async notify(options: NotifyOptions): Promise<SdkNotifyVariantBuyersResponseValue202ApplicationJson> {
+    const { product, variant } = options;
+    const { data } = await this.sellApp.post<SdkNotifyVariantBuyersResponseValue202ApplicationJsonResponse>(`/v2/products/${encodeURIComponent(product)}/variants/${encodeURIComponent(variant)}/deliverable/buyer-notification`, {}, { ...options.requestOptions, operationId: 'notifyVariantBuyers' });
+    return deserializeSdkNotifyVariantBuyersResponseValue202ApplicationJson(data);
+  }
 
   /**
    * Retrieve variant deliverable configuration

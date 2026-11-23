@@ -9,12 +9,12 @@ List refunds
 [API reference](https://sell.app/docs/api/refunds) · Effect: **read**
 
 ```typescript
-async listRefunds(options?: ListRefundsOptions): Promise<AutoPaginatable<ListRefundsResponseValue200ApplicationJsonPropertyDataItem, ListRefundsOptions>>
+async listRefunds(options?: ListRefundsOptions): Promise<AutoPaginatable<ListRefundsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
-| options | `PaginationOptions \| undefined` | No |
+| options | `ListRefundsOptions \| undefined` | No |
 
 Returns: `Promise<AutoPaginatable<ListRefundsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
@@ -27,7 +27,9 @@ const client = new SellApp({
   store: process.env.SELLAPP_STORE!,
 });
 
-const result = await client.refunds.listRefunds();
+const result = await client.refunds.listRefunds({
+
+});
 console.log(result);
 ```
 

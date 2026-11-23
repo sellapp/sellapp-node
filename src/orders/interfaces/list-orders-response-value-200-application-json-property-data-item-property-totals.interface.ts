@@ -8,6 +8,10 @@ export interface ListOrdersResponseValue200ApplicationJsonPropertyDataItemProper
   totalCents: number;
   totalExclusiveUsdCents: number | null;
   totalUsdCents: number | null;
+  /** The currency refunds on this order are made and counted in: the currency the payment was charged in, which can differ from the order currency. `null` when the payment method cannot be refunded through the API. */
+  refundCurrency: string | null;
+  /** The amount already refunded on this order, in integer minor units of `refund_currency`: `500` means $5.00 in USD. It is the exact figure a refund request compares `expected_refunded_total_cents` with, so send it back unchanged when you refund. `0` when nothing has been refunded. */
+  refundedTotalCents: number;
   [key: string]: unknown;
 }
 
@@ -18,5 +22,7 @@ export interface ListOrdersResponseValue200ApplicationJsonPropertyDataItemProper
   total_cents: number;
   total_exclusive_usd_cents: number | null;
   total_usd_cents: number | null;
+  refund_currency: string | null;
+  refunded_total_cents: number;
   [key: string]: unknown;
 }

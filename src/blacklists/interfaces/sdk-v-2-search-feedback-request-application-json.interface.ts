@@ -4,12 +4,18 @@ import type { V2SearchFeedbackRequestApplicationJsonPropertyFiltersItem, V2Searc
 import type { V2SearchFeedbackRequestApplicationJsonPropertySortItem, V2SearchFeedbackRequestApplicationJsonPropertySortItemResponse } from './v-2-search-feedback-request-application-json-property-sort-item.interface';
 import type { V2SearchFeedbackRequestApplicationJsonPropertySearch, V2SearchFeedbackRequestApplicationJsonPropertySearchResponse } from './v-2-search-feedback-request-application-json-property-search.interface';
 import type { V2SearchFeedbackRequestApplicationJsonPropertyIncludesItem, V2SearchFeedbackRequestApplicationJsonPropertyIncludesItemResponse } from './v-2-search-feedback-request-application-json-property-includes-item.interface';
+import type { ReplyState } from './reply-state.interface';
 
 export interface SdkV2SearchFeedbackRequestApplicationJson {
   filters?: V2SearchFeedbackRequestApplicationJsonPropertyFiltersItem[];
   sort?: V2SearchFeedbackRequestApplicationJsonPropertySortItem[];
   search?: V2SearchFeedbackRequestApplicationJsonPropertySearch;
   includes?: V2SearchFeedbackRequestApplicationJsonPropertyIncludesItem[];
+  /**
+   * `replied`: feedback with a non-empty seller reply. `unreplied`: feedback without one. `all` (default): both. Any other value returns `422`.
+   * @default "all"
+   */
+  replyState?: ReplyState | (string & Record<never, never>) | null;
   [key: string]: unknown;
 }
 
@@ -18,5 +24,6 @@ export interface SdkV2SearchFeedbackRequestApplicationJsonResponse {
   sort?: V2SearchFeedbackRequestApplicationJsonPropertySortItemResponse[];
   search?: V2SearchFeedbackRequestApplicationJsonPropertySearchResponse;
   includes?: V2SearchFeedbackRequestApplicationJsonPropertyIncludesItemResponse[];
+  reply_state?: ReplyState | (string & Record<never, never>) | null;
   [key: string]: unknown;
 }

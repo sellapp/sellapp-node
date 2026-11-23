@@ -9,12 +9,12 @@ List disputes
 [API reference](https://sell.app/docs/api/disputes) · Effect: **read**
 
 ```typescript
-async listDisputes(options?: ListDisputesOptions): Promise<AutoPaginatable<ListDisputesResponseValue200ApplicationJsonPropertyDataItem, ListDisputesOptions>>
+async listDisputes(options?: ListDisputesOptions): Promise<AutoPaginatable<ListDisputesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
-| options | `PaginationOptions \| undefined` | No |
+| options | `ListDisputesOptions \| undefined` | No |
 
 Returns: `Promise<AutoPaginatable<ListDisputesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
@@ -27,7 +27,9 @@ const client = new SellApp({
   store: process.env.SELLAPP_STORE!,
 });
 
-const result = await client.disputes.listDisputes();
+const result = await client.disputes.listDisputes({
+
+});
 console.log(result);
 ```
 

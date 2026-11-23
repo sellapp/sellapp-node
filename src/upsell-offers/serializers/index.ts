@@ -7,6 +7,7 @@ export * from './create-upsell-offer-response-value-201-application-json-propert
 export * from './create-upsell-offer-response-value-201-application-json-property-data-property-items-item-property-target-variant.serializer';
 export * from './create-upsell-offer-response-value-201-application-json-property-data-property-source-product.serializer';
 export * from './create-upsell-offer-response-value-201-application-json-property-data-property-source-variant.serializer';
+export * from './get-upsell-offer-performance-response-value-200-application-json-property-data.serializer';
 export * from './get-upsell-offer-response-value-200-application-json-property-data.serializer';
 export * from './get-upsell-offer-response-value-200-application-json-property-data-property-items-item.serializer';
 export * from './get-upsell-offer-response-value-200-application-json-property-data-property-items-item-property-target-product.serializer';
@@ -22,6 +23,7 @@ export * from './replace-upsell-offer-response-value-200-application-json-proper
 export * from './replace-upsell-offer-response-value-200-application-json-property-data-property-source-variant.serializer';
 export * from './sdk-create-upsell-offer-request-application-json.serializer';
 export * from './sdk-create-upsell-offer-response-value-201-application-json.serializer';
+export * from './sdk-get-upsell-offer-performance-response-value-200-application-json.serializer';
 export * from './sdk-get-upsell-offer-response-value-200-application-json.serializer';
 export * from './sdk-list-upsell-offers-response-value-200-application-json.serializer';
 export * from './sdk-replace-upsell-offer-request-application-json.serializer';

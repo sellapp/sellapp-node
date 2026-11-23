@@ -7,6 +7,8 @@ import type { V2SearchSectionsRequestApplicationJsonPropertySearch } from '../..
 import type { V2SearchSectionsRequestApplicationJsonPropertyIncludesItem } from '../../blacklists/interfaces/v-2-search-sections-request-application-json-property-includes-item.interface';
 
 export interface V2SearchSectionsOptions extends PaginationOptions {
+  /** Page number to return. */
+  page?: number;
   filters?: V2SearchSectionsRequestApplicationJsonPropertyFiltersItem[];
   sort?: V2SearchSectionsRequestApplicationJsonPropertySortItem[];
   search?: V2SearchSectionsRequestApplicationJsonPropertySearch;

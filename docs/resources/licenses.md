@@ -116,14 +116,14 @@ List all license keys
 [API reference](https://sell.app/docs/api/licenses/list-all-license-keys) · Effect: **read**
 
 ```typescript
-async list(options?: LicensesListOptions): Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson, LicensesListOptions>>
+async list(options?: LicensesListOptions): Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson, PaginationOptions>>
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
 | options | `LicensesListOptions \| undefined` | No |
 
-Returns: `Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson, LicensesListOptions>>`.
+Returns: `Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson, PaginationOptions>>`.
 
 ```ts
 import { SellApp } from '@sell.app/sdk';

@@ -3,8 +3,8 @@
 import type { SdkSearchProductsResponseValue200ApplicationJson, SdkSearchProductsResponseValue200ApplicationJsonResponse } from '../interfaces/sdk-search-products-response-value-200-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 import { deserializeSearchProductsResponseValue200ApplicationJsonPropertyDataItem } from './search-products-response-value-200-application-json-property-data-item.serializer';
-import { deserializeSearchProductsResponseValue200ApplicationJsonPropertyLinks } from './search-products-response-value-200-application-json-property-links.serializer';
-import { deserializeSearchProductsResponseValue200ApplicationJsonPropertyMeta } from './search-products-response-value-200-application-json-property-meta.serializer';
+import { deserializePaginationLinks } from '../../charges/serializers/pagination-links.serializer';
+import { deserializePaginationMeta } from '../../charges/serializers/pagination-meta.serializer';
 
 const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchProductsResponseValue200ApplicationJson","required":["data","links","meta"],"properties":{"data":{"kind":"array","items":{"kind":"any"}},"links":{"kind":"any"},"meta":{"kind":"any"}},"additionalProperties":true};
 const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchProductsResponseValue200ApplicationJson","required":["data","links","meta"],"properties":{"data":{"kind":"array","items":{"kind":"any"}},"links":{"kind":"any"},"meta":{"kind":"any"}},"additionalProperties":true};
@@ -16,7 +16,7 @@ export const deserializeSdkSearchProductsResponseValue200ApplicationJson = (
   return {
     ...preserveUnknownFields(response, ["data","links","meta"]),
     data: response.data.map(deserializeSearchProductsResponseValue200ApplicationJsonPropertyDataItem),
-    links: deserializeSearchProductsResponseValue200ApplicationJsonPropertyLinks(response.links),
-    meta: deserializeSearchProductsResponseValue200ApplicationJsonPropertyMeta(response.meta),
+    links: deserializePaginationLinks(response.links),
+    meta: deserializePaginationMeta(response.meta),
   };
 };

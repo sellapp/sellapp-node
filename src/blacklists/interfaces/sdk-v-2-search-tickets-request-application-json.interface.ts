@@ -4,12 +4,19 @@ import type { V2SearchTicketsRequestApplicationJsonPropertyFiltersItem, V2Search
 import type { V2SearchTicketsRequestApplicationJsonPropertySortItem, V2SearchTicketsRequestApplicationJsonPropertySortItemResponse } from './v-2-search-tickets-request-application-json-property-sort-item.interface';
 import type { V2SearchTicketsRequestApplicationJsonPropertySearch, V2SearchTicketsRequestApplicationJsonPropertySearchResponse } from './v-2-search-tickets-request-application-json-property-search.interface';
 import type { V2SearchTicketsRequestApplicationJsonPropertyIncludesItem, V2SearchTicketsRequestApplicationJsonPropertyIncludesItemResponse } from './v-2-search-tickets-request-application-json-property-includes-item.interface';
+import type { WaitingOn } from './waiting-on.interface';
 
 export interface SdkV2SearchTicketsRequestApplicationJson {
   filters?: V2SearchTicketsRequestApplicationJsonPropertyFiltersItem[];
   sort?: V2SearchTicketsRequestApplicationJsonPropertySortItem[];
   search?: V2SearchTicketsRequestApplicationJsonPropertySearch;
   includes?: V2SearchTicketsRequestApplicationJsonPropertyIncludesItem[];
+  /** `store`: the latest message is from the customer, so the ticket waits on you. `customer`: the latest message is yours. A ticket without messages matches neither. */
+  waitingOn?: WaitingOn | (string & Record<never, never>) | null;
+  /** A ticket reason by its label (as tickets show it in `reason`), its key such as `platform:refund_request`, or its code; case does not matter. A reason the store does not have returns `422` on `reason`, listing the store's reasons. */
+  reason?: string | null;
+  /** Part of the customer's email, case-insensitive. `%` and `_` match those characters literally. */
+  customerEmail?: string | null;
   [key: string]: unknown;
 }
 
@@ -18,5 +25,8 @@ export interface SdkV2SearchTicketsRequestApplicationJsonResponse {
   sort?: V2SearchTicketsRequestApplicationJsonPropertySortItemResponse[];
   search?: V2SearchTicketsRequestApplicationJsonPropertySearchResponse;
   includes?: V2SearchTicketsRequestApplicationJsonPropertyIncludesItemResponse[];
+  waiting_on?: WaitingOn | (string & Record<never, never>) | null;
+  reason?: string | null;
+  customer_email?: string | null;
   [key: string]: unknown;
 }

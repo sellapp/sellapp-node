@@ -11,12 +11,14 @@ import type { GetOptions } from './interfaces/get-options.interface';
 import type { ReplaceOptions } from './interfaces/replace-options.interface';
 import type { UpdateOptions } from './interfaces/update-options.interface';
 import type { DeleteOptions } from './interfaces/delete-options.interface';
+import type { GetPerformanceOptions } from './interfaces/get-performance-options.interface';
 import type { SdkListUpsellOffersResponseValue200ApplicationJson, SdkListUpsellOffersResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-upsell-offers-response-value-200-application-json.interface';
 import type { SdkCreateUpsellOfferResponseValue201ApplicationJson, SdkCreateUpsellOfferResponseValue201ApplicationJsonResponse } from './interfaces/sdk-create-upsell-offer-response-value-201-application-json.interface';
 import type { SdkSearchUpsellOffersResponseValue200ApplicationJson, SdkSearchUpsellOffersResponseValue200ApplicationJsonResponse } from './interfaces/sdk-search-upsell-offers-response-value-200-application-json.interface';
 import type { SdkGetUpsellOfferResponseValue200ApplicationJson, SdkGetUpsellOfferResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-upsell-offer-response-value-200-application-json.interface';
 import type { SdkReplaceUpsellOfferResponseValue200ApplicationJson, SdkReplaceUpsellOfferResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-upsell-offer-response-value-200-application-json.interface';
 import type { SdkUpdateUpsellOfferResponseValue200ApplicationJson, SdkUpdateUpsellOfferResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-upsell-offer-response-value-200-application-json.interface';
+import type { SdkGetUpsellOfferPerformanceResponseValue200ApplicationJson, SdkGetUpsellOfferPerformanceResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-upsell-offer-performance-response-value-200-application-json.interface';
 import type { SdkCreateUpsellOfferRequestApplicationJsonResponse } from './interfaces/sdk-create-upsell-offer-request-application-json.interface';
 import type { SdkSearchUpsellOffersRequestApplicationJsonResponse } from './interfaces/sdk-search-upsell-offers-request-application-json.interface';
 import type { SdkReplaceUpsellOfferRequestApplicationJsonResponse } from './interfaces/sdk-replace-upsell-offer-request-application-json.interface';
@@ -27,6 +29,7 @@ import { deserializeSdkSearchUpsellOffersResponseValue200ApplicationJson } from 
 import { deserializeSdkGetUpsellOfferResponseValue200ApplicationJson } from './serializers/sdk-get-upsell-offer-response-value-200-application-json.serializer';
 import { deserializeSdkReplaceUpsellOfferResponseValue200ApplicationJson } from './serializers/sdk-replace-upsell-offer-response-value-200-application-json.serializer';
 import { deserializeSdkUpdateUpsellOfferResponseValue200ApplicationJson } from './serializers/sdk-update-upsell-offer-response-value-200-application-json.serializer';
+import { deserializeSdkGetUpsellOfferPerformanceResponseValue200ApplicationJson } from './serializers/sdk-get-upsell-offer-performance-response-value-200-application-json.serializer';
 import { serializeSdkCreateUpsellOfferRequestApplicationJson } from './serializers/sdk-create-upsell-offer-request-application-json.serializer';
 import { serializeSdkSearchUpsellOffersRequestApplicationJson } from './serializers/sdk-search-upsell-offers-request-application-json.serializer';
 import { serializeSdkReplaceUpsellOfferRequestApplicationJson } from './serializers/sdk-replace-upsell-offer-request-application-json.serializer';
@@ -52,7 +55,7 @@ export class UpsellOffers {
   /**
    * List upsell offers
    *
-   * List the authenticated store's ordered post-purchase offers. Requires a Sanctum token with the `upsell` ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List the authenticated store's ordered post-purchase offers. Requires the `upsell` API-key ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<SdkListUpsellOffersResponseValue200ApplicationJson>>}
    * @throws {BadRequestException} 400
@@ -84,7 +87,7 @@ export class UpsellOffers {
   /**
    * Create an upsell offer
    *
-   * Create an ordered post-purchase offer. Every product and variant ID is checked against the selected store and expected parent product. Requires a Sanctum token with the `upsell` ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Create an ordered post-purchase offer. Every product and variant ID is checked against the selected store and expected parent product. Requires the `upsell` API-key ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @returns {Promise<SdkCreateUpsellOfferResponseValue201ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
@@ -104,7 +107,7 @@ export class UpsellOffers {
   /**
    * Search upsell offers
    *
-   * Search offer names and descriptions and compose supported filters and sort instructions. Requires a Sanctum token with the `upsell` ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Search offer names and descriptions and compose supported filters and sort instructions. Requires the `upsell` API-key ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<SdkSearchUpsellOffersResponseValue200ApplicationJson>>}
    * @throws {BadRequestException} 400
@@ -125,7 +128,7 @@ export class UpsellOffers {
   /**
    * Retrieve an upsell offer
    *
-   * Retrieve one store-scoped upsell offer and its ordered target items. Requires a Sanctum token with the `upsell` ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Retrieve one store-scoped upsell offer and its ordered target items. Requires the `upsell` API-key ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.upsellOffer - The upsellOffer path parameter.
    * @example 71
@@ -146,7 +149,7 @@ export class UpsellOffers {
   /**
    * Update an upsell offer
    *
-   * Update supplied fields. When items are supplied, they replace the complete ordered target-item set. Requires a Sanctum token with the `upsell` ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Update supplied fields. When items are supplied, they replace the complete ordered target-item set. Requires the `upsell` API-key ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.upsellOffer - The upsellOffer path parameter.
    * @example 71
@@ -170,7 +173,7 @@ export class UpsellOffers {
   /**
    * Update an upsell offer
    *
-   * Update supplied fields. When items are supplied, they replace the complete ordered target-item set. Requires a Sanctum token with the `upsell` ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Update supplied fields. When items are supplied, they replace the complete ordered target-item set. Requires the `upsell` API-key ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.upsellOffer - The upsellOffer path parameter.
    * @example 71
@@ -194,7 +197,7 @@ export class UpsellOffers {
   /**
    * Delete an upsell offer
    *
-   * Soft-delete an upsell offer while preserving checkout and reporting attribution. Requires a Sanctum token with the `upsell` ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Soft-delete an upsell offer while preserving checkout and reporting attribution. Requires the `upsell` API-key ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.upsellOffer - The upsellOffer path parameter.
    * @example 71
@@ -209,5 +212,30 @@ export class UpsellOffers {
   async delete(options: DeleteOptions): Promise<void> {
     const { upsellOffer } = options;
     await this.sellApp.delete(`/v2/upsell-offers/${encodeURIComponent(upsellOffer)}`, { ...options.requestOptions, operationId: 'deleteUpsellOffer' });
+  }
+
+  /**
+   * Retrieve upsell offer performance
+   *
+   * Report how an upsell offer has performed over its whole life: how often customers saw it, started its checkout, and bought it, and the revenue those purchases brought. An offer from another store returns `404`, and so does a deleted one unless you send `with_trashed=true`. Requires the `upsell` API-key ability and the Upsells role for the store selected by `X-STORE`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - Additional query options.
+   * @param options.upsellOffer - The upsell offer ID.
+   * @example 71
+   * @param options.withTrashed - Set to `true` to also find a deleted upsell offer.
+   * @default false
+   * @param options.onlyTrashed - Set to `true` to find only a deleted upsell offer. Ignored when `with_trashed` is `true`.
+   * @default false
+   * @returns {Promise<SdkGetUpsellOfferPerformanceResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async getPerformance(options: GetPerformanceOptions): Promise<SdkGetUpsellOfferPerformanceResponseValue200ApplicationJson> {
+    const { upsellOffer } = options;
+    const { data } = await this.sellApp.get<SdkGetUpsellOfferPerformanceResponseValue200ApplicationJsonResponse>(`/v2/upsell-offers/${encodeURIComponent(upsellOffer)}/performance`, { ...options.requestOptions, operationId: 'getUpsellOfferPerformance', query: { ...(options.withTrashed !== undefined && { with_trashed: options.withTrashed }), ...(options.onlyTrashed !== undefined && { only_trashed: options.onlyTrashed }) } });
+    return deserializeSdkGetUpsellOfferPerformanceResponseValue200ApplicationJson(data);
   }
 }

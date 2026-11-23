@@ -23,7 +23,7 @@ export * from './create-order-refund-response-value-200-application-json-propert
 export * from './create-order-refund-response-value-200-application-json-property-data-property-refund-status.interface';
 export * from './create-order-refund-response-value-200-application-json-property-data-property-refund.interface';
 export * from './create-order-refund-response-value-200-application-json-property-data.interface';
-export * from './create-order-replacement-request-application-json-property-product-variants.interface';
+export * from './create-order-replacement-request-application-json-property-product-variants-any-of-value-3.interface';
 export * from './create-order-replacement-response-value-200-application-json-property-data-property-customer.interface';
 export * from './create-order-replacement-response-value-200-application-json-property-data-property-line-items-item-status.interface';
 export * from './create-order-replacement-response-value-200-application-json-property-data-property-line-items-item.interface';
@@ -67,7 +67,7 @@ export * from './get-order-response-value-200-application-json-property-data-sta
 export * from './get-order-response-value-200-application-json-property-data.interface';
 export * from './list-deliverables-options.interface';
 export * from './list-order-deliverables-response-value-200-application-json-property-data-item-property-additional-information-item.interface';
-export * from './list-order-deliverables-response-value-200-application-json-property-data-item-property-deliverable-property-data.interface';
+export * from './list-order-deliverables-response-value-200-application-json-property-data-item-property-deliverable-property-data-any-of-value-1.interface';
 export * from './list-order-deliverables-response-value-200-application-json-property-data-item-property-deliverable.interface';
 export * from './list-order-deliverables-response-value-200-application-json-property-data-item-status.interface';
 export * from './list-order-deliverables-response-value-200-application-json-property-data-item.interface';
@@ -93,6 +93,8 @@ export * from './pay-order-from-wallet-response-value-200-application-json-prope
 export * from './pay-order-from-wallet-response-value-200-application-json-property-data-status.interface';
 export * from './pay-order-from-wallet-response-value-200-application-json-property-data.interface';
 export * from './provider.interface';
+export * from './regenerate-order-telegram-invite-response-value-201-application-json-property-data.interface';
+export * from './regenerate-telegram-invite-options.interface';
 export * from './retry-order-dynamic-delivery-response-value-202-application-json-property-data-property-customer.interface';
 export * from './retry-order-dynamic-delivery-response-value-202-application-json-property-data-property-line-items-item-status.interface';
 export * from './retry-order-dynamic-delivery-response-value-202-application-json-property-data-property-line-items-item.interface';
@@ -128,6 +130,8 @@ export * from './sdk-get-order-response-value-200-application-json.interface';
 export * from './sdk-list-order-deliverables-response-value-200-application-json.interface';
 export * from './sdk-pay-order-from-wallet-request-application-json.interface';
 export * from './sdk-pay-order-from-wallet-response-value-200-application-json.interface';
+export * from './sdk-regenerate-order-telegram-invite-request-application-json.interface';
+export * from './sdk-regenerate-order-telegram-invite-response-value-201-application-json.interface';
 export * from './sdk-retry-order-dynamic-delivery-request-application-json.interface';
 export * from './sdk-retry-order-dynamic-delivery-response-value-202-application-json.interface';
 export * from './sdk-retry-order-fulfillment-request-application-json.interface';
@@ -139,6 +143,7 @@ export * from './sdk-send-order-fulfillment-notifications-response-value-200-app
 export * from './sdk-update-order-status-request-application-json-status.interface';
 export * from './sdk-update-order-status-request-application-json.interface';
 export * from './sdk-update-order-status-response-value-200-application-json.interface';
+export * from './search-orders-request-application-json-property-filters-item-field.interface';
 export * from './search-orders-request-application-json-property-filters-item-operator.interface';
 export * from './search-orders-request-application-json-property-filters-item.interface';
 export * from './search-orders-request-application-json-property-pagination.interface';

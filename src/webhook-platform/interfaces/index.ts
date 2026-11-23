@@ -14,3 +14,4 @@ export * from './sdk-get-webhook-delivery-response-value-200-application-json.in
 export * from './sdk-list-webhook-event-types-response-value-200-application-json.interface';
 export * from './sdk-replay-webhook-delivery-request-application-json.interface';
 export * from './sdk-replay-webhook-delivery-response-value-201-application-json.interface';
+export * from './webhook-platform-status.interface';

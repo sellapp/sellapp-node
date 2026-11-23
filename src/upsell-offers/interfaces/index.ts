@@ -8,6 +8,8 @@ export * from './create-upsell-offer-response-value-201-application-json-propert
 export * from './create-upsell-offer-response-value-201-application-json-property-data-property-source-variant.interface';
 export * from './create-upsell-offer-response-value-201-application-json-property-data.interface';
 export * from './discount-type.interface';
+export * from './get-performance-options.interface';
+export * from './get-upsell-offer-performance-response-value-200-application-json-property-data.interface';
 export * from './get-upsell-offer-response-value-200-application-json-property-data-property-items-item-property-target-product.interface';
 export * from './get-upsell-offer-response-value-200-application-json-property-data-property-items-item-property-target-variant.interface';
 export * from './get-upsell-offer-response-value-200-application-json-property-data-property-items-item.interface';
@@ -23,6 +25,7 @@ export * from './replace-upsell-offer-response-value-200-application-json-proper
 export * from './replace-upsell-offer-response-value-200-application-json-property-data.interface';
 export * from './sdk-create-upsell-offer-request-application-json.interface';
 export * from './sdk-create-upsell-offer-response-value-201-application-json.interface';
+export * from './sdk-get-upsell-offer-performance-response-value-200-application-json.interface';
 export * from './sdk-get-upsell-offer-response-value-200-application-json.interface';
 export * from './sdk-list-upsell-offers-response-value-200-application-json.interface';
 export * from './sdk-replace-upsell-offer-request-application-json.interface';

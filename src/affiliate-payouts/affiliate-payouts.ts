@@ -10,16 +10,21 @@ import type { AffiliatePayoutsListOptions } from './interfaces/affiliate-payouts
 import type { GetOptions } from './interfaces/get-options.interface';
 import type { CreateOptions } from './interfaces/create-options.interface';
 import type { UpdateOptions } from './interfaces/update-options.interface';
+import type { MarkPaidOptions } from './interfaces/mark-paid-options.interface';
 import type { ListAffiliatePayoutsResponseValue200ApplicationJsonPropertyDataItem, ListAffiliatePayoutsResponseValue200ApplicationJsonPropertyDataItemResponse } from './interfaces/list-affiliate-payouts-response-value-200-application-json-property-data-item.interface';
 import type { SdkGetAffiliatePayoutResponseValue200ApplicationJson, SdkGetAffiliatePayoutResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-affiliate-payout-response-value-200-application-json.interface';
 import type { SdkCreateAffiliatePayoutResponseValue200ApplicationJson, SdkCreateAffiliatePayoutResponseValue200ApplicationJsonResponse } from './interfaces/sdk-create-affiliate-payout-response-value-200-application-json.interface';
 import type { SdkUpdateAffiliatePayoutStatusResponseValue200ApplicationJson, SdkUpdateAffiliatePayoutStatusResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-affiliate-payout-status-response-value-200-application-json.interface';
+import type { SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson, SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJsonResponse } from './interfaces/sdk-mark-affiliate-payouts-paid-response-value-200-application-json.interface';
 import type { SdkUpdateAffiliatePayoutStatusRequestApplicationJsonResponse } from './interfaces/sdk-update-affiliate-payout-status-request-application-json.interface';
+import type { SdkMarkAffiliatePayoutsPaidRequestApplicationJsonResponse } from './interfaces/sdk-mark-affiliate-payouts-paid-request-application-json.interface';
 import { deserializeListAffiliatePayoutsResponseValue200ApplicationJsonPropertyDataItem } from './serializers/list-affiliate-payouts-response-value-200-application-json-property-data-item.serializer';
 import { deserializeSdkGetAffiliatePayoutResponseValue200ApplicationJson } from './serializers/sdk-get-affiliate-payout-response-value-200-application-json.serializer';
 import { deserializeSdkCreateAffiliatePayoutResponseValue200ApplicationJson } from './serializers/sdk-create-affiliate-payout-response-value-200-application-json.serializer';
 import { deserializeSdkUpdateAffiliatePayoutStatusResponseValue200ApplicationJson } from './serializers/sdk-update-affiliate-payout-status-response-value-200-application-json.serializer';
+import { deserializeSdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson } from './serializers/sdk-mark-affiliate-payouts-paid-response-value-200-application-json.serializer';
 import { serializeSdkUpdateAffiliatePayoutStatusRequestApplicationJson } from './serializers/sdk-update-affiliate-payout-status-request-application-json.serializer';
+import { serializeSdkMarkAffiliatePayoutsPaidRequestApplicationJson } from './serializers/sdk-mark-affiliate-payouts-paid-request-application-json.serializer';
 
 interface SellAppResponseEnvelope<T> { data: T; status: number; headers: Headers; requestId?: string }
 type SellAppWithResponse<T extends object> = {
@@ -46,6 +51,8 @@ const serializeAffiliatePayoutsListOptions = (options: AffiliatePayoutsListOptio
   };
   if (options.affiliateId !== undefined) wire.affiliate_id = options.affiliateId;
   if (options.status !== undefined) wire.status = options.status;
+  if (options.payoutMethod !== undefined) wire.payout_method = options.payoutMethod;
+  if (options.search !== undefined) wire.search = options.search;
   if (options.page !== undefined) wire.page = options.page;
   return wire as PaginationOptions;
 };
@@ -57,7 +64,7 @@ export class AffiliatePayouts {
   /**
    * List affiliate payouts
    *
-   * List merchant-managed affiliate payout records. These record commission payments arranged by the merchant; SellApp does not transfer or hold the funds. Requires the `affiliate` credential ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List merchant-managed affiliate payout records, newest first, 15 per page by default. These record commission payments arranged by the merchant; SellApp does not transfer or hold the funds. Requires the `affiliate` credential ability. A `status` or `payout_method` value the API does not know returns `422`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<ListAffiliatePayoutsResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -146,5 +153,25 @@ export class AffiliatePayouts {
       serializeSdkUpdateAffiliatePayoutStatusRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updateAffiliatePayoutStatus' },
     );
     return deserializeSdkUpdateAffiliatePayoutStatusResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Mark affiliate payouts paid
+   *
+   * Record up to 20 due affiliate payouts as paid in one request, after you have paid the affiliates yourself. No money moves: SellApp only records the payment. Each payout marked paid also marks its referrals paid and emails that affiliate that the payout was paid. Send the payout IDs and `expected_total_usd_cents`, the sum of their `amount_usd_cents` as you read them, in integer USD cents (`4250` means $42.50). Every payout is checked first, and nothing changes when one of them is unknown in your store, is not `due`, or has referrals that no longer add up to it or can no longer be paid (`422` on `payout_ids`, one message per payout), or when the amounts add up to another total (`422` on `expected_total_usd_cents`). Then each payout is marked in the order sent, and `data` reports one `outcome` per payout: `paid`, `skipped`, or `failed`. A payout that changes between the check and its turn is skipped or fails without affecting the others. Requires the `affiliate` and `affiliate:payout` API-key abilities, and the staff member who owns the key needs the affiliate and affiliate payout permissions. There is no idempotency key, but sending the same batch again is refused with `422` on `payout_ids`, because those payouts are no longer due, so nobody is emailed twice. After a lost response, list the payouts with `GET /v2/affiliate-payouts?status=due` and send only those still due, with their new total. The emails cannot be taken back; to reopen a payout recorded by mistake, set it back to `due` with `PATCH /v2/affiliate-payouts/{payout}/status`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async markPaid(options: MarkPaidOptions): Promise<SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.post<SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJsonResponse, SdkMarkAffiliatePayoutsPaidRequestApplicationJsonResponse>(
+      '/v2/affiliate-payouts/mark-paid',
+      serializeSdkMarkAffiliatePayoutsPaidRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'markAffiliatePayoutsPaid' },
+    );
+    return deserializeSdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson(data);
   }
 }

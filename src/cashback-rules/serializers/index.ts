@@ -2,11 +2,14 @@
 
 export * from './create-cashback-rule-response-value-201-application-json-property-data.serializer';
 export * from './list-cashback-rules-response-value-200-application-json-property-data-item.serializer';
+export * from './quote-cashback-rule-response-value-200-application-json-property-data.serializer';
+export * from './quote-cashback-rule-response-value-200-application-json-property-data-property-matching-rule.serializer';
 export * from './replace-cashback-rule-response-value-200-application-json-property-data.serializer';
 export * from './restore-cashback-rule-response-value-200-application-json-property-data.serializer';
 export * from './sdk-create-cashback-rule-request-application-json.serializer';
 export * from './sdk-create-cashback-rule-response-value-201-application-json.serializer';
 export * from './sdk-list-cashback-rules-response-value-200-application-json.serializer';
+export * from './sdk-quote-cashback-rule-response-value-200-application-json.serializer';
 export * from './sdk-replace-cashback-rule-request-application-json.serializer';
 export * from './sdk-replace-cashback-rule-response-value-200-application-json.serializer';
 export * from './sdk-restore-cashback-rule-response-value-200-application-json.serializer';

@@ -5,23 +5,31 @@ import type { GetOptions as RequestOptions } from '../common/interfaces/get-opti
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { CoursesListOptions } from './interfaces/courses-list-options.interface';
+import type { CreateOptions } from './interfaces/create-options.interface';
 import type { SearchOptions } from './interfaces/search-options.interface';
 import type { GetOptions } from './interfaces/get-options.interface';
 import type { ReplaceOptions } from './interfaces/replace-options.interface';
 import type { UpdateOptions } from './interfaces/update-options.interface';
+import type { GetStudentSummaryOptions } from './interfaces/get-student-summary-options.interface';
 import type { SdkListCoursesResponseValue200ApplicationJson, SdkListCoursesResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-courses-response-value-200-application-json.interface';
+import type { SdkCreateCourseResponseValue201ApplicationJson, SdkCreateCourseResponseValue201ApplicationJsonResponse } from './interfaces/sdk-create-course-response-value-201-application-json.interface';
 import type { SdkSearchCoursesResponseValue200ApplicationJson, SdkSearchCoursesResponseValue200ApplicationJsonResponse } from './interfaces/sdk-search-courses-response-value-200-application-json.interface';
 import type { SdkGetCourseResponseValue200ApplicationJson, SdkGetCourseResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-course-response-value-200-application-json.interface';
 import type { SdkReplaceCourseResponseValue200ApplicationJson, SdkReplaceCourseResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-course-response-value-200-application-json.interface';
 import type { SdkUpdateCourseResponseValue200ApplicationJson, SdkUpdateCourseResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-course-response-value-200-application-json.interface';
+import type { SdkGetCourseStudentSummaryResponseValue200ApplicationJson, SdkGetCourseStudentSummaryResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-course-student-summary-response-value-200-application-json.interface';
+import type { SdkCreateCourseRequestApplicationJsonResponse } from './interfaces/sdk-create-course-request-application-json.interface';
 import type { SdkSearchRewardRulesRequestApplicationJsonResponse } from '../reward-rules/interfaces/sdk-search-reward-rules-request-application-json.interface';
 import type { SdkReplaceCourseRequestApplicationJsonResponse } from './interfaces/sdk-replace-course-request-application-json.interface';
 import type { SdkUpdateCourseRequestApplicationJsonResponse } from './interfaces/sdk-update-course-request-application-json.interface';
 import { deserializeSdkListCoursesResponseValue200ApplicationJson } from './serializers/sdk-list-courses-response-value-200-application-json.serializer';
+import { deserializeSdkCreateCourseResponseValue201ApplicationJson } from './serializers/sdk-create-course-response-value-201-application-json.serializer';
 import { deserializeSdkSearchCoursesResponseValue200ApplicationJson } from './serializers/sdk-search-courses-response-value-200-application-json.serializer';
 import { deserializeSdkGetCourseResponseValue200ApplicationJson } from './serializers/sdk-get-course-response-value-200-application-json.serializer';
 import { deserializeSdkReplaceCourseResponseValue200ApplicationJson } from './serializers/sdk-replace-course-response-value-200-application-json.serializer';
 import { deserializeSdkUpdateCourseResponseValue200ApplicationJson } from './serializers/sdk-update-course-response-value-200-application-json.serializer';
+import { deserializeSdkGetCourseStudentSummaryResponseValue200ApplicationJson } from './serializers/sdk-get-course-student-summary-response-value-200-application-json.serializer';
+import { serializeSdkCreateCourseRequestApplicationJson } from './serializers/sdk-create-course-request-application-json.serializer';
 import { serializeSdkSearchRewardRulesRequestApplicationJson } from '../reward-rules/serializers/sdk-search-reward-rules-request-application-json.serializer';
 import { serializeSdkReplaceCourseRequestApplicationJson } from './serializers/sdk-replace-course-request-application-json.serializer';
 import { serializeSdkUpdateCourseRequestApplicationJson } from './serializers/sdk-update-course-request-application-json.serializer';
@@ -76,6 +84,26 @@ export class Courses {
   }
 
   /**
+   * Create a course
+   *
+   * Create a course as a draft that customers cannot buy yet, whatever `visibility` you send: `visibility`, `HIDDEN` by default, applies once the course is published. It starts with no sections and one draft option named `Default`, priced at 0 USD: set the price with the product variant endpoints, add sections and lessons, then publish it with `POST /v2/products/{product}/publish`, where `{product}` is the course `id`. Each successful call creates another course, so do not retry blindly after a lost response: search courses for the title first. Requires the `listing` API-key ability and the `listing` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkCreateCourseResponseValue201ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async create(options: CreateOptions): Promise<SdkCreateCourseResponseValue201ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.post<SdkCreateCourseResponseValue201ApplicationJsonResponse, SdkCreateCourseRequestApplicationJsonResponse>(
+      '/v2/courses',
+      serializeSdkCreateCourseRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'createCourse' },
+    );
+    return deserializeSdkCreateCourseResponseValue201ApplicationJson(data);
+  }
+
+  /**
    * Search courses
    *
    * Search courses by title, slug, or description and compose supported filters and sort instructions. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
@@ -119,7 +147,7 @@ export class Courses {
   /**
    * Update a course
    *
-   * Update course metadata, access configuration, delivery copy, or publication visibility. Public visibility requires a ready promotional video and at least one published lesson. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Update a course's title, URL slug, description, details, access rules, delivery message, or visibility. Only the fields you send change, and PUT behaves exactly like PATCH. Sending the course's current `visibility` changes nothing; a different `visibility` also publishes a draft course. `PUBLIC` first checks that the course has a ready promotional video and at least one published lesson, and otherwise returns `422` on `promo_video` or `curriculum` without changing anything. Every successful update moves `updated_at` forward, even one that changes nothing, so retrying with the same `expected_updated_at` after a success returns `422`: retrieve the course again first. Requires the `listing` API-key ability and the `listing` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.course - The course path parameter.
    * @returns {Promise<SdkReplaceCourseResponseValue200ApplicationJson>}
@@ -142,7 +170,7 @@ export class Courses {
   /**
    * Update a course
    *
-   * Update course metadata, access configuration, delivery copy, or publication visibility. Public visibility requires a ready promotional video and at least one published lesson. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Update a course's title, URL slug, description, details, access rules, delivery message, or visibility. Only the fields you send change, and PUT behaves exactly like PATCH. Sending the course's current `visibility` changes nothing; a different `visibility` also publishes a draft course. `PUBLIC` first checks that the course has a ready promotional video and at least one published lesson, and otherwise returns `422` on `promo_video` or `curriculum` without changing anything. Every successful update moves `updated_at` forward, even one that changes nothing, so retrying with the same `expected_updated_at` after a success returns `422`: retrieve the course again first. Requires the `listing` API-key ability and the `listing` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.course - The course path parameter.
    * @returns {Promise<SdkUpdateCourseResponseValue200ApplicationJson>}
@@ -160,5 +188,29 @@ export class Courses {
       serializeSdkUpdateCourseRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updateCourse' },
     );
     return deserializeSdkUpdateCourseResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Retrieve a course student summary
+   *
+   * Summarize who bought your courses in a date range: totals for students, purchases, units, and orders, plus the top students and the top courses. A purchase counts when it is paid or completed and was made within the range; refunded and pending purchases do not count. A student is a customer, or the order email when a purchase has no customer record. The response contains customer email addresses, so handle it as personal data. Requires the `invoice` API-key ability and the invoice permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - Additional query options.
+   * @param options.startDate - The first day to include, as `YYYY-MM-DD` in the store's timezone.
+   * @example "2026-08-01"
+   * @param options.endDate - The last day to include, as `YYYY-MM-DD` in the store's timezone. It must not be before `start_date`, and the range can cover at most 366 days; otherwise the request returns `422` on `end_date`.
+   * @example "2026-08-31"
+   * @param options.courseId - Count one course only: the course `id` from `/v2/courses`. Another product, a deleted course, or another store's course returns `422` on `course_id`.
+   * @param options.limit - How many rows `students` and `courses` each return: 10 by default, at most 20. A larger value returns `422` on `limit`. The `summary` totals always cover everything.
+   * @default 10
+   * @returns {Promise<SdkGetCourseStudentSummaryResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async getStudentSummary(options: GetStudentSummaryOptions): Promise<SdkGetCourseStudentSummaryResponseValue200ApplicationJson> {
+    const { data } = await this.sellApp.get<SdkGetCourseStudentSummaryResponseValue200ApplicationJsonResponse>('/v2/course-students', { ...options.requestOptions, operationId: 'getCourseStudentSummary', query: { start_date: options.startDate, end_date: options.endDate, ...(options.courseId !== undefined && { course_id: options.courseId }), ...(options.limit !== undefined && { limit: options.limit }) } });
+    return deserializeSdkGetCourseStudentSummaryResponseValue200ApplicationJson(data);
   }
 }

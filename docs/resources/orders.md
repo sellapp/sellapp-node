@@ -137,7 +137,7 @@ const client = new SellApp({
 });
 
 const result = await client.orders.search({
-  "filters": [{"field": "transaction_id", "operator": "contains", "value": "pi_3Example"}, {"field": "status", "operator": "in", "value": ["COMPLETED"]}],
+  "filters": [{"field": "created_at", "operator": "gte", "value": "2026-07-01T00:00:00Z"}, {"field": "created_at", "operator": "lte", "value": "2026-07-31T23:59:59Z"}, {"field": "total", "operator": "gte", "value": 1000}, {"field": "currency", "operator": "eq", "value": "USD"}, {"field": "status", "operator": "in", "value": ["COMPLETED"]}],
   "sort": [{"field": "created_at", "direction": "desc"}],
   "pagination": {"page": 1, "limit": 25}
 });
@@ -356,7 +356,7 @@ const client = new SellApp({
 
 const result = await client.orders.createReplacement({
   "order": 9001,
-  "productVariants": {"0": 4321},
+  "productVariants": [4321],
   requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
 });
 console.log(result);
@@ -412,6 +412,7 @@ const client = new SellApp({
 const result = await client.orders.createRefund({
   "order": 9001,
   "amount": "5.00",
+  "expectedRefundedTotalCents": 0,
   requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
 });
 console.log(result);
@@ -602,6 +603,61 @@ Supported credential alternatives (each object is one alternative):
 ```
 
 Documented HTTP responses: 200, 400, 401, 403, 404, 409, 410, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## regenerateTelegramInvite
+
+Create a Telegram invite link
+
+[API reference](https://sell.app/docs/api/orders/create-a-telegram-invite-link) · Effect: **consequential**
+
+```typescript
+async regenerateTelegramInvite(options: RegenerateTelegramInviteOptions): Promise<SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| options | `RegenerateTelegramInviteOptions` | Yes |
+
+Returns: `Promise<SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.orders.regenerateTelegramInvite({
+  "order": 9001,
+  "variantId": 4321,
+  requestOptions: { headers: { "Idempotency-Key": "example-mutation-001" } }
+});
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 201, 400, 401, 403, 404, 409, 410, 422, 429, 500. See the API reference for field-level validation and consequences.
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 

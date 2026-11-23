@@ -15,6 +15,9 @@ import type { SearchOptions } from './interfaces/search-options.interface';
 import type { BatchCreateOptions } from './interfaces/batch-create-options.interface';
 import type { BatchUpdateOptions } from './interfaces/batch-update-options.interface';
 import type { BatchDeleteOptions } from './interfaces/batch-delete-options.interface';
+import type { PublishOptions } from './interfaces/publish-options.interface';
+import type { DuplicateOptions } from './interfaces/duplicate-options.interface';
+import type { MoveOptions } from './interfaces/move-options.interface';
 import type { ListProductsResponseValue200ApplicationJsonPropertyDataItem, ListProductsResponseValue200ApplicationJsonPropertyDataItemResponse } from './interfaces/list-products-response-value-200-application-json-property-data-item.interface';
 import type { SdkCreateProductResponseValue201ApplicationJson, SdkCreateProductResponseValue201ApplicationJsonResponse } from './interfaces/sdk-create-product-response-value-201-application-json.interface';
 import type { SdkGetProductResponseValue200ApplicationJson, SdkGetProductResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-product-response-value-200-application-json.interface';
@@ -23,6 +26,9 @@ import type { SdkUpdateProductResponseValue200ApplicationJson, SdkUpdateProductR
 import type { SearchProductsResponseValue200ApplicationJsonPropertyDataItem, SearchProductsResponseValue200ApplicationJsonPropertyDataItemResponse } from './interfaces/search-products-response-value-200-application-json-property-data-item.interface';
 import type { SdkBatchCreateProductsResponseValue200ApplicationJson, SdkBatchCreateProductsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-batch-create-products-response-value-200-application-json.interface';
 import type { SdkBatchUpdateProductsResponseValue200ApplicationJson, SdkBatchUpdateProductsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-batch-update-products-response-value-200-application-json.interface';
+import type { SdkPublishProductResponseValue200ApplicationJson, SdkPublishProductResponseValue200ApplicationJsonResponse } from './interfaces/sdk-publish-product-response-value-200-application-json.interface';
+import type { SdkDuplicateProductResponseValue201ApplicationJson, SdkDuplicateProductResponseValue201ApplicationJsonResponse } from './interfaces/sdk-duplicate-product-response-value-201-application-json.interface';
+import type { SdkMoveProductResponseValue200ApplicationJson, SdkMoveProductResponseValue200ApplicationJsonResponse } from './interfaces/sdk-move-product-response-value-200-application-json.interface';
 import type { SdkCreateProductRequestApplicationJsonResponse } from './interfaces/sdk-create-product-request-application-json.interface';
 import type { SdkReplaceProductRequestApplicationJsonResponse } from './interfaces/sdk-replace-product-request-application-json.interface';
 import type { SdkUpdateProductRequestApplicationJsonResponse } from './interfaces/sdk-update-product-request-application-json.interface';
@@ -31,6 +37,8 @@ import type { SdkSearchProductsRequestApplicationJsonResponse } from './interfac
 import type { SdkBatchCreateProductsRequestApplicationJsonResponse } from './interfaces/sdk-batch-create-products-request-application-json.interface';
 import type { SdkBatchUpdateProductsRequestApplicationJsonResponse } from './interfaces/sdk-batch-update-products-request-application-json.interface';
 import type { SdkBatchDeleteProductsRequestApplicationJsonResponse } from './interfaces/sdk-batch-delete-products-request-application-json.interface';
+import type { SdkPublishProductRequestApplicationJsonResponse } from './interfaces/sdk-publish-product-request-application-json.interface';
+import type { SdkMoveProductRequestApplicationJsonResponse } from './interfaces/sdk-move-product-request-application-json.interface';
 import { deserializeListProductsResponseValue200ApplicationJsonPropertyDataItem } from './serializers/list-products-response-value-200-application-json-property-data-item.serializer';
 import { deserializeSdkCreateProductResponseValue201ApplicationJson } from './serializers/sdk-create-product-response-value-201-application-json.serializer';
 import { deserializeSdkGetProductResponseValue200ApplicationJson } from './serializers/sdk-get-product-response-value-200-application-json.serializer';
@@ -39,6 +47,9 @@ import { deserializeSdkUpdateProductResponseValue200ApplicationJson } from './se
 import { deserializeSearchProductsResponseValue200ApplicationJsonPropertyDataItem } from './serializers/search-products-response-value-200-application-json-property-data-item.serializer';
 import { deserializeSdkBatchCreateProductsResponseValue200ApplicationJson } from './serializers/sdk-batch-create-products-response-value-200-application-json.serializer';
 import { deserializeSdkBatchUpdateProductsResponseValue200ApplicationJson } from './serializers/sdk-batch-update-products-response-value-200-application-json.serializer';
+import { deserializeSdkPublishProductResponseValue200ApplicationJson } from './serializers/sdk-publish-product-response-value-200-application-json.serializer';
+import { deserializeSdkDuplicateProductResponseValue201ApplicationJson } from './serializers/sdk-duplicate-product-response-value-201-application-json.serializer';
+import { deserializeSdkMoveProductResponseValue200ApplicationJson } from './serializers/sdk-move-product-response-value-200-application-json.serializer';
 import { serializeSdkCreateProductRequestApplicationJson } from './serializers/sdk-create-product-request-application-json.serializer';
 import { serializeSdkReplaceProductRequestApplicationJson } from './serializers/sdk-replace-product-request-application-json.serializer';
 import { serializeSdkUpdateProductRequestApplicationJson } from './serializers/sdk-update-product-request-application-json.serializer';
@@ -47,6 +58,8 @@ import { serializeSdkSearchProductsRequestApplicationJson } from './serializers/
 import { serializeSdkBatchCreateProductsRequestApplicationJson } from './serializers/sdk-batch-create-products-request-application-json.serializer';
 import { serializeSdkBatchUpdateProductsRequestApplicationJson } from './serializers/sdk-batch-update-products-request-application-json.serializer';
 import { serializeSdkBatchDeleteProductsRequestApplicationJson } from './serializers/sdk-batch-delete-products-request-application-json.serializer';
+import { serializeSdkPublishProductRequestApplicationJson } from './serializers/sdk-publish-product-request-application-json.serializer';
+import { serializeSdkMoveProductRequestApplicationJson } from './serializers/sdk-move-product-request-application-json.serializer';
 
 interface SellAppResponseEnvelope<T> { data: T; status: number; headers: Headers; requestId?: string }
 type SellAppWithResponse<T extends object> = {
@@ -74,6 +87,11 @@ const serializeProductsListOptions = (options: ProductsListOptions): PaginationO
   if (options.page !== undefined) wire.page = options.page;
   if (options.withDrafts !== undefined) wire.with_drafts = options.withDrafts;
   if (options.onlyDrafts !== undefined) wire.only_drafts = options.onlyDrafts;
+  if (options.minPrice !== undefined) wire.min_price = options.minPrice;
+  if (options.maxPrice !== undefined) wire.max_price = options.maxPrice;
+  if (options.stock !== undefined) wire.stock = options.stock;
+  if (options.visibility !== undefined) wire.visibility = options.visibility;
+  if (options.hasSales !== undefined) wire.has_sales = options.hasSales;
   return wire as PaginationOptions;
 };
 
@@ -226,7 +244,7 @@ export class Products {
   /**
    * Search products
    *
-   * Search products using JSON body filters, search terms, includes, and sort instructions. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Search your store's products by title and narrow them by price, stock, visibility, or sales, 15 per page by default. Send the filters in the JSON body. Products support no `filters` or `sort` entries: any entry returns `422`. A filter value that is not valid, such as an unknown `stock` state or a `min_price` above `max_price`, returns `422` on that field. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<SearchProductsResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -298,5 +316,71 @@ export class Products {
   async batchDelete(options: BatchDeleteOptions): Promise<void> {
     const { requestOptions, ...payload } = options;
     await this.sellApp.deleteWithBody<SdkBatchDeleteProductsRequestApplicationJsonResponse>('/v2/products/batch', serializeSdkBatchDeleteProductsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'batchDeleteProducts' });
+  }
+
+  /**
+   * Publish a product
+   *
+   * Publish a draft product so customers can buy it. Works for normal products, bundles, add-ons, credits products, booking products, and courses. Each is checked as saved, the way its dashboard editor checks it before publishing, and nothing else about the product changes. A normal product needs a description and at least one published variant, and every variant that will be on sale needs a title, a description of at least 5 characters, a working delivery (for example an uploaded file for a download), a price, and payment methods enabled for the store that can take that currency. With exactly one variant, that variant is published with the product. With several, send the draft variants to publish with it in `variant_ids`; the others stay drafts. Publishing a subscription variant also creates its billing plans with the payment providers. A booking product publishes its one option with it; with several options, publish at least one with `POST /v2/products/{product}/variants/{variant}/publish` first, and the other options keep their own state. A bundle needs at least one product in it. A course is published with `visibility`, or with its saved visibility when you leave it out; `PUBLIC` also needs a ready promo video and at least one published lesson. A subscription-priced course cannot be published here. Publishing does not change a normal product's `visibility`: a product that is not `PUBLIC` is published but stays off the storefront listing. Requires the `listing` API-key ability and the `listing` permission in your team role. Safe to repeat: once the product is published, another call changes nothing and returns `422` with `The product is already published.` on `product`. Every refusal returns `422`. `visibility` is accepted only for a course and `variant_ids` only for a normal product; each is otherwise refused on that field, and `variant_ids.{i}` names an ID that is not a variant of this product. Everything else is on `product`, with one sentence per thing the product still needs. One `product` refusal comes after the product was published: when a payment provider refuses to create a subscription billing plan, the product and its variants are already published and the message is the provider's reason. Retrieve the product before trying again. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.product - The product path parameter.
+   * @returns {Promise<SdkPublishProductResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async publish(options: PublishOptions): Promise<SdkPublishProductResponseValue200ApplicationJson> {
+    const { product, requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.post<SdkPublishProductResponseValue200ApplicationJsonResponse, SdkPublishProductRequestApplicationJsonResponse>(
+      `/v2/products/${encodeURIComponent(product)}/publish`,
+      serializeSdkPublishProductRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'publishProduct' },
+    );
+    return deserializeSdkPublishProductResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Duplicate a product
+   *
+   * Copy a normal product, bundle, add-on, credits product, or booking product within the same store and return the copy. Courses cannot be duplicated. The copy is titled `(Copy)`, `(Copy 2)`, and so on, with a matching `-copy` slug, and keeps every other product setting, including its images, `visibility`, and draft state. A copy of a published product is therefore on sale straight away. It gets no place in the product order or in a section. A normal product's variants are copied with their settings and downloadable files, except subscription variants. A bundle's variant is copied with the products in it, an add-on's with its downloadable files and the products it is offered with, a credits product's with its rate tiers, and a booking product's options, except subscription options, with their schedules. Never copied: sales, reviews, appointments, serial codes, issued licence keys, and group membership. A copied variant that delivers serial codes gets a stock of `0`, so it shows as sold out until you add codes. Requires the `listing` API-key ability and the `listing` permission in your team role. Not safe to retry blindly: every call creates another copy. If a response is lost, list your products and look for the copy before trying again. A course, or a product with nothing to copy (only subscription variants), returns `422` on `product`. A product that changed while the copy was being made also returns `422` on `product`; nothing was copied. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.product - The product path parameter.
+   * @returns {Promise<SdkDuplicateProductResponseValue201ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async duplicate(options: DuplicateOptions): Promise<SdkDuplicateProductResponseValue201ApplicationJson> {
+    const { product } = options;
+    const { data } = await this.sellApp.post<SdkDuplicateProductResponseValue201ApplicationJsonResponse>(`/v2/products/${encodeURIComponent(product)}/duplicate`, {}, { ...options.requestOptions, operationId: 'duplicateProduct' });
+    return deserializeSdkDuplicateProductResponseValue201ApplicationJson(data);
+  }
+
+  /**
+   * Move a product
+   *
+   * Move a normal product to a position in your store's product order, shifting the products in between by one. Positions run from `1` to the number of normal products, drafts included; a product's position is its `order`. Gaps in the stored order are closed first. Requires the `listing` API-key ability and the `listing` permission in your team role. Safe to repeat: moving a product to the position it already has changes nothing. Send `expected_position` with the position you last read to refuse the move when someone else moved the product in the meantime. A position past the end returns `422` on `position` with the allowed range, a product that is no longer at `expected_position` returns `422` on `expected_position` with its current position, and a listing that is not a normal product returns `422` on `product`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.product - The product path parameter.
+   * @returns {Promise<SdkMoveProductResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async move(options: MoveOptions): Promise<SdkMoveProductResponseValue200ApplicationJson> {
+    const { product, requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.put<SdkMoveProductResponseValue200ApplicationJsonResponse, SdkMoveProductRequestApplicationJsonResponse>(
+      `/v2/products/${encodeURIComponent(product)}/position`,
+      serializeSdkMoveProductRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'moveProduct' },
+    );
+    return deserializeSdkMoveProductResponseValue200ApplicationJson(data);
   }
 }

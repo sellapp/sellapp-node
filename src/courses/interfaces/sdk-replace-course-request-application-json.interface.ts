@@ -21,7 +21,14 @@ export interface SdkReplaceCourseRequestApplicationJson {
   enrollmentLimit?: number | null;
   deliveryText?: string | null;
   visibility?: CatalogVisibility | (string & Record<never, never>);
+  /** The `updated_at` you last read. If the course changed since, the request returns `422` on `expected_updated_at` and changes nothing. It is checked even when the request changes nothing else. */
   expectedUpdatedAt?: Date;
+  /** The course name customers see. */
+  title?: string;
+  /** The last part of the course's storefront URL: lowercase letters and numbers in words joined by single hyphens, such as `design-foundations`. It must be unused by every other product in the store, or the request returns `422` on `slug`. */
+  slug?: string;
+  /** The course description as HTML, at least 5 characters long and at most 2000 characters of visible text. `null` keeps the current description. To clear the description of a draft course, send an empty element such as `<p></p>`; a published course must keep one, so clearing it returns `422` on `description`. */
+  description?: string | null;
   [key: string]: unknown;
 }
 
@@ -41,5 +48,8 @@ export interface SdkReplaceCourseRequestApplicationJsonResponse {
   delivery_text?: string | null;
   visibility?: CatalogVisibility | (string & Record<never, never>);
   expected_updated_at?: string;
+  title?: string;
+  slug?: string;
+  description?: string | null;
   [key: string]: unknown;
 }

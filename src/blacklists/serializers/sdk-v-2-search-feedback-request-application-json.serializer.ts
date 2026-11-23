@@ -7,18 +7,19 @@ import { serializeV2SearchFeedbackRequestApplicationJsonPropertySortItem } from 
 import { serializeV2SearchFeedbackRequestApplicationJsonPropertySearch } from './v-2-search-feedback-request-application-json-property-search.serializer';
 import { serializeV2SearchFeedbackRequestApplicationJsonPropertyIncludesItem } from './v-2-search-feedback-request-application-json-property-includes-item.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkV2SearchFeedbackRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkV2SearchFeedbackRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkV2SearchFeedbackRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}},"replyState":{"kind":"nullable","inner":{"kind":"enum","values":["all","replied","unreplied","null"]}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkV2SearchFeedbackRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}},"reply_state":{"kind":"nullable","inner":{"kind":"enum","values":["all","replied","unreplied","null"]}}},"additionalProperties":true};
 
 export const serializeSdkV2SearchFeedbackRequestApplicationJson = (
   model: SdkV2SearchFeedbackRequestApplicationJson,
 ): SdkV2SearchFeedbackRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["filters","sort","search","includes"]),
+    ...preserveUnknownFields(model, ["filters","sort","search","includes","replyState"]),
     filters: model.filters != null ? model.filters.map(serializeV2SearchFeedbackRequestApplicationJsonPropertyFiltersItem) : undefined,
     sort: model.sort != null ? model.sort.map(serializeV2SearchFeedbackRequestApplicationJsonPropertySortItem) : undefined,
     search: model.search != null ? serializeV2SearchFeedbackRequestApplicationJsonPropertySearch(model.search) : undefined,
     includes: model.includes != null ? model.includes.map(serializeV2SearchFeedbackRequestApplicationJsonPropertyIncludesItem) : undefined,
+    reply_state: model.replyState,
   };
 };

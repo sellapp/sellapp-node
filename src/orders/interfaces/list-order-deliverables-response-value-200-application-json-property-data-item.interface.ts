@@ -9,6 +9,8 @@ export interface ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDat
   lineItemId: number;
   type: string;
   status: ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemStatus | (string & Record<never, never>);
+  /** The delivery record for this item, or null while `status` is `pending`. Send it to `POST /v2/orders/{order}/dynamic-delivery-retries` to retry a dynamic delivery. */
+  deliveredProductId: number | null;
   productVariantId: number | null;
   quantity: number;
   deliverable: ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverable;
@@ -21,6 +23,7 @@ export interface ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDat
   line_item_id: number;
   type: string;
   status: ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemStatus | (string & Record<never, never>);
+  delivered_product_id: number | null;
   product_variant_id: number | null;
   quantity: number;
   deliverable: ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverableResponse;

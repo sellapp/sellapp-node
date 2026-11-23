@@ -3,7 +3,7 @@
     "operationId": "listCharges",
     "resource": "charges",
     "method": "list",
-    "nativeSignature": "async list(options?: ChargesListOptions): Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem, ChargesListOptions>>",
+    "nativeSignature": "async list(options?: ChargesListOptions): Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
     "signatures": [
       {
         "name": "list",
@@ -15,7 +15,7 @@
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem, ChargesListOptions>>",
+        "returnType": "Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
         "async": true
       }
     ],
@@ -104,6 +104,28 @@
           }
         ],
         "returnType": "Promise<SdkMarkPendingChargeCompletedResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/charges/charges.ts"
+  },
+  {
+    "operationId": "getChargeSummary",
+    "resource": "charges",
+    "method": "getSummary",
+    "nativeSignature": "async getSummary(options?: GetSummaryOptions): Promise<SdkGetChargeSummaryResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getSummary",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetSummaryOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetChargeSummaryResponseValue200ApplicationJson>",
         "async": true
       }
     ],
@@ -729,7 +751,7 @@
     "operationId": "listLicenseKeys",
     "resource": "licenses",
     "method": "list",
-    "nativeSignature": "async list(options?: LicensesListOptions): Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson, LicensesListOptions>>",
+    "nativeSignature": "async list(options?: LicensesListOptions): Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson, PaginationOptions>>",
     "signatures": [
       {
         "name": "list",
@@ -741,7 +763,7 @@
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson, LicensesListOptions>>",
+        "returnType": "Promise<AutoPaginatable<SdkListLicenseKeysResponseValue200ApplicationJson, PaginationOptions>>",
         "async": true
       }
     ],
@@ -1100,6 +1122,160 @@
     "sourceFile": "src/products/products.ts"
   },
   {
+    "operationId": "publishProduct",
+    "resource": "products",
+    "method": "publish",
+    "nativeSignature": "async publish(options: PublishOptions): Promise<SdkPublishProductResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "publish",
+        "params": [
+          {
+            "name": "options",
+            "type": "PublishOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkPublishProductResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/products/products.ts"
+  },
+  {
+    "operationId": "duplicateProduct",
+    "resource": "products",
+    "method": "duplicate",
+    "nativeSignature": "async duplicate(options: DuplicateOptions): Promise<SdkDuplicateProductResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "duplicate",
+        "params": [
+          {
+            "name": "options",
+            "type": "DuplicateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkDuplicateProductResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/products/products.ts"
+  },
+  {
+    "operationId": "moveProduct",
+    "resource": "products",
+    "method": "move",
+    "nativeSignature": "async move(options: MoveOptions): Promise<SdkMoveProductResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "move",
+        "params": [
+          {
+            "name": "options",
+            "type": "MoveOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkMoveProductResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/products/products.ts"
+  },
+  {
+    "operationId": "getProductFeaturedVariant",
+    "resource": "productsFeaturedVariant",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetProductFeaturedVariantResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetProductFeaturedVariantResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/products-featured-variant/products-featured-variant.ts"
+  },
+  {
+    "operationId": "replaceProductFeaturedVariant",
+    "resource": "productsFeaturedVariant",
+    "method": "replace",
+    "nativeSignature": "async replace(options: ReplaceOptions): Promise<SdkReplaceProductFeaturedVariantResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceProductFeaturedVariantResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/products-featured-variant/products-featured-variant.ts"
+  },
+  {
+    "operationId": "listProductSimilarProducts",
+    "resource": "productsSimilarProducts",
+    "method": "list",
+    "nativeSignature": "async list(options: ProductsSimilarProductsListOptions): Promise<SdkListProductSimilarProductsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "options",
+            "type": "ProductsSimilarProductsListOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkListProductSimilarProductsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/products-similar-products/products-similar-products.ts"
+  },
+  {
+    "operationId": "replaceProductSimilarProducts",
+    "resource": "productsSimilarProducts",
+    "method": "replace",
+    "nativeSignature": "async replace(options: ReplaceOptions): Promise<SdkReplaceProductSimilarProductsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceProductSimilarProductsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/products-similar-products/products-similar-products.ts"
+  },
+  {
     "operationId": "listProductVariants",
     "resource": "productVariants",
     "method": "list",
@@ -1430,6 +1606,138 @@
     "sourceFile": "src/product-variants/product-variants.ts"
   },
   {
+    "operationId": "publishProductVariant",
+    "resource": "productVariants",
+    "method": "publish",
+    "nativeSignature": "async publish(options: PublishOptions): Promise<SdkPublishProductVariantResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "publish",
+        "params": [
+          {
+            "name": "options",
+            "type": "PublishOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkPublishProductVariantResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/product-variants/product-variants.ts"
+  },
+  {
+    "operationId": "duplicateProductVariant",
+    "resource": "productVariants",
+    "method": "duplicate",
+    "nativeSignature": "async duplicate(options: DuplicateOptions): Promise<SdkDuplicateProductVariantResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "duplicate",
+        "params": [
+          {
+            "name": "options",
+            "type": "DuplicateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkDuplicateProductVariantResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/product-variants/product-variants.ts"
+  },
+  {
+    "operationId": "reorderProductVariants",
+    "resource": "productVariants",
+    "method": "reorder",
+    "nativeSignature": "async reorder(options: ReorderOptions): Promise<SdkReorderProductVariantsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "reorder",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReorderOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReorderProductVariantsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/product-variants/product-variants.ts"
+  },
+  {
+    "operationId": "getVariantSubscriptionSettings",
+    "resource": "productVariantsSubscriptionSettings",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetVariantSubscriptionSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetVariantSubscriptionSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/product-variants-subscription-settings/product-variants-subscription-settings.ts"
+  },
+  {
+    "operationId": "updateVariantSubscriptionSettings",
+    "resource": "productVariantsSubscriptionSettings",
+    "method": "update",
+    "nativeSignature": "async update(options: UpdateOptions): Promise<SdkUpdateVariantSubscriptionSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateVariantSubscriptionSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/product-variants-subscription-settings/product-variants-subscription-settings.ts"
+  },
+  {
+    "operationId": "replaceVariantCommunityAccess",
+    "resource": "productVariantsCommunityAccess",
+    "method": "replace",
+    "nativeSignature": "async replace(options: ReplaceOptions): Promise<SdkReplaceVariantCommunityAccessResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceVariantCommunityAccessResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/product-variants-community-access/product-variants-community-access.ts"
+  },
+  {
     "operationId": "cancelSubscription",
     "resource": "subscriptions",
     "method": "cancel",
@@ -1455,7 +1763,7 @@
     "operationId": "listSubscriptions",
     "resource": "subscriptions",
     "method": "listSubscriptions",
-    "nativeSignature": "async listSubscriptions(options?: ListSubscriptionsOptions): Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, ListSubscriptionsOptions>>",
+    "nativeSignature": "async listSubscriptions(options?: ListSubscriptionsOptions): Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, PaginationOptions>>",
     "signatures": [
       {
         "name": "listSubscriptions",
@@ -1467,7 +1775,7 @@
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, ListSubscriptionsOptions>>",
+        "returnType": "Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, PaginationOptions>>",
         "async": true
       }
     ],
@@ -2046,6 +2354,28 @@
     "sourceFile": "src/bookings-calendar-events/bookings-calendar-events.ts"
   },
   {
+    "operationId": "createBookingProduct",
+    "resource": "bookings",
+    "method": "create",
+    "nativeSignature": "async create(options: CreateOptions): Promise<SdkCreateBookingProductResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "options",
+            "type": "CreateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkCreateBookingProductResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/bookings/bookings.ts"
+  },
+  {
     "operationId": "getBundleItem",
     "resource": "bundleItems",
     "method": "get",
@@ -2132,6 +2462,94 @@
       }
     ],
     "sourceFile": "src/bundle-items/bundle-items.ts"
+  },
+  {
+    "operationId": "previewVariantBuyerNotification",
+    "resource": "variantDeliverables",
+    "method": "preview",
+    "nativeSignature": "async preview(options: PreviewOptions): Promise<SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "preview",
+        "params": [
+          {
+            "name": "options",
+            "type": "PreviewOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkPreviewVariantBuyerNotificationResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/variant-deliverables/variant-deliverables.ts"
+  },
+  {
+    "operationId": "notifyVariantBuyers",
+    "resource": "variantDeliverables",
+    "method": "notify",
+    "nativeSignature": "async notify(options: NotifyOptions): Promise<SdkNotifyVariantBuyersResponseValue202ApplicationJson>",
+    "signatures": [
+      {
+        "name": "notify",
+        "params": [
+          {
+            "name": "options",
+            "type": "NotifyOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkNotifyVariantBuyersResponseValue202ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/variant-deliverables/variant-deliverables.ts"
+  },
+  {
+    "operationId": "getVariantDeliverableConfiguration",
+    "resource": "variantDeliverables",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetVariantDeliverableConfigurationResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetVariantDeliverableConfigurationResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/variant-deliverables/variant-deliverables.ts"
+  },
+  {
+    "operationId": "replaceVariantDeliverableConfiguration",
+    "resource": "variantDeliverables",
+    "method": "replace",
+    "nativeSignature": "async replace(options: ReplaceOptions): Promise<SdkReplaceVariantDeliverableConfigurationResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceVariantDeliverableConfigurationResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/variant-deliverables/variant-deliverables.ts"
   },
   {
     "operationId": "listPromotions",
@@ -2352,6 +2770,28 @@
       }
     ],
     "sourceFile": "src/promotions-phases/promotions-phases.ts"
+  },
+  {
+    "operationId": "getPromotionUsage",
+    "resource": "promotions",
+    "method": "getUsage",
+    "nativeSignature": "async getUsage(options: GetUsageOptions): Promise<SdkGetPromotionUsageResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getUsage",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetUsageOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetPromotionUsageResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/promotions/promotions.ts"
   },
   {
     "operationId": "listAddOns",
@@ -3124,6 +3564,600 @@
     "sourceFile": "src/webhook-channels/webhook-channels.ts"
   },
   {
+    "operationId": "listSupportReplyTemplates",
+    "resource": "supportReplyTemplates",
+    "method": "list",
+    "nativeSignature": "async list(options?: SupportReplyTemplatesListOptions): Promise<AutoPaginatable<ListSupportReplyTemplatesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "options",
+            "type": "SupportReplyTemplatesListOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<AutoPaginatable<ListSupportReplyTemplatesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reply-templates/support-reply-templates.ts"
+  },
+  {
+    "operationId": "createSupportReplyTemplate",
+    "resource": "supportReplyTemplates",
+    "method": "create",
+    "nativeSignature": "async create(options: CreateOptions): Promise<SdkCreateSupportReplyTemplateResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "options",
+            "type": "CreateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkCreateSupportReplyTemplateResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reply-templates/support-reply-templates.ts"
+  },
+  {
+    "operationId": "getSupportReplyTemplate",
+    "resource": "supportReplyTemplates",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetSupportReplyTemplateResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetSupportReplyTemplateResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reply-templates/support-reply-templates.ts"
+  },
+  {
+    "operationId": "replaceSupportReplyTemplate",
+    "resource": "supportReplyTemplates",
+    "method": "replace",
+    "nativeSignature": "async replace(options: ReplaceOptions): Promise<SdkReplaceSupportReplyTemplateResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceSupportReplyTemplateResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reply-templates/support-reply-templates.ts"
+  },
+  {
+    "operationId": "updateSupportReplyTemplate",
+    "resource": "supportReplyTemplates",
+    "method": "update",
+    "nativeSignature": "async update(options: UpdateOptions): Promise<SdkUpdateSupportReplyTemplateResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateSupportReplyTemplateResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reply-templates/support-reply-templates.ts"
+  },
+  {
+    "operationId": "deleteSupportReplyTemplate",
+    "resource": "supportReplyTemplates",
+    "method": "delete",
+    "nativeSignature": "async delete(options: DeleteOptions): Promise<void>",
+    "signatures": [
+      {
+        "name": "delete",
+        "params": [
+          {
+            "name": "options",
+            "type": "DeleteOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<void>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reply-templates/support-reply-templates.ts"
+  },
+  {
+    "operationId": "renderSupportReplyTemplate",
+    "resource": "supportReplyTemplates",
+    "method": "render",
+    "nativeSignature": "async render(options: RenderOptions): Promise<SdkRenderSupportReplyTemplateResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "render",
+        "params": [
+          {
+            "name": "options",
+            "type": "RenderOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkRenderSupportReplyTemplateResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reply-templates/support-reply-templates.ts"
+  },
+  {
+    "operationId": "reorderSupportReplyTemplates",
+    "resource": "supportReplyTemplates",
+    "method": "reorder",
+    "nativeSignature": "async reorder(options: ReorderOptions): Promise<SdkReorderSupportReplyTemplatesResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "reorder",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReorderOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReorderSupportReplyTemplatesResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reply-templates/support-reply-templates.ts"
+  },
+  {
+    "operationId": "getSupportReplyTemplateOptions",
+    "resource": "supportReplyTemplates",
+    "method": "getOptions",
+    "nativeSignature": "async getOptions(options?: GetOptionsOptions): Promise<SdkGetSupportReplyTemplateOptionsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getOptions",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptionsOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetSupportReplyTemplateOptionsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reply-templates/support-reply-templates.ts"
+  },
+  {
+    "operationId": "listSupportReasons",
+    "resource": "supportReasons",
+    "method": "list",
+    "nativeSignature": "async list(options?: SupportReasonsListOptions): Promise<AutoPaginatable<ListSupportReasonsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "options",
+            "type": "SupportReasonsListOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<AutoPaginatable<ListSupportReasonsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reasons/support-reasons.ts"
+  },
+  {
+    "operationId": "createSupportReason",
+    "resource": "supportReasons",
+    "method": "create",
+    "nativeSignature": "async create(options: CreateOptions): Promise<SdkCreateSupportReasonResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "options",
+            "type": "CreateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkCreateSupportReasonResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reasons/support-reasons.ts"
+  },
+  {
+    "operationId": "getSupportReason",
+    "resource": "supportReasons",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetSupportReasonResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetSupportReasonResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reasons/support-reasons.ts"
+  },
+  {
+    "operationId": "replaceSupportReason",
+    "resource": "supportReasons",
+    "method": "replace",
+    "nativeSignature": "async replace(options: ReplaceOptions): Promise<SdkReplaceSupportReasonResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceSupportReasonResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reasons/support-reasons.ts"
+  },
+  {
+    "operationId": "updateSupportReason",
+    "resource": "supportReasons",
+    "method": "update",
+    "nativeSignature": "async update(options: UpdateOptions): Promise<SdkUpdateSupportReasonResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateSupportReasonResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reasons/support-reasons.ts"
+  },
+  {
+    "operationId": "deleteSupportReason",
+    "resource": "supportReasons",
+    "method": "delete",
+    "nativeSignature": "async delete(options: DeleteOptions): Promise<void>",
+    "signatures": [
+      {
+        "name": "delete",
+        "params": [
+          {
+            "name": "options",
+            "type": "DeleteOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<void>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reasons/support-reasons.ts"
+  },
+  {
+    "operationId": "getSupportReasonOptions",
+    "resource": "supportReasons",
+    "method": "getOptions",
+    "nativeSignature": "async getOptions(requestOptions: RequestOptions = {}): Promise<SdkGetSupportReasonOptionsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getOptions",
+        "params": [
+          {
+            "name": "requestOptions",
+            "type": "GetOptions",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetSupportReasonOptionsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-reasons/support-reasons.ts"
+  },
+  {
+    "operationId": "listSupportAutomationRules",
+    "resource": "supportAutomationRules",
+    "method": "list",
+    "nativeSignature": "async list(options?: SupportAutomationRulesListOptions): Promise<AutoPaginatable<ListSupportAutomationRulesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "options",
+            "type": "SupportAutomationRulesListOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<AutoPaginatable<ListSupportAutomationRulesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-automation-rules/support-automation-rules.ts"
+  },
+  {
+    "operationId": "createSupportAutomationRule",
+    "resource": "supportAutomationRules",
+    "method": "create",
+    "nativeSignature": "async create(options: CreateOptions): Promise<SdkCreateSupportAutomationRuleResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "options",
+            "type": "CreateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkCreateSupportAutomationRuleResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-automation-rules/support-automation-rules.ts"
+  },
+  {
+    "operationId": "getSupportAutomationRule",
+    "resource": "supportAutomationRules",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetSupportAutomationRuleResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetSupportAutomationRuleResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-automation-rules/support-automation-rules.ts"
+  },
+  {
+    "operationId": "replaceSupportAutomationRule",
+    "resource": "supportAutomationRules",
+    "method": "replace",
+    "nativeSignature": "async replace(options: ReplaceOptions): Promise<SdkReplaceSupportAutomationRuleResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceSupportAutomationRuleResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-automation-rules/support-automation-rules.ts"
+  },
+  {
+    "operationId": "updateSupportAutomationRule",
+    "resource": "supportAutomationRules",
+    "method": "update",
+    "nativeSignature": "async update(options: UpdateOptions): Promise<SdkUpdateSupportAutomationRuleResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateSupportAutomationRuleResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-automation-rules/support-automation-rules.ts"
+  },
+  {
+    "operationId": "updateSupportAutomationRuleState",
+    "resource": "supportAutomationRules",
+    "method": "updateState",
+    "nativeSignature": "async updateState(options: UpdateStateOptions): Promise<SdkUpdateSupportAutomationRuleStateResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "updateState",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateStateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateSupportAutomationRuleStateResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-automation-rules/support-automation-rules.ts"
+  },
+  {
+    "operationId": "reorderSupportAutomationRules",
+    "resource": "supportAutomationRules",
+    "method": "reorder",
+    "nativeSignature": "async reorder(options: ReorderOptions): Promise<SdkReorderSupportAutomationRulesResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "reorder",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReorderOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReorderSupportAutomationRulesResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-automation-rules/support-automation-rules.ts"
+  },
+  {
+    "operationId": "dryRunSupportAutomationRules",
+    "resource": "supportAutomationRules",
+    "method": "dryRun",
+    "nativeSignature": "async dryRun(options: DryRunOptions): Promise<SdkDryRunSupportAutomationRulesResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "dryRun",
+        "params": [
+          {
+            "name": "options",
+            "type": "DryRunOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkDryRunSupportAutomationRulesResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-automation-rules/support-automation-rules.ts"
+  },
+  {
+    "operationId": "getSupportAutomationSettings",
+    "resource": "supportAutomationSettings",
+    "method": "get",
+    "nativeSignature": "async get(requestOptions: RequestOptions = {}): Promise<SdkGetSupportAutomationSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "requestOptions",
+            "type": "GetOptions",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetSupportAutomationSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-automation-settings/support-automation-settings.ts"
+  },
+  {
+    "operationId": "replaceSupportAutomationSettings",
+    "resource": "supportAutomationSettings",
+    "method": "replace",
+    "nativeSignature": "async replace(options: ReplaceOptions): Promise<SdkReplaceSupportAutomationSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceSupportAutomationSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-automation-settings/support-automation-settings.ts"
+  },
+  {
+    "operationId": "updateSupportAutomationSettings",
+    "resource": "supportAutomationSettings",
+    "method": "update",
+    "nativeSignature": "async update(options: UpdateOptions): Promise<SdkUpdateSupportAutomationSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateSupportAutomationSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/support-automation-settings/support-automation-settings.ts"
+  },
+  {
     "operationId": "listCustomers",
     "resource": "customers",
     "method": "list",
@@ -3542,6 +4576,28 @@
     "sourceFile": "src/orders/orders.ts"
   },
   {
+    "operationId": "regenerateOrderTelegramInvite",
+    "resource": "orders",
+    "method": "regenerateTelegramInvite",
+    "nativeSignature": "async regenerateTelegramInvite(options: RegenerateTelegramInviteOptions): Promise<SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "regenerateTelegramInvite",
+        "params": [
+          {
+            "name": "options",
+            "type": "RegenerateTelegramInviteOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/orders/orders.ts"
+  },
+  {
     "operationId": "listOrderDeliverables",
     "resource": "orders",
     "method": "listDeliverables",
@@ -3738,50 +4794,6 @@
       }
     ],
     "sourceFile": "src/orders-line-items/orders-line-items.ts"
-  },
-  {
-    "operationId": "getVariantDeliverableConfiguration",
-    "resource": "variantDeliverables",
-    "method": "get",
-    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetVariantDeliverableConfigurationResponseValue200ApplicationJson>",
-    "signatures": [
-      {
-        "name": "get",
-        "params": [
-          {
-            "name": "options",
-            "type": "GetOptions",
-            "optional": false,
-            "passingStyle": "options_object"
-          }
-        ],
-        "returnType": "Promise<SdkGetVariantDeliverableConfigurationResponseValue200ApplicationJson>",
-        "async": true
-      }
-    ],
-    "sourceFile": "src/variant-deliverables/variant-deliverables.ts"
-  },
-  {
-    "operationId": "replaceVariantDeliverableConfiguration",
-    "resource": "variantDeliverables",
-    "method": "replace",
-    "nativeSignature": "async replace(options: ReplaceOptions): Promise<SdkReplaceVariantDeliverableConfigurationResponseValue200ApplicationJson>",
-    "signatures": [
-      {
-        "name": "replace",
-        "params": [
-          {
-            "name": "options",
-            "type": "ReplaceOptions",
-            "optional": false,
-            "passingStyle": "options_object"
-          }
-        ],
-        "returnType": "Promise<SdkReplaceVariantDeliverableConfigurationResponseValue200ApplicationJson>",
-        "async": true
-      }
-    ],
-    "sourceFile": "src/variant-deliverables/variant-deliverables.ts"
   },
   {
     "operationId": "listVariantDeliverableFiles",
@@ -4240,6 +5252,28 @@
           }
         ],
         "returnType": "Promise<SdkInviteAffiliateResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/affiliate-program/affiliate-program.ts"
+  },
+  {
+    "operationId": "resendAffiliateInvitation",
+    "resource": "affiliateProgram",
+    "method": "resend",
+    "nativeSignature": "async resend(options: ResendOptions): Promise<SdkResendAffiliateInvitationResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "resend",
+        "params": [
+          {
+            "name": "options",
+            "type": "ResendOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkResendAffiliateInvitationResponseValue200ApplicationJson>",
         "async": true
       }
     ],
@@ -4752,6 +5786,28 @@
     "sourceFile": "src/upsell-offers/upsell-offers.ts"
   },
   {
+    "operationId": "getUpsellOfferPerformance",
+    "resource": "upsellOffers",
+    "method": "getPerformance",
+    "nativeSignature": "async getPerformance(options: GetPerformanceOptions): Promise<SdkGetUpsellOfferPerformanceResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getPerformance",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetPerformanceOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetUpsellOfferPerformanceResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/upsell-offers/upsell-offers.ts"
+  },
+  {
     "operationId": "listCommunityConnections",
     "resource": "communityConnections",
     "method": "list",
@@ -4884,6 +5940,160 @@
     "sourceFile": "src/community-connections/community-connections.ts"
   },
   {
+    "operationId": "listCommunityFailedGrantReasons",
+    "resource": "communityConnections",
+    "method": "listFailedGrantReasons",
+    "nativeSignature": "async listFailedGrantReasons(requestOptions: RequestOptions = {}): Promise<SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "listFailedGrantReasons",
+        "params": [
+          {
+            "name": "requestOptions",
+            "type": "GetOptions",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/community-connections/community-connections.ts"
+  },
+  {
+    "operationId": "getCommunityServer",
+    "resource": "communityConnectionsServers",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetCommunityServerResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetCommunityServerResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/community-connections-servers/community-connections-servers.ts"
+  },
+  {
+    "operationId": "removeCommunityServer",
+    "resource": "communityConnectionsServers",
+    "method": "remove",
+    "nativeSignature": "async remove(options: RemoveOptions): Promise<void>",
+    "signatures": [
+      {
+        "name": "remove",
+        "params": [
+          {
+            "name": "options",
+            "type": "RemoveOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<void>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/community-connections-servers/community-connections-servers.ts"
+  },
+  {
+    "operationId": "syncDiscordRoles",
+    "resource": "communityConnections",
+    "method": "syncDiscordRoles",
+    "nativeSignature": "async syncDiscordRoles(options: SyncDiscordRolesOptions): Promise<SdkSyncDiscordRolesResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "syncDiscordRoles",
+        "params": [
+          {
+            "name": "options",
+            "type": "SyncDiscordRolesOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkSyncDiscordRolesResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/community-connections/community-connections.ts"
+  },
+  {
+    "operationId": "listSlackAvailableChannels",
+    "resource": "communityConnectionsSlack",
+    "method": "listChannels",
+    "nativeSignature": "async listChannels(requestOptions: RequestOptions = {}): Promise<SdkListSlackAvailableChannelsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "listChannels",
+        "params": [
+          {
+            "name": "requestOptions",
+            "type": "GetOptions",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkListSlackAvailableChannelsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/community-connections-slack/community-connections-slack.ts"
+  },
+  {
+    "operationId": "addSlackChannel",
+    "resource": "communityConnectionsSlack",
+    "method": "addChannel",
+    "nativeSignature": "async addChannel(options: AddChannelOptions): Promise<SdkAddSlackChannelResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "addChannel",
+        "params": [
+          {
+            "name": "options",
+            "type": "AddChannelOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkAddSlackChannelResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/community-connections-slack/community-connections-slack.ts"
+  },
+  {
+    "operationId": "replaceSlackWorkspaceInviteLink",
+    "resource": "communityConnectionsSlack",
+    "method": "replaceInviteLink",
+    "nativeSignature": "async replaceInviteLink(options: ReplaceInviteLinkOptions): Promise<SdkReplaceSlackWorkspaceInviteLinkResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replaceInviteLink",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceInviteLinkOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceSlackWorkspaceInviteLinkResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/community-connections-slack/community-connections-slack.ts"
+  },
+  {
     "operationId": "getWalletSettings",
     "resource": "walletSettings",
     "method": "get",
@@ -5014,6 +6224,72 @@
       }
     ],
     "sourceFile": "src/wallet/wallet.ts"
+  },
+  {
+    "operationId": "reverseWalletTransaction",
+    "resource": "walletTransactions",
+    "method": "reverse",
+    "nativeSignature": "async reverse(options: ReverseOptions): Promise<SdkReverseWalletTransactionResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "reverse",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReverseOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReverseWalletTransactionResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/wallet-transactions/wallet-transactions.ts"
+  },
+  {
+    "operationId": "listStoreWalletTransactions",
+    "resource": "walletLedger",
+    "method": "list",
+    "nativeSignature": "async list(options?: WalletLedgerListOptions): Promise<AutoPaginatable<ListStoreWalletTransactionsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "options",
+            "type": "WalletLedgerListOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<AutoPaginatable<ListStoreWalletTransactionsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/wallet-ledger/wallet-ledger.ts"
+  },
+  {
+    "operationId": "getWalletOverview",
+    "resource": "walletOverview",
+    "method": "get",
+    "nativeSignature": "async get(options?: GetOptions): Promise<SdkGetWalletOverviewResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetWalletOverviewResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/wallet-overview/wallet-overview.ts"
   },
   {
     "operationId": "listWalletTransactions",
@@ -5192,6 +6468,28 @@
     "sourceFile": "src/cashback-rules/cashback-rules.ts"
   },
   {
+    "operationId": "quoteCashbackRule",
+    "resource": "cashbackRules",
+    "method": "quote",
+    "nativeSignature": "async quote(options?: QuoteOptions): Promise<SdkQuoteCashbackRuleResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "quote",
+        "params": [
+          {
+            "name": "options",
+            "type": "QuoteOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkQuoteCashbackRuleResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/cashback-rules/cashback-rules.ts"
+  },
+  {
     "operationId": "listWalletBonusTiers",
     "resource": "walletBonusTiers",
     "method": "list",
@@ -5324,6 +6622,28 @@
     "sourceFile": "src/wallet-bonus-tiers/wallet-bonus-tiers.ts"
   },
   {
+    "operationId": "quoteWalletBonusTier",
+    "resource": "walletBonusTiers",
+    "method": "quote",
+    "nativeSignature": "async quote(options: QuoteOptions): Promise<SdkQuoteWalletBonusTierResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "quote",
+        "params": [
+          {
+            "name": "options",
+            "type": "QuoteOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkQuoteWalletBonusTierResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/wallet-bonus-tiers/wallet-bonus-tiers.ts"
+  },
+  {
     "operationId": "listCourses",
     "resource": "courses",
     "method": "list",
@@ -5340,6 +6660,28 @@
           }
         ],
         "returnType": "Promise<AutoPaginatable<SdkListCoursesResponseValue200ApplicationJson, CoursesListOptions>>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/courses/courses.ts"
+  },
+  {
+    "operationId": "createCourse",
+    "resource": "courses",
+    "method": "create",
+    "nativeSignature": "async create(options: CreateOptions): Promise<SdkCreateCourseResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "options",
+            "type": "CreateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkCreateCourseResponseValue201ApplicationJson>",
         "async": true
       }
     ],
@@ -5428,6 +6770,28 @@
           }
         ],
         "returnType": "Promise<SdkUpdateCourseResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/courses/courses.ts"
+  },
+  {
+    "operationId": "getCourseStudentSummary",
+    "resource": "courses",
+    "method": "getStudentSummary",
+    "nativeSignature": "async getStudentSummary(options: GetStudentSummaryOptions): Promise<SdkGetCourseStudentSummaryResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getStudentSummary",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetStudentSummaryOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetCourseStudentSummaryResponseValue200ApplicationJson>",
         "async": true
       }
     ],
@@ -5654,6 +7018,160 @@
     "sourceFile": "src/courses-lessons/courses-lessons.ts"
   },
   {
+    "operationId": "listCheckoutFieldTemplates",
+    "resource": "checkoutFieldTemplates",
+    "method": "list",
+    "nativeSignature": "async list(options?: CheckoutFieldTemplatesListOptions): Promise<SdkListCheckoutFieldTemplatesResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "options",
+            "type": "CheckoutFieldTemplatesListOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkListCheckoutFieldTemplatesResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/checkout-field-templates/checkout-field-templates.ts"
+  },
+  {
+    "operationId": "createCheckoutFieldTemplate",
+    "resource": "checkoutFieldTemplates",
+    "method": "create",
+    "nativeSignature": "async create(options: CreateOptions): Promise<SdkCreateCheckoutFieldTemplateResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "options",
+            "type": "CreateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkCreateCheckoutFieldTemplateResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/checkout-field-templates/checkout-field-templates.ts"
+  },
+  {
+    "operationId": "getCheckoutFieldTemplate",
+    "resource": "checkoutFieldTemplates",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetCheckoutFieldTemplateResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetCheckoutFieldTemplateResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/checkout-field-templates/checkout-field-templates.ts"
+  },
+  {
+    "operationId": "replaceCheckoutFieldTemplate",
+    "resource": "checkoutFieldTemplates",
+    "method": "replace",
+    "nativeSignature": "async replace(options: ReplaceOptions): Promise<SdkReplaceCheckoutFieldTemplateResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceCheckoutFieldTemplateResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/checkout-field-templates/checkout-field-templates.ts"
+  },
+  {
+    "operationId": "updateCheckoutFieldTemplate",
+    "resource": "checkoutFieldTemplates",
+    "method": "update",
+    "nativeSignature": "async update(options: UpdateOptions): Promise<SdkUpdateCheckoutFieldTemplateResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateCheckoutFieldTemplateResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/checkout-field-templates/checkout-field-templates.ts"
+  },
+  {
+    "operationId": "deleteCheckoutFieldTemplate",
+    "resource": "checkoutFieldTemplates",
+    "method": "delete",
+    "nativeSignature": "async delete(options: DeleteOptions): Promise<void>",
+    "signatures": [
+      {
+        "name": "delete",
+        "params": [
+          {
+            "name": "options",
+            "type": "DeleteOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<void>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/checkout-field-templates/checkout-field-templates.ts"
+  },
+  {
+    "operationId": "duplicateCheckoutFieldTemplate",
+    "resource": "checkoutFieldTemplates",
+    "method": "duplicate",
+    "nativeSignature": "async duplicate(options: DuplicateOptions): Promise<SdkDuplicateCheckoutFieldTemplateResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "duplicate",
+        "params": [
+          {
+            "name": "options",
+            "type": "DuplicateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkDuplicateCheckoutFieldTemplateResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/checkout-field-templates/checkout-field-templates.ts"
+  },
+  {
     "operationId": "listPaymentMethods",
     "resource": "paymentMethods",
     "method": "list",
@@ -5762,6 +7280,50 @@
       }
     ],
     "sourceFile": "src/payment-methods/payment-methods.ts"
+  },
+  {
+    "operationId": "getPaymentMethodModifier",
+    "resource": "paymentMethodsModifier",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetPaymentMethodModifierResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetPaymentMethodModifierResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/payment-methods-modifier/payment-methods-modifier.ts"
+  },
+  {
+    "operationId": "replacePaymentMethodModifier",
+    "resource": "paymentMethodsModifier",
+    "method": "replace",
+    "nativeSignature": "async replace(options: ReplaceOptions): Promise<SdkReplacePaymentMethodModifierResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replace",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplacePaymentMethodModifierResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/payment-methods-modifier/payment-methods-modifier.ts"
   },
   {
     "operationId": "listCustomPaymentMethods",
@@ -6050,6 +7612,512 @@
     "sourceFile": "src/store-settings/store-settings.ts"
   },
   {
+    "operationId": "getCheckoutSettings",
+    "resource": "storeSettings",
+    "method": "getCheckout",
+    "nativeSignature": "async getCheckout(requestOptions: RequestOptions = {}): Promise<SdkGetCheckoutSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getCheckout",
+        "params": [
+          {
+            "name": "requestOptions",
+            "type": "GetOptions",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetCheckoutSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "replaceCheckoutSettings",
+    "resource": "storeSettings",
+    "method": "replaceCheckout",
+    "nativeSignature": "async replaceCheckout(options: ReplaceCheckoutOptions): Promise<SdkReplaceCheckoutSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replaceCheckout",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceCheckoutOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceCheckoutSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "updateCheckoutSettings",
+    "resource": "storeSettings",
+    "method": "updateCheckout",
+    "nativeSignature": "async updateCheckout(options: UpdateCheckoutOptions): Promise<SdkUpdateCheckoutSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "updateCheckout",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateCheckoutOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateCheckoutSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "getTaxSettings",
+    "resource": "storeSettings",
+    "method": "getTaxes",
+    "nativeSignature": "async getTaxes(requestOptions: RequestOptions = {}): Promise<SdkGetTaxSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getTaxes",
+        "params": [
+          {
+            "name": "requestOptions",
+            "type": "GetOptions",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetTaxSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "replaceTaxSettings",
+    "resource": "storeSettings",
+    "method": "replaceTaxes",
+    "nativeSignature": "async replaceTaxes(options: ReplaceTaxesOptions): Promise<SdkReplaceTaxSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replaceTaxes",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceTaxesOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceTaxSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "updateTaxSettings",
+    "resource": "storeSettings",
+    "method": "updateTaxes",
+    "nativeSignature": "async updateTaxes(options: UpdateTaxesOptions): Promise<SdkUpdateTaxSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "updateTaxes",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateTaxesOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateTaxSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "getCustomerEmailSettings",
+    "resource": "storeSettings",
+    "method": "getCustomerEmails",
+    "nativeSignature": "async getCustomerEmails(requestOptions: RequestOptions = {}): Promise<SdkGetCustomerEmailSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getCustomerEmails",
+        "params": [
+          {
+            "name": "requestOptions",
+            "type": "GetOptions",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetCustomerEmailSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "replaceCustomerEmailSettings",
+    "resource": "storeSettings",
+    "method": "replaceCustomerEmails",
+    "nativeSignature": "async replaceCustomerEmails(options: ReplaceCustomerEmailsOptions): Promise<SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replaceCustomerEmails",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceCustomerEmailsOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceCustomerEmailSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "updateCustomerEmailSettings",
+    "resource": "storeSettings",
+    "method": "updateCustomerEmails",
+    "nativeSignature": "async updateCustomerEmails(options: UpdateCustomerEmailsOptions): Promise<SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "updateCustomerEmails",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateCustomerEmailsOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateCustomerEmailSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "getStoreAlertSettings",
+    "resource": "storeSettings",
+    "method": "getStoreAlerts",
+    "nativeSignature": "async getStoreAlerts(requestOptions: RequestOptions = {}): Promise<SdkGetStoreAlertSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getStoreAlerts",
+        "params": [
+          {
+            "name": "requestOptions",
+            "type": "GetOptions",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetStoreAlertSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "replaceStoreAlertSettings",
+    "resource": "storeSettings",
+    "method": "replaceStoreAlerts",
+    "nativeSignature": "async replaceStoreAlerts(options: ReplaceStoreAlertsOptions): Promise<SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replaceStoreAlerts",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceStoreAlertsOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceStoreAlertSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "updateStoreAlertSettings",
+    "resource": "storeSettings",
+    "method": "updateStoreAlerts",
+    "nativeSignature": "async updateStoreAlerts(options: UpdateStoreAlertsOptions): Promise<SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "updateStoreAlerts",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateStoreAlertsOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateStoreAlertSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "getPersonalizationSettings",
+    "resource": "storeSettings",
+    "method": "getPersonalization",
+    "nativeSignature": "async getPersonalization(requestOptions: RequestOptions = {}): Promise<SdkGetPersonalizationSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getPersonalization",
+        "params": [
+          {
+            "name": "requestOptions",
+            "type": "GetOptions",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetPersonalizationSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "replacePersonalizationSettings",
+    "resource": "storeSettings",
+    "method": "replacePersonalization",
+    "nativeSignature": "async replacePersonalization(options: ReplacePersonalizationOptions): Promise<SdkReplacePersonalizationSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replacePersonalization",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplacePersonalizationOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplacePersonalizationSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "updatePersonalizationSettings",
+    "resource": "storeSettings",
+    "method": "updatePersonalization",
+    "nativeSignature": "async updatePersonalization(options: UpdatePersonalizationOptions): Promise<SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "updatePersonalization",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdatePersonalizationOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdatePersonalizationSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "replaceCryptoCheckoutSettings",
+    "resource": "storeSettings",
+    "method": "replaceCryptoCheckout",
+    "nativeSignature": "async replaceCryptoCheckout(options: ReplaceCryptoCheckoutOptions): Promise<SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "replaceCryptoCheckout",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReplaceCryptoCheckoutOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkReplaceCryptoCheckoutSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "updateCryptoCheckoutSettings",
+    "resource": "storeSettings",
+    "method": "updateCryptoCheckout",
+    "nativeSignature": "async updateCryptoCheckout(options: UpdateCryptoCheckoutOptions): Promise<SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "updateCryptoCheckout",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateCryptoCheckoutOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateCryptoCheckoutSettingsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-settings/store-settings.ts"
+  },
+  {
+    "operationId": "getSenderEmail",
+    "resource": "storeSenderEmail",
+    "method": "get",
+    "nativeSignature": "async get(options?: GetOptions): Promise<SdkGetSenderEmailResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetSenderEmailResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-sender-email/store-sender-email.ts"
+  },
+  {
+    "operationId": "setSenderEmail",
+    "resource": "storeSenderEmail",
+    "method": "set",
+    "nativeSignature": "async set(options: SetOptions): Promise<SdkSetSenderEmailResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "set",
+        "params": [
+          {
+            "name": "options",
+            "type": "SetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkSetSenderEmailResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-sender-email/store-sender-email.ts"
+  },
+  {
+    "operationId": "deleteSenderEmail",
+    "resource": "storeSenderEmail",
+    "method": "delete",
+    "nativeSignature": "async delete(options?: DeleteOptions): Promise<void>",
+    "signatures": [
+      {
+        "name": "delete",
+        "params": [
+          {
+            "name": "options",
+            "type": "DeleteOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<void>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-sender-email/store-sender-email.ts"
+  },
+  {
+    "operationId": "sendSenderEmailVerification",
+    "resource": "storeSenderEmail",
+    "method": "sendVerification",
+    "nativeSignature": "async sendVerification(options: SendVerificationOptions): Promise<SdkSendSenderEmailVerificationResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "sendVerification",
+        "params": [
+          {
+            "name": "options",
+            "type": "SendVerificationOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkSendSenderEmailVerificationResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-sender-email/store-sender-email.ts"
+  },
+  {
+    "operationId": "getStoreIntegrations",
+    "resource": "storeIntegrations",
+    "method": "get",
+    "nativeSignature": "async get(requestOptions: RequestOptions = {}): Promise<SdkGetStoreIntegrationsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "requestOptions",
+            "type": "GetOptions",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetStoreIntegrationsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-integrations/store-integrations.ts"
+  },
+  {
+    "operationId": "disconnectGoogleCalendar",
+    "resource": "storeIntegrations",
+    "method": "disconnectGoogleCalendar",
+    "nativeSignature": "async disconnectGoogleCalendar(options: DisconnectGoogleCalendarOptions): Promise<void>",
+    "signatures": [
+      {
+        "name": "disconnectGoogleCalendar",
+        "params": [
+          {
+            "name": "options",
+            "type": "DisconnectGoogleCalendarOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<void>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/store-integrations/store-integrations.ts"
+  },
+  {
     "operationId": "listNotificationChannels",
     "resource": "storeNotificationChannels",
     "method": "list",
@@ -6290,6 +8358,50 @@
       }
     ],
     "sourceFile": "src/store-custom-domains/store-custom-domains.ts"
+  },
+  {
+    "operationId": "listNotifications",
+    "resource": "notifications",
+    "method": "list",
+    "nativeSignature": "async list(options?: NotificationsListOptions): Promise<AutoPaginatable<ListNotificationsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "options",
+            "type": "NotificationsListOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<AutoPaginatable<ListNotificationsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/notifications/notifications.ts"
+  },
+  {
+    "operationId": "markNotificationsSeen",
+    "resource": "notifications",
+    "method": "mark",
+    "nativeSignature": "async mark(options: MarkOptions): Promise<SdkMarkNotificationsSeenResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "mark",
+        "params": [
+          {
+            "name": "options",
+            "type": "MarkOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkMarkNotificationsSeenResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/notifications/notifications.ts"
   },
   {
     "operationId": "listCreditsProducts",
@@ -6537,7 +8649,7 @@
     "operationId": "listAffiliates",
     "resource": "affiliates",
     "method": "list",
-    "nativeSignature": "async list(options?: AffiliatesListOptions): Promise<AutoPaginatable<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem, AffiliatesListOptions>>",
+    "nativeSignature": "async list(options?: AffiliatesListOptions): Promise<AutoPaginatable<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
     "signatures": [
       {
         "name": "list",
@@ -6549,7 +8661,7 @@
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<AutoPaginatable<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem, AffiliatesListOptions>>",
+        "returnType": "Promise<AutoPaginatable<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
         "async": true
       }
     ],
@@ -6598,6 +8710,116 @@
       }
     ],
     "sourceFile": "src/affiliates/affiliates.ts"
+  },
+  {
+    "operationId": "getAffiliateProducts",
+    "resource": "affiliatesProducts",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetAffiliateProductsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetAffiliateProductsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/affiliates-products/affiliates-products.ts"
+  },
+  {
+    "operationId": "updateAffiliateProducts",
+    "resource": "affiliatesProducts",
+    "method": "update",
+    "nativeSignature": "async update(options: UpdateOptions): Promise<SdkUpdateAffiliateProductsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "update",
+        "params": [
+          {
+            "name": "options",
+            "type": "UpdateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkUpdateAffiliateProductsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/affiliates-products/affiliates-products.ts"
+  },
+  {
+    "operationId": "getAffiliateCoupon",
+    "resource": "affiliatesCoupon",
+    "method": "get",
+    "nativeSignature": "async get(options: GetOptions): Promise<SdkGetAffiliateCouponResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetAffiliateCouponResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/affiliates-coupon/affiliates-coupon.ts"
+  },
+  {
+    "operationId": "saveAffiliateCoupon",
+    "resource": "affiliatesCoupon",
+    "method": "save",
+    "nativeSignature": "async save(options: SaveOptions): Promise<SdkSaveAffiliateCouponResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "save",
+        "params": [
+          {
+            "name": "options",
+            "type": "SaveOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkSaveAffiliateCouponResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/affiliates-coupon/affiliates-coupon.ts"
+  },
+  {
+    "operationId": "disableAffiliateCoupon",
+    "resource": "affiliatesCoupon",
+    "method": "disable",
+    "nativeSignature": "async disable(options: DisableOptions): Promise<void>",
+    "signatures": [
+      {
+        "name": "disable",
+        "params": [
+          {
+            "name": "options",
+            "type": "DisableOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<void>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/affiliates-coupon/affiliates-coupon.ts"
   },
   {
     "operationId": "listAffiliateReferrals",
@@ -6798,17 +9020,39 @@
     "sourceFile": "src/affiliate-payouts/affiliate-payouts.ts"
   },
   {
+    "operationId": "markAffiliatePayoutsPaid",
+    "resource": "affiliatePayouts",
+    "method": "markPaid",
+    "nativeSignature": "async markPaid(options: MarkPaidOptions): Promise<SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "markPaid",
+        "params": [
+          {
+            "name": "options",
+            "type": "MarkPaidOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkMarkAffiliatePayoutsPaidResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/affiliate-payouts/affiliate-payouts.ts"
+  },
+  {
     "operationId": "listRefunds",
     "resource": "refunds",
     "method": "listRefunds",
-    "nativeSignature": "async listRefunds(options?: ListRefundsOptions): Promise<AutoPaginatable<ListRefundsResponseValue200ApplicationJsonPropertyDataItem, ListRefundsOptions>>",
+    "nativeSignature": "async listRefunds(options?: ListRefundsOptions): Promise<AutoPaginatable<ListRefundsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
     "signatures": [
       {
         "name": "listRefunds",
         "params": [
           {
             "name": "options",
-            "type": "PaginationOptions | undefined",
+            "type": "ListRefundsOptions | undefined",
             "optional": true,
             "passingStyle": "options_object"
           }
@@ -6852,12 +9096,12 @@
         "params": [
           {
             "name": "options",
-            "type": "PaginationOptions | undefined",
+            "type": "ListExportsOptions | undefined",
             "optional": true,
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<AutoPaginatable<ListExportsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
+        "returnType": "Promise<AutoPaginatable<ListExportsResponseValue200ApplicationJsonPropertyDataItem, ListExportsOptions>>",
         "async": true
       }
     ],
@@ -6933,14 +9177,14 @@
     "operationId": "listDisputes",
     "resource": "disputes",
     "method": "listDisputes",
-    "nativeSignature": "async listDisputes(options?: ListDisputesOptions): Promise<AutoPaginatable<ListDisputesResponseValue200ApplicationJsonPropertyDataItem, ListDisputesOptions>>",
+    "nativeSignature": "async listDisputes(options?: ListDisputesOptions): Promise<AutoPaginatable<ListDisputesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
     "signatures": [
       {
         "name": "listDisputes",
         "params": [
           {
             "name": "options",
-            "type": "PaginationOptions | undefined",
+            "type": "ListDisputesOptions | undefined",
             "optional": true,
             "passingStyle": "options_object"
           }
@@ -7505,14 +9749,14 @@
     "operationId": "listWebhookDeliveries",
     "resource": "webhookPlatform",
     "method": "listWebhookDeliveries",
-    "nativeSignature": "async listWebhookDeliveries(options?: ListWebhookDeliveriesOptions): Promise<AutoPaginatable<ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem, ListWebhookDeliveriesOptions>>",
+    "nativeSignature": "async listWebhookDeliveries(options?: ListWebhookDeliveriesOptions): Promise<AutoPaginatable<ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
     "signatures": [
       {
         "name": "listWebhookDeliveries",
         "params": [
           {
             "name": "options",
-            "type": "PaginationOptions | undefined",
+            "type": "ListWebhookDeliveriesOptions | undefined",
             "optional": true,
             "passingStyle": "options_object"
           }
@@ -8583,12 +10827,12 @@
         "params": [
           {
             "name": "options",
-            "type": "PaginationOptions | undefined",
+            "type": "V2ListBlacklistsOptions | undefined",
             "optional": true,
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<AutoPaginatable<Blacklist, PaginationOptions>>",
+        "returnType": "Promise<AutoPaginatable<Blacklist, V2ListBlacklistsOptions>>",
         "async": true
       }
     ],
@@ -8925,10 +11169,32 @@
     "sourceFile": "src/coupons/coupons.ts"
   },
   {
+    "operationId": "v2GetCouponUsage",
+    "resource": "coupons",
+    "method": "v2GetCouponUsage",
+    "nativeSignature": "async v2GetCouponUsage(options: V2GetCouponUsageOptions): Promise<SdkV2GetCouponUsageResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "v2GetCouponUsage",
+        "params": [
+          {
+            "name": "options",
+            "type": "V2GetCouponUsageOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkV2GetCouponUsageResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/coupons/coupons.ts"
+  },
+  {
     "operationId": "v2ListFeedback",
     "resource": "feedback",
     "method": "v2ListFeedback",
-    "nativeSignature": "async v2ListFeedback(options?: V2ListFeedbackOptions): Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, V2ListFeedbackOptions>>",
+    "nativeSignature": "async v2ListFeedback(options?: V2ListFeedbackOptions): Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
     "signatures": [
       {
         "name": "v2ListFeedback",
@@ -8940,7 +11206,7 @@
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, V2ListFeedbackOptions>>",
+        "returnType": "Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
         "async": true
       }
     ],
@@ -9324,7 +11590,7 @@
     "operationId": "v2ListTickets",
     "resource": "tickets",
     "method": "v2ListTickets",
-    "nativeSignature": "async v2ListTickets(options?: V2ListTicketsOptions): Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, V2ListTicketsOptions>>",
+    "nativeSignature": "async v2ListTickets(options?: V2ListTicketsOptions): Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
     "signatures": [
       {
         "name": "v2ListTickets",
@@ -9336,7 +11602,7 @@
             "passingStyle": "options_object"
           }
         ],
-        "returnType": "Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, V2ListTicketsOptions>>",
+        "returnType": "Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>",
         "async": true
       }
     ],
@@ -9495,6 +11761,160 @@
       }
     ],
     "sourceFile": "src/tickets-messages/tickets-messages.ts"
+  },
+  {
+    "operationId": "batchUpdateTickets",
+    "resource": "tickets",
+    "method": "batchUpdate",
+    "nativeSignature": "async batchUpdate(options: BatchUpdateOptions): Promise<SdkBatchUpdateTicketsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "batchUpdate",
+        "params": [
+          {
+            "name": "options",
+            "type": "BatchUpdateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkBatchUpdateTicketsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/tickets/tickets.ts"
+  },
+  {
+    "operationId": "v2GetTicketContext",
+    "resource": "tickets",
+    "method": "getContext",
+    "nativeSignature": "async getContext(options: GetContextOptions): Promise<SdkV2GetTicketContextResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "getContext",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetContextOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkV2GetTicketContextResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/tickets/tickets.ts"
+  },
+  {
+    "operationId": "v2ListTicketWalletRefundOptions",
+    "resource": "ticketsWalletRefunds",
+    "method": "listOptions",
+    "nativeSignature": "async listOptions(options: ListOptionsOptions): Promise<SdkV2ListTicketWalletRefundOptionsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "listOptions",
+        "params": [
+          {
+            "name": "options",
+            "type": "ListOptionsOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkV2ListTicketWalletRefundOptionsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/tickets-wallet-refunds/tickets-wallet-refunds.ts"
+  },
+  {
+    "operationId": "v2ListTicketWalletRefunds",
+    "resource": "ticketsWalletRefunds",
+    "method": "list",
+    "nativeSignature": "async list(options: TicketsWalletRefundsListOptions): Promise<SdkV2ListTicketWalletRefundsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "list",
+        "params": [
+          {
+            "name": "options",
+            "type": "TicketsWalletRefundsListOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkV2ListTicketWalletRefundsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/tickets-wallet-refunds/tickets-wallet-refunds.ts"
+  },
+  {
+    "operationId": "v2RefundTicketToWallet",
+    "resource": "ticketsWalletRefunds",
+    "method": "create",
+    "nativeSignature": "async create(options: CreateOptions): Promise<SdkV2RefundTicketToWalletResponseValue201ApplicationJson>",
+    "signatures": [
+      {
+        "name": "create",
+        "params": [
+          {
+            "name": "options",
+            "type": "CreateOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkV2RefundTicketToWalletResponseValue201ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/tickets-wallet-refunds/tickets-wallet-refunds.ts"
+  },
+  {
+    "operationId": "v2ReverseTicketWalletRefund",
+    "resource": "ticketsWalletRefunds",
+    "method": "reverse",
+    "nativeSignature": "async reverse(options: ReverseOptions): Promise<SdkV2ReverseTicketWalletRefundResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "reverse",
+        "params": [
+          {
+            "name": "options",
+            "type": "ReverseOptions",
+            "optional": false,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkV2ReverseTicketWalletRefundResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/tickets-wallet-refunds/tickets-wallet-refunds.ts"
+  },
+  {
+    "operationId": "getSupportAnalytics",
+    "resource": "ticketsAnalytics",
+    "method": "get",
+    "nativeSignature": "async get(options?: GetOptions): Promise<SdkGetSupportAnalyticsResponseValue200ApplicationJson>",
+    "signatures": [
+      {
+        "name": "get",
+        "params": [
+          {
+            "name": "options",
+            "type": "GetOptions | undefined",
+            "optional": true,
+            "passingStyle": "options_object"
+          }
+        ],
+        "returnType": "Promise<SdkGetSupportAnalyticsResponseValue200ApplicationJson>",
+        "async": true
+      }
+    ],
+    "sourceFile": "src/tickets-analytics/tickets-analytics.ts"
   },
   {
     "operationId": "getOAuthAuthorizationServerMetadata",

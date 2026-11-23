@@ -7,18 +7,26 @@ import { serializeSearchSubscriptionsRequestApplicationJsonPropertySortItem } fr
 import { serializeSearchSubscriptionsRequestApplicationJsonPropertySearch } from './search-subscriptions-request-application-json-property-search.serializer';
 import { serializeSearchSubscriptionsRequestApplicationJsonPropertyIncludesItem } from './search-subscriptions-request-application-json-property-includes-item.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}},"orderId":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":1}}},"productId":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":1}}},"renewsAfter":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":64}}},"renewsBefore":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":64}}},"cancelledAfter":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":64}}},"cancelledBefore":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":64}}},"scheduledToCancel":{"kind":"nullable","inner":{"kind":"primitive","type":"boolean"}},"paused":{"kind":"nullable","inner":{"kind":"primitive","type":"boolean"}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkSearchSubscriptionsRequestApplicationJson","required":[],"properties":{"filters":{"kind":"array","items":{"kind":"any"}},"sort":{"kind":"array","items":{"kind":"any"}},"search":{"kind":"any"},"includes":{"kind":"array","items":{"kind":"any"}},"order_id":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":1}}},"product_id":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":1}}},"renews_after":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":64}}},"renews_before":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":64}}},"cancelled_after":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":64}}},"cancelled_before":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":64}}},"scheduled_to_cancel":{"kind":"nullable","inner":{"kind":"primitive","type":"boolean"}},"paused":{"kind":"nullable","inner":{"kind":"primitive","type":"boolean"}}},"additionalProperties":true};
 
 export const serializeSdkSearchSubscriptionsRequestApplicationJson = (
   model: SdkSearchSubscriptionsRequestApplicationJson,
 ): SdkSearchSubscriptionsRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["filters","sort","search","includes"]),
+    ...preserveUnknownFields(model, ["filters","sort","search","includes","orderId","productId","renewsAfter","renewsBefore","cancelledAfter","cancelledBefore","scheduledToCancel","paused"]),
     filters: model.filters != null ? model.filters.map(serializeSearchSubscriptionsRequestApplicationJsonPropertyFiltersItem) : undefined,
     sort: model.sort != null ? model.sort.map(serializeSearchSubscriptionsRequestApplicationJsonPropertySortItem) : undefined,
     search: model.search != null ? serializeSearchSubscriptionsRequestApplicationJsonPropertySearch(model.search) : undefined,
     includes: model.includes != null ? model.includes.map(serializeSearchSubscriptionsRequestApplicationJsonPropertyIncludesItem) : undefined,
+    order_id: model.orderId,
+    product_id: model.productId,
+    renews_after: model.renewsAfter,
+    renews_before: model.renewsBefore,
+    cancelled_after: model.cancelledAfter,
+    cancelled_before: model.cancelledBefore,
+    scheduled_to_cancel: model.scheduledToCancel,
+    paused: model.paused,
   };
 };

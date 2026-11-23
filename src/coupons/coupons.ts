@@ -26,6 +26,7 @@ import type { V2DeleteCouponOptions } from './interfaces/v-2-delete-coupon-optio
 import type { V2BatchCreateCouponsOptions } from './interfaces/v-2-batch-create-coupons-options.interface';
 import type { V2BatchUpdateCouponsOptions } from './interfaces/v-2-batch-update-coupons-options.interface';
 import type { V2BatchDeleteCouponsOptions } from './interfaces/v-2-batch-delete-coupons-options.interface';
+import type { V2GetCouponUsageOptions } from './interfaces/v-2-get-coupon-usage-options.interface';
 import type { ListCouponsResponseValue200ApplicationJsonPropertyDataItem, ListCouponsResponseValue200ApplicationJsonPropertyDataItemResponse } from '../blacklists/interfaces/list-coupons-response-value-200-application-json-property-data-item.interface';
 import type { SdkCreateCouponResponseValue201ApplicationJson, SdkCreateCouponResponseValue201ApplicationJsonResponse } from '../blacklists/interfaces/sdk-create-coupon-response-value-201-application-json.interface';
 import type { SdkGetCouponResponseValue200ApplicationJson, SdkGetCouponResponseValue200ApplicationJsonResponse } from '../blacklists/interfaces/sdk-get-coupon-response-value-200-application-json.interface';
@@ -42,6 +43,7 @@ import type { SdkV2ReplaceCouponResponseValue200ApplicationJson, SdkV2ReplaceCou
 import type { SdkV2UpdateCouponResponseValue200ApplicationJson, SdkV2UpdateCouponResponseValue200ApplicationJsonResponse } from '../blacklists/interfaces/sdk-v-2-update-coupon-response-value-200-application-json.interface';
 import type { SdkV2BatchCreateCouponsResponseValue200ApplicationJson, SdkV2BatchCreateCouponsResponseValue200ApplicationJsonResponse } from '../blacklists/interfaces/sdk-v-2-batch-create-coupons-response-value-200-application-json.interface';
 import type { SdkV2BatchUpdateCouponsResponseValue200ApplicationJson, SdkV2BatchUpdateCouponsResponseValue200ApplicationJsonResponse } from '../blacklists/interfaces/sdk-v-2-batch-update-coupons-response-value-200-application-json.interface';
+import type { SdkV2GetCouponUsageResponseValue200ApplicationJson, SdkV2GetCouponUsageResponseValue200ApplicationJsonResponse } from '../blacklists/interfaces/sdk-v-2-get-coupon-usage-response-value-200-application-json.interface';
 import type { SdkCreateCouponRequestApplicationJsonResponse } from '../blacklists/interfaces/sdk-create-coupon-request-application-json.interface';
 import type { SdkReplaceCouponRequestApplicationJsonResponse } from '../blacklists/interfaces/sdk-replace-coupon-request-application-json.interface';
 import type { SdkUpdateCouponRequestApplicationJsonResponse } from '../blacklists/interfaces/sdk-update-coupon-request-application-json.interface';
@@ -72,6 +74,7 @@ import { deserializeSdkV2ReplaceCouponResponseValue200ApplicationJson } from '..
 import { deserializeSdkV2UpdateCouponResponseValue200ApplicationJson } from '../blacklists/serializers/sdk-v-2-update-coupon-response-value-200-application-json.serializer';
 import { deserializeSdkV2BatchCreateCouponsResponseValue200ApplicationJson } from '../blacklists/serializers/sdk-v-2-batch-create-coupons-response-value-200-application-json.serializer';
 import { deserializeSdkV2BatchUpdateCouponsResponseValue200ApplicationJson } from '../blacklists/serializers/sdk-v-2-batch-update-coupons-response-value-200-application-json.serializer';
+import { deserializeSdkV2GetCouponUsageResponseValue200ApplicationJson } from '../blacklists/serializers/sdk-v-2-get-coupon-usage-response-value-200-application-json.serializer';
 import { serializeSdkCreateCouponRequestApplicationJson } from '../blacklists/serializers/sdk-create-coupon-request-application-json.serializer';
 import { serializeSdkReplaceCouponRequestApplicationJson } from '../blacklists/serializers/sdk-replace-coupon-request-application-json.serializer';
 import { serializeSdkUpdateCouponRequestApplicationJson } from '../blacklists/serializers/sdk-update-coupon-request-application-json.serializer';
@@ -157,6 +160,7 @@ const serializeV2SearchCouponsOptions = (options: V2SearchCouponsOptions): Pagin
     after: options.after,
     order: options.order,
   };
+  if (options.page !== undefined) wire.page = options.page;
   if (options.withTrashed !== undefined) wire.with_trashed = options.withTrashed;
   if (options.onlyTrashed !== undefined) wire.only_trashed = options.onlyTrashed;
   return wire as PaginationOptions;
@@ -463,10 +467,10 @@ export class Coupons {
    * @throws {RateLimitExceededException} 429
    */
   async v2SearchCoupons(options: V2SearchCouponsOptions): Promise<SdkV2SearchCouponsResponseValue200ApplicationJson> {
-    const { withTrashed, onlyTrashed, requestOptions, ...payload } = options;
+    const { page, withTrashed, onlyTrashed, requestOptions, ...payload } = options;
     const { data } = await this.sellApp.post<SdkV2SearchCouponsResponseValue200ApplicationJsonResponse, SdkV2SearchCouponsRequestApplicationJsonResponse>(
       '/v2/coupons/search',
-      serializeSdkV2SearchCouponsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'v2SearchCoupons', query: { ...(options.withTrashed !== undefined && { with_trashed: options.withTrashed }), ...(options.onlyTrashed !== undefined && { only_trashed: options.onlyTrashed }) } },
+      serializeSdkV2SearchCouponsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'v2SearchCoupons', query: { ...(options.page !== undefined && { page: options.page }), ...(options.withTrashed !== undefined && { with_trashed: options.withTrashed }), ...(options.onlyTrashed !== undefined && { only_trashed: options.onlyTrashed }) } },
     );
     return deserializeSdkV2SearchCouponsResponseValue200ApplicationJson(data);
   }
@@ -640,5 +644,26 @@ export class Coupons {
   async v2BatchDeleteCoupons(options: V2BatchDeleteCouponsOptions): Promise<void> {
     const { withTrashed, onlyTrashed, requestOptions, ...payload } = options;
     await this.sellApp.deleteWithBody<SdkV2BatchDeleteCouponsRequestApplicationJsonResponse>('/v2/coupons/batch', serializeSdkV2BatchDeleteCouponsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'v2BatchDeleteCoupons', query: { ...(options.withTrashed !== undefined && { with_trashed: options.withTrashed }), ...(options.onlyTrashed !== undefined && { only_trashed: options.onlyTrashed }) } });
+  }
+
+  /**
+   * Retrieve coupon usage
+   *
+   * Count the completed orders that used a coupon, over the coupon's whole life. Only orders whose status is `COMPLETED` count; pending, failed, and refunded orders do not. A coupon from another store, a deleted coupon, and a coupon issued by a reward return `404`. Requires the `coupon` API-key ability and the coupon permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.coupon - The coupon ID.
+   * @example 1
+   * @returns {Promise<SdkV2GetCouponUsageResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async v2GetCouponUsage(options: V2GetCouponUsageOptions): Promise<SdkV2GetCouponUsageResponseValue200ApplicationJson> {
+    const { coupon } = options;
+    const { data } = await this.sellApp.get<SdkV2GetCouponUsageResponseValue200ApplicationJsonResponse>(`/v2/coupons/${encodeURIComponent(coupon)}/usage`, { ...options.requestOptions, operationId: 'v2GetCouponUsage' });
+    return deserializeSdkV2GetCouponUsageResponseValue200ApplicationJson(data);
   }
 }

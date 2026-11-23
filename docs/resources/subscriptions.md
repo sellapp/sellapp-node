@@ -64,14 +64,14 @@ List subscriptions
 [API reference](https://sell.app/docs/api/subscriptions/read-subscriptions) · Effect: **read**
 
 ```typescript
-async listSubscriptions(options?: ListSubscriptionsOptions): Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, ListSubscriptionsOptions>>
+async listSubscriptions(options?: ListSubscriptionsOptions): Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, PaginationOptions>>
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
 | options | `ListSubscriptionsOptions \| undefined` | No |
 
-Returns: `Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, ListSubscriptionsOptions>>`.
+Returns: `Promise<AutoPaginatable<SdkListSubscriptionsResponseValue200ApplicationJson, PaginationOptions>>`.
 
 ```ts
 import { SellApp } from '@sell.app/sdk';

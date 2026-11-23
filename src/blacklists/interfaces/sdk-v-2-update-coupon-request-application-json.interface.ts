@@ -9,7 +9,7 @@ export interface SdkV2UpdateCouponRequestApplicationJson {
   /** A decimal discount value of at least 1. Percentage discounts cannot exceed 100; amount discounts use the store currency's major unit. A `subscriptions` coupon cannot take 100% off: that returns `422` on `discount`, so offer a free trial instead. */
   discount?: number | string;
   storeWide?: boolean;
-  /** Product IDs the coupon applies to when store_wide is false. Each product you add must sell a variant of the coupon's kind: a subscription plan for a `subscriptions` coupon, or a one-time variant for a `one_time` one. Another product returns `422` on `products`. */
+  /** Product IDs the coupon applies to when store_wide is false. Each product you add must sell a variant of the coupon's kind: a subscription plan for a `subscriptions` coupon, or a one-time variant for a `one_time` one. Another product returns `422` on `products`. It may be an empty list when the same request sends `store_wide: true`, so a store-wide coupon you read can be sent back unchanged. Otherwise an empty list returns `422` on `products`. */
   products?: number[];
   /** Optional variant restrictions. Omit to preserve existing restrictions or send an empty array to allow every variant of the selected products. Each variant you add must be of the coupon's kind, a subscription plan or a one-time variant; another returns `422` on `product_variants`. */
   productVariants?: number[];
@@ -22,6 +22,8 @@ export interface SdkV2UpdateCouponRequestApplicationJson {
   appliesTo?: SdkV2UpdateCouponRequestApplicationJsonAppliesTo | (string & Record<never, never>);
   /** How many payments a `subscriptions` coupon discounts, counting the signup payment as the first, so `3` discounts the signup and the next two renewals. A `subscriptions` coupon needs one, and an update that leaves it out keeps the stored number. Missing on a `subscriptions` coupon, or outside 1 to 36, it returns `422` on `subscription_payments` with `The number of discounted payments must be between 1 and 36.` A `one_time` coupon always stores null here. */
   subscriptionPayments?: number | null;
+  /** The most a percentage coupon takes off one order, as a decimal amount of at least 1 in the major unit of the order's currency, with at most two decimals: `15.50` caps the discount at 15.50. Send null to remove the cap. Only a `PERCENTAGE` coupon can have a cap: sending one for an `AMOUNT` coupon returns `422` on `maximum_discount_amount`, and changing a coupon to `AMOUNT` removes its cap. */
+  maximumDiscountAmount?: number | string | null;
   [key: string]: unknown;
 }
 
@@ -37,5 +39,6 @@ export interface SdkV2UpdateCouponRequestApplicationJsonResponse {
   minimum_amount?: number | string | null;
   applies_to?: SdkV2UpdateCouponRequestApplicationJsonAppliesTo | (string & Record<never, never>);
   subscription_payments?: number | null;
+  maximum_discount_amount?: number | string | null;
   [key: string]: unknown;
 }

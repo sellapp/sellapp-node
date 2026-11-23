@@ -7,20 +7,27 @@ import type { PollOptions } from './interfaces/poll-options.interface';
 import type { CompleteOptions } from './interfaces/complete-options.interface';
 import type { VerifyOptions } from './interfaces/verify-options.interface';
 import type { DisconnectOptions } from './interfaces/disconnect-options.interface';
+import type { SyncDiscordRolesOptions } from './interfaces/sync-discord-roles-options.interface';
 import type { SdkListCommunityConnectionsResponseValue200ApplicationJson, SdkListCommunityConnectionsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-community-connections-response-value-200-application-json.interface';
 import type { SdkStartCommunityConnectionResponseValue200ApplicationJson, SdkStartCommunityConnectionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-start-community-connection-response-value-200-application-json.interface';
 import type { SdkPollCommunityConnectionResponseValue200ApplicationJson, SdkPollCommunityConnectionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-poll-community-connection-response-value-200-application-json.interface';
 import type { SdkCompleteCommunityConnectionResponseValue200ApplicationJson, SdkCompleteCommunityConnectionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-complete-community-connection-response-value-200-application-json.interface';
 import type { SdkVerifyCommunityConnectionResponseValue200ApplicationJson, SdkVerifyCommunityConnectionResponseValue200ApplicationJsonResponse } from './interfaces/sdk-verify-community-connection-response-value-200-application-json.interface';
+import type { SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson, SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-community-failed-grant-reasons-response-value-200-application-json.interface';
+import type { SdkSyncDiscordRolesResponseValue200ApplicationJson, SdkSyncDiscordRolesResponseValue200ApplicationJsonResponse } from './interfaces/sdk-sync-discord-roles-response-value-200-application-json.interface';
 import type { SdkStartCommunityConnectionRequestApplicationJsonResponse } from './interfaces/sdk-start-community-connection-request-application-json.interface';
 import type { SdkCompleteCommunityConnectionRequestApplicationJsonResponse } from './interfaces/sdk-complete-community-connection-request-application-json.interface';
+import type { SdkSyncDiscordRolesRequestApplicationJsonResponse } from './interfaces/sdk-sync-discord-roles-request-application-json.interface';
 import { deserializeSdkListCommunityConnectionsResponseValue200ApplicationJson } from './serializers/sdk-list-community-connections-response-value-200-application-json.serializer';
 import { deserializeSdkStartCommunityConnectionResponseValue200ApplicationJson } from './serializers/sdk-start-community-connection-response-value-200-application-json.serializer';
 import { deserializeSdkPollCommunityConnectionResponseValue200ApplicationJson } from './serializers/sdk-poll-community-connection-response-value-200-application-json.serializer';
 import { deserializeSdkCompleteCommunityConnectionResponseValue200ApplicationJson } from './serializers/sdk-complete-community-connection-response-value-200-application-json.serializer';
 import { deserializeSdkVerifyCommunityConnectionResponseValue200ApplicationJson } from './serializers/sdk-verify-community-connection-response-value-200-application-json.serializer';
+import { deserializeSdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson } from './serializers/sdk-list-community-failed-grant-reasons-response-value-200-application-json.serializer';
+import { deserializeSdkSyncDiscordRolesResponseValue200ApplicationJson } from './serializers/sdk-sync-discord-roles-response-value-200-application-json.serializer';
 import { serializeSdkStartCommunityConnectionRequestApplicationJson } from './serializers/sdk-start-community-connection-request-application-json.serializer';
 import { serializeSdkCompleteCommunityConnectionRequestApplicationJson } from './serializers/sdk-complete-community-connection-request-application-json.serializer';
+import { serializeSdkSyncDiscordRolesRequestApplicationJson } from './serializers/sdk-sync-discord-roles-request-application-json.serializer';
 
 interface SellAppResponseEnvelope<T> { data: T; status: number; headers: Headers; requestId?: string }
 type SellAppWithResponse<T extends object> = {
@@ -160,5 +167,41 @@ export class CommunityConnections {
   async disconnect(options: DisconnectOptions): Promise<void> {
     const { platform } = options;
     await this.sellApp.delete(`/v2/community-connections/${encodeURIComponent(platform)}`, { ...options.requestOptions, operationId: 'disconnectCommunityPlatform' });
+  }
+
+  /**
+   * List community failed grant reasons
+   *
+   * List why community access grants failed across all platforms, with how many grants failed for each reason and what you can do about it, most frequent first. A grant is the access a purchase gives a customer, such as a Discord role or a place in a Telegram group. Only reasons that still need attention or are retried are counted; failures nobody can act on, such as a customer who left the server, are not. Only SellApp's records are read; no platform is contacted. An empty `data` array means no grant is failing. Requires the `community` API-key ability and the `community` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async listFailedGrantReasons(requestOptions: RequestOptions = {}): Promise<SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson> {
+    const { data } = await this.sellApp.get<SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJsonResponse>('/v2/community-connections/failed-grant-reasons', requestOptions);
+    return deserializeSdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Sync Discord roles
+   *
+   * Read the role list of the store's Discord servers from Discord again and check the bot's role position, which tells whether the bot can give the roles your products sell. Syncs every connected server, or only `server_id`. A server Discord refuses is reported on its own row with `synced: false`, and the others still sync; `failed_count` counts those rows. Nothing is given to or taken from a member, so repeating the request is safe. `422` on `platform` when no Discord server is connected, and on `server_id` when that server is not connected to this store. Requires the `community` API-key ability and the `community` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkSyncDiscordRolesResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async syncDiscordRoles(options: SyncDiscordRolesOptions): Promise<SdkSyncDiscordRolesResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.post<SdkSyncDiscordRolesResponseValue200ApplicationJsonResponse, SdkSyncDiscordRolesRequestApplicationJsonResponse>(
+      '/v2/community-connections/discord/sync-roles',
+      serializeSdkSyncDiscordRolesRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'syncDiscordRoles' },
+    );
+    return deserializeSdkSyncDiscordRolesResponseValue200ApplicationJson(data);
   }
 }

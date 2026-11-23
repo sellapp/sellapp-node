@@ -9,6 +9,8 @@ import type { SearchProductsWithinGroupRequestApplicationJsonPropertyIncludesIte
 export interface SearchOptions extends PaginationOptions {
   /** The group path parameter. */
   group: number;
+  /** Page number to return. */
+  page?: number;
   filters?: SearchProductsWithinGroupRequestApplicationJsonPropertyFiltersItem[];
   sort?: SearchProductsWithinGroupRequestApplicationJsonPropertySortItem[];
   search?: SearchProductsWithinGroupRequestApplicationJsonPropertySearch;

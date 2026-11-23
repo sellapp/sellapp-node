@@ -3,8 +3,8 @@
 import type { ListIntegrationEventsResponseValue200ApplicationJsonPropertyDataItemPropertyData, ListIntegrationEventsResponseValue200ApplicationJsonPropertyDataItemPropertyDataResponse } from '../interfaces/list-integration-events-response-value-200-application-json-property-data-item-property-data.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"ListIntegrationEventsResponseValue200ApplicationJsonPropertyDataItemPropertyData","required":[],"properties":{},"additionalProperties":{"kind":"any"},"constraints":{"maxProperties":100}};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"ListIntegrationEventsResponseValue200ApplicationJsonPropertyDataItemPropertyData","required":[],"properties":{},"additionalProperties":{"kind":"any"},"constraints":{"maxProperties":100}};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"ListIntegrationEventsResponseValue200ApplicationJsonPropertyDataItemPropertyData","required":[],"properties":{},"additionalProperties":{"kind":"nullable","inner":{"kind":"union","variants":[{"kind":"primitive","type":"string","constraints":{"maxLength":500}},{"kind":"primitive","type":"number"},{"kind":"primitive","type":"boolean"}],"composition":"oneOf"}},"constraints":{"maxProperties":100}};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"ListIntegrationEventsResponseValue200ApplicationJsonPropertyDataItemPropertyData","required":[],"properties":{},"additionalProperties":{"kind":"nullable","inner":{"kind":"union","variants":[{"kind":"primitive","type":"string","constraints":{"maxLength":500}},{"kind":"primitive","type":"number"},{"kind":"primitive","type":"boolean"}],"composition":"oneOf"}},"constraints":{"maxProperties":100}};
 
 export const deserializeListIntegrationEventsResponseValue200ApplicationJsonPropertyDataItemPropertyData = (
   _response: ListIntegrationEventsResponseValue200ApplicationJsonPropertyDataItemPropertyDataResponse,

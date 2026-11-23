@@ -2,6 +2,7 @@
 
 import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
+import type { PaginationOptions } from '../common/interfaces/pagination-options.interface';
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { TicketsListOptions } from './interfaces/tickets-list-options.interface';
@@ -11,6 +12,8 @@ import type { V2ListTicketsOptions } from './interfaces/v-2-list-tickets-options
 import type { V2SearchTicketsOptions } from './interfaces/v-2-search-tickets-options.interface';
 import type { V2GetTicketOptions } from './interfaces/v-2-get-ticket-options.interface';
 import type { UpdateOptions } from './interfaces/update-options.interface';
+import type { BatchUpdateOptions } from './interfaces/batch-update-options.interface';
+import type { GetContextOptions } from './interfaces/get-context-options.interface';
 import type { ListTicketsResponseValue200ApplicationJsonPropertyDataItem, ListTicketsResponseValue200ApplicationJsonPropertyDataItemResponse } from '../blacklists/interfaces/list-tickets-response-value-200-application-json-property-data-item.interface';
 import type { SdkGetTicketResponseValue200ApplicationJson, SdkGetTicketResponseValue200ApplicationJsonResponse } from '../blacklists/interfaces/sdk-get-ticket-response-value-200-application-json.interface';
 import type { SearchTicketsResponseValue200ApplicationJsonPropertyDataItem, SearchTicketsResponseValue200ApplicationJsonPropertyDataItemResponse } from '../blacklists/interfaces/search-tickets-response-value-200-application-json-property-data-item.interface';
@@ -18,9 +21,12 @@ import type { V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, V2Li
 import type { V2SearchTicketsResponseValue200ApplicationJsonPropertyDataItem, V2SearchTicketsResponseValue200ApplicationJsonPropertyDataItemResponse } from '../blacklists/interfaces/v-2-search-tickets-response-value-200-application-json-property-data-item.interface';
 import type { SdkV2GetTicketResponseValue200ApplicationJson, SdkV2GetTicketResponseValue200ApplicationJsonResponse } from '../blacklists/interfaces/sdk-v-2-get-ticket-response-value-200-application-json.interface';
 import type { SdkUpdateTicketResponseValue200ApplicationJson, SdkUpdateTicketResponseValue200ApplicationJsonResponse } from '../blacklists/interfaces/sdk-update-ticket-response-value-200-application-json.interface';
+import type { SdkBatchUpdateTicketsResponseValue200ApplicationJson, SdkBatchUpdateTicketsResponseValue200ApplicationJsonResponse } from '../blacklists/interfaces/sdk-batch-update-tickets-response-value-200-application-json.interface';
+import type { SdkV2GetTicketContextResponseValue200ApplicationJson, SdkV2GetTicketContextResponseValue200ApplicationJsonResponse } from '../blacklists/interfaces/sdk-v-2-get-ticket-context-response-value-200-application-json.interface';
 import type { SdkSearchTicketsRequestApplicationJsonResponse } from '../blacklists/interfaces/sdk-search-tickets-request-application-json.interface';
 import type { SdkV2SearchTicketsRequestApplicationJsonResponse } from '../blacklists/interfaces/sdk-v-2-search-tickets-request-application-json.interface';
 import type { SdkUpdateTicketRequestApplicationJsonResponse } from '../blacklists/interfaces/sdk-update-ticket-request-application-json.interface';
+import type { SdkBatchUpdateTicketsRequestApplicationJsonResponse } from '../blacklists/interfaces/sdk-batch-update-tickets-request-application-json.interface';
 import { deserializeListTicketsResponseValue200ApplicationJsonPropertyDataItem } from '../blacklists/serializers/list-tickets-response-value-200-application-json-property-data-item.serializer';
 import { deserializeSdkGetTicketResponseValue200ApplicationJson } from '../blacklists/serializers/sdk-get-ticket-response-value-200-application-json.serializer';
 import { deserializeSearchTicketsResponseValue200ApplicationJsonPropertyDataItem } from '../blacklists/serializers/search-tickets-response-value-200-application-json-property-data-item.serializer';
@@ -28,9 +34,12 @@ import { deserializeV2ListTicketsResponseValue200ApplicationJsonPropertyDataItem
 import { deserializeV2SearchTicketsResponseValue200ApplicationJsonPropertyDataItem } from '../blacklists/serializers/v-2-search-tickets-response-value-200-application-json-property-data-item.serializer';
 import { deserializeSdkV2GetTicketResponseValue200ApplicationJson } from '../blacklists/serializers/sdk-v-2-get-ticket-response-value-200-application-json.serializer';
 import { deserializeSdkUpdateTicketResponseValue200ApplicationJson } from '../blacklists/serializers/sdk-update-ticket-response-value-200-application-json.serializer';
+import { deserializeSdkBatchUpdateTicketsResponseValue200ApplicationJson } from '../blacklists/serializers/sdk-batch-update-tickets-response-value-200-application-json.serializer';
+import { deserializeSdkV2GetTicketContextResponseValue200ApplicationJson } from '../blacklists/serializers/sdk-v-2-get-ticket-context-response-value-200-application-json.serializer';
 import { serializeSdkSearchTicketsRequestApplicationJson } from '../blacklists/serializers/sdk-search-tickets-request-application-json.serializer';
 import { serializeSdkV2SearchTicketsRequestApplicationJson } from '../blacklists/serializers/sdk-v-2-search-tickets-request-application-json.serializer';
 import { serializeSdkUpdateTicketRequestApplicationJson } from '../blacklists/serializers/sdk-update-ticket-request-application-json.serializer';
+import { serializeSdkBatchUpdateTicketsRequestApplicationJson } from '../blacklists/serializers/sdk-batch-update-tickets-request-application-json.serializer';
 
 interface SellAppResponseEnvelope<T> { data: T; status: number; headers: Headers; requestId?: string }
 type SellAppWithResponse<T extends object> = {
@@ -44,6 +53,23 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
     ),
   }) as SellAppWithResponse<T>;
 }
+
+const serializeV2ListTicketsOptions = (options: V2ListTicketsOptions): PaginationOptions => {
+  const wire: Record<string, unknown> = {
+    maxItems: options.maxItems,
+    maxPages: options.maxPages,
+    requestOptions: options.requestOptions,
+    limit: options.limit,
+    before: options.before,
+    after: options.after,
+    order: options.order,
+  };
+  if (options.page !== undefined) wire.page = options.page;
+  if (options.waitingOn !== undefined) wire.waiting_on = options.waitingOn;
+  if (options.reason !== undefined) wire.reason = options.reason;
+  if (options.customerEmail !== undefined) wire.customer_email = options.customerEmail;
+  return wire as PaginationOptions;
+};
 
 export class Tickets {
   constructor(private readonly sellApp: SellApp) {}
@@ -123,7 +149,7 @@ export class Tickets {
   /**
    * List all tickets
    *
-   * List your store's support tickets, 15 per page by default. This v2 route is store-scoped. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List your store's support tickets, 15 per page by default. This v2 route is store-scoped. Narrow the results with `waiting_on`, `reason` and `customer_email`; they combine with each other and with any other filters. An unknown `waiting_on` or `reason`, or a `customer_email` longer than 255 characters, returns `422`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -132,14 +158,13 @@ export class Tickets {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async v2ListTickets(options?: V2ListTicketsOptions): Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, V2ListTicketsOptions>> {
-    const paginationOptions = options;
+  async v2ListTickets(options?: V2ListTicketsOptions): Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>> {
     return new AutoPaginatable(
       await fetchAndDeserialize<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItemResponse, V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem>(
         this.sellApp,
         '/v2/tickets',
         deserializeV2ListTicketsResponseValue200ApplicationJsonPropertyDataItem,
-        paginationOptions,
+        options ? serializeV2ListTicketsOptions(options) : undefined,
       ),
       (params) =>
         fetchAndDeserialize<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItemResponse, V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem>(
@@ -148,14 +173,14 @@ export class Tickets {
           deserializeV2ListTicketsResponseValue200ApplicationJsonPropertyDataItem,
           params,
         ),
-      paginationOptions,
+      options ? serializeV2ListTicketsOptions(options) : undefined,
     );
   }
 
   /**
    * Search tickets
    *
-   * Search tickets using JSON body filters, search terms, includes, and sort instructions. This v2 route is store-scoped. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Search tickets using JSON body filters, search terms, includes, and sort instructions. This v2 route is store-scoped. Narrow the results with `waiting_on`, `reason` and `customer_email`; they combine with each other and with any other filters. An unknown `waiting_on` or `reason`, or a `customer_email` longer than 255 characters, returns `422`. Page through results with `limit` (1 to 100, default 15; a larger value returns `422`) and `page`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<V2SearchTicketsResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -165,10 +190,10 @@ export class Tickets {
    * @throws {RateLimitExceededException} 429
    */
   async v2SearchTickets(options: V2SearchTicketsOptions): Promise<SdkV2SearchTicketsResponseValue200ApplicationJson> {
-    const { requestOptions, ...payload } = options;
+    const { page, requestOptions, ...payload } = options;
     const { data } = await this.sellApp.post<SdkV2SearchTicketsResponseValue200ApplicationJsonResponse, SdkV2SearchTicketsRequestApplicationJsonResponse>(
       '/v2/tickets/search',
-      serializeSdkV2SearchTicketsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'v2SearchTickets' },
+      serializeSdkV2SearchTicketsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'v2SearchTickets', query: { ...(options.page !== undefined && { page: options.page }) } },
     );
     return deserializeSdkV2SearchTicketsResponseValue200ApplicationJson(data);
   }
@@ -197,7 +222,7 @@ export class Tickets {
   /**
    * Close, reopen, or archive a ticket
    *
-   * Change ticket status or archive state in the selected store. Requires the ticket API-key ability and store ticket permission. Send status OPEN to reopen or CLOSED to close; closing sends the existing customer notification only when the status changes. Send archived true to archive or false to restore. You may send both fields together; omitted fields stay unchanged. Use the same optional Idempotency-Key and identical body after a lost response. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Close, reopen, archive or restore a ticket in the selected store. Send `status` `CLOSED` to close or `OPEN` to reopen, and `archived` `true` to archive or `false` to restore; you may send both, and omitted fields stay unchanged. When you close a ticket you can record why with `outcome`, which is accepted only together with `status` `CLOSED`. Closing emails the customer that the ticket was closed, at most once an hour per ticket: reopening and closing again within the hour sends no second email. A closed ticket keeps its outcome. Sending the outcome it already has changes nothing; a different outcome, or an outcome for a ticket that was closed without one, returns `422` on `outcome` and nothing in the request is applied, so reopen the ticket first. Requires the `ticket` API-key ability and the ticket permission in your team role. Use the same optional Idempotency-Key and identical body after a lost response. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @example 42
    * @returns {Promise<SdkUpdateTicketResponseValue200ApplicationJson>}
    * @throws {BadRequestException} 400
@@ -214,5 +239,48 @@ export class Tickets {
       serializeSdkUpdateTicketRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'updateTicket' },
     );
     return deserializeSdkUpdateTicketResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Update several tickets
+   *
+   * Close, reopen, archive, restore or mark as unread up to 50 tickets in one request, and get one result per ticket in the order you sent them. Every ID must be a ticket of the selected store: one unknown ID returns `404` and changes nothing. Each ticket is then changed on its own, so one refusal does not undo the others. `close` needs an `outcome`, which is recorded on every ticket it closes, and emails each customer that the ticket was closed, at most once an hour per ticket. `mark_unread` marks the ticket unread for your store (`read_status.store` becomes `false`). Requires the `ticket` API-key ability and the ticket permission in your team role. Repeating the same request is safe: a ticket already in the requested state comes back as `skipped`. Send an optional `Idempotency-Key` with an identical body to get the original response back after a lost connection. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkBatchUpdateTicketsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {ConflictException} 409
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async batchUpdate(options: BatchUpdateOptions): Promise<SdkBatchUpdateTicketsResponseValue200ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.patch<SdkBatchUpdateTicketsResponseValue200ApplicationJsonResponse, SdkBatchUpdateTicketsRequestApplicationJsonResponse>(
+      '/v2/tickets/batch',
+      serializeSdkBatchUpdateTicketsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'batchUpdateTickets' },
+    );
+    return deserializeSdkBatchUpdateTicketsResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Retrieve a ticket's customer and refund context
+   *
+   * Read what you need beside a ticket's conversation in one call: the resolution, the customer's order history in this store, the linked order, what can still be refunded to the customer's wallet, and the latest 20 support activity entries, newest first. `refund_options` has the same items as the ticket's wallet refund options. The customer figures count the store's completed orders whose customer or order email is the ticket's email. Requires the `ticket` API-key ability and the ticket permission in your team role. The response includes the customer's email, order count and lifetime spend, so give a key with this ability only to people and tools that may see them. Amounts are integer USD cents: `1999` means $19.99. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.ticket - The ticket ID in the selected store.
+   * @example 312
+   * @returns {Promise<SdkV2GetTicketContextResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async getContext(options: GetContextOptions): Promise<SdkV2GetTicketContextResponseValue200ApplicationJson> {
+    const { ticket } = options;
+    const { data } = await this.sellApp.get<SdkV2GetTicketContextResponseValue200ApplicationJsonResponse>(`/v2/tickets/${encodeURIComponent(ticket)}/context`, { ...options.requestOptions, operationId: 'v2GetTicketContext' });
+    return deserializeSdkV2GetTicketContextResponseValue200ApplicationJson(data);
   }
 }

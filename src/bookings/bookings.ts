@@ -9,22 +9,27 @@ import type { SearchOptions } from './interfaces/search-options.interface';
 import type { GetOptions } from './interfaces/get-options.interface';
 import type { UpdateOptions } from './interfaces/update-options.interface';
 import type { CancelOptions } from './interfaces/cancel-options.interface';
+import type { CreateOptions } from './interfaces/create-options.interface';
 import type { SdkListAppointmentsResponseValue200ApplicationJson, SdkListAppointmentsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-appointments-response-value-200-application-json.interface';
 import type { SdkSearchAppointmentsResponseValue200ApplicationJson, SdkSearchAppointmentsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-search-appointments-response-value-200-application-json.interface';
 import type { SdkGetAppointmentResponseValue200ApplicationJson, SdkGetAppointmentResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-appointment-response-value-200-application-json.interface';
 import type { SdkUpdateAppointmentResponseValue200ApplicationJson, SdkUpdateAppointmentResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-appointment-response-value-200-application-json.interface';
 import type { SdkCancelAppointmentResponseValue200ApplicationJson, SdkCancelAppointmentResponseValue200ApplicationJsonResponse } from './interfaces/sdk-cancel-appointment-response-value-200-application-json.interface';
+import type { SdkCreateBookingProductResponseValue201ApplicationJson, SdkCreateBookingProductResponseValue201ApplicationJsonResponse } from './interfaces/sdk-create-booking-product-response-value-201-application-json.interface';
 import type { SdkSearchAppointmentsRequestApplicationJsonResponse } from './interfaces/sdk-search-appointments-request-application-json.interface';
 import type { SdkUpdateAppointmentRequestApplicationJsonResponse } from './interfaces/sdk-update-appointment-request-application-json.interface';
 import type { SdkCancelAppointmentRequestApplicationJsonResponse } from './interfaces/sdk-cancel-appointment-request-application-json.interface';
+import type { SdkCreateBookingProductRequestApplicationJsonResponse } from './interfaces/sdk-create-booking-product-request-application-json.interface';
 import { deserializeSdkListAppointmentsResponseValue200ApplicationJson } from './serializers/sdk-list-appointments-response-value-200-application-json.serializer';
 import { deserializeSdkSearchAppointmentsResponseValue200ApplicationJson } from './serializers/sdk-search-appointments-response-value-200-application-json.serializer';
 import { deserializeSdkGetAppointmentResponseValue200ApplicationJson } from './serializers/sdk-get-appointment-response-value-200-application-json.serializer';
 import { deserializeSdkUpdateAppointmentResponseValue200ApplicationJson } from './serializers/sdk-update-appointment-response-value-200-application-json.serializer';
 import { deserializeSdkCancelAppointmentResponseValue200ApplicationJson } from './serializers/sdk-cancel-appointment-response-value-200-application-json.serializer';
+import { deserializeSdkCreateBookingProductResponseValue201ApplicationJson } from './serializers/sdk-create-booking-product-response-value-201-application-json.serializer';
 import { serializeSdkSearchAppointmentsRequestApplicationJson } from './serializers/sdk-search-appointments-request-application-json.serializer';
 import { serializeSdkUpdateAppointmentRequestApplicationJson } from './serializers/sdk-update-appointment-request-application-json.serializer';
 import { serializeSdkCancelAppointmentRequestApplicationJson } from './serializers/sdk-cancel-appointment-request-application-json.serializer';
+import { serializeSdkCreateBookingProductRequestApplicationJson } from './serializers/sdk-create-booking-product-request-application-json.serializer';
 
 interface SellAppResponseEnvelope<T> { data: T; status: number; headers: Headers; requestId?: string }
 type SellAppWithResponse<T extends object> = {
@@ -163,5 +168,25 @@ export class Bookings {
       serializeSdkCancelAppointmentRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'cancelAppointment' },
     );
     return deserializeSdkCancelAppointmentResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Create a booking product
+   *
+   * Create a draft booking product with one draft option that customers book as a timed appointment, one per purchase and one customer per time slot. Nothing can be booked until you publish it, whatever `visibility` you send: `visibility`, `PRIVATE` by default, applies once the product is published. Publish it with `POST /v2/products/{product}/publish`. Schedule fields you leave out take their defaults; read the result with `GET /v2/products/{product}/variants/{variant}/booking`. Each successful call creates another product, so do not retry blindly after a lost response: list your products first. Requires the `listing` API-key ability and the `listing` permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @returns {Promise<SdkCreateBookingProductResponseValue201ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async create(options: CreateOptions): Promise<SdkCreateBookingProductResponseValue201ApplicationJson> {
+    const { requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.post<SdkCreateBookingProductResponseValue201ApplicationJsonResponse, SdkCreateBookingProductRequestApplicationJsonResponse>(
+      '/v2/booking-products',
+      serializeSdkCreateBookingProductRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'createBookingProduct' },
+    );
+    return deserializeSdkCreateBookingProductResponseValue201ApplicationJson(data);
   }
 }

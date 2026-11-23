@@ -23,6 +23,8 @@ export interface BatchCreateProductVariantsResponseValue200ApplicationJsonProper
   updatedAt: Date;
   deletedAt: Date | null;
   product: BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyProduct;
+  /** `true` while the variant is a draft that customers cannot buy. Listing, searching, and retrieving variants leave drafts out unless you send `with_drafts` or `only_drafts`. */
+  isDraft: boolean;
   [key: string]: unknown;
 }
 
@@ -43,5 +45,6 @@ export interface BatchCreateProductVariantsResponseValue200ApplicationJsonProper
   updated_at: string;
   deleted_at: string | null;
   product: BatchCreateProductVariantsResponseValue200ApplicationJsonPropertyDataItemPropertyProductResponse;
+  is_draft: boolean;
   [key: string]: unknown;
 }

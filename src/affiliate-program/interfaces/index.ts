@@ -29,8 +29,11 @@ export * from './replace-affiliate-program-configuration-response-value-200-appl
 export * from './replace-affiliate-program-configuration-response-value-200-application-json-property-data-property-settings-referrer-type.interface';
 export * from './replace-affiliate-program-configuration-response-value-200-application-json-property-data-property-settings.interface';
 export * from './replace-affiliate-program-configuration-response-value-200-application-json-property-data.interface';
+export * from './resend-affiliate-invitation-response-value-200-application-json-property-data.interface';
+export * from './resend-options.interface';
 export * from './sdk-get-affiliate-program-configuration-response-value-200-application-json.interface';
 export * from './sdk-invite-affiliate-request-application-json.interface';
 export * from './sdk-invite-affiliate-response-value-201-application-json.interface';
 export * from './sdk-replace-affiliate-program-configuration-request-application-json.interface';
 export * from './sdk-replace-affiliate-program-configuration-response-value-200-application-json.interface';
+export * from './sdk-resend-affiliate-invitation-response-value-200-application-json.interface';

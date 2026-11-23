@@ -7,6 +7,13 @@ export * from './cancel-appointment-response-value-200-application-json-property
 export * from './cancel-appointment-response-value-200-application-json-property-data-property-variant.interface';
 export * from './cancel-appointment-response-value-200-application-json-property-data-status.interface';
 export * from './cancel-appointment-response-value-200-application-json-property-data.interface';
+export * from './create-booking-product-request-application-json-property-availability-item.interface';
+export * from './create-booking-product-response-value-201-application-json-property-data-property-additional-information-item.interface';
+export * from './create-booking-product-response-value-201-application-json-property-data-property-images-item-property-metadata.interface';
+export * from './create-booking-product-response-value-201-application-json-property-data-property-images-item.interface';
+export * from './create-booking-product-response-value-201-application-json-property-data-property-other-settings.interface';
+export * from './create-booking-product-response-value-201-application-json-property-data-property-variants-item.interface';
+export * from './create-booking-product-response-value-201-application-json-property-data.interface';
 export * from './get-appointment-response-value-200-application-json-property-data-calendar-sync-status.interface';
 export * from './get-appointment-response-value-200-application-json-property-data-property-product.interface';
 export * from './get-appointment-response-value-200-application-json-property-data-property-variant.interface';
@@ -28,6 +35,12 @@ export * from './replace-booking-configuration-response-value-200-application-js
 export * from './replace-booking-configuration-response-value-200-application-json-property-data.interface';
 export * from './sdk-cancel-appointment-request-application-json.interface';
 export * from './sdk-cancel-appointment-response-value-200-application-json.interface';
+export * from './sdk-create-booking-product-request-application-json-currency.interface';
+export * from './sdk-create-booking-product-request-application-json-payment-methods.interface';
+export * from './sdk-create-booking-product-request-application-json-reminder-offset-unit.interface';
+export * from './sdk-create-booking-product-request-application-json-video-provider.interface';
+export * from './sdk-create-booking-product-request-application-json.interface';
+export * from './sdk-create-booking-product-response-value-201-application-json.interface';
 export * from './sdk-get-appointment-response-value-200-application-json.interface';
 export * from './sdk-get-booking-configuration-response-value-200-application-json.interface';
 export * from './sdk-list-appointments-response-value-200-application-json.interface';

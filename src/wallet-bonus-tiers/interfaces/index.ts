@@ -5,6 +5,9 @@ export * from './create-wallet-bonus-tier-response-value-201-application-json-pr
 export * from './create-wallet-bonus-tier-response-value-201-application-json-property-data.interface';
 export * from './list-wallet-bonus-tiers-response-value-200-application-json-property-data-item-bonus-kind.interface';
 export * from './list-wallet-bonus-tiers-response-value-200-application-json-property-data-item.interface';
+export * from './quote-wallet-bonus-tier-response-value-200-application-json-property-data-property-matching-tier-bonus-kind.interface';
+export * from './quote-wallet-bonus-tier-response-value-200-application-json-property-data-property-matching-tier.interface';
+export * from './quote-wallet-bonus-tier-response-value-200-application-json-property-data.interface';
 export * from './replace-wallet-bonus-tier-response-value-200-application-json-property-data-bonus-kind.interface';
 export * from './replace-wallet-bonus-tier-response-value-200-application-json-property-data.interface';
 export * from './restore-wallet-bonus-tier-response-value-200-application-json-property-data-bonus-kind.interface';
@@ -13,6 +16,7 @@ export * from './sdk-create-wallet-bonus-tier-request-application-json-bonus-kin
 export * from './sdk-create-wallet-bonus-tier-request-application-json.interface';
 export * from './sdk-create-wallet-bonus-tier-response-value-201-application-json.interface';
 export * from './sdk-list-wallet-bonus-tiers-response-value-200-application-json.interface';
+export * from './sdk-quote-wallet-bonus-tier-response-value-200-application-json.interface';
 export * from './sdk-replace-wallet-bonus-tier-request-application-json-bonus-kind.interface';
 export * from './sdk-replace-wallet-bonus-tier-request-application-json.interface';
 export * from './sdk-replace-wallet-bonus-tier-response-value-200-application-json.interface';

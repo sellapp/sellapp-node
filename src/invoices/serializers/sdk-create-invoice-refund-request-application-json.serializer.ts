@@ -3,15 +3,16 @@
 import type { SdkCreateInvoiceRefundRequestApplicationJson, SdkCreateInvoiceRefundRequestApplicationJsonResponse } from '../interfaces/sdk-create-invoice-refund-request-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateInvoiceRefundRequestApplicationJson","required":[],"properties":{"amount":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":32,"pattern":"^\\d+(\\.\\d+)?$"}}}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateInvoiceRefundRequestApplicationJson","required":[],"properties":{"amount":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":32,"pattern":"^\\d+(\\.\\d+)?$"}}}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateInvoiceRefundRequestApplicationJson","required":[],"properties":{"amount":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":32,"pattern":"^\\d+(\\.\\d+)?$"}}},"expectedRefundedTotalCents":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":0}}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateInvoiceRefundRequestApplicationJson","required":[],"properties":{"amount":{"kind":"nullable","inner":{"kind":"primitive","type":"string","constraints":{"maxLength":32,"pattern":"^\\d+(\\.\\d+)?$"}}},"expected_refunded_total_cents":{"kind":"nullable","inner":{"kind":"primitive","type":"integer","constraints":{"minimum":0}}}},"additionalProperties":true};
 
 export const serializeSdkCreateInvoiceRefundRequestApplicationJson = (
   model: SdkCreateInvoiceRefundRequestApplicationJson,
 ): SdkCreateInvoiceRefundRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["amount"]),
+    ...preserveUnknownFields(model, ["amount","expectedRefundedTotalCents"]),
     amount: model.amount,
+    expected_refunded_total_cents: model.expectedRefundedTotalCents,
   };
 };

@@ -465,10 +465,10 @@ export class Sections {
    * @throws {RateLimitExceededException} 429
    */
   async v2SearchSections(options: V2SearchSectionsOptions): Promise<SdkV2SearchSectionsResponseValue200ApplicationJson> {
-    const { requestOptions, ...payload } = options;
+    const { page, requestOptions, ...payload } = options;
     const { data } = await this.sellApp.post<SdkV2SearchSectionsResponseValue200ApplicationJsonResponse, SdkV2SearchSectionsRequestApplicationJsonResponse>(
       '/v2/sections/search',
-      serializeSdkV2SearchSectionsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'v2SearchSections' },
+      serializeSdkV2SearchSectionsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'v2SearchSections', query: { ...(options.page !== undefined && { page: options.page }) } },
     );
     return deserializeSdkV2SearchSectionsResponseValue200ApplicationJson(data);
   }

@@ -7,6 +7,8 @@ import type { SearchGroupsRequestApplicationJsonPropertySearch } from './search-
 import type { SearchGroupsRequestApplicationJsonPropertyIncludesItem } from './search-groups-request-application-json-property-includes-item.interface';
 
 export interface SearchOptions extends PaginationOptions {
+  /** Page number to return. */
+  page?: number;
   filters?: SearchGroupsRequestApplicationJsonPropertyFiltersItem[];
   sort?: SearchGroupsRequestApplicationJsonPropertySortItem[];
   search?: SearchGroupsRequestApplicationJsonPropertySearch;

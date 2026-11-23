@@ -7,9 +7,12 @@ export interface AdjustOptions {
   requestOptions?: RequestOptions;
   /** The customer path parameter. */
   customer: number;
-  /** The signed adjustment amount in cents. Must not be zero. */
+  /** The signed change in integer USD cents: positive adds money, negative takes it away. Must not be zero. */
   amountCents: number;
-  /** Required body key, at most 128 characters. Keep the customer, amount, staff actor and trimmed note unchanged when retrying this intended adjustment. */
+  /** Your key for this one adjustment, in printable ASCII characters and unique across all stores. Reuse it only to retry the same customer, amount, and note as the same staff member. */
   idempotencyKey: string;
+  /** Why the balance changed, with at least one character that is not a space. Leading and trailing spaces are removed. Saved on the entry and shown in the wallet history. */
   note: string;
+  /** Optional. The wallet balance in integer USD cents that you read before deciding on this change. If the balance is different now, nothing is written and the request returns `422` on `expected_balance_cents`. Use `0` for a customer who has no wallet yet. */
+  expectedBalanceCents?: number;
 }

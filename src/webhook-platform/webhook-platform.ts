@@ -2,6 +2,7 @@
 
 import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
+import type { PaginationOptions } from '../common/interfaces/pagination-options.interface';
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { PostOptions } from '../common/interfaces/post-options.interface';
@@ -32,6 +33,22 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
   }) as SellAppWithResponse<T>;
 }
 
+const serializeListWebhookDeliveriesOptions = (options: ListWebhookDeliveriesOptions): PaginationOptions => {
+  const wire: Record<string, unknown> = {
+    maxItems: options.maxItems,
+    maxPages: options.maxPages,
+    requestOptions: options.requestOptions,
+    limit: options.limit,
+    before: options.before,
+    after: options.after,
+    order: options.order,
+  };
+  if (options.page !== undefined) wire.page = options.page;
+  if (options.eventType !== undefined) wire.event_type = options.eventType;
+  if (options.status !== undefined) wire.status = options.status;
+  return wire as PaginationOptions;
+};
+
 export class WebhookPlatform {
   constructor(private readonly sellApp: SellApp) {}
   get withResponse(): SellAppWithResponse<this> { return createResourceWithResponse(this, this.sellApp); }
@@ -57,7 +74,7 @@ export class WebhookPlatform {
   /**
    * List webhook deliveries
    *
-   * Destination origin only; response bodies are redacted and capped. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List your store's outbound webhook deliveries, newest first, 25 per page by default. Each delivery shows only the destination origin; response bodies are redacted and capped. Filter by `event_type` or `status`; both must match exactly, and a value that matches nothing returns an empty page rather than an error. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -68,14 +85,13 @@ export class WebhookPlatform {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async listWebhookDeliveries(options?: ListWebhookDeliveriesOptions): Promise<AutoPaginatable<ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem, ListWebhookDeliveriesOptions>> {
-    const paginationOptions = options;
+  async listWebhookDeliveries(options?: ListWebhookDeliveriesOptions): Promise<AutoPaginatable<ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>> {
     return new AutoPaginatable(
       await fetchAndDeserialize<ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItemResponse, ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem>(
         this.sellApp,
         '/v2/webhook-deliveries',
         deserializeListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem,
-        paginationOptions,
+        options ? serializeListWebhookDeliveriesOptions(options) : undefined,
       ),
       (params) =>
         fetchAndDeserialize<ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItemResponse, ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem>(
@@ -84,7 +100,7 @@ export class WebhookPlatform {
           deserializeListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem,
           params,
         ),
-      paginationOptions,
+      options ? serializeListWebhookDeliveriesOptions(options) : undefined,
     );
   }
 

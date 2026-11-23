@@ -256,9 +256,9 @@ async v2ListBlacklists(options?: V2ListBlacklistsOptions): Promise<AutoPaginatab
 
 | Argument | Native type | Required |
 | --- | --- | --- |
-| options | `PaginationOptions \| undefined` | No |
+| options | `V2ListBlacklistsOptions \| undefined` | No |
 
-Returns: `Promise<AutoPaginatable<Blacklist, PaginationOptions>>`.
+Returns: `Promise<AutoPaginatable<Blacklist, V2ListBlacklistsOptions>>`.
 
 ```ts
 import { SellApp } from '@sell.app/sdk';
@@ -269,7 +269,9 @@ const client = new SellApp({
   store: process.env.SELLAPP_STORE!,
 });
 
-const result = await client.blacklists.v2ListBlacklists();
+const result = await client.blacklists.v2ListBlacklists({
+
+});
 console.log(result);
 ```
 

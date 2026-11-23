@@ -103,7 +103,6 @@ export * from './invoices-payment-methods.interface';
 export * from './invoices-search-by.interface';
 export * from './invoices-sort.interface';
 export * from './invoices-status.interface';
-export * from './issue-replacement-for-completed-invoice-request-application-json-property-product-variants.interface';
 export * from './issue-replacement-for-completed-invoice-response-value-200-application-json-property-customer-information-property-billing-details.interface';
 export * from './issue-replacement-for-completed-invoice-response-value-200-application-json-property-customer-information-property-discord-data.interface';
 export * from './issue-replacement-for-completed-invoice-response-value-200-application-json-property-customer-information-property-vat.interface';

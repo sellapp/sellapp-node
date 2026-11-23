@@ -2,11 +2,14 @@
 
 export * from './create-wallet-bonus-tier-response-value-201-application-json-property-data.serializer';
 export * from './list-wallet-bonus-tiers-response-value-200-application-json-property-data-item.serializer';
+export * from './quote-wallet-bonus-tier-response-value-200-application-json-property-data.serializer';
+export * from './quote-wallet-bonus-tier-response-value-200-application-json-property-data-property-matching-tier.serializer';
 export * from './replace-wallet-bonus-tier-response-value-200-application-json-property-data.serializer';
 export * from './restore-wallet-bonus-tier-response-value-200-application-json-property-data.serializer';
 export * from './sdk-create-wallet-bonus-tier-request-application-json.serializer';
 export * from './sdk-create-wallet-bonus-tier-response-value-201-application-json.serializer';
 export * from './sdk-list-wallet-bonus-tiers-response-value-200-application-json.serializer';
+export * from './sdk-quote-wallet-bonus-tier-response-value-200-application-json.serializer';
 export * from './sdk-replace-wallet-bonus-tier-request-application-json.serializer';
 export * from './sdk-replace-wallet-bonus-tier-response-value-200-application-json.serializer';
 export * from './sdk-restore-wallet-bonus-tier-response-value-200-application-json.serializer';

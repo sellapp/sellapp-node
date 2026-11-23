@@ -4,6 +4,8 @@ export const SearchOrdersRequestApplicationJsonPropertyFiltersItemOperator = {
   Eq: 'eq',
   Contains: 'contains',
   In: 'in',
+  Gte: 'gte',
+  Lte: 'lte',
 } as const;
 
 export type SearchOrdersRequestApplicationJsonPropertyFiltersItemOperator =

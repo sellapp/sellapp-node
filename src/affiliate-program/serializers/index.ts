@@ -16,8 +16,10 @@ export * from './replace-affiliate-program-configuration-response-value-200-appl
 export * from './replace-affiliate-program-configuration-response-value-200-application-json-property-data-property-products-item-property-commission.serializer';
 export * from './replace-affiliate-program-configuration-response-value-200-application-json-property-data-property-settings.serializer';
 export * from './replace-affiliate-program-configuration-response-value-200-application-json-property-data-property-settings-property-commission.serializer';
+export * from './resend-affiliate-invitation-response-value-200-application-json-property-data.serializer';
 export * from './sdk-get-affiliate-program-configuration-response-value-200-application-json.serializer';
 export * from './sdk-invite-affiliate-request-application-json.serializer';
 export * from './sdk-invite-affiliate-response-value-201-application-json.serializer';
 export * from './sdk-replace-affiliate-program-configuration-request-application-json.serializer';
 export * from './sdk-replace-affiliate-program-configuration-response-value-200-application-json.serializer';
+export * from './sdk-resend-affiliate-invitation-response-value-200-application-json.serializer';

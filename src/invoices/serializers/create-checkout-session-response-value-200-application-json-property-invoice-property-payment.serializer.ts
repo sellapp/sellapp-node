@@ -8,20 +8,22 @@ import { deserializeCreateCheckoutSessionResponseValue200ApplicationJsonProperty
 import { deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyFullPrice } from './create-checkout-session-response-value-200-application-json-property-invoice-property-payment-property-full-price.serializer';
 import { deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyOriginalAmount } from './create-checkout-session-response-value-200-application-json-property-invoice-property-payment-property-original-amount.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPayment","required":["fee","gateway","subtotal","expiresAt","fullPrice","originalAmount"],"properties":{"fee":{"kind":"any"},"gateway":{"kind":"any"},"subtotal":{"kind":"any"},"expiresAt":{"kind":"primitive","type":"string","format":"date-time"},"fullPrice":{"kind":"any"},"originalAmount":{"kind":"any"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPayment","required":["fee","gateway","subtotal","expires_at","full_price","original_amount"],"properties":{"fee":{"kind":"any"},"gateway":{"kind":"any"},"subtotal":{"kind":"any"},"expires_at":{"kind":"primitive","type":"string","format":"date-time"},"full_price":{"kind":"any"},"original_amount":{"kind":"any"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPayment","required":["fee","gateway","subtotal","expiresAt","fullPrice","originalAmount","refundCurrency","refundedTotalCents"],"properties":{"fee":{"kind":"any"},"gateway":{"kind":"any"},"subtotal":{"kind":"any"},"expiresAt":{"kind":"primitive","type":"string","format":"date-time"},"fullPrice":{"kind":"any"},"originalAmount":{"kind":"any"},"refundCurrency":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"refundedTotalCents":{"kind":"primitive","type":"integer","constraints":{"minimum":0}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPayment","required":["fee","gateway","subtotal","expires_at","full_price","original_amount","refund_currency","refunded_total_cents"],"properties":{"fee":{"kind":"any"},"gateway":{"kind":"any"},"subtotal":{"kind":"any"},"expires_at":{"kind":"primitive","type":"string","format":"date-time"},"full_price":{"kind":"any"},"original_amount":{"kind":"any"},"refund_currency":{"kind":"nullable","inner":{"kind":"primitive","type":"string"}},"refunded_total_cents":{"kind":"primitive","type":"integer","constraints":{"minimum":0}}},"additionalProperties":true};
 
 export const deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPayment = (
   response: CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentResponse,
 ): CreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPayment => {
   assertValidModel(response, wireRuntimeSchema, { direction: 'response', allowUnknownEnums: true, allowUnknownUnionVariants: true, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(response, ["fee","gateway","subtotal","expires_at","full_price","original_amount"]),
+    ...preserveUnknownFields(response, ["fee","gateway","subtotal","expires_at","full_price","original_amount","refund_currency","refunded_total_cents"]),
     fee: deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyFee(response.fee),
     gateway: deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyGateway(response.gateway),
     subtotal: deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertySubtotal(response.subtotal),
     expiresAt: new Date(response.expires_at),
     fullPrice: deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyFullPrice(response.full_price),
     originalAmount: deserializeCreateCheckoutSessionResponseValue200ApplicationJsonPropertyInvoicePropertyPaymentPropertyOriginalAmount(response.original_amount),
+    refundCurrency: response.refund_currency ?? null,
+    refundedTotalCents: response.refunded_total_cents,
   };
 };

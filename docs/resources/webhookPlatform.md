@@ -60,12 +60,12 @@ List webhook deliveries
 [API reference](https://sell.app/docs/api/events) · Effect: **read**
 
 ```typescript
-async listWebhookDeliveries(options?: ListWebhookDeliveriesOptions): Promise<AutoPaginatable<ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem, ListWebhookDeliveriesOptions>>
+async listWebhookDeliveries(options?: ListWebhookDeliveriesOptions): Promise<AutoPaginatable<ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
-| options | `PaginationOptions \| undefined` | No |
+| options | `ListWebhookDeliveriesOptions \| undefined` | No |
 
 Returns: `Promise<AutoPaginatable<ListWebhookDeliveriesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
@@ -78,7 +78,9 @@ const client = new SellApp({
   store: process.env.SELLAPP_STORE!,
 });
 
-const result = await client.webhookPlatform.listWebhookDeliveries();
+const result = await client.webhookPlatform.listWebhookDeliveries({
+
+});
 console.log(result);
 ```
 

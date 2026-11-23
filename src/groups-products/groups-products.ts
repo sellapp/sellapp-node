@@ -171,7 +171,7 @@ export class GroupsProducts {
   /**
    * Search products within group
    *
-   * Search the products in a group using JSON body filters, search terms, includes, and sort instructions. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Search the products in a group using JSON body filters, search terms, includes, and sort instructions, 15 per page by default. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @param options.group - The group path parameter.
    * @example 1
@@ -184,10 +184,10 @@ export class GroupsProducts {
    * @throws {RateLimitExceededException} 429
    */
   async search(options: SearchOptions): Promise<SdkSearchProductsWithinGroupResponseValue200ApplicationJson> {
-    const { group, requestOptions, ...payload } = options;
+    const { group, page, requestOptions, ...payload } = options;
     const { data } = await this.sellApp.post<SdkSearchProductsWithinGroupResponseValue200ApplicationJsonResponse, SdkSearchProductsWithinGroupRequestApplicationJsonResponse>(
       `/v2/groups/${encodeURIComponent(group)}/products/search`,
-      serializeSdkSearchProductsWithinGroupRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'searchProductsWithinGroup' },
+      serializeSdkSearchProductsWithinGroupRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'searchProductsWithinGroup', query: { ...(options.page !== undefined && { page: options.page }) } },
     );
     return deserializeSdkSearchProductsWithinGroupResponseValue200ApplicationJson(data);
   }

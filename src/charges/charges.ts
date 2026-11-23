@@ -2,6 +2,7 @@
 
 import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
+import type { PaginationOptions } from '../common/interfaces/pagination-options.interface';
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { ChargesListOptions } from './interfaces/charges-list-options.interface';
@@ -9,17 +10,20 @@ import type { CreateOptions } from './interfaces/create-options.interface';
 import type { GetOptions } from './interfaces/get-options.interface';
 import type { MarkCompletedOptions } from './interfaces/mark-completed-options.interface';
 import type { MarkVoidedOptions } from './interfaces/mark-voided-options.interface';
+import type { GetSummaryOptions } from './interfaces/get-summary-options.interface';
 import type { ListChargesResponseValue200ApplicationJsonPropertyDataItem, ListChargesResponseValue200ApplicationJsonPropertyDataItemResponse } from './interfaces/list-charges-response-value-200-application-json-property-data-item.interface';
 import type { SdkCreateChargeResponseValue201ApplicationJson, SdkCreateChargeResponseValue201ApplicationJsonResponse } from './interfaces/sdk-create-charge-response-value-201-application-json.interface';
 import type { SdkGetChargeResponseValue200ApplicationJson, SdkGetChargeResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-charge-response-value-200-application-json.interface';
 import type { SdkMarkPendingChargeCompletedResponseValue200ApplicationJson, SdkMarkPendingChargeCompletedResponseValue200ApplicationJsonResponse } from './interfaces/sdk-mark-pending-charge-completed-response-value-200-application-json.interface';
 import type { SdkMarkPendingChargeVoidedResponseValue200ApplicationJson, SdkMarkPendingChargeVoidedResponseValue200ApplicationJsonResponse } from './interfaces/sdk-mark-pending-charge-voided-response-value-200-application-json.interface';
+import type { SdkGetChargeSummaryResponseValue200ApplicationJson, SdkGetChargeSummaryResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-charge-summary-response-value-200-application-json.interface';
 import type { SdkCreateChargeRequestApplicationJsonResponse } from './interfaces/sdk-create-charge-request-application-json.interface';
 import { deserializeListChargesResponseValue200ApplicationJsonPropertyDataItem } from './serializers/list-charges-response-value-200-application-json-property-data-item.serializer';
 import { deserializeSdkCreateChargeResponseValue201ApplicationJson } from './serializers/sdk-create-charge-response-value-201-application-json.serializer';
 import { deserializeSdkGetChargeResponseValue200ApplicationJson } from './serializers/sdk-get-charge-response-value-200-application-json.serializer';
 import { deserializeSdkMarkPendingChargeCompletedResponseValue200ApplicationJson } from './serializers/sdk-mark-pending-charge-completed-response-value-200-application-json.serializer';
 import { deserializeSdkMarkPendingChargeVoidedResponseValue200ApplicationJson } from './serializers/sdk-mark-pending-charge-voided-response-value-200-application-json.serializer';
+import { deserializeSdkGetChargeSummaryResponseValue200ApplicationJson } from './serializers/sdk-get-charge-summary-response-value-200-application-json.serializer';
 import { serializeSdkCreateChargeRequestApplicationJson } from './serializers/sdk-create-charge-request-application-json.serializer';
 
 interface SellAppResponseEnvelope<T> { data: T; status: number; headers: Headers; requestId?: string }
@@ -35,6 +39,24 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
   }) as SellAppWithResponse<T>;
 }
 
+const serializeChargesListOptions = (options: ChargesListOptions): PaginationOptions => {
+  const wire: Record<string, unknown> = {
+    maxItems: options.maxItems,
+    maxPages: options.maxPages,
+    requestOptions: options.requestOptions,
+    limit: options.limit,
+    before: options.before,
+    after: options.after,
+    order: options.order,
+  };
+  if (options.page !== undefined) wire.page = options.page;
+  if (options.status !== undefined) wire.status = options.status;
+  if (options.customerEmail !== undefined) wire.customer_email = options.customerEmail;
+  if (options.createdAfter !== undefined) wire.created_after = options.createdAfter;
+  if (options.createdBefore !== undefined) wire.created_before = options.createdBefore;
+  return wire as PaginationOptions;
+};
+
 export class Charges {
   constructor(private readonly sellApp: SellApp) {}
   get withResponse(): SellAppWithResponse<this> { return createResourceWithResponse(this, this.sellApp); }
@@ -42,7 +64,7 @@ export class Charges {
   /**
    * List all charges
    *
-   * Retrieve a paginated list of charges for your store. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List your store's charges, 15 per page by default. Failed charges are never listed. Filter by `status`, part of the customer email, or the day a charge was created; the date filters read whole days in the store's time zone and include both ends. An unknown filter value, `status=FAILED`, or a `created_before` earlier than `created_after` returns `422` on that parameter. Requires the `charge` API-key ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -51,14 +73,13 @@ export class Charges {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async list(options?: ChargesListOptions): Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem, ChargesListOptions>> {
-    const paginationOptions = options;
+  async list(options?: ChargesListOptions): Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>> {
     return new AutoPaginatable(
       await fetchAndDeserialize<ListChargesResponseValue200ApplicationJsonPropertyDataItemResponse, ListChargesResponseValue200ApplicationJsonPropertyDataItem>(
         this.sellApp,
         '/v2/charges',
         deserializeListChargesResponseValue200ApplicationJsonPropertyDataItem,
-        paginationOptions,
+        options ? serializeChargesListOptions(options) : undefined,
       ),
       (params) =>
         fetchAndDeserialize<ListChargesResponseValue200ApplicationJsonPropertyDataItemResponse, ListChargesResponseValue200ApplicationJsonPropertyDataItem>(
@@ -67,14 +88,14 @@ export class Charges {
           deserializeListChargesResponseValue200ApplicationJsonPropertyDataItem,
           params,
         ),
-      paginationOptions,
+      options ? serializeChargesListOptions(options) : undefined,
     );
   }
 
   /**
    * Create a charge
    *
-   * Create a standalone charge for payment or a free claim. Requires the charge API ability and store permission. The total is an integer in the currency's minor units: 1999 USD means $19.99. Supplying currency requires total. For a positive paid charge, choose enabled payment_method/payment_methods or use_all_payment_methods; availability depends on the store and currency. CUSTOM_PAYMENT_METHOD is supported: preselection requires custom_payment_method_id. custom_payment_method_ids optionally restricts the available custom methods; omission snapshots the currently usable IDs for this store, without product assignments. Customer proof or confirmation changes custom charges to REVIEW, not COMPLETED. Creating a charge does not prove payment. A repeated create may create another charge; check the original result before retrying. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Create a standalone charge for payment or a free claim. Requires the charge API-key ability and store permission. The total is an integer in the currency's minor units: 1999 USD means $19.99. Supplying currency requires total. For a positive paid charge, choose enabled payment_method/payment_methods or use_all_payment_methods; availability depends on the store and currency. CUSTOM_PAYMENT_METHOD is supported: preselection requires custom_payment_method_id. custom_payment_method_ids optionally restricts the available custom methods; omission snapshots the currently usable IDs for this store, without product assignments. Customer proof or confirmation changes custom charges to REVIEW, not COMPLETED. Creating a charge does not prove payment. A repeated create may create another charge; check the original result before retrying. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @returns {Promise<SdkCreateChargeResponseValue201ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
@@ -115,7 +136,7 @@ export class Charges {
   /**
    * Mark pending charge completed
    *
-   * Manually complete a PENDING or VOIDED ordinary charge, or a custom-payment charge in REVIEW, after independently verifying receipt of funds. This does not collect, capture, or verify payment. Initialized custom-payment wallet top-ups may be approved from PENDING or REVIEW and credit the deposit plus any snapshotted bonus exactly once. Other wallet gateways cannot be completed manually, and voided custom top-ups cannot be revived. Completion emits charge.completed webhooks and store notifications and records applicable platform fees. Requires the charge API ability and update permission. A charge already completed returns 422; retrieve its state before retrying. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Manually complete a PENDING or VOIDED ordinary charge, or a custom-payment charge in REVIEW, after independently verifying receipt of funds. This does not collect, capture, or verify payment. Initialized custom-payment wallet top-ups may be approved from PENDING or REVIEW and credit the deposit plus any snapshotted bonus exactly once. Other wallet gateways cannot be completed manually, and voided custom top-ups cannot be revived. Completion emits charge.completed webhooks and store notifications and records applicable platform fees. Requires the charge API-key ability and update permission. A charge already completed returns 422; retrieve its state before retrying. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.chargeId - The charge id path parameter.
    * @returns {Promise<SdkMarkPendingChargeCompletedResponseValue200ApplicationJson>}
@@ -135,7 +156,7 @@ export class Charges {
   /**
    * Mark pending charge voided
    *
-   * Void a PENDING charge or a custom-payment charge in REVIEW. This cancels the internal charge, releases an applicable redeemed reward coupon, and emits charge.voided; it does not refund a payment. Requires the charge API ability and update permission. Other states return 422, including a repeat after successful voiding; retrieve its state before retrying. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Void a PENDING charge or a custom-payment charge in REVIEW. This cancels the internal charge, releases an applicable redeemed reward coupon, and emits charge.voided; it does not refund a payment. Requires the charge API-key ability and update permission. Other states return 422, including a repeat after successful voiding; retrieve its state before retrying. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.chargeId - The charge id path parameter.
    * @returns {Promise<SdkMarkPendingChargeVoidedResponseValue200ApplicationJson>}
@@ -150,5 +171,29 @@ export class Charges {
     const { chargeId } = options;
     const { data } = await this.sellApp.put<SdkMarkPendingChargeVoidedResponseValue200ApplicationJsonResponse>(`/v2/charges/${encodeURIComponent(chargeId)}/voided`, {}, { ...options.requestOptions, operationId: 'markPendingChargeVoided' });
     return deserializeSdkMarkPendingChargeVoidedResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Retrieve the charge summary
+   *
+   * Total your store's completed charges for a date range and compare them with the period of the same length just before it, as the charges analytics page does. Only `COMPLETED` charges count, dated by when they completed; pending, voided, and failed charges are left out. `revenue` is in integer minor units of the store currency, converted from each charge's USD total: `12450` means $124.50 in USD. Send `start_date` and `end_date` as `YYYY-MM-DD` days in the store's time zone, both included, or a `preset`; dates take precedence over `preset`, and without either the summary covers `last_30_days`. An unknown `preset` or a date not in `YYYY-MM-DD` form returns `422` on that parameter, and a range that ends before it starts returns `422` on `start_date` when you sent `start_date`, otherwise `end_date`. Requires the `charge` API-key ability and the charge permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - Additional query options.
+   * @param options.preset - A named range in the store's time zone: `today`, `yesterday`, `this_week`, `last_week`, `this_month`, `last_month`, `last_7_days`, `last_30_days` (the default), or `all_time`. `this_week`, `this_month`, and the `last_*_days` presets end today. `all_time` starts on the day the store was created or took its first order, whichever is earlier. Ignored when `start_date` or `end_date` is sent.
+   * @default "last_30_days"
+   * @example "last_month"
+   * @param options.startDate - First day of the range, `YYYY-MM-DD`, in the store's time zone. Inclusive. Sent without `end_date`, the range runs to the end of today.
+   * @example "2026-08-01"
+   * @param options.endDate - Last day of the range, `YYYY-MM-DD`, in the store's time zone. Inclusive. Sent without `start_date`, the range starts on the day the store was created or took its first order, whichever is earlier.
+   * @example "2026-08-31"
+   * @returns {Promise<SdkGetChargeSummaryResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async getSummary(options?: GetSummaryOptions): Promise<SdkGetChargeSummaryResponseValue200ApplicationJson> {
+    const { data } = await this.sellApp.get<SdkGetChargeSummaryResponseValue200ApplicationJsonResponse>('/v2/charges/summary', { ...options?.requestOptions, operationId: 'getChargeSummary', query: { ...(options?.preset !== undefined && { preset: options?.preset }), ...(options?.startDate !== undefined && { start_date: options?.startDate }), ...(options?.endDate !== undefined && { end_date: options?.endDate }) } });
+    return deserializeSdkGetChargeSummaryResponseValue200ApplicationJson(data);
   }
 }

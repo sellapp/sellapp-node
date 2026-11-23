@@ -458,7 +458,7 @@ const client = new SellApp({
 
 const result = await client.invoices.issueReplacement({
   "invoice": 1,
-  "productVariants": {"0": 117214}
+  "productVariants": [117214]
 });
 console.log(result);
 ```
@@ -567,7 +567,8 @@ const client = new SellApp({
 
 const result = await client.invoices.createRefund({
   "invoice": 1,
-  "amount": "12.50"
+  "amount": "12.50",
+  "expectedRefundedTotalCents": 0
 });
 console.log(result);
 ```

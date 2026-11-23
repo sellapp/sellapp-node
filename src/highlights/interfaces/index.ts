@@ -18,7 +18,6 @@ export * from './reorder-highlight-media-response-value-200-application-json-pro
 export * from './reorder-highlights-response-value-200-application-json-property-data-item-property-media-item-type.interface';
 export * from './reorder-highlights-response-value-200-application-json-property-data-item-property-media-item.interface';
 export * from './reorder-highlights-response-value-200-application-json-property-data-item.interface';
-export * from './reorder-options.interface';
 export * from './replace-highlight-media-metadata-response-value-200-application-json-property-data-type.interface';
 export * from './replace-highlight-media-metadata-response-value-200-application-json-property-data.interface';
 export * from './replace-highlight-media-response-value-200-application-json-property-data-type.interface';

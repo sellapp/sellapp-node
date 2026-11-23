@@ -2,6 +2,7 @@
 
 import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
+import type { PaginationOptions } from '../common/interfaces/pagination-options.interface';
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { FeedbackListOptions } from './interfaces/feedback-list-options.interface';
@@ -54,6 +55,21 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
     ),
   }) as SellAppWithResponse<T>;
 }
+
+const serializeV2ListFeedbackOptions = (options: V2ListFeedbackOptions): PaginationOptions => {
+  const wire: Record<string, unknown> = {
+    maxItems: options.maxItems,
+    maxPages: options.maxPages,
+    requestOptions: options.requestOptions,
+    limit: options.limit,
+    before: options.before,
+    after: options.after,
+    order: options.order,
+  };
+  if (options.page !== undefined) wire.page = options.page;
+  if (options.replyState !== undefined) wire.reply_state = options.replyState;
+  return wire as PaginationOptions;
+};
 
 export class Feedback {
   constructor(private readonly sellApp: SellApp) {}
@@ -156,7 +172,7 @@ export class Feedback {
   /**
    * List all feedback
    *
-   * List customer feedback for your store, 15 entries per page by default. This v2 route is store-scoped. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List customer feedback for your store, 15 entries per page by default. This v2 route is store-scoped. Use `reply_state` to list only feedback you have or have not replied to. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -165,14 +181,13 @@ export class Feedback {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async v2ListFeedback(options?: V2ListFeedbackOptions): Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, V2ListFeedbackOptions>> {
-    const paginationOptions = options;
+  async v2ListFeedback(options?: V2ListFeedbackOptions): Promise<AutoPaginatable<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>> {
     return new AutoPaginatable(
       await fetchAndDeserialize<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItemResponse, V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem>(
         this.sellApp,
         '/v2/feedback',
         deserializeV2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem,
-        paginationOptions,
+        options ? serializeV2ListFeedbackOptions(options) : undefined,
       ),
       (params) =>
         fetchAndDeserialize<V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItemResponse, V2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem>(
@@ -181,14 +196,14 @@ export class Feedback {
           deserializeV2ListFeedbackResponseValue200ApplicationJsonPropertyDataItem,
           params,
         ),
-      paginationOptions,
+      options ? serializeV2ListFeedbackOptions(options) : undefined,
     );
   }
 
   /**
    * Search feedback
    *
-   * Search feedback using JSON body filters, search terms, includes, and sort instructions. This v2 route is store-scoped. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Search feedback using JSON body filters, search terms, includes, and sort instructions. This v2 route is store-scoped. Use `reply_state` to find only feedback you have or have not replied to. Page through results with `limit` (1 to 100, default 15; a larger value returns `422`) and `page`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<V2SearchFeedbackResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -198,10 +213,10 @@ export class Feedback {
    * @throws {RateLimitExceededException} 429
    */
   async v2SearchFeedback(options: V2SearchFeedbackOptions): Promise<SdkV2SearchFeedbackResponseValue200ApplicationJson> {
-    const { requestOptions, ...payload } = options;
+    const { page, requestOptions, ...payload } = options;
     const { data } = await this.sellApp.post<SdkV2SearchFeedbackResponseValue200ApplicationJsonResponse, SdkV2SearchFeedbackRequestApplicationJsonResponse>(
       '/v2/feedback/search',
-      serializeSdkV2SearchFeedbackRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'v2SearchFeedback' },
+      serializeSdkV2SearchFeedbackRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'v2SearchFeedback', query: { ...(options.page !== undefined && { page: options.page }) } },
     );
     return deserializeSdkV2SearchFeedbackResponseValue200ApplicationJson(data);
   }

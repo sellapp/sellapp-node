@@ -2,10 +2,9 @@
 
 import type { SdkIssueReplacementForCompletedInvoiceRequestApplicationJson, SdkIssueReplacementForCompletedInvoiceRequestApplicationJsonResponse } from '../interfaces/sdk-issue-replacement-for-completed-invoice-request-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
-import { serializeIssueReplacementForCompletedInvoiceRequestApplicationJsonPropertyProductVariants } from './issue-replacement-for-completed-invoice-request-application-json-property-product-variants.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkIssueReplacementForCompletedInvoiceRequestApplicationJson","required":["productVariants"],"properties":{"productVariants":{"kind":"any"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkIssueReplacementForCompletedInvoiceRequestApplicationJson","required":["product_variants"],"properties":{"product_variants":{"kind":"any"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkIssueReplacementForCompletedInvoiceRequestApplicationJson","required":["productVariants"],"properties":{"productVariants":{"kind":"union","variants":[{"kind":"primitive","type":"integer"},{"kind":"array","items":{"kind":"primitive","type":"integer"}}],"composition":"anyOf"}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkIssueReplacementForCompletedInvoiceRequestApplicationJson","required":["product_variants"],"properties":{"product_variants":{"kind":"union","variants":[{"kind":"primitive","type":"integer"},{"kind":"array","items":{"kind":"primitive","type":"integer"}}],"composition":"anyOf"}},"additionalProperties":true};
 
 export const serializeSdkIssueReplacementForCompletedInvoiceRequestApplicationJson = (
   model: SdkIssueReplacementForCompletedInvoiceRequestApplicationJson,
@@ -13,6 +12,6 @@ export const serializeSdkIssueReplacementForCompletedInvoiceRequestApplicationJs
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
     ...preserveUnknownFields(model, ["productVariants"]),
-    product_variants: serializeIssueReplacementForCompletedInvoiceRequestApplicationJsonPropertyProductVariants(model.productVariants),
+    product_variants: model.productVariants,
   };
 };

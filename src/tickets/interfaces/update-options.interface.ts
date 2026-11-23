@@ -2,6 +2,7 @@
 
 import type { GetOptions as RequestOptions } from '../../common/interfaces/get-options.interface';
 import type { SdkUpdateTicketRequestApplicationJsonStatus } from '../../blacklists/interfaces/sdk-update-ticket-request-application-json-status.interface';
+import type { SdkUpdateTicketRequestApplicationJsonOutcome } from '../../blacklists/interfaces/sdk-update-ticket-request-application-json-outcome.interface';
 
 export interface UpdateOptions {
   /** Per-call timeout, retry, headers, cancellation, and lifecycle metadata. */
@@ -9,4 +10,6 @@ export interface UpdateOptions {
   ticket: number;
   status?: SdkUpdateTicketRequestApplicationJsonStatus | (string & Record<never, never>);
   archived?: boolean;
+  /** Why the ticket was closed: `refunded`, `refunded_partial` (partly refunded), `delivered`, `no_action`, `duplicate` or `other`. Only with `status` `CLOSED`. */
+  outcome?: SdkUpdateTicketRequestApplicationJsonOutcome | (string & Record<never, never>);
 }

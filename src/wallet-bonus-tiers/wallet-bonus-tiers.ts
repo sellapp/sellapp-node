@@ -7,11 +7,13 @@ import type { ReplaceOptions } from './interfaces/replace-options.interface';
 import type { UpdateOptions } from './interfaces/update-options.interface';
 import type { ArchiveOptions } from './interfaces/archive-options.interface';
 import type { RestoreOptions } from './interfaces/restore-options.interface';
+import type { QuoteOptions } from './interfaces/quote-options.interface';
 import type { SdkListWalletBonusTiersResponseValue200ApplicationJson, SdkListWalletBonusTiersResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-wallet-bonus-tiers-response-value-200-application-json.interface';
 import type { SdkCreateWalletBonusTierResponseValue201ApplicationJson, SdkCreateWalletBonusTierResponseValue201ApplicationJsonResponse } from './interfaces/sdk-create-wallet-bonus-tier-response-value-201-application-json.interface';
 import type { SdkReplaceWalletBonusTierResponseValue200ApplicationJson, SdkReplaceWalletBonusTierResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-wallet-bonus-tier-response-value-200-application-json.interface';
 import type { SdkUpdateWalletBonusTierResponseValue200ApplicationJson, SdkUpdateWalletBonusTierResponseValue200ApplicationJsonResponse } from './interfaces/sdk-update-wallet-bonus-tier-response-value-200-application-json.interface';
 import type { SdkRestoreWalletBonusTierResponseValue200ApplicationJson, SdkRestoreWalletBonusTierResponseValue200ApplicationJsonResponse } from './interfaces/sdk-restore-wallet-bonus-tier-response-value-200-application-json.interface';
+import type { SdkQuoteWalletBonusTierResponseValue200ApplicationJson, SdkQuoteWalletBonusTierResponseValue200ApplicationJsonResponse } from './interfaces/sdk-quote-wallet-bonus-tier-response-value-200-application-json.interface';
 import type { SdkCreateWalletBonusTierRequestApplicationJsonResponse } from './interfaces/sdk-create-wallet-bonus-tier-request-application-json.interface';
 import type { SdkReplaceWalletBonusTierRequestApplicationJsonResponse } from './interfaces/sdk-replace-wallet-bonus-tier-request-application-json.interface';
 import type { SdkUpdateWalletBonusTierRequestApplicationJsonResponse } from './interfaces/sdk-update-wallet-bonus-tier-request-application-json.interface';
@@ -20,6 +22,7 @@ import { deserializeSdkCreateWalletBonusTierResponseValue201ApplicationJson } fr
 import { deserializeSdkReplaceWalletBonusTierResponseValue200ApplicationJson } from './serializers/sdk-replace-wallet-bonus-tier-response-value-200-application-json.serializer';
 import { deserializeSdkUpdateWalletBonusTierResponseValue200ApplicationJson } from './serializers/sdk-update-wallet-bonus-tier-response-value-200-application-json.serializer';
 import { deserializeSdkRestoreWalletBonusTierResponseValue200ApplicationJson } from './serializers/sdk-restore-wallet-bonus-tier-response-value-200-application-json.serializer';
+import { deserializeSdkQuoteWalletBonusTierResponseValue200ApplicationJson } from './serializers/sdk-quote-wallet-bonus-tier-response-value-200-application-json.serializer';
 import { serializeSdkCreateWalletBonusTierRequestApplicationJson } from './serializers/sdk-create-wallet-bonus-tier-request-application-json.serializer';
 import { serializeSdkReplaceWalletBonusTierRequestApplicationJson } from './serializers/sdk-replace-wallet-bonus-tier-request-application-json.serializer';
 import { serializeSdkUpdateWalletBonusTierRequestApplicationJson } from './serializers/sdk-update-wallet-bonus-tier-request-application-json.serializer';
@@ -44,7 +47,7 @@ export class WalletBonusTiers {
   /**
    * List wallet bonus tiers
    *
-   * List current and archived store records. Requires the `wallet` or `wallet:write` API ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List current and archived store records. Requires the `wallet` or `wallet:write` API-key ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @returns {Promise<SdkListWalletBonusTiersResponseValue200ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
@@ -60,7 +63,7 @@ export class WalletBonusTiers {
   /**
    * Create a wallet bonus tier
    *
-   * Create a wallet bonus tier. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Create a wallet bonus tier. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @returns {Promise<SdkCreateWalletBonusTierResponseValue201ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
@@ -80,7 +83,7 @@ export class WalletBonusTiers {
   /**
    * Update a wallet bonus tier
    *
-   * Update a wallet bonus tier. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Update a wallet bonus tier. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.bonusTier - The bonusTier path parameter.
    * @returns {Promise<SdkReplaceWalletBonusTierResponseValue200ApplicationJson>}
@@ -103,7 +106,7 @@ export class WalletBonusTiers {
   /**
    * Update a wallet bonus tier
    *
-   * Update a wallet bonus tier. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Update a wallet bonus tier. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.bonusTier - The bonusTier path parameter.
    * @returns {Promise<SdkUpdateWalletBonusTierResponseValue200ApplicationJson>}
@@ -126,7 +129,7 @@ export class WalletBonusTiers {
   /**
    * Archive a wallet bonus tier
    *
-   * Archive a wallet bonus tier. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Archive a wallet bonus tier. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.bonusTier - The bonusTier path parameter.
    * @returns {Promise<void>}
@@ -145,7 +148,7 @@ export class WalletBonusTiers {
   /**
    * Restore a wallet bonus tier
    *
-   * Restore a wallet bonus tier. Requires the `wallet:write` API ability and the store wallet permission. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Restore a wallet bonus tier. Requires the `wallet:write` API-key ability and the wallet permission in your team role. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.bonusTier - The bonusTier path parameter.
    * @returns {Promise<SdkRestoreWalletBonusTierResponseValue200ApplicationJson>}
@@ -160,5 +163,24 @@ export class WalletBonusTiers {
     const { bonusTier } = options;
     const { data } = await this.sellApp.post<SdkRestoreWalletBonusTierResponseValue200ApplicationJsonResponse>(`/v2/wallet-bonus-tiers/${encodeURIComponent(bonusTier)}/restore`, {}, { ...options.requestOptions, operationId: 'restoreWalletBonusTier' });
     return deserializeSdkRestoreWalletBonusTierResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Quote a wallet bonus tier
+   *
+   * See which bonus tier a top-up of a given amount would earn right now, and how much bonus it would add, without creating anything. Amounts are integer USD cents: `top_up_cents=20000` asks about a $200.00 top-up. Requires the `wallet` or `wallet:write` API-key ability and the wallet permission in your team role. A missing amount, `0`, or an amount above 999999999999 returns `422` on `top_up_cents`. Only your store's active tiers are considered. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - Additional query options.
+   * @param options.topUpCents - The top-up amount to quote, in integer USD cents.
+   * @example 20000
+   * @returns {Promise<SdkQuoteWalletBonusTierResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async quote(options: QuoteOptions): Promise<SdkQuoteWalletBonusTierResponseValue200ApplicationJson> {
+    const { data } = await this.sellApp.get<SdkQuoteWalletBonusTierResponseValue200ApplicationJsonResponse>('/v2/wallet-bonus-tiers/quote', { ...options.requestOptions, operationId: 'quoteWalletBonusTier', query: { top_up_cents: options.topUpCents } });
+    return deserializeSdkQuoteWalletBonusTierResponseValue200ApplicationJson(data);
   }
 }

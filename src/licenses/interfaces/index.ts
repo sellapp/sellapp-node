@@ -6,6 +6,7 @@ export * from './deactivate-license-options.interface';
 export * from './deactivate-license-response-value-200-application-json-property-data.interface';
 export * from './get-license-key-response-value-200-application-json-property-data.interface';
 export * from './licenses-list-options.interface';
+export * from './licenses-validity.interface';
 export * from './list-license-keys-response-value-200-application-json-property-data-item.interface';
 export * from './sdk-activate-license-key-request-application-json.interface';
 export * from './sdk-activate-license-key-response-value-200-application-json.interface';

@@ -13,6 +13,10 @@ export interface MarkPendingInvoiceVoidedResponseValue200ApplicationJsonProperty
   expiresAt: Date;
   fullPrice: MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyFullPrice;
   originalAmount: MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyOriginalAmount;
+  /** The currency refunds on this invoice are made and counted in: the currency the payment was charged in, which can differ from the invoice currency. `null` when the payment method cannot be refunded through the API. */
+  refundCurrency: string | null;
+  /** The amount already refunded on this invoice, in integer minor units of `refund_currency`: `500` means $5.00 in USD. It is the exact figure a refund request compares `expected_refunded_total_cents` with, so send it back unchanged when you refund. `0` when nothing has been refunded. */
+  refundedTotalCents: number;
   [key: string]: unknown;
 }
 
@@ -23,5 +27,7 @@ export interface MarkPendingInvoiceVoidedResponseValue200ApplicationJsonProperty
   expires_at: string;
   full_price: MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyFullPriceResponse;
   original_amount: MarkPendingInvoiceVoidedResponseValue200ApplicationJsonPropertyPaymentPropertyOriginalAmountResponse;
+  refund_currency: string | null;
+  refunded_total_cents: number;
   [key: string]: unknown;
 }

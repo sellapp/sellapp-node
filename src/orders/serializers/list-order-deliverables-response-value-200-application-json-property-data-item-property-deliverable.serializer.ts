@@ -2,10 +2,10 @@
 
 import type { ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverable, ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverableResponse } from '../interfaces/list-order-deliverables-response-value-200-application-json-property-data-item-property-deliverable.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
-import { deserializeListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverablePropertyData } from './list-order-deliverables-response-value-200-application-json-property-data-item-property-deliverable-property-data.serializer';
+import { deserializeListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverablePropertyDataAnyOfValue1 } from './list-order-deliverables-response-value-200-application-json-property-data-item-property-deliverable-property-data-any-of-value-1.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverable","required":["types","data"],"properties":{"types":{"kind":"array","items":{"kind":"primitive","type":"string"}},"data":{"kind":"any"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverable","required":["types","data"],"properties":{"types":{"kind":"array","items":{"kind":"primitive","type":"string"}},"data":{"kind":"any"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverable","required":["types","data"],"properties":{"types":{"kind":"array","items":{"kind":"primitive","type":"string"}},"data":{"kind":"union","variants":[{"kind":"any"},{"kind":"array","items":{"kind":"primitive","type":"unknown"},"constraints":{"maxItems":0}}],"composition":"anyOf"}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverable","required":["types","data"],"properties":{"types":{"kind":"array","items":{"kind":"primitive","type":"string"}},"data":{"kind":"union","variants":[{"kind":"any"},{"kind":"array","items":{"kind":"primitive","type":"unknown"},"constraints":{"maxItems":0}}],"composition":"anyOf"}},"additionalProperties":true};
 
 export const deserializeListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverable = (
   response: ListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverableResponse,
@@ -14,6 +14,6 @@ export const deserializeListOrderDeliverablesResponseValue200ApplicationJsonProp
   return {
     ...preserveUnknownFields(response, ["types","data"]),
     types: response.types,
-    data: deserializeListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverablePropertyData(response.data),
+    data: deserializeListOrderDeliverablesResponseValue200ApplicationJsonPropertyDataItemPropertyDeliverablePropertyDataAnyOfValue1(response.data),
   };
 };

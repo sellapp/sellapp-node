@@ -3,8 +3,8 @@
 import type { CreateCustomerRequestApplicationJsonPropertyMetadata, CreateCustomerRequestApplicationJsonPropertyMetadataResponse } from '../interfaces/create-customer-request-application-json-property-metadata.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateCustomerRequestApplicationJsonPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"any"},"constraints":{"maxProperties":50}};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateCustomerRequestApplicationJsonPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"any"},"constraints":{"maxProperties":50}};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateCustomerRequestApplicationJsonPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"union","variants":[{"kind":"primitive","type":"string","constraints":{"maxLength":500}},{"kind":"primitive","type":"number"},{"kind":"primitive","type":"boolean"}],"composition":"oneOf"},"constraints":{"maxProperties":50}};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateCustomerRequestApplicationJsonPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"union","variants":[{"kind":"primitive","type":"string","constraints":{"maxLength":500}},{"kind":"primitive","type":"number"},{"kind":"primitive","type":"boolean"}],"composition":"oneOf"},"constraints":{"maxProperties":50}};
 
 export const serializeCreateCustomerRequestApplicationJsonPropertyMetadata = (
   _model: CreateCustomerRequestApplicationJsonPropertyMetadata,

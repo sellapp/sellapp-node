@@ -154,14 +154,14 @@ List all tickets
 [API reference](https://sell.app/docs/api/tickets/list-all-tickets) · Effect: **read**
 
 ```typescript
-async v2ListTickets(options?: V2ListTicketsOptions): Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, V2ListTicketsOptions>>
+async v2ListTickets(options?: V2ListTicketsOptions): Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
 | options | `V2ListTicketsOptions \| undefined` | No |
 
-Returns: `Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, V2ListTicketsOptions>>`.
+Returns: `Promise<AutoPaginatable<V2ListTicketsResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
 import { SellApp } from '@sell.app/sdk';
@@ -335,7 +335,116 @@ const client = new SellApp({
 const result = await client.tickets.update({
   "ticket": 42,
   "status": "CLOSED",
-  "archived": true
+  "archived": true,
+  "outcome": "delivered"
+});
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## batchUpdate
+
+Update several tickets
+
+[API reference](https://sell.app/docs/api/tickets/update-several-tickets) · Effect: **consequential**
+
+```typescript
+async batchUpdate(options: BatchUpdateOptions): Promise<SdkBatchUpdateTicketsResponseValue200ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| options | `BatchUpdateOptions` | Yes |
+
+Returns: `Promise<SdkBatchUpdateTicketsResponseValue200ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.tickets.batchUpdate({
+  "action": "close",
+  "outcome": "delivered",
+  "resources": [311, 313]
+});
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 404, 409, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## getContext
+
+Retrieve a ticket's customer and refund context
+
+[API reference](https://sell.app/docs/api/tickets/retrieve-ticket-context) · Effect: **read**
+
+```typescript
+async getContext(options: GetContextOptions): Promise<SdkV2GetTicketContextResponseValue200ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| options | `GetContextOptions` | Yes |
+
+Returns: `Promise<SdkV2GetTicketContextResponseValue200ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.tickets.getContext({
+  "ticket": 312
 });
 console.log(result);
 ```

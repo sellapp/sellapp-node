@@ -7,6 +7,8 @@ export interface CreateRefundOptions {
   requestOptions?: RequestOptions;
   /** The order identifier. */
   order: number;
-  /** Decimal major-unit amount in the order currency, positive and no greater than remaining balance. Precision follows that currency. Omission/null/empty requests the full remaining balance. */
+  /** Decimal major-unit amount in the order's `totals.refund_currency`, positive and no greater than remaining balance. Precision follows that currency. Omission/null/empty requests the full remaining balance. */
   amount?: string | null;
+  /** The refunded total you expect, in integer minor units of the order's `totals.refund_currency`, which can differ from the order currency: `500` means $5.00 in USD. Read it from `totals.refunded_total_cents` on the order and send it unchanged; it is `0` before the first refund. After a refund, `data.order.totals.refunded_total_cents` in the response is the value to send with the next one. With this field, the refund goes out only while the refunded total still equals it and no other refund on the order is pending. Omit it or send null to refund without the check. */
+  expectedRefundedTotalCents?: number | null;
 }

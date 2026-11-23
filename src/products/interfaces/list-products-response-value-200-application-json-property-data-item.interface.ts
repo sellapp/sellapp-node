@@ -25,6 +25,14 @@ export interface ListProductsResponseValue200ApplicationJsonPropertyDataItem {
   isDiscoverable: boolean;
   variants: ListProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem[];
   url: string;
+  /** The lowest and highest price among the product's published variants, formatted for display with the currency symbol: `$19.99`, or `$9.99 - $19.99` when the prices differ. Null when no published variant has a price. */
+  priceRange: string | null;
+  /** Units left across the product's published variants, or null when any of them has unlimited stock. */
+  stock: number | null;
+  /** How many purchase line items of the product have status `COMPLETED`. Pending or refunded ones do not count. */
+  sales: number;
+  /** `true` when none of the product's published variants can be bought: none has unlimited stock or at least its minimum purchase quantity left. Also `true` for a product without published variants. */
+  soldOut: boolean;
   [key: string]: unknown;
 }
 
@@ -48,5 +56,9 @@ export interface ListProductsResponseValue200ApplicationJsonPropertyDataItemResp
   is_discoverable: boolean;
   variants: ListProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItemResponse[];
   url: string;
+  price_range: string | null;
+  stock: number | null;
+  sales: number;
+  sold_out: boolean;
   [key: string]: unknown;
 }

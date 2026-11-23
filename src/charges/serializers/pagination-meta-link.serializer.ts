@@ -17,3 +17,15 @@ export const deserializePaginationMetaLink = (
     active: response.active,
   };
 };
+
+export const serializePaginationMetaLink = (
+  model: PaginationMetaLink,
+): PaginationMetaLinkResponse => {
+  assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
+  return {
+    ...preserveUnknownFields(model, ["url","label","active"]),
+    url: model.url,
+    label: model.label,
+    active: model.active,
+  };
+};

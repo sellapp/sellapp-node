@@ -3,8 +3,8 @@
 import type { CreateCustomerResponseValue201ApplicationJsonPropertyDataPropertyMetadata, CreateCustomerResponseValue201ApplicationJsonPropertyDataPropertyMetadataResponse } from '../interfaces/create-customer-response-value-201-application-json-property-data-property-metadata.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateCustomerResponseValue201ApplicationJsonPropertyDataPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"any"},"constraints":{"maxProperties":50}};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateCustomerResponseValue201ApplicationJsonPropertyDataPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"any"},"constraints":{"maxProperties":50}};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"CreateCustomerResponseValue201ApplicationJsonPropertyDataPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"nullable","inner":{"kind":"union","variants":[{"kind":"primitive","type":"string","constraints":{"maxLength":500}},{"kind":"primitive","type":"number"},{"kind":"primitive","type":"boolean"}],"composition":"oneOf"}},"constraints":{"maxProperties":50}};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"CreateCustomerResponseValue201ApplicationJsonPropertyDataPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"nullable","inner":{"kind":"union","variants":[{"kind":"primitive","type":"string","constraints":{"maxLength":500}},{"kind":"primitive","type":"number"},{"kind":"primitive","type":"boolean"}],"composition":"oneOf"}},"constraints":{"maxProperties":50}};
 
 export const deserializeCreateCustomerResponseValue201ApplicationJsonPropertyDataPropertyMetadata = (
   _response: CreateCustomerResponseValue201ApplicationJsonPropertyDataPropertyMetadataResponse,

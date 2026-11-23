@@ -3,17 +3,18 @@
 import type { SdkAdjustCustomerWalletRequestApplicationJson, SdkAdjustCustomerWalletRequestApplicationJsonResponse } from '../interfaces/sdk-adjust-customer-wallet-request-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkAdjustCustomerWalletRequestApplicationJson","required":["amountCents","idempotencyKey","note"],"properties":{"amountCents":{"kind":"primitive","type":"integer","constraints":{"minimum":-999999999999,"maximum":999999999999}},"idempotencyKey":{"kind":"primitive","type":"string","constraints":{"maxLength":128}},"note":{"kind":"primitive","type":"string","constraints":{"minLength":1,"maxLength":255,"pattern":"\\S"}}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkAdjustCustomerWalletRequestApplicationJson","required":["amount_cents","idempotency_key","note"],"properties":{"amount_cents":{"kind":"primitive","type":"integer","constraints":{"minimum":-999999999999,"maximum":999999999999}},"idempotency_key":{"kind":"primitive","type":"string","constraints":{"maxLength":128}},"note":{"kind":"primitive","type":"string","constraints":{"minLength":1,"maxLength":255,"pattern":"\\S"}}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkAdjustCustomerWalletRequestApplicationJson","required":["amountCents","idempotencyKey","note"],"properties":{"amountCents":{"kind":"primitive","type":"integer","constraints":{"minimum":-999999999999,"maximum":999999999999}},"idempotencyKey":{"kind":"primitive","type":"string","constraints":{"maxLength":128}},"note":{"kind":"primitive","type":"string","constraints":{"minLength":1,"maxLength":255,"pattern":"\\S"}},"expectedBalanceCents":{"kind":"primitive","type":"integer","constraints":{"minimum":0,"maximum":999999999999}}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkAdjustCustomerWalletRequestApplicationJson","required":["amount_cents","idempotency_key","note"],"properties":{"amount_cents":{"kind":"primitive","type":"integer","constraints":{"minimum":-999999999999,"maximum":999999999999}},"idempotency_key":{"kind":"primitive","type":"string","constraints":{"maxLength":128}},"note":{"kind":"primitive","type":"string","constraints":{"minLength":1,"maxLength":255,"pattern":"\\S"}},"expected_balance_cents":{"kind":"primitive","type":"integer","constraints":{"minimum":0,"maximum":999999999999}}},"additionalProperties":true};
 
 export const serializeSdkAdjustCustomerWalletRequestApplicationJson = (
   model: SdkAdjustCustomerWalletRequestApplicationJson,
 ): SdkAdjustCustomerWalletRequestApplicationJsonResponse => {
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
-    ...preserveUnknownFields(model, ["amountCents","idempotencyKey","note"]),
+    ...preserveUnknownFields(model, ["amountCents","idempotencyKey","note","expectedBalanceCents"]),
     amount_cents: model.amountCents,
     idempotency_key: model.idempotencyKey,
     note: model.note,
+    expected_balance_cents: model.expectedBalanceCents,
   };
 };

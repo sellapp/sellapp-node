@@ -10,4 +10,20 @@ export interface ListSubscriptionsOptions extends PaginationOptions {
   pagination?: boolean;
   /** Filter by one or more subscription statuses. Repeat the parameter to select several; a single `status=ACTIVE` works too. A status outside the list is rejected with a validation error. */
   status?: (SubscriptionsStatus | (string & Record<never, never>))[];
+  /** Keep subscriptions sold by this order. */
+  orderId?: number;
+  /** Keep subscriptions whose plan is a variant of this product, including subscriptions moved to that plan after signup. */
+  productId?: number;
+  /** Keep subscriptions that renew on or after this moment. Only `ACTIVE` and `TRIALING` subscriptions with a renewal date that are neither paused nor scheduled to cancel match a renewal filter. A date such as `2026-11-01` starts at midnight of that day in the store's time zone; a date-time without an offset is also read in the store's time zone. Inclusive. */
+  renewsAfter?: string;
+  /** Keep subscriptions that renew on or before this moment, with the same rules as `renews_after`. A date runs to the last second of that day in the store's time zone. Inclusive. Must not be earlier than `renews_after`. */
+  renewsBefore?: string;
+  /** Keep `CANCELED` subscriptions cancelled on or after this moment. The cancellation time is when an immediate cancellation happened; for a subscription that ran out at its period end it is approximate, the last time the subscription record changed. Dates are read like `renews_after`. Inclusive. */
+  cancelledAfter?: string;
+  /** Keep `CANCELED` subscriptions cancelled on or before this moment, with the same rules as `cancelled_after`. A date runs to the last second of that day in the store's time zone. Inclusive. Must not be earlier than `cancelled_after`. */
+  cancelledBefore?: string;
+  /** `true` keeps `ACTIVE` and `TRIALING` subscriptions set to cancel at the end of their period; `false` keeps subscriptions that are not set to. */
+  scheduledToCancel?: boolean;
+  /** `true` keeps paused subscriptions; `false` keeps subscriptions that are not paused. */
+  paused?: boolean;
 }

@@ -322,3 +322,107 @@ Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API r
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 
+## listFailedGrantReasons
+
+List community failed grant reasons
+
+[API reference](https://sell.app/docs/api/community-connections/list-failed-grant-reasons) · Effect: **read**
+
+```typescript
+async listFailedGrantReasons(requestOptions: RequestOptions = {}): Promise<SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| requestOptions | `GetOptions` | No |
+
+Returns: `Promise<SdkListCommunityFailedGrantReasonsResponseValue200ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.communityConnections.listFailedGrantReasons();
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## syncDiscordRoles
+
+Sync Discord roles
+
+[API reference](https://sell.app/docs/api/community-connections/sync-discord-roles) · Effect: **consequential**
+
+```typescript
+async syncDiscordRoles(options: SyncDiscordRolesOptions): Promise<SdkSyncDiscordRolesResponseValue200ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| options | `SyncDiscordRolesOptions` | Yes |
+
+Returns: `Promise<SdkSyncDiscordRolesResponseValue200ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.communityConnections.syncDiscordRoles({
+
+});
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+

@@ -3,8 +3,8 @@
 import type { UpsertCustomerResponseValue200ApplicationJsonPropertyDataPropertyMetadata, UpsertCustomerResponseValue200ApplicationJsonPropertyDataPropertyMetadataResponse } from '../interfaces/upsert-customer-response-value-200-application-json-property-data-property-metadata.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"UpsertCustomerResponseValue200ApplicationJsonPropertyDataPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"any"},"constraints":{"maxProperties":50}};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"UpsertCustomerResponseValue200ApplicationJsonPropertyDataPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"any"},"constraints":{"maxProperties":50}};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"UpsertCustomerResponseValue200ApplicationJsonPropertyDataPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"nullable","inner":{"kind":"union","variants":[{"kind":"primitive","type":"string","constraints":{"maxLength":500}},{"kind":"primitive","type":"number"},{"kind":"primitive","type":"boolean"}],"composition":"oneOf"}},"constraints":{"maxProperties":50}};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"UpsertCustomerResponseValue200ApplicationJsonPropertyDataPropertyMetadata","required":[],"properties":{},"additionalProperties":{"kind":"nullable","inner":{"kind":"union","variants":[{"kind":"primitive","type":"string","constraints":{"maxLength":500}},{"kind":"primitive","type":"number"},{"kind":"primitive","type":"boolean"}],"composition":"oneOf"}},"constraints":{"maxProperties":50}};
 
 export const deserializeUpsertCustomerResponseValue200ApplicationJsonPropertyDataPropertyMetadata = (
   _response: UpsertCustomerResponseValue200ApplicationJsonPropertyDataPropertyMetadataResponse,

@@ -7,16 +7,19 @@ import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { ReplaceOptions } from './interfaces/replace-options.interface';
 import type { AffiliateProgramListOptions } from './interfaces/affiliate-program-list-options.interface';
 import type { InviteOptions } from './interfaces/invite-options.interface';
+import type { ResendOptions } from './interfaces/resend-options.interface';
 import type { SdkGetAffiliateProgramConfigurationResponseValue200ApplicationJson, SdkGetAffiliateProgramConfigurationResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-affiliate-program-configuration-response-value-200-application-json.interface';
 import type { SdkReplaceAffiliateProgramConfigurationResponseValue200ApplicationJson, SdkReplaceAffiliateProgramConfigurationResponseValue200ApplicationJsonResponse } from './interfaces/sdk-replace-affiliate-program-configuration-response-value-200-application-json.interface';
 import type { ListPendingAffiliateInvitationsResponseValue200ApplicationJsonPropertyDataItem, ListPendingAffiliateInvitationsResponseValue200ApplicationJsonPropertyDataItemResponse } from './interfaces/list-pending-affiliate-invitations-response-value-200-application-json-property-data-item.interface';
 import type { SdkInviteAffiliateResponseValue201ApplicationJson, SdkInviteAffiliateResponseValue201ApplicationJsonResponse } from './interfaces/sdk-invite-affiliate-response-value-201-application-json.interface';
+import type { SdkResendAffiliateInvitationResponseValue200ApplicationJson, SdkResendAffiliateInvitationResponseValue200ApplicationJsonResponse } from './interfaces/sdk-resend-affiliate-invitation-response-value-200-application-json.interface';
 import type { SdkReplaceAffiliateProgramConfigurationRequestApplicationJsonResponse } from './interfaces/sdk-replace-affiliate-program-configuration-request-application-json.interface';
 import type { SdkInviteAffiliateRequestApplicationJsonResponse } from './interfaces/sdk-invite-affiliate-request-application-json.interface';
 import { deserializeSdkGetAffiliateProgramConfigurationResponseValue200ApplicationJson } from './serializers/sdk-get-affiliate-program-configuration-response-value-200-application-json.serializer';
 import { deserializeSdkReplaceAffiliateProgramConfigurationResponseValue200ApplicationJson } from './serializers/sdk-replace-affiliate-program-configuration-response-value-200-application-json.serializer';
 import { deserializeListPendingAffiliateInvitationsResponseValue200ApplicationJsonPropertyDataItem } from './serializers/list-pending-affiliate-invitations-response-value-200-application-json-property-data-item.serializer';
 import { deserializeSdkInviteAffiliateResponseValue201ApplicationJson } from './serializers/sdk-invite-affiliate-response-value-201-application-json.serializer';
+import { deserializeSdkResendAffiliateInvitationResponseValue200ApplicationJson } from './serializers/sdk-resend-affiliate-invitation-response-value-200-application-json.serializer';
 import { serializeSdkReplaceAffiliateProgramConfigurationRequestApplicationJson } from './serializers/sdk-replace-affiliate-program-configuration-request-application-json.serializer';
 import { serializeSdkInviteAffiliateRequestApplicationJson } from './serializers/sdk-invite-affiliate-request-application-json.serializer';
 
@@ -56,7 +59,7 @@ export class AffiliateProgram {
   /**
    * Replace affiliate program configuration
    *
-   * Replace the complete affiliate-program configuration. The products array is authoritative: enabled entries replace existing store-level product restrictions, and every variant ID must belong to the authenticated store. Requires the `affiliate` token ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Replace the complete affiliate-program configuration. The products array is authoritative: enabled entries replace existing store-level product restrictions, and every variant ID must belong to the authenticated store. Requires the `affiliate` token ability, and the staff member who owns the key also needs the `store` permission, the same permission that changing the program in the dashboard requires. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @returns {Promise<SdkReplaceAffiliateProgramConfigurationResponseValue200ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
@@ -108,7 +111,7 @@ export class AffiliateProgram {
   /**
    * Invite an affiliate
    *
-   * Create a pending affiliate invitation and email a single-use onboarding link. Duplicate invitations are rejected and invites are rate limited per store. The affiliate program must be enabled. Requires the `affiliate` token ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Create a pending affiliate invitation and email a single-use onboarding link. Duplicate invitations are rejected and invites are rate limited per store. The affiliate program must be enabled. Requires the `affiliate` token ability, and the staff member who owns the key also needs the `store` permission, the same permission that inviting affiliates in the dashboard requires. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @returns {Promise<SdkInviteAffiliateResponseValue201ApplicationJson>}
    * @throws {BadRequestException} 400
    * @throws {UnauthorizedException} 401
@@ -123,5 +126,26 @@ export class AffiliateProgram {
       serializeSdkInviteAffiliateRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'inviteAffiliate' },
     );
     return deserializeSdkInviteAffiliateResponseValue201ApplicationJson(data);
+  }
+
+  /**
+   * Resend an affiliate invitation
+   *
+   * Email a pending affiliate invitation again, with a new sign-in link that expires after 6 hours, to the address it was created for. The invitation itself does not change: `invited_at` keeps the original date. Send no body. Requires the `affiliate` API-key ability, and the staff member who owns the key needs the affiliate and `store` permissions, the same as inviting an affiliate. Every refusal returns `422` on `invitation` and sends nothing: the invitation was already answered or is no longer pending, the affiliate program is not configured or turned off, the same invitation was sent within the last minute, your store reached its limit of 10 invitation emails per hour (new invitations and resends count together; the message says how many seconds to wait), or the email could not be sent. An invitation from another store returns `404`. Not safe to retry blindly: each successful call sends another email. A repeat within a minute is refused, so a quick retry after a lost response cannot send twice; after that, check with the invitee or wait for them to answer before sending again. If sending failed, wait a minute and try again. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.invitation - The invitation ID, as returned by `GET /v2/affiliate-invitations` or `POST /v2/affiliate-invitations`.
+   * @example 77
+   * @returns {Promise<SdkResendAffiliateInvitationResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async resend(options: ResendOptions): Promise<SdkResendAffiliateInvitationResponseValue200ApplicationJson> {
+    const { invitation } = options;
+    const { data } = await this.sellApp.post<SdkResendAffiliateInvitationResponseValue200ApplicationJsonResponse>(`/v2/affiliate-invitations/${encodeURIComponent(invitation)}/resend`, {}, { ...options.requestOptions, operationId: 'resendAffiliateInvitation' });
+    return deserializeSdkResendAffiliateInvitationResponseValue200ApplicationJson(data);
   }
 }

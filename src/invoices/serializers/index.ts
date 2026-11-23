@@ -92,7 +92,6 @@ export * from './get-invoice-response-value-200-application-json-property-data-p
 export * from './get-invoice-response-value-200-application-json-property-data-property-status-property-history-item.serializer';
 export * from './get-invoice-response-value-200-application-json-property-data-property-status-property-status.serializer';
 export * from './get-invoice-response-value-200-application-json-property-data-property-webhooks-item.serializer';
-export * from './issue-replacement-for-completed-invoice-request-application-json-property-product-variants.serializer';
 export * from './issue-replacement-for-completed-invoice-response-value-200-application-json-property-customer-information.serializer';
 export * from './issue-replacement-for-completed-invoice-response-value-200-application-json-property-customer-information-property-billing-details.serializer';
 export * from './issue-replacement-for-completed-invoice-response-value-200-application-json-property-customer-information-property-discord-data.serializer';

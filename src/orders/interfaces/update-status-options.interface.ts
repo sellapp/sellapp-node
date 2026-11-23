@@ -12,4 +12,6 @@ export interface UpdateStatusOptions {
   status: SdkUpdateOrderStatusRequestApplicationJsonStatus | (string & Record<never, never>);
   /** Expected current status. A status update checks this under the order lock and returns 422 if the order has changed. */
   expectedStatus?: ExpectedStatus | (string & Record<never, never>) | null;
+  /** Send `true` to confirm that the store received the payment for this order outside SellApp, which can release purchased products to the customer. `true` is accepted only with `status: COMPLETED` (otherwise `422` on `payment_received`) and requires `expected_status` (otherwise `422` on `expected_status`). `false` is accepted with any status and changes nothing. */
+  paymentReceived?: boolean;
 }

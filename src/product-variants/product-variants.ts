@@ -15,6 +15,9 @@ import type { SearchOptions } from './interfaces/search-options.interface';
 import type { BatchCreateOptions } from './interfaces/batch-create-options.interface';
 import type { BatchUpdateOptions } from './interfaces/batch-update-options.interface';
 import type { BatchDeleteOptions } from './interfaces/batch-delete-options.interface';
+import type { PublishOptions } from './interfaces/publish-options.interface';
+import type { DuplicateOptions } from './interfaces/duplicate-options.interface';
+import type { ReorderOptions } from './interfaces/reorder-options.interface';
 import type { ListProductVariantsResponseValue200ApplicationJsonPropertyDataItem, ListProductVariantsResponseValue200ApplicationJsonPropertyDataItemResponse } from './interfaces/list-product-variants-response-value-200-application-json-property-data-item.interface';
 import type { SdkCreateProductVariantResponseValue201ApplicationJson, SdkCreateProductVariantResponseValue201ApplicationJsonResponse } from './interfaces/sdk-create-product-variant-response-value-201-application-json.interface';
 import type { SdkGetProductVariantResponseValue200ApplicationJson, SdkGetProductVariantResponseValue200ApplicationJsonResponse } from './interfaces/sdk-get-product-variant-response-value-200-application-json.interface';
@@ -23,6 +26,9 @@ import type { SdkUpdateProductVariantResponseValue200ApplicationJson, SdkUpdateP
 import type { SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItem, SearchProductVariantsResponseValue200ApplicationJsonPropertyDataItemResponse } from './interfaces/search-product-variants-response-value-200-application-json-property-data-item.interface';
 import type { SdkBatchCreateProductVariantsResponseValue200ApplicationJson, SdkBatchCreateProductVariantsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-batch-create-product-variants-response-value-200-application-json.interface';
 import type { SdkBatchUpdateProductVariantsResponseValue200ApplicationJson, SdkBatchUpdateProductVariantsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-batch-update-product-variants-response-value-200-application-json.interface';
+import type { SdkPublishProductVariantResponseValue200ApplicationJson, SdkPublishProductVariantResponseValue200ApplicationJsonResponse } from './interfaces/sdk-publish-product-variant-response-value-200-application-json.interface';
+import type { SdkDuplicateProductVariantResponseValue201ApplicationJson, SdkDuplicateProductVariantResponseValue201ApplicationJsonResponse } from './interfaces/sdk-duplicate-product-variant-response-value-201-application-json.interface';
+import type { SdkReorderProductVariantsResponseValue200ApplicationJson, SdkReorderProductVariantsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-reorder-product-variants-response-value-200-application-json.interface';
 import type { SdkCreateProductVariantRequestApplicationJsonResponse } from './interfaces/sdk-create-product-variant-request-application-json.interface';
 import type { SdkReplaceProductVariantWithPutRequestApplicationJsonResponse } from './interfaces/sdk-replace-product-variant-with-put-request-application-json.interface';
 import type { SdkUpdateProductVariantRequestApplicationJsonResponse } from './interfaces/sdk-update-product-variant-request-application-json.interface';
@@ -31,6 +37,7 @@ import type { SdkSearchProductVariantsRequestApplicationJsonResponse } from './i
 import type { SdkBatchCreateProductVariantsRequestApplicationJsonResponse } from './interfaces/sdk-batch-create-product-variants-request-application-json.interface';
 import type { SdkBatchUpdateProductVariantsRequestApplicationJsonResponse } from './interfaces/sdk-batch-update-product-variants-request-application-json.interface';
 import type { SdkBatchDeleteCouponsRequestApplicationJsonResponse } from './interfaces/sdk-batch-delete-coupons-request-application-json.interface';
+import type { SdkReorderProductVariantsRequestApplicationJsonResponse } from './interfaces/sdk-reorder-product-variants-request-application-json.interface';
 import { deserializeListProductVariantsResponseValue200ApplicationJsonPropertyDataItem } from './serializers/list-product-variants-response-value-200-application-json-property-data-item.serializer';
 import { deserializeSdkCreateProductVariantResponseValue201ApplicationJson } from './serializers/sdk-create-product-variant-response-value-201-application-json.serializer';
 import { deserializeSdkGetProductVariantResponseValue200ApplicationJson } from './serializers/sdk-get-product-variant-response-value-200-application-json.serializer';
@@ -39,6 +46,9 @@ import { deserializeSdkUpdateProductVariantResponseValue200ApplicationJson } fro
 import { deserializeSearchProductVariantsResponseValue200ApplicationJsonPropertyDataItem } from './serializers/search-product-variants-response-value-200-application-json-property-data-item.serializer';
 import { deserializeSdkBatchCreateProductVariantsResponseValue200ApplicationJson } from './serializers/sdk-batch-create-product-variants-response-value-200-application-json.serializer';
 import { deserializeSdkBatchUpdateProductVariantsResponseValue200ApplicationJson } from './serializers/sdk-batch-update-product-variants-response-value-200-application-json.serializer';
+import { deserializeSdkPublishProductVariantResponseValue200ApplicationJson } from './serializers/sdk-publish-product-variant-response-value-200-application-json.serializer';
+import { deserializeSdkDuplicateProductVariantResponseValue201ApplicationJson } from './serializers/sdk-duplicate-product-variant-response-value-201-application-json.serializer';
+import { deserializeSdkReorderProductVariantsResponseValue200ApplicationJson } from './serializers/sdk-reorder-product-variants-response-value-200-application-json.serializer';
 import { serializeSdkCreateProductVariantRequestApplicationJson } from './serializers/sdk-create-product-variant-request-application-json.serializer';
 import { serializeSdkReplaceProductVariantWithPutRequestApplicationJson } from './serializers/sdk-replace-product-variant-with-put-request-application-json.serializer';
 import { serializeSdkUpdateProductVariantRequestApplicationJson } from './serializers/sdk-update-product-variant-request-application-json.serializer';
@@ -47,6 +57,7 @@ import { serializeSdkSearchProductVariantsRequestApplicationJson } from './seria
 import { serializeSdkBatchCreateProductVariantsRequestApplicationJson } from './serializers/sdk-batch-create-product-variants-request-application-json.serializer';
 import { serializeSdkBatchUpdateProductVariantsRequestApplicationJson } from './serializers/sdk-batch-update-product-variants-request-application-json.serializer';
 import { serializeSdkBatchDeleteCouponsRequestApplicationJson } from './serializers/sdk-batch-delete-coupons-request-application-json.serializer';
+import { serializeSdkReorderProductVariantsRequestApplicationJson } from './serializers/sdk-reorder-product-variants-request-application-json.serializer';
 
 interface SellAppResponseEnvelope<T> { data: T; status: number; headers: Headers; requestId?: string }
 type SellAppWithResponse<T extends object> = {
@@ -62,6 +73,22 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
 }
 
 const serializeProductVariantsListOptions = (options: ProductVariantsListOptions): PaginationOptions => {
+  const wire: Record<string, unknown> = {
+    maxItems: options.maxItems,
+    maxPages: options.maxPages,
+    requestOptions: options.requestOptions,
+    limit: options.limit,
+    before: options.before,
+    after: options.after,
+    order: options.order,
+  };
+  if (options.page !== undefined) wire.page = options.page;
+  if (options.withDrafts !== undefined) wire.with_drafts = options.withDrafts;
+  if (options.onlyDrafts !== undefined) wire.only_drafts = options.onlyDrafts;
+  return wire as PaginationOptions;
+};
+
+const serializeSearchOptions = (options: SearchOptions): PaginationOptions => {
   const wire: Record<string, unknown> = {
     maxItems: options.maxItems,
     maxPages: options.maxPages,
@@ -242,7 +269,7 @@ export class ProductVariants {
   /**
    * Search product variants
    *
-   * Search a product's variants using JSON body filters, search terms, includes, and sort instructions. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Search a product's variants using JSON body filters, search terms, includes, and sort instructions, 15 per page by default. Draft variants are left out unless you send `with_drafts` or `only_drafts`. Requires a token with the listing ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @param options.product - The product path parameter.
    * @example 1
@@ -255,10 +282,10 @@ export class ProductVariants {
    * @throws {RateLimitExceededException} 429
    */
   async search(options: SearchOptions): Promise<SdkSearchProductVariantsResponseValue200ApplicationJson> {
-    const { product, requestOptions, ...payload } = options;
+    const { product, page, withDrafts, onlyDrafts, requestOptions, ...payload } = options;
     const { data } = await this.sellApp.post<SdkSearchProductVariantsResponseValue200ApplicationJsonResponse, SdkSearchProductVariantsRequestApplicationJsonResponse>(
       `/v2/products/${encodeURIComponent(product)}/variants/search`,
-      serializeSdkSearchProductVariantsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'searchProductVariants' },
+      serializeSdkSearchProductVariantsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'searchProductVariants', query: { ...(options.page !== undefined && { page: options.page }), ...(options.withDrafts !== undefined && { with_drafts: options.withDrafts }), ...(options.onlyDrafts !== undefined && { only_drafts: options.onlyDrafts }) } },
     );
     return deserializeSdkSearchProductVariantsResponseValue200ApplicationJson(data);
   }
@@ -329,5 +356,75 @@ export class ProductVariants {
   async batchDelete(options: BatchDeleteOptions): Promise<void> {
     const { product, requestOptions, ...payload } = options;
     await this.sellApp.deleteWithBody<SdkBatchDeleteCouponsRequestApplicationJsonResponse>(`/v2/products/${encodeURIComponent(product)}/variants/batch`, serializeSdkBatchDeleteCouponsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'batchDeleteProductVariants' });
+  }
+
+  /**
+   * Publish a product variant
+   *
+   * Publish one draft option of a booking product so customers can book it. It is checked the way the booking editor checks it: a title, a description of at least 5 characters, finished booking settings, a price, and payment methods enabled for the store that can take its currency. On a published booking product the option can be booked straight away; a draft booking product still needs `POST /v2/products/{product}/publish`, which needs at least one published option when the product has several. Only booking options are published one at a time. A variant of any other kind of product returns `422` on `variant`: its variants are published with the product through `POST /v2/products/{product}/publish`. Requires the `listing` API-key ability and the `listing` permission in your team role. Safe to repeat: once the option is published, another call changes nothing and returns `422` with `This booking option is already published.` on `variant`. Every other refusal is also `422` on `variant`, with one sentence per thing the option still needs. A variant of another product, or a product of another store, returns `404`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.product - The product path parameter.
+   * @example 11
+   * @param options.variant - The variant path parameter.
+   * @example 12
+   * @returns {Promise<SdkPublishProductVariantResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async publish(options: PublishOptions): Promise<SdkPublishProductVariantResponseValue200ApplicationJson> {
+    const { product, variant } = options;
+    const { data } = await this.sellApp.post<SdkPublishProductVariantResponseValue200ApplicationJsonResponse>(`/v2/products/${encodeURIComponent(product)}/variants/${encodeURIComponent(variant)}/publish`, {}, { ...options.requestOptions, operationId: 'publishProductVariant' });
+    return deserializeSdkPublishProductVariantResponseValue200ApplicationJson(data);
+  }
+
+  /**
+   * Duplicate a product variant
+   *
+   * Copy a variant of a normal product onto the same product and return the copy. The copy keeps every setting, the title, and the draft state, so a copy of a published variant is on sale straight away. Downloadable files and their folders are copied too. Serial codes and issued licence keys are not copied: a copy that delivers serial codes gets a stock of `0`, so it shows as sold out until you add codes. Subscription variants cannot be duplicated. Requires the `listing` API-key ability and the `listing` permission in your team role. Not safe to retry blindly: every call creates another variant. If a response is lost, list the product's variants, with `with_drafts=true` for a draft, before trying again. A variant of a bundle, add-on, credits product, booking product, or course returns `422` on `product`. A subscription variant returns `422` on `variant`. A variant of another product returns `404`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.product - The product path parameter.
+   * @example 1
+   * @param options.variant - The variant path parameter.
+   * @example 2
+   * @returns {Promise<SdkDuplicateProductVariantResponseValue201ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async duplicate(options: DuplicateOptions): Promise<SdkDuplicateProductVariantResponseValue201ApplicationJson> {
+    const { product, variant } = options;
+    const { data } = await this.sellApp.post<SdkDuplicateProductVariantResponseValue201ApplicationJsonResponse>(`/v2/products/${encodeURIComponent(product)}/variants/${encodeURIComponent(variant)}/duplicate`, {}, { ...options.requestOptions, operationId: 'duplicateProductVariant' });
+    return deserializeSdkDuplicateProductVariantResponseValue201ApplicationJson(data);
+  }
+
+  /**
+   * Reorder product variants
+   *
+   * Set the order buyers see a normal product's published variants in, first to last. Send every published variant ID exactly once; draft variants are not part of the order and are refused. The response lists the product's published variants in their new order, without pagination. Requires the `listing` API-key ability and the `listing` permission in your team role. Safe to repeat: the same list gives the same order. A list that leaves out a published variant, or names a draft or a variant of another product, returns `422` on `variant_ids`; read the variants again and send the full list. An ID sent twice returns `422` on `variant_ids.{i}`. A listing that is not a normal product returns `422` on `product`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.product - The product path parameter.
+   * @example 1
+   * @returns {Promise<SdkReorderProductVariantsResponseValue200ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async reorder(options: ReorderOptions): Promise<SdkReorderProductVariantsResponseValue200ApplicationJson> {
+    const { product, requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.put<SdkReorderProductVariantsResponseValue200ApplicationJsonResponse, SdkReorderProductVariantsRequestApplicationJsonResponse>(
+      `/v2/products/${encodeURIComponent(product)}/variants/order`,
+      serializeSdkReorderProductVariantsRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'reorderProductVariants' },
+    );
+    return deserializeSdkReorderProductVariantsResponseValue200ApplicationJson(data);
   }
 }

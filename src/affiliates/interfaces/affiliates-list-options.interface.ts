@@ -2,12 +2,19 @@
 
 import type { PaginationOptions } from '../../common/interfaces/pagination-options.interface';
 import type { AffiliatesStatus } from './affiliates-status.interface';
+import type { AffiliatesPayoutMethod } from './affiliates-payout-method.interface';
 
 export interface AffiliatesListOptions extends PaginationOptions {
   /** Filter by affiliate program status. */
   status?: AffiliatesStatus | (string & Record<never, never>);
   /** Search affiliate email addresses and profile identifiers. */
   search?: string;
+  /** Send `true` to list only affiliates with custom per-product commission rates (see `GET /v2/affiliates/{affiliate}/products`). `false` lists everyone. Accepts `true`, `false`, `1`, or `0`. */
+  customRatesOnly?: boolean;
+  /** List only affiliates who chose this payout method. Uppercase, as returned in `payout_method`. */
+  payoutMethod?: AffiliatesPayoutMethod | (string & Record<never, never>);
+  /** Send `-earnings` to list the affiliates who earned the most first: available, pending, and paid balances added together, largest first. Without it, or with any other value, the newest affiliates come first. */
+  sort?: '-earnings';
   /** Page number to return. */
   page?: number;
 }

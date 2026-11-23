@@ -2,10 +2,10 @@
 
 import type { GetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyData, GetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataResponse } from '../interfaces/get-variant-deliverable-configuration-response-value-200-application-json-property-data.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
-import { deserializeGetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataPropertyData } from './get-variant-deliverable-configuration-response-value-200-application-json-property-data-property-data.serializer';
+import { deserializeGetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataPropertyDataAnyOfValue1 } from './get-variant-deliverable-configuration-response-value-200-application-json-property-data-property-data-any-of-value-1.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"GetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyData","required":["types","data","webhookConfigured","updatedAt"],"properties":{"types":{"kind":"array","items":{"kind":"enum","values":["DOWNLOADABLE","TEXT","DYNAMIC","MANUAL","LICENSE_KEY","BUNDLE","BOOKING","CREDITS"]}},"data":{"kind":"any"},"webhookConfigured":{"kind":"primitive","type":"boolean"},"updatedAt":{"kind":"primitive","type":"string","format":"date-time"}},"additionalProperties":false};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"GetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyData","required":["types","data","webhook_configured","updated_at"],"properties":{"types":{"kind":"array","items":{"kind":"enum","values":["DOWNLOADABLE","TEXT","DYNAMIC","MANUAL","LICENSE_KEY","BUNDLE","BOOKING","CREDITS"]}},"data":{"kind":"any"},"webhook_configured":{"kind":"primitive","type":"boolean"},"updated_at":{"kind":"primitive","type":"string","format":"date-time"}},"additionalProperties":false};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"GetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyData","required":["types","data","webhookConfigured","updatedAt"],"properties":{"types":{"kind":"array","items":{"kind":"enum","values":["DOWNLOADABLE","TEXT","DYNAMIC","MANUAL","LICENSE_KEY","BUNDLE","BOOKING","CREDITS"]}},"data":{"kind":"union","variants":[{"kind":"any"},{"kind":"array","items":{"kind":"primitive","type":"unknown"},"constraints":{"maxItems":0}}],"composition":"anyOf"},"webhookConfigured":{"kind":"primitive","type":"boolean"},"updatedAt":{"kind":"primitive","type":"string","format":"date-time"}},"additionalProperties":false};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"GetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyData","required":["types","data","webhook_configured","updated_at"],"properties":{"types":{"kind":"array","items":{"kind":"enum","values":["DOWNLOADABLE","TEXT","DYNAMIC","MANUAL","LICENSE_KEY","BUNDLE","BOOKING","CREDITS"]}},"data":{"kind":"union","variants":[{"kind":"any"},{"kind":"array","items":{"kind":"primitive","type":"unknown"},"constraints":{"maxItems":0}}],"composition":"anyOf"},"webhook_configured":{"kind":"primitive","type":"boolean"},"updated_at":{"kind":"primitive","type":"string","format":"date-time"}},"additionalProperties":false};
 
 export const deserializeGetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyData = (
   response: GetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataResponse,
@@ -14,7 +14,7 @@ export const deserializeGetVariantDeliverableConfigurationResponseValue200Applic
   return {
     ...preserveUnknownFields(response, ["types","data","webhook_configured","updated_at"]),
     types: response.types,
-    data: deserializeGetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataPropertyData(response.data),
+    data: deserializeGetVariantDeliverableConfigurationResponseValue200ApplicationJsonPropertyDataPropertyDataAnyOfValue1(response.data),
     webhookConfigured: response.webhook_configured,
     updatedAt: new Date(response.updated_at),
   };

@@ -2,10 +2,10 @@
 
 import type { SdkCreateOrderReplacementRequestApplicationJson, SdkCreateOrderReplacementRequestApplicationJsonResponse } from '../interfaces/sdk-create-order-replacement-request-application-json.interface';
 import { assertValidModel, preserveUnknownFields } from '../../common/utils/schema-validation';
-import { serializeCreateOrderReplacementRequestApplicationJsonPropertyProductVariants } from './create-order-replacement-request-application-json-property-product-variants.serializer';
+import { serializeCreateOrderReplacementRequestApplicationJsonPropertyProductVariantsAnyOfValue3 } from './create-order-replacement-request-application-json-property-product-variants-any-of-value-3.serializer';
 
-const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateOrderReplacementRequestApplicationJson","required":["productVariants"],"properties":{"productVariants":{"kind":"any"}},"additionalProperties":true};
-const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateOrderReplacementRequestApplicationJson","required":["product_variants"],"properties":{"product_variants":{"kind":"any"}},"additionalProperties":true};
+const domainRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateOrderReplacementRequestApplicationJson","required":["productVariants"],"properties":{"productVariants":{"kind":"union","variants":[{"kind":"primitive","type":"integer"},{"kind":"array","items":{"kind":"primitive","type":"integer"}},{"kind":"any"}],"composition":"anyOf"}},"additionalProperties":true};
+const wireRuntimeSchema: RuntimeModelSchema = {"name":"SdkCreateOrderReplacementRequestApplicationJson","required":["product_variants"],"properties":{"product_variants":{"kind":"union","variants":[{"kind":"primitive","type":"integer"},{"kind":"array","items":{"kind":"primitive","type":"integer"}},{"kind":"any"}],"composition":"anyOf"}},"additionalProperties":true};
 
 export const serializeSdkCreateOrderReplacementRequestApplicationJson = (
   model: SdkCreateOrderReplacementRequestApplicationJson,
@@ -13,6 +13,6 @@ export const serializeSdkCreateOrderReplacementRequestApplicationJson = (
   assertValidModel(model, domainRuntimeSchema, { direction: 'request', allowUnknownEnums: false, allowUnknownUnionVariants: false, allowUnknownFields: true });
   return {
     ...preserveUnknownFields(model, ["productVariants"]),
-    product_variants: serializeCreateOrderReplacementRequestApplicationJsonPropertyProductVariants(model.productVariants),
+    product_variants: serializeCreateOrderReplacementRequestApplicationJsonPropertyProductVariantsAnyOfValue3(model.productVariants),
   };
 };

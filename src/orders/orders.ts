@@ -16,6 +16,7 @@ import type { CreateRefundOptions } from './interfaces/create-refund-options.int
 import type { RetryFulfillmentOptions } from './interfaces/retry-fulfillment-options.interface';
 import type { RetryDynamicDeliveryOptions } from './interfaces/retry-dynamic-delivery-options.interface';
 import type { SendFulfillmentNotificationsOptions } from './interfaces/send-fulfillment-notifications-options.interface';
+import type { RegenerateTelegramInviteOptions } from './interfaces/regenerate-telegram-invite-options.interface';
 import type { ListDeliverablesOptions } from './interfaces/list-deliverables-options.interface';
 import type { CreateFromWalletOptions } from './interfaces/create-from-wallet-options.interface';
 import type { PayFromWalletOptions } from './interfaces/pay-from-wallet-options.interface';
@@ -30,6 +31,7 @@ import type { SdkCreateOrderRefundResponseValue200ApplicationJson, SdkCreateOrde
 import type { SdkRetryOrderFulfillmentResponseValue200ApplicationJson, SdkRetryOrderFulfillmentResponseValue200ApplicationJsonResponse } from './interfaces/sdk-retry-order-fulfillment-response-value-200-application-json.interface';
 import type { SdkRetryOrderDynamicDeliveryResponseValue202ApplicationJson, SdkRetryOrderDynamicDeliveryResponseValue202ApplicationJsonResponse } from './interfaces/sdk-retry-order-dynamic-delivery-response-value-202-application-json.interface';
 import type { SdkSendOrderFulfillmentNotificationsResponseValue200ApplicationJson, SdkSendOrderFulfillmentNotificationsResponseValue200ApplicationJsonResponse } from './interfaces/sdk-send-order-fulfillment-notifications-response-value-200-application-json.interface';
+import type { SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson, SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJsonResponse } from './interfaces/sdk-regenerate-order-telegram-invite-response-value-201-application-json.interface';
 import type { SdkListOrderDeliverablesResponseValue200ApplicationJson, SdkListOrderDeliverablesResponseValue200ApplicationJsonResponse } from './interfaces/sdk-list-order-deliverables-response-value-200-application-json.interface';
 import type { SdkCreateWalletOrderResponseValue201ApplicationJson, SdkCreateWalletOrderResponseValue201ApplicationJsonResponse } from './interfaces/sdk-create-wallet-order-response-value-201-application-json.interface';
 import type { SdkPayOrderFromWalletResponseValue200ApplicationJson, SdkPayOrderFromWalletResponseValue200ApplicationJsonResponse } from './interfaces/sdk-pay-order-from-wallet-response-value-200-application-json.interface';
@@ -42,6 +44,7 @@ import type { SdkCreateOrderRefundRequestApplicationJsonResponse } from './inter
 import type { SdkRetryOrderFulfillmentRequestApplicationJsonResponse } from './interfaces/sdk-retry-order-fulfillment-request-application-json.interface';
 import type { SdkRetryOrderDynamicDeliveryRequestApplicationJsonResponse } from './interfaces/sdk-retry-order-dynamic-delivery-request-application-json.interface';
 import type { SdkSendOrderFulfillmentNotificationsRequestApplicationJsonResponse } from './interfaces/sdk-send-order-fulfillment-notifications-request-application-json.interface';
+import type { SdkRegenerateOrderTelegramInviteRequestApplicationJsonResponse } from './interfaces/sdk-regenerate-order-telegram-invite-request-application-json.interface';
 import type { SdkCreateWalletOrderRequestApplicationJsonResponse } from './interfaces/sdk-create-wallet-order-request-application-json.interface';
 import type { SdkPayOrderFromWalletRequestApplicationJsonResponse } from './interfaces/sdk-pay-order-from-wallet-request-application-json.interface';
 import { deserializeListOrdersResponseValue200ApplicationJsonPropertyDataItem } from './serializers/list-orders-response-value-200-application-json-property-data-item.serializer';
@@ -55,6 +58,7 @@ import { deserializeSdkCreateOrderRefundResponseValue200ApplicationJson } from '
 import { deserializeSdkRetryOrderFulfillmentResponseValue200ApplicationJson } from './serializers/sdk-retry-order-fulfillment-response-value-200-application-json.serializer';
 import { deserializeSdkRetryOrderDynamicDeliveryResponseValue202ApplicationJson } from './serializers/sdk-retry-order-dynamic-delivery-response-value-202-application-json.serializer';
 import { deserializeSdkSendOrderFulfillmentNotificationsResponseValue200ApplicationJson } from './serializers/sdk-send-order-fulfillment-notifications-response-value-200-application-json.serializer';
+import { deserializeSdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson } from './serializers/sdk-regenerate-order-telegram-invite-response-value-201-application-json.serializer';
 import { deserializeSdkListOrderDeliverablesResponseValue200ApplicationJson } from './serializers/sdk-list-order-deliverables-response-value-200-application-json.serializer';
 import { deserializeSdkCreateWalletOrderResponseValue201ApplicationJson } from './serializers/sdk-create-wallet-order-response-value-201-application-json.serializer';
 import { deserializeSdkPayOrderFromWalletResponseValue200ApplicationJson } from './serializers/sdk-pay-order-from-wallet-response-value-200-application-json.serializer';
@@ -67,6 +71,7 @@ import { serializeSdkCreateOrderRefundRequestApplicationJson } from './serialize
 import { serializeSdkRetryOrderFulfillmentRequestApplicationJson } from './serializers/sdk-retry-order-fulfillment-request-application-json.serializer';
 import { serializeSdkRetryOrderDynamicDeliveryRequestApplicationJson } from './serializers/sdk-retry-order-dynamic-delivery-request-application-json.serializer';
 import { serializeSdkSendOrderFulfillmentNotificationsRequestApplicationJson } from './serializers/sdk-send-order-fulfillment-notifications-request-application-json.serializer';
+import { serializeSdkRegenerateOrderTelegramInviteRequestApplicationJson } from './serializers/sdk-regenerate-order-telegram-invite-request-application-json.serializer';
 import { serializeSdkCreateWalletOrderRequestApplicationJson } from './serializers/sdk-create-wallet-order-request-application-json.serializer';
 import { serializeSdkPayOrderFromWalletRequestApplicationJson } from './serializers/sdk-pay-order-from-wallet-request-application-json.serializer';
 
@@ -144,7 +149,7 @@ export class Orders {
   /**
    * Search orders
    *
-   * Find orders using the same filters as the list endpoint. Requires the invoice token ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Find your store's orders by transaction, customer, product, delivery, payment, status, currency, placement time, or total, newest first unless `sort` says otherwise. Every filter must match. Combine a `gte` and an `lte` filter on `created_at` or `total` for a range; a `gte` value above the `lte` value returns `422` on `filters`. An unknown field, an operator the field does not take, or a value of the wrong type returns `422` on its position, such as `filters.0.operator`. Requires the invoice token ability. Read-only and safe to repeat. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<SearchOrdersResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -186,7 +191,7 @@ export class Orders {
   /**
    * Update order status
    *
-   * Change order lifecycle state. COMPLETED finalizes fulfillment of an already paid/partial/disputing order; it does not capture a pending payment. VOIDED can schedule provider side effects. REVIEW and DISPUTING have state restrictions. Send expected_status to prevent overwriting a changed state; an invalid transition, stale status, or busy lifecycle lock returns 422. Requires the invoice ability or orders:write OAuth scope and current store permission. Idempotency-Key is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns 409. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Change order lifecycle state. COMPLETED finalizes fulfillment of an already paid/partial/disputing order; it does not capture a pending payment. VOIDED can schedule provider side effects. REVIEW and DISPUTING have state restrictions. Send expected_status to prevent overwriting a changed state; an invalid transition, stale status, or busy lifecycle lock returns 422. To record a payment the store received outside SellApp, send `status: COMPLETED` with `payment_received: true` and `expected_status` set to the status you last read; this is the dashboard's manual completion. A `PENDING`, `REVIEW`, or `VOIDED` order then becomes `PAID` and delivery to the customer starts; a `PAID` or `PARTIAL` order has its delivery finished and becomes `COMPLETED`. An order can be marked paid by hand only when its total is at most 100000 minor units of its currency ($1,000.00 in USD), unless it is a custom payment method order in `REVIEW`. A larger order, or an order in any other status, returns `422` on `status`; a status that changed since you read it returns `422` on `expected_status`. Without `payment_received`, a `PENDING` order cannot be completed. Requires the `invoice` API-key ability or the `orders:write` OAuth scope, and current store permission. `Idempotency-Key` is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns `409`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.order - The order identifier.
    * @example 9001
@@ -211,7 +216,7 @@ export class Orders {
   /**
    * Create order checkout
    *
-   * Start or reuse checkout for a PENDING order. A new payment session returns 201; if the order already has one, that session is returned with 200. An order that costs nothing, or that the customer wallet covers in full, is marked as paid and returns 200 with a null payment.checkout_url. A free trial sold through Stripe, PayPal, or Razorpay is the exception: the customer still has to authorise the subscription with that provider, so checkout returns its payment.checkout_url and the order stays PENDING until they do. An unpaid order that sold a trial stops being payable after 72 hours, or on those three providers once the trial it sold is about to end; checkout then returns 422 on order.checkout, the order stays PENDING, and the customer has to start a new checkout. An order that is no longer PENDING also returns 422 on order.checkout. Other failures can mark the order FAILED and release wallet reservations. Do not infer payment from a checkout URL or browser return. The optional expected_status field is validated but is not a checkout concurrency precondition. Requires the invoice ability or orders:write OAuth scope and current store permission. Idempotency-Key is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns 409. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Start or reuse checkout for a PENDING order. A new payment session returns 201; if the order already has one, that session is returned with 200. An order that costs nothing, or that the customer wallet covers in full, is marked as paid and returns 200 with a null payment.checkout_url. A free trial sold through Stripe, PayPal, or Razorpay is the exception: the customer still has to authorise the subscription with that provider, so checkout returns its payment.checkout_url and the order stays PENDING until they do. An unpaid order that sold a trial stops being payable after 72 hours, or on those three providers once the trial it sold is about to end; checkout then returns 422 on order.checkout, the order stays PENDING, and the customer has to start a new checkout. An order that is no longer PENDING also returns 422 on order.checkout. Other failures can mark the order FAILED and release wallet reservations. Do not infer payment from a checkout URL or browser return. The optional expected_status field is validated but is not a checkout concurrency precondition. Requires the `invoice` API-key ability or the `orders:write` OAuth scope, and current store permission. `Idempotency-Key` is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns `409`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.order - The order identifier.
    * @example 9001
@@ -236,7 +241,7 @@ export class Orders {
   /**
    * Issue replacements
    *
-   * Create a replacement order and begin fulfillment for selected purchased variants. Supply a variant ID, an array of variant IDs, or a map of variant IDs to replacement quantities (null means original quantity). Variants must belong to this order; replacement quantities cannot exceed purchased quantity or available stock. Already replaced deliveries cannot be replaced again. The returned ID belongs to the new replacement order. Requires the invoice ability or orders:write OAuth scope and current store permission. Idempotency-Key is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns 409. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Create a replacement order and begin fulfillment for selected purchased variants. Supply a variant ID, an array of variant IDs, or a map of variant IDs to replacement quantities (null means original quantity). Variants must belong to this order; replacement quantities cannot exceed purchased quantity or available stock. Already replaced deliveries cannot be replaced again. The returned ID belongs to the new replacement order. Requires the `invoice` API-key ability or the `orders:write` OAuth scope, and current store permission. `Idempotency-Key` is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns `409`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.order - The order identifier.
    * @example 9001
@@ -261,7 +266,7 @@ export class Orders {
   /**
    * Refund an order
    *
-   * Request a real refund for a completed, nonsubscription order with refundable balance and a supported provider. amount is a decimal string in the order currency: "5.00" means $5.00 in USD, not 500 cents. Omitting amount, sending null, or an empty string requests the FULL remaining balance. Do not send amount_cents: it is not a request field. Inspect refund.status (pending/effective/failed/cancelled); a 200 response does not guarantee money has reached the customer. Retrieve refund state before retrying an uncertain provider outcome. Requires the invoice ability or orders:write OAuth scope and current store permission. Idempotency-Key is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns 409. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Request a real refund for a completed, nonsubscription order with refundable balance and a supported provider. amount is a decimal string in the order's `totals.refund_currency`: "5.00" means $5.00 in USD, not 500 cents. Omitting amount, sending null, or an empty string requests the FULL remaining balance. Do not send amount_cents: it is not a request field. Inspect refund.status (pending/effective/failed/cancelled); a 200 response does not guarantee money has reached the customer. Retrieve refund state before retrying an uncertain provider outcome. Send the order's `totals.refunded_total_cents` unchanged as `expected_refunded_total_cents` so that a retry under a new Idempotency-Key, or a refund someone else made meanwhile, is refused instead of refunding twice: the refund goes out only while the order's refunded total still equals it. A changed total returns `422` on `expected_refunded_total_cents`; read the order again before deciding whether to refund. An invalid `amount` returns `422` on `amount`; other refusals return `422` on `refund`, including, when you send `expected_refunded_total_cents`, a refund still pending on the order. Requires the `invoice` API-key ability or the `orders:write` OAuth scope, and current store permission. `Idempotency-Key` is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns `409`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.order - The order identifier.
    * @example 9001
@@ -286,7 +291,7 @@ export class Orders {
   /**
    * Retry fulfillment
    *
-   * Reset fulfillment effects for a PAID or PARTIAL order and retry delivery. The optional email overrides the recipient. meta.effects_reset counts reset effects; it does not prove fulfillment finished. Other order states and a busy lifecycle lock return 422. Requires the invoice ability or orders:write OAuth scope and current store permission. Idempotency-Key is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns 409. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Reset fulfillment effects for a PAID or PARTIAL order and retry delivery. The optional email overrides the recipient. meta.effects_reset counts reset effects; it does not prove fulfillment finished. Other order states and a busy lifecycle lock return 422. Requires the `invoice` API-key ability or the `orders:write` OAuth scope, and current store permission. `Idempotency-Key` is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns `409`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.order - The order identifier.
    * @example 9001
@@ -311,7 +316,7 @@ export class Orders {
   /**
    * Retry dynamic delivery
    *
-   * Queue another dynamic delivery attempt for one delivered product of a COMPLETED order. The delivered product, line item and currently dynamic variant must all belong to this order and store, with a configured webhook. 202 and meta.queued acknowledge the retry request, not successful external delivery. Requires the invoice ability or orders:write OAuth scope and current store permission. Idempotency-Key is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns 409. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Queue another dynamic delivery attempt for one delivered product of a COMPLETED order. The delivered product, line item and currently dynamic variant must all belong to this order and store, with a configured webhook. 202 and meta.queued acknowledge the retry request, not successful external delivery. Requires the `invoice` API-key ability or the `orders:write` OAuth scope, and current store permission. `Idempotency-Key` is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns `409`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.order - The order identifier.
    * @example 9001
@@ -336,7 +341,7 @@ export class Orders {
   /**
    * Send fulfillment notifications
    *
-   * Send delivery notifications for each selected purchased variant. Omit product_variant_ids to select all variants. A supplied list must contain distinct positive IDs belonging to this order and store. Noncompleted orders or a missing recipient return meta.notifications_sent=0. The count records notifications requested, not email delivery confirmation. Requires the invoice ability or orders:write OAuth scope and current store permission. Idempotency-Key is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns 409. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * Send delivery notifications for each selected purchased variant. Omit product_variant_ids to select all variants. A supplied list must contain distinct positive IDs belonging to this order and store. Noncompleted orders or a missing recipient return meta.notifications_sent=0. The count records notifications requested, not email delivery confirmation. Requires the `invoice` API-key ability or the `orders:write` OAuth scope, and current store permission. `Idempotency-Key` is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns `409`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.order - The order identifier.
    * @example 9001
@@ -359,9 +364,34 @@ export class Orders {
   }
 
   /**
+   * Create a Telegram invite link
+   *
+   * Create a new Telegram invite link for a customer whose order granted access to a Telegram group or channel, for example after their first link expired or was used. Each link admits one person and expires 24 hours after it is created. SellApp saves the link on the order but does not send it: pass `invite_link` to the customer yourself. Send `variant_id` to choose the product when the order grants Telegram access for several; omit it when only one does. At most three links per product of an order are created in 24 hours, and a failed attempt does not count; a fourth returns `422` on `telegram_invite`, as do Telegram refusals such as an unhealthy bot connection or missing invite data. An order that is no longer paid, for example one refunded, disputed or voided, returns `422` on `telegram_invite` with `This order no longer grants Telegram access.` and creates no link. An order without granted Telegram access returns `422` on `order`; a product without it, or a missing `variant_id` when several products qualify, returns `422` on `variant_id`. Requires the `invoice` API-key ability or the `orders:write` OAuth scope, and current store permission. `Idempotency-Key` is required. Reuse the same key and identical request after a lost response; changed input or an in-progress request returns `409`. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * @param options - The request options.
+   * @param options.order - The order identifier.
+   * @example 9001
+   * @returns {Promise<SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson>}
+   * @throws {BadRequestException} 400
+   * @throws {UnauthorizedException} 401
+   * @throws {AuthorizationException} 403
+   * @throws {NotFoundException} 404
+   * @throws {ConflictException} 409
+   * @throws {UnprocessableEntityException} 422
+   * @throws {RateLimitExceededException} 429
+   */
+  async regenerateTelegramInvite(options: RegenerateTelegramInviteOptions): Promise<SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson> {
+    const { order, requestOptions, ...payload } = options;
+    const { data } = await this.sellApp.post<SdkRegenerateOrderTelegramInviteResponseValue201ApplicationJsonResponse, SdkRegenerateOrderTelegramInviteRequestApplicationJsonResponse>(
+      `/v2/orders/${encodeURIComponent(order)}/telegram-invites`,
+      serializeSdkRegenerateOrderTelegramInviteRequestApplicationJson(payload), { ...options.requestOptions, operationId: 'regenerateOrderTelegramInvite' },
+    );
+    return deserializeSdkRegenerateOrderTelegramInviteResponseValue201ApplicationJson(data);
+  }
+
+  /**
    * List order deliverables
    *
-   * List seller-visible fulfillment records, expanding purchased bundle snapshots into their component variants. File download links expire after one hour. This payload includes line-item and variant IDs but does not expose the delivered_product_id required for dynamic delivery retries. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List seller-visible fulfillment records, expanding purchased bundle snapshots into their component variants. File download links expire after one hour. A delivered record carries `delivered_product_id`, which `POST /v2/orders/{order}/dynamic-delivery-retries` takes to retry a dynamic delivery. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - The request options.
    * @param options.order - The order identifier.
    * @example 9001

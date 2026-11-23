@@ -2,6 +2,7 @@
 
 import type { SellApp } from '../sellapp';
 import type { GetOptions as RequestOptions } from '../common/interfaces/get-options.interface';
+import type { PaginationOptions } from '../common/interfaces/pagination-options.interface';
 import { AutoPaginatable } from '../common/utils/pagination';
 import { fetchAndDeserialize } from '../common/utils/fetch-and-deserialize';
 import type { AffiliatesListOptions } from './interfaces/affiliates-list-options.interface';
@@ -29,6 +30,25 @@ function createResourceWithResponse<T extends object>(resource: T, client: SellA
   }) as SellAppWithResponse<T>;
 }
 
+const serializeAffiliatesListOptions = (options: AffiliatesListOptions): PaginationOptions => {
+  const wire: Record<string, unknown> = {
+    maxItems: options.maxItems,
+    maxPages: options.maxPages,
+    requestOptions: options.requestOptions,
+    limit: options.limit,
+    before: options.before,
+    after: options.after,
+    order: options.order,
+  };
+  if (options.status !== undefined) wire.status = options.status;
+  if (options.search !== undefined) wire.search = options.search;
+  if (options.customRatesOnly !== undefined) wire.custom_rates_only = options.customRatesOnly;
+  if (options.payoutMethod !== undefined) wire.payout_method = options.payoutMethod;
+  if (options.sort !== undefined) wire.sort = options.sort;
+  if (options.page !== undefined) wire.page = options.page;
+  return wire as PaginationOptions;
+};
+
 export class Affiliates {
   constructor(private readonly sellApp: SellApp) {}
   get withResponse(): SellAppWithResponse<this> { return createResourceWithResponse(this, this.sellApp); }
@@ -36,7 +56,7 @@ export class Affiliates {
   /**
    * List affiliates
    *
-   * List store affiliate memberships, approved profile details, referral counts, and integer USD-cent balances. Requires the `affiliate` ability. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
+   * List store affiliate memberships, approved profile details, referral counts, and integer USD-cent balances, newest first, 15 per page by default. Requires the `affiliate` ability. Filter by `status`, `search`, `custom_rates_only`, and `payout_method`, and send `sort=-earnings` to list the top earners first. A `status`, `custom_rates_only`, or `payout_method` value the API does not know returns `422`; an unknown `sort` value is ignored. OAuth callers use the admin grant and select a store with X-STORE. Current membership and role permissions apply to every request.
    * @param options - Pagination and filter options.
    * @returns {Promise<AutoPaginatable<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem>>}
    * @throws {BadRequestException} 400
@@ -45,14 +65,13 @@ export class Affiliates {
    * @throws {UnprocessableEntityException} 422
    * @throws {RateLimitExceededException} 429
    */
-  async list(options?: AffiliatesListOptions): Promise<AutoPaginatable<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem, AffiliatesListOptions>> {
-    const paginationOptions = options;
+  async list(options?: AffiliatesListOptions): Promise<AutoPaginatable<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>> {
     return new AutoPaginatable(
       await fetchAndDeserialize<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItemResponse, ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem>(
         this.sellApp,
         '/v2/affiliates',
         deserializeListAffiliatesResponseValue200ApplicationJsonPropertyDataItem,
-        paginationOptions,
+        options ? serializeAffiliatesListOptions(options) : undefined,
       ),
       (params) =>
         fetchAndDeserialize<ListAffiliatesResponseValue200ApplicationJsonPropertyDataItemResponse, ListAffiliatesResponseValue200ApplicationJsonPropertyDataItem>(
@@ -61,7 +80,7 @@ export class Affiliates {
           deserializeListAffiliatesResponseValue200ApplicationJsonPropertyDataItem,
           params,
         ),
-      paginationOptions,
+      options ? serializeAffiliatesListOptions(options) : undefined,
     );
   }
 

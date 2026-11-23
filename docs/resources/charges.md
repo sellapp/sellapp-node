@@ -9,14 +9,14 @@ List all charges
 [API reference](https://sell.app/docs/api/charges/list-all-charges) · Effect: **read**
 
 ```typescript
-async list(options?: ChargesListOptions): Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem, ChargesListOptions>>
+async list(options?: ChargesListOptions): Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>
 ```
 
 | Argument | Native type | Required |
 | --- | --- | --- |
 | options | `ChargesListOptions \| undefined` | No |
 
-Returns: `Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem, ChargesListOptions>>`.
+Returns: `Promise<AutoPaginatable<ListChargesResponseValue200ApplicationJsonPropertyDataItem, PaginationOptions>>`.
 
 ```ts
 import { SellApp } from '@sell.app/sdk';
@@ -269,6 +269,59 @@ Supported credential alternatives (each object is one alternative):
 ```
 
 Documented HTTP responses: 200, 400, 401, 403, 404, 422, 429, 500. See the API reference for field-level validation and consequences.
+
+[Response access, transport controls, pagination, and typed errors](../usage.md)
+
+## getSummary
+
+Retrieve the charge summary
+
+[API reference](https://sell.app/docs/api/charges/retrieve-the-charge-summary) · Effect: **read**
+
+```typescript
+async getSummary(options?: GetSummaryOptions): Promise<SdkGetChargeSummaryResponseValue200ApplicationJson>
+```
+
+| Argument | Native type | Required |
+| --- | --- | --- |
+| options | `GetSummaryOptions \| undefined` | No |
+
+Returns: `Promise<SdkGetChargeSummaryResponseValue200ApplicationJson>`.
+
+```ts
+import { SellApp } from '@sell.app/sdk';
+
+const client = new SellApp({
+  baseUrl: process.env.SELLAPP_API_BASE_URL!,
+  apiKey: process.env.SELLAPP_API_KEY!,
+  store: process.env.SELLAPP_STORE!,
+});
+
+const result = await client.charges.getSummary({
+
+});
+console.log(result);
+```
+
+### Authentication and errors
+
+Supported credential alternatives (each object is one alternative):
+
+```json
+[
+  {
+    "bearerAuth": []
+  },
+  {
+    "oauthAccessToken": [
+      "admin"
+    ],
+    "storeAuth": []
+  }
+]
+```
+
+Documented HTTP responses: 200, 400, 401, 403, 422, 429, 500. See the API reference for field-level validation and consequences.
 
 [Response access, transport controls, pagination, and typed errors](../usage.md)
 

@@ -5,6 +5,7 @@ export * from './create-promotion-response-value-201-application-json-property-d
 export * from './create-promotion-response-value-201-application-json-property-data-property-phases-item.serializer';
 export * from './get-promotion-response-value-200-application-json-property-data.serializer';
 export * from './get-promotion-response-value-200-application-json-property-data-property-phases-item.serializer';
+export * from './get-promotion-usage-response-value-200-application-json-property-data.serializer';
 export * from './list-promotion-phases-response-value-200-application-json-property-data-item.serializer';
 export * from './replace-promotion-phases-request-application-json-property-phases-item.serializer';
 export * from './replace-promotion-phases-response-value-200-application-json-property-data-item.serializer';
@@ -17,6 +18,7 @@ export * from './restore-promotion-response-value-200-application-json-property-
 export * from './sdk-create-promotion-request-application-json.serializer';
 export * from './sdk-create-promotion-response-value-201-application-json.serializer';
 export * from './sdk-get-promotion-response-value-200-application-json.serializer';
+export * from './sdk-get-promotion-usage-response-value-200-application-json.serializer';
 export * from './sdk-list-promotion-phases-response-value-200-application-json.serializer';
 export * from './sdk-list-promotions-response-value-200-application-json.serializer';
 export * from './sdk-replace-promotion-phases-request-application-json.serializer';
