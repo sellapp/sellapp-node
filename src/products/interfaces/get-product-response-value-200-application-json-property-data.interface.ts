@@ -25,6 +25,8 @@ export interface GetProductResponseValue200ApplicationJsonPropertyData {
   isDiscoverable: boolean;
   variants: GetProductResponseValue200ApplicationJsonPropertyDataPropertyVariantsItem[];
   url: string;
+  /** What kind of product this is: `product`, `bundle`, `addon`, `credits`, `course`, or `booking`. */
+  type: string;
   [key: string]: unknown;
 }
 
@@ -48,5 +50,6 @@ export interface GetProductResponseValue200ApplicationJsonPropertyDataResponse {
   is_discoverable: boolean;
   variants: GetProductResponseValue200ApplicationJsonPropertyDataPropertyVariantsItemResponse[];
   url: string;
+  type: string;
   [key: string]: unknown;
 }

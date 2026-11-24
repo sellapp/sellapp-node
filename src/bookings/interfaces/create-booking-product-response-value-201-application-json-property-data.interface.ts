@@ -26,8 +26,8 @@ export interface CreateBookingProductResponseValue201ApplicationJsonPropertyData
   /** The product's options, including the draft booking option this request created. */
   variants: CreateBookingProductResponseValue201ApplicationJsonPropertyDataPropertyVariantsItem[];
   url: string;
-  /** The kind of product: `booking` for a booking product. */
-  type?: string;
+  /** What kind of product this is: `product`, `bundle`, `addon`, `credits`, `course`, or `booking`. */
+  type: string;
   [key: string]: unknown;
 }
 
@@ -51,6 +51,6 @@ export interface CreateBookingProductResponseValue201ApplicationJsonPropertyData
   is_discoverable: boolean;
   variants: CreateBookingProductResponseValue201ApplicationJsonPropertyDataPropertyVariantsItemResponse[];
   url: string;
-  type?: string;
+  type: string;
   [key: string]: unknown;
 }

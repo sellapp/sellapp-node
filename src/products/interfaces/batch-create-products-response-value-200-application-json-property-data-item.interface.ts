@@ -25,6 +25,8 @@ export interface BatchCreateProductsResponseValue200ApplicationJsonPropertyDataI
   isDiscoverable: boolean;
   variants: BatchCreateProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem[];
   url: string;
+  /** What kind of product this is: `product`, `bundle`, `addon`, `credits`, `course`, or `booking`. */
+  type: string;
   [key: string]: unknown;
 }
 
@@ -48,5 +50,6 @@ export interface BatchCreateProductsResponseValue200ApplicationJsonPropertyDataI
   is_discoverable: boolean;
   variants: BatchCreateProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItemResponse[];
   url: string;
+  type: string;
   [key: string]: unknown;
 }

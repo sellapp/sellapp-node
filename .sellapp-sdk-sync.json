@@ -2,12 +2,12 @@
   "schemaVersion": 1,
   "language": "node",
   "repository": "sellapp/sellapp-node",
-  "sourceSha": "77cf567815f22f4c07cf6b707ab25d4ca74877af",
-  "specSha256": "588138cc0421d9c2f8b7382d2924ce51982635c344b9e57f6f46b68e18ea4d69",
+  "sourceSha": "47e5b156f89777b62ae90a33cac16756b9830558",
+  "specSha256": "2319bc01512943c10a5788a130a1d189fbb2b14d76b0142e62a47b759c391662",
   "runId": "0",
   "runAttempt": "1",
-  "treeDigest": "191e6252b0a1644d6fc44557d29c9039bcc851f98cd07a71102c49c4f1f2b632",
-  "contentDigest": "45aec798e75ea47a408ae5a1705026961836f262e32503b0f30ba1f3aeb15bf2",
+  "treeDigest": "ff3ed644a1040d3518c86abceb02a64bfd22cc3eca6eba87824978117927808d",
+  "contentDigest": "d24a33922aef3451f8a1d8eeaa54302a11fbf03c32c007d520d8e599cbb09109",
   "files": [
     {
       "path": ".github/scripts/native-ci.mjs",
@@ -47,7 +47,7 @@
     {
       "path": "README.md",
       "mode": "100644",
-      "sha256": "598b23f08849da954f83c58ca3902bc9dca973b294f650eb582e434c8c330fce"
+      "sha256": "568639d643c3f0347972d25ed39416eb67e9b204378ed027fa12040a1a1d6efe"
     },
     {
       "path": "docs/methods.md",
@@ -57,7 +57,7 @@
     {
       "path": "docs/migration.md",
       "mode": "100644",
-      "sha256": "93cb5f3632ba41e91cbef0eca56536cabd6d525e748dc9aac4e736502807b09e"
+      "sha256": "2a2c9726edcf4a78185eac87a67824fed8e50054d5c67c18bd1d44255cb49c8f"
     },
     {
       "path": "docs/operation-examples.json",
@@ -592,12 +592,12 @@
     {
       "path": "generation-manifest.json",
       "mode": "100644",
-      "sha256": "fe4a83f49e8d2e7ff7a3512acc2c38851e1edc42f86e78be8443dd756fc58f0f"
+      "sha256": "00010a0c2abea67f48f29fb5b2b0da6e5d3b4b583ff77d894425e151cea6866c"
     },
     {
       "path": "package.json",
       "mode": "100644",
-      "sha256": "74517b983f315706ff10b16fda2879fd0318cededfa9feb19a66c66ffca98a3e"
+      "sha256": "bcb3f40c65779c257b39c6e65a9a8d803b5e8ebe320b3adc4fb501347e5f2733"
     },
     {
       "path": "src/account/account.ts",
@@ -6542,7 +6542,7 @@
     {
       "path": "src/bookings/interfaces/create-booking-product-response-value-201-application-json-property-data.interface.ts",
       "mode": "100644",
-      "sha256": "287b8dcfa2aad4e3b79bb3ac0b36a3afcb9b148801180781ef891f287d1b4309"
+      "sha256": "e43b394f2f45f0d1a0a799ef0abcec0f59ec00bfc46f71fe5943b101b2703f21"
     },
     {
       "path": "src/bookings/interfaces/create-options.interface.ts",
@@ -6967,7 +6967,7 @@
     {
       "path": "src/bookings/serializers/create-booking-product-response-value-201-application-json-property-data.serializer.ts",
       "mode": "100644",
-      "sha256": "11908a17e98bed48a6fbc73f28f761a15dee1ae32eac6ecd4ab804c186bad6c3"
+      "sha256": "93a61001aedb12bd7c11c39f0878ca4e363cbd5ce9325f62beb9379fb0f7fc4a"
     },
     {
       "path": "src/bookings/serializers/get-appointment-response-value-200-application-json-property-data-property-product.serializer.ts",
@@ -8677,7 +8677,7 @@
     {
       "path": "src/common/sellapp-base.ts",
       "mode": "100644",
-      "sha256": "6f17433e1fa1a7fdc8e45abe873d7d53b9dc4af4a2fa9e3431e58d6e5a1627f7"
+      "sha256": "13dc2067ba35fd090b7be26d5c80c98f07b7193a66240cb909cfe503a2ee0b5d"
     },
     {
       "path": "src/common/utils/fetch-and-deserialize.ts",
@@ -25502,7 +25502,7 @@
     {
       "path": "src/products/interfaces/batch-create-products-response-value-200-application-json-property-data-item.interface.ts",
       "mode": "100644",
-      "sha256": "700e806c06307bced20a2a636689b93f35445958b5405fadd57f9d8f66e24768"
+      "sha256": "186b6e35a6b3cd4434bcdf2b6dfdeb152063e70d3753fef6ad8a321cac8487a5"
     },
     {
       "path": "src/products/interfaces/batch-delete-options.interface.ts",
@@ -25552,7 +25552,7 @@
     {
       "path": "src/products/interfaces/batch-update-products-response-value-200-application-json-property-data-item.interface.ts",
       "mode": "100644",
-      "sha256": "bf005564f1e8e0d5d81ce2001653b304e689ebea93ef7f64170fa0fb5bcb29f9"
+      "sha256": "272fe54b9963b8d8e360e08914a472dd73959b266a6c426f82944649cf3811bb"
     },
     {
       "path": "src/products/interfaces/catalog-visibility.interface.ts",
@@ -25702,7 +25702,7 @@
     {
       "path": "src/products/interfaces/create-product-response-value-201-application-json-property-data.interface.ts",
       "mode": "100644",
-      "sha256": "bbf184749e84427785a2950d8a75ada6656780b1741113816ca34e5489092e97"
+      "sha256": "17aebccc83d32bf5d800a439bd8aee121cb6c425979c860cf623245d15a7adb9"
     },
     {
       "path": "src/products/interfaces/delete-options.interface.ts",
@@ -25742,7 +25742,7 @@
     {
       "path": "src/products/interfaces/duplicate-product-response-value-201-application-json-property-data.interface.ts",
       "mode": "100644",
-      "sha256": "61818d055b7f3319ead54e2d4feaf47af9231264f2b285451aa414610346a31d"
+      "sha256": "9efcec470feeaa39243b4769e5bc4b6d19f3046716b9aec7b641a2965f0c79dd"
     },
     {
       "path": "src/products/interfaces/get-options.interface.ts",
@@ -25782,7 +25782,7 @@
     {
       "path": "src/products/interfaces/get-product-response-value-200-application-json-property-data.interface.ts",
       "mode": "100644",
-      "sha256": "1ba9ae59fa85130ab222680401ceedd0c18dad6967c4a3af2cc91df4c5a91cfe"
+      "sha256": "61a3e587053e98c093ab905ee4dfae5c56abdb6b71b5d3be238f7d2df30e1a49"
     },
     {
       "path": "src/products/interfaces/highlight-label.interface.ts",
@@ -25827,7 +25827,7 @@
     {
       "path": "src/products/interfaces/list-products-response-value-200-application-json-property-data-item.interface.ts",
       "mode": "100644",
-      "sha256": "5663d28a160f6b4bcf7cac6c2712ca9bd755e62b2c2a699e7f650a2b16673789"
+      "sha256": "74bbe15cf93681859fb0f79d07821fc443316562bb45e849b8cd9c8e49afe23f"
     },
     {
       "path": "src/products/interfaces/move-options.interface.ts",
@@ -25862,7 +25862,7 @@
     {
       "path": "src/products/interfaces/move-product-response-value-200-application-json-property-data.interface.ts",
       "mode": "100644",
-      "sha256": "d0de4cce4fc3b15bf76b0168dc8596bfdadc0d8ed0de2ce5f7ccaecbde6d272c"
+      "sha256": "04df6c7748d43698c509345f72376ab88a6517feebb0cb41cb3a18c9e8e253cd"
     },
     {
       "path": "src/products/interfaces/product-faq-input.interface.ts",
@@ -25917,7 +25917,7 @@
     {
       "path": "src/products/interfaces/publish-product-response-value-200-application-json-property-data.interface.ts",
       "mode": "100644",
-      "sha256": "8ff9227609c07e413f37b16c218fb88f870201634d50867f2975f43eceb5d0e3"
+      "sha256": "c5b0215f427628d7282f74e62549228e0e3333649e00cfe8ca2ce486cdcd99b7"
     },
     {
       "path": "src/products/interfaces/replace-options.interface.ts",
@@ -25977,7 +25977,7 @@
     {
       "path": "src/products/interfaces/replace-product-response-value-200-application-json-property-data.interface.ts",
       "mode": "100644",
-      "sha256": "00abd2dcce2efa507f0112325f5ae6c9ded8c85fd09cfd84f04a4221036f574d"
+      "sha256": "dcae65745e7344549013e7822122203b2d69807d6844b5238a4457cea3a9ec88"
     },
     {
       "path": "src/products/interfaces/replace-product-similar-products-response-value-200-application-json-property-data-item.interface.ts",
@@ -26192,7 +26192,7 @@
     {
       "path": "src/products/interfaces/search-products-response-value-200-application-json-property-data-item.interface.ts",
       "mode": "100644",
-      "sha256": "11f283c998dd91a28d486250d7d55875278588849c411fab432bf2bba8b2101c"
+      "sha256": "4480d33fc4e81bfb082b6b5ea6851552419a9ab49bd920f515428571f02316a3"
     },
     {
       "path": "src/products/interfaces/stock.interface.ts",
@@ -26252,7 +26252,7 @@
     {
       "path": "src/products/interfaces/update-product-response-value-200-application-json-property-data.interface.ts",
       "mode": "100644",
-      "sha256": "0c3c021c39e21d7b8fc06d8ab7640d5c31c1f694ec0324e1e11a4d0bac27912d"
+      "sha256": "64311b7d0465fee133417846873498fb1bc07c1677982b1cfceee80850876f25"
     },
     {
       "path": "src/products/products.ts",
@@ -26307,7 +26307,7 @@
     {
       "path": "src/products/serializers/batch-create-products-response-value-200-application-json-property-data-item.serializer.ts",
       "mode": "100644",
-      "sha256": "26b7988af3e9055ab389c0442cd8c629e806b946da49d197d1fd0db30bcc1870"
+      "sha256": "9b792bb4444e7a096f1ca82f19f7d265da0a55f83e126ea00d5dadba70c52b18"
     },
     {
       "path": "src/products/serializers/batch-update-products-request-application-json-property-resources.serializer.ts",
@@ -26342,7 +26342,7 @@
     {
       "path": "src/products/serializers/batch-update-products-response-value-200-application-json-property-data-item.serializer.ts",
       "mode": "100644",
-      "sha256": "6caa6352cb99103f4ec717b96aa35f39b2d88276abc3a2a5b7f1ba802f58df1b"
+      "sha256": "76c2a079e09bce4bcf015a88cbb708ea42191acc9551681d4f0999199db5e37a"
     },
     {
       "path": "src/products/serializers/create-product-request-application-json-property-additional-information-item-property-date-options.serializer.ts",
@@ -26447,7 +26447,7 @@
     {
       "path": "src/products/serializers/create-product-response-value-201-application-json-property-data.serializer.ts",
       "mode": "100644",
-      "sha256": "c19eebfd87fdc789efd0481013fba236da1156074c0f2602ec273a100629ce63"
+      "sha256": "e78e10587a4d31ecaab7a9c32e032356a085f222a32ab0cc4c02df0e5148116c"
     },
     {
       "path": "src/products/serializers/duplicate-product-response-value-201-application-json-property-data-property-additional-information-item.serializer.ts",
@@ -26477,7 +26477,7 @@
     {
       "path": "src/products/serializers/duplicate-product-response-value-201-application-json-property-data.serializer.ts",
       "mode": "100644",
-      "sha256": "7f30fba23c46cc9c562ffe14b83cf095a18e028ca99ccda16d7df198212cb5e7"
+      "sha256": "171b8d4c306e1097c2dd9da816a1b3804a1a52b76fc9c9c9b48fd8db8672b9dc"
     },
     {
       "path": "src/products/serializers/get-product-featured-variant-response-value-200-application-json-property-data.serializer.ts",
@@ -26512,7 +26512,7 @@
     {
       "path": "src/products/serializers/get-product-response-value-200-application-json-property-data.serializer.ts",
       "mode": "100644",
-      "sha256": "f82a6edb83d47f4c57c55ebb71ebcfc4bd20b8e1e64b8483801cfb97491e9d1c"
+      "sha256": "f2c3713bdeca41ef2c9dbb7c86ba4f663bed3a7f3a0e86f488eac1ec74459cf7"
     },
     {
       "path": "src/products/serializers/index.ts",
@@ -26552,7 +26552,7 @@
     {
       "path": "src/products/serializers/list-products-response-value-200-application-json-property-data-item.serializer.ts",
       "mode": "100644",
-      "sha256": "e506a258bc7adb3e705399a869af4e72be4c0e524b7b521e2df89b311b8508f7"
+      "sha256": "acc743d4762bb36df4d0bac8dea39eb9533c76718cf987ef5b84f298926c4d9a"
     },
     {
       "path": "src/products/serializers/move-product-response-value-200-application-json-property-data-property-additional-information-item.serializer.ts",
@@ -26582,7 +26582,7 @@
     {
       "path": "src/products/serializers/move-product-response-value-200-application-json-property-data.serializer.ts",
       "mode": "100644",
-      "sha256": "5a0198f2cabd3677ffa829aff6f4da2e553276fa2aff4cbab9ec9c36f7cf9a16"
+      "sha256": "692cdc81bb8df972f92e00fef023285d78458e5090bd9216b5e8f70fe409b6be"
     },
     {
       "path": "src/products/serializers/product-faq-input.serializer.ts",
@@ -26617,7 +26617,7 @@
     {
       "path": "src/products/serializers/publish-product-response-value-200-application-json-property-data.serializer.ts",
       "mode": "100644",
-      "sha256": "08b29c813f9d93954da67142befea05d34c1c654fa688b04778790ca0ee1478c"
+      "sha256": "298b22c88305209f18e98f37004eba94180730e1d548deb00e07b9490122a10d"
     },
     {
       "path": "src/products/serializers/replace-product-featured-variant-response-value-200-application-json-property-data.serializer.ts",
@@ -26667,7 +26667,7 @@
     {
       "path": "src/products/serializers/replace-product-response-value-200-application-json-property-data.serializer.ts",
       "mode": "100644",
-      "sha256": "b1a906b3fda722e977c6bbba1bc1c8e6ff47b805da9e38004a20b4578b0ddd83"
+      "sha256": "3c3fac6233b4eb79b56ba80625513e9570e3095085a8c21a82e3f1132f52dda1"
     },
     {
       "path": "src/products/serializers/replace-product-similar-products-response-value-200-application-json-property-data-item.serializer.ts",
@@ -26857,7 +26857,7 @@
     {
       "path": "src/products/serializers/search-products-response-value-200-application-json-property-data-item.serializer.ts",
       "mode": "100644",
-      "sha256": "468ce857b4e77b762ff7fc2058d74bcd1c40aa448ff75a153adc11636717980b"
+      "sha256": "4e797864b5cec2327a7c5e4fd4cc0c8408265d638e44723dd027de5a9d80a1b6"
     },
     {
       "path": "src/products/serializers/update-product-request-application-json-property-additional-information-item-property-date-options.serializer.ts",
@@ -26902,7 +26902,7 @@
     {
       "path": "src/products/serializers/update-product-response-value-200-application-json-property-data.serializer.ts",
       "mode": "100644",
-      "sha256": "382152948b3f033259c0fb8d39ead41ed3b1bdb312fa7caaf7b54e0741195cde"
+      "sha256": "14e8a96d387f04ebec2e33be85fa1acb2afa224c06ab3cc4c40eb6a0d11fab78"
     },
     {
       "path": "src/promotions-phases/interfaces/index.ts",
@@ -35102,7 +35102,7 @@
     {
       "path": "test/connected-workflow.json",
       "mode": "100644",
-      "sha256": "c58f2a9e7bcca65f700d44cb561a75d5f8f3efd35b57985a11eead45e51a4e68"
+      "sha256": "1deefd713382e27a461e194f3d0b787ad6494f80fd4fdf008380702cbea1c2ac"
     },
     {
       "path": "test/connected-workflow.test.mjs",
@@ -35112,7 +35112,7 @@
     {
       "path": "test/documentation-product.json",
       "mode": "100644",
-      "sha256": "bffe9b50199ec59e290dbffd4a3304a251a9aec35ffd6039202c2477ec5ca726"
+      "sha256": "08af45a32b4f0a13c61d8077c763962d184183542eced9e652ceecaa4156fbbd"
     },
     {
       "path": "test/documentation.test.mjs",

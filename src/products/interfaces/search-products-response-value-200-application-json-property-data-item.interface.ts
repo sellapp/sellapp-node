@@ -25,6 +25,8 @@ export interface SearchProductsResponseValue200ApplicationJsonPropertyDataItem {
   isDiscoverable: boolean;
   variants: SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItem[];
   url: string;
+  /** What kind of product this is: `product`, `bundle`, `addon`, `credits`, `course`, or `booking`. */
+  type: string;
   /** The lowest and highest price among the product's published variants, formatted for display with the currency symbol: `$19.99`, or `$9.99 - $19.99` when the prices differ. Null when no published variant has a price. */
   priceRange: string | null;
   /** Units left across the product's published variants, or null when any of them has unlimited stock. */
@@ -56,6 +58,7 @@ export interface SearchProductsResponseValue200ApplicationJsonPropertyDataItemRe
   is_discoverable: boolean;
   variants: SearchProductsResponseValue200ApplicationJsonPropertyDataItemPropertyVariantsItemResponse[];
   url: string;
+  type: string;
   price_range: string | null;
   stock: number | null;
   sales: number;
